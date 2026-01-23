@@ -1,5 +1,36 @@
 # Overzicht van erkende value streams
 
+## Herkomstverantwoording
+
+Dit normatief artefact is geschreven op basis van de hieronder geraadpleegde
+bronnen. Het overzicht van value streams is afgeleid uit de constitutie van
+het Mandarin agent-ecosysteem en bestaande governance-documenten, aangevuld
+met kennis over value stream management en gebruikersopdrachten.
+
+**Geraadpleegde bronnen**:
+- Constitutie Mandarin agent-ecosysteem (versie 1.2.1, gelezen op 2026-01-23 14:00)
+- doctrine-it-development.md (gelezen op 2026-01-23 14:00)
+- beleid-mandarin-canon.md (gelezen op 2026-01-23 14:00)
+- Bestaande value-streams.md (vorige versie met incomplete kennispublicatie
+  sectie, gelezen op 2026-01-23 14:00)
+- Gebruikersopdracht (ontvangen op 2026-01-23): voeg kennispublicatie value
+  stream toe met focus op hoogwaardige, niet AI-herkenbare teksten en publicatie
+
+**Toelichting op structuur en wijzigingen**:
+Dit document geeft een workspace-overstijgend overzicht van alle erkende value
+streams in het agent-ecosysteem. Per value stream worden doel, stages en
+eventuele doctrine-verwijzingen beschreven.
+
+Wijzigingen in deze versie:
+- Kennispublicatie value stream volledig uitgewerkt (sectie 3) met focus op
+  produceren van niet AI-herkenbare, hoogwaardige teksten
+- Kennispublicatie stages toegevoegd: conceptontwikkeling, uitwerking en
+  schrijven, redactie en verfijning, publicatie en distributie, evaluatie en
+  bijsturing
+- Architectuur-en-oplossingsontwerp hernummerd van sectie 5 naar 4
+
+---
+
 Dit document geeft een **workspace-overstijgend** overzicht van de value streams
 die in het agent eco-systeem worden erkend. Voor elke value stream staat hier:
 
@@ -49,7 +80,7 @@ deze stages gebruikt als werkbaar referentiekader.
 De value stream **IT-development** is uitgewerkt in de **Doctrine IT
 Development**:
 
-- `artefacten/0-governance/doctrine-it-development.md`
+- `doctrine-it-development.md`
 
 Deze doctrine is gebaseerd op SAFe en beschrijft de volledige ontwikkelstroom
 van idee tot deployment. De belangrijkste fases (stages) zijn:
@@ -82,118 +113,48 @@ Agents met primary value stream **IT-development** volgen deze doctrine.
 
 ---
 
-value
+## 3. Kennispublicatie
+
+De value stream **Kennispublicatie** richt zich op het produceren en publiceren
+van hoogwaardige, niet AI-herkenbare teksten die kennis overdragen, inzichten
+delen en lezers waardevol informeren.
+
+Doel:
+
+- produceren van teksten die qua stijl, diepgang en originaliteit niet
+  onderscheidbaar zijn van menselijk geschreven werk;
+- waarborgen van inhoudelijke kwaliteit, leesbaarheid en authenticiteit;
+- effectief publiceren en distribueren van kennisproducten naar de juiste
+  doelgroepen.
+
+Typische stages (fases):
+
+1. **Conceptontwikkeling**  
+   Bepalen van onderwerp, doelgroep, boodschap en tone-of-voice. Verzamelen
+   van bronmateriaal en opstellen van contentplan.
+
+2. **Uitwerking en schrijven**  
+   Produceren van de tekst met aandacht voor structuur, argumentatie, stijl
+   en leesbaarheid. Zorgen voor menselijke nuances en authenticiteit.
+
+3. **Redactie en verfijning**  
+   Reviewen en bijschaven van de tekst. Controleren op consistentie, helderheid
+   en kwaliteit. Verwijderen van AI-herkenbare patronen of formulering.
+
+4. **Publicatie en distributie**  
+   Voorbereiden van het eindproduct voor publicatie. Verzorgen van opmaak,
+   metadata en verspreiding via de juiste kanalen.
+
+5. **Evaluatie en bijsturing**  
+   Monitoren van respons en impact. Bijsturen van contentstrategie op basis
+   van feedback en resultaten.
+
 Deze beschrijving vormt de basis voor een formele **Kennispublicatie-doctrine**
 die later in `artefacten/0-governance/` wordt vastgelegd.
 
 ---
 
-## 4. Solution-architecting
-
-## Herkomstverantwoording
-
-Dit normatief artefact is geschreven op basis van de hieronder geraadpleegde
-bronnen. De value stream Solution-architecting is afgeleid uit bestaande
-governance-documenten en aangevuld met kennis over de specifieke context van
-gemeentelijke enterprise architectuur (GEMMA, Common Ground).
-
-**Geraadpleegde bronnen**:
-- Constitutie Mandarin (versie 1.2.1, gelezen op 2026-01-18 09:15)
-- value-streams.md (bestaande versie met IT-development, Agent enablement en
-  Kennispublicatie, gelezen op 2026-01-18 09:15)
-- doctrine-it-development.md (gelezen op 2026-01-18 09:15)
-- Opdracht van gebruiker (received 2026-01-18 09:15): beschrijf value stream
-  solution-architecting die documenten reviewt van enterprise architect in
-  omgeving van gemeente, GEMMA, Common Ground
-
-**Toelichting op structuur**:
-Deze value stream beschrijft het proces van het beoordelen, verfijnen en
-valideren van enterprise architectuurdocumentatie in de context van Nederlandse
-gemeenten. De stages volgen de logische volgorde van review-activiteiten, van
-initiële intake tot borging en publicatie van goedgekeurde architectuur.
-
----
-
-De value stream **Solution-architecting** richt zich op het reviewen,
-beoordelen en verfijnen van architectuurdocumentatie die door enterprise
-architects wordt aangeleverd in de context van gemeentelijke IT-landschappen,
-met specifieke aandacht voor GEMMA (Gemeentelijke Model Architectuur) en
-Common Ground.
-
-Doel:
-
-- waarborgen dat oplossingsarchitectuur aansluit bij enterprise-kaders en
-  gemeentelijke standaarden;
-- borgen van architectuurkwaliteit, compliance en consistentie;
-- faciliteren van inhoudelijke dialoog tussen enterprise- en solution-niveau.
-
-Context:
-
-Deze value stream is specifiek relevant voor organisaties die werken met:
-- **GEMMA**: het referentiemodel voor gemeentelijke informatievoorziening;
-- **Common Ground**: de visie op een moderne gemeentelijke gegevensuitwisseling
-  met API's, bronregistraties en scheiding van gegevens en applicaties;
-- enterprise-architectuurprincipes zoals vastgelegd in gemeentelijke
-  architectuurbeleid.
-
-Typische stages (fases):
-
-1. **Intake en kadering** (Intake & Framing)  
-   Ontvangen en registreren van architectuurdocumenten; bepalen van scope,
-   context en toetsingskader (welke GEMMA-lagen, welke Common Ground-principes,
-   welke beleidskaders zijn van toepassing).
-
-2. **Beoordeling en analyse** (Assessment & Analysis)  
-   Toetsen van de aangeleverde architectuur aan enterprise-principes,
-   GEMMA-referenties, Common Ground-uitgangspunten en gemeentelijke
-   architectuurbeleid. Identificeren van afwijkingen, risico's en
-   verbeterpunten.
-
-3. **Dialoog en verfijning** (Dialogue & Refinement)  
-   In gesprek met de enterprise architect en stakeholders om onduidelijkheden
-   op te helderen, alternatieven te verkennen en consensus te bereiken over
-   aanpassingen.
-
-4. **Vaststelling en advisering** (Decision & Advice)  
-   Formaliseren van het reviewoordeel: akkoord, akkoord onder voorwaarden of
-   afgekeurd. Vastleggen van adviezen, aanbevelingen en eventuele voorwaarden.
-
-5. **Borging en publicatie** (Assurance & Publication)  
-   Verankeren van goedgekeurde architectuur in de gemeentelijke
-   architectuurrepository; beschikbaar maken voor realisatieteams en
-   governance-processen.
-
-Een formele **Doctrine Solution-architecting** die deze value stream uitwerkt,
-inclusief rollen, artefacten en kwaliteitscriteria, volgt in een later stadium
-en wordt opgenomen in `artefacten/0-governance/`.
-
----
-
-## 5. Architectuur-en-oplossingsontwerp
-
-## Herkomstverantwoording
-
-Dit normatief artefact is geschreven op basis van de hieronder geraadpleegde
-bronnen. De value stream Architectuur-en-oplossingsontwerp is afgeleid uit
-bestaande governance-documenten en aangevuld met kennis over generieke
-architectuur- en ontwerppraktijken.
-
-**Geraadpleegde bronnen**:
-- Constitutie Mandarin (versie 1.2.1, gelezen op 2026-01-22 10:30)
-- value-streams.md (bestaande versie met Agent enablement, IT-development,
-  Kennispublicatie en Solution-architecting, gelezen op 2026-01-22 10:30)
-- doctrine-it-development.md (gelezen op 2026-01-22 10:30)
-- Opdracht van gebruiker (ontvangen op 2026-01-22): voeg toe een nieuwe value
-  stream architectuur-en-oplossingsontwerp
-
-**Toelichting op structuur**:
-Deze value stream beschrijft het proces van het ontwerpen van architectuur en
-oplossingen voor complexe vraagstukken. De stages volgen de natuurlijke
-progressie van architectuurwerk, van probleemverkenning via conceptueel ontwerp
-naar gedetailleerd uitwerking en validatie. De value stream is generiek en kan
-toegepast worden in verschillende contexten (IT, bedrijfsprocessen, organisatie).
-
----
+## 4. Architectuur-en-oplossingsontwerp
 
 De value stream **Architectuur-en-oplossingsontwerp** richt zich op het
 systematisch ontwerpen van architecturen en oplossingen die beantwoorden aan
