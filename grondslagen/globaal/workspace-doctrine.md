@@ -1,6 +1,6 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.3.1  
+**Versie**: 1.4.1  
 **Status**: Actief  
 **Datum**: 2026-01-24  
 **Eigenaar**: Architecture & AI Enablement  
@@ -36,6 +36,19 @@ Dit normatief artefact is afgeleid op basis van de volgende bronnen:
 - Correctie .github structuur (sectie 3.1): .github/prompts/ bevat agent-contracten (geen aparte agents/ folder)
 - Verduidelijkt dat prompt-bestanden het volledige contract bevatten (input, output, foutafhandeling)
 - Gebruikersinstructie verwerkt (ontvangen op 2026-01-24): align met feitelijke implementatie
+
+**Wijzigingen in versie 1.4.0**:
+- Nieuwe folder artefacten/ toegevoegd aan root-structuur (sectie 3.1): agent-resultaten worden per agent opgeslagen in artefacten/{agent-naam}/
+- Rol van docs/ aangepast: exclusief voor publicatie naar buiten
+- docs/resultaten/ verwijderd uit structuur (niet meer voor agent-output)
+- Sectie 5.1 "Norm: Locatie van Agent-Resultaten" herzien: artefacten/ als primaire locatie, docs/ alleen voor publicaties
+- Gebruikersinstructie verwerkt (ontvangen op 2026-01-24, exacte tijd niet beschikbaar): scheiding tussen interne agent-output (artefacten/) en externe publicaties (docs/)
+- Geraadpleegde bronnen: workspace-doctrine v1.3.1 (gelezen op 2026-01-24, exacte tijd niet beschikbaar)
+
+**Wijzigingen in versie 1.4.1**:
+- Verplicht bestand beleid-workspace.md toegevoegd aan root (sectie 3.2): bevat workspace-specifiek beleid
+- Gebruikersinstructie verwerkt (ontvangen op 2026-01-24, exacte tijd niet beschikbaar)
+- Geraadpleegde bronnen: workspace-doctrine v1.4.0 (gelezen op 2026-01-24, exacte tijd niet beschikbaar)
 
 ---
 
@@ -102,8 +115,9 @@ Elke workspace **moet** de volgende root-structuur hebben:
 ```
 <workspace-root>/
 ├── .github/          # GitHub-specifieke configuratie (prompts, workflows, copilot)
-├── beleid/           # Workspace-specifiek beleid (NIEUW: vervangt governance/ in sommige gevallen)
-├── docs/             # Documentatie, diagrammen en agent-resultaten
+├── artefacten/       # Agent-resultaten per agent in eigen subfolder
+├── beleid/           # Workspace-specifiek beleid
+├── docs/             # Publicaties naar buiten (externe documentatie)
 ├── scripts/          # Automatiseringsscripts en runners
 └── logs/             # Logbestanden van agent-uitvoer (in .gitignore, niet in Git)
 ```
@@ -111,8 +125,14 @@ Elke workspace **moet** de volgende root-structuur hebben:
 **Toelichting**:
 - **.github/**: Bevat agent-contracten (.github/prompts/), workflows (.github/workflows/) en copilot configuratie (.github/copilot/)
   - `.github/prompts/`: Agent-contracten met volledige specificaties (input, output, foutafhandeling, werkwijze). Elk prompt-bestand is een volledig contract.
+- **artefacten/**: Agent-resultaten, georganiseerd per agent in subfolder `artefacten/{agent-naam}/`
+  - Elke agent krijgt zijn eigen folder voor output
+  - Bevat alle interne artefacten die agents produceren
+  - Structuur per agent bepaald door agent-charter
 - **beleid/**: Workspace-specifieke beleidsregels, gedragscode en charters
-- **docs/**: Alle documentatie inclusief docs/resultaten/{agent-naam}/ voor agent-output
+- **docs/**: Exclusief voor publicatie naar buiten (externe documentatie, handleidingen, kennisartikelen)
+  - **Niet** voor interne agent-resultaten (die gaan naar artefacten/)
+  - Bevat alleen content bedoeld voor externe verspreiding
 - **scripts/**: Python runners en hulpscripts voor agents
 - **logs/**: Tijdelijke logbestanden, **altijd in .gitignore**
 
@@ -122,6 +142,7 @@ Elke workspace **moet** de volgende root-structuur hebben:
 <workspace-root>/
 ├── .gitignore                    # Git ignore regels (verplicht)
 ├── README.md                     # Workspace documentatie (verplicht)
+├── beleid-workspace.md           # Workspace-specifiek beleid (verplicht)
 ├── <workspace>.ping              # Ping-bestand voor normatief stelsel synchronisatie
 └── state-<naam-workspace>.md     # Workspace state logging (conform workspace-state doctrine)
 ```
@@ -129,6 +150,7 @@ Elke workspace **moet** de volgende root-structuur hebben:
 **Toelichting**:
 - **.gitignore**: Moet minimaal logs/ en temp/ uitsluiten
 - **README.md**: Beschrijft workspace doel, structuur en beschikbare agents
+- **beleid-workspace.md**: Workspace-specifiek beleid, gedragscode en werkafspraken (bijvoorbeeld `beleid-mandarin-canon.md`, `beleid-standard.md`)
 - **<workspace>.ping**: Bijvoorbeeld `standard.ping`, `agent-capabilities.ping` - gebruikt voor normatief stelsel actualiteit
 - **state-<naam-workspace>.md**: Bijvoorbeeld `state-standard.md` - logt wijzigingen aan canonieke/normatieve artefacten conform doctrine-workspace-state-en-legitimiteit.md
 
@@ -181,15 +203,26 @@ Wanneer in charters, prompts of beleid wordt verwezen naar de "workspace-standaa
 
 ## 5.1 Norm: Locatie van Agent-Resultaten
 
-**Kernprincipe**: Agent-resultaten worden opgeslagen op voorspelbare locaties conform hun value stream en artefact-type. Dit waarborgt traceerbaarheid en consistente structuur (kernprincipe 3 van deze doctrine).
+**Kernprincipe**: Agent-resultaten worden opgeslagen op voorspelbare locaties met duidelijke scheiding tussen interne artefacten en externe publicaties. Dit waarborgt traceerbaarheid en consistente structuur (kernprincipe 3 van deze doctrine).
 
 **Norm**:
 
-1. **Value Stream Kennispublicatie** → **docs/**  
-   Alle agent-resultaten die vallen binnen de value stream Kennispublicatie (artikelen, documentatie, analyses, kennisoverdracht) worden opgeslagen in de `docs/` folder en subfolders daarvan, conform de structuur `docs/resultaten/{agent-naam}/`.
+1. **Agent-resultaten** → **artefacten/{agent-naam}/**  
+   Alle interne resultaten die agents produceren worden opgeslagen in de `artefacten/` folder, georganiseerd per agent in een eigen subfolder:
+   - Structuur: `artefacten/{agent-naam}/`
+   - Voorbeelden: `artefacten/moeder/`, `artefacten/python-expert/`, `artefacten/artikel-schrijver/`
+   - Elke agent krijgt zijn eigen folder voor alle output
+   - Subfolder-structuur binnen agent-folder bepaald door agent-charter
 
-2. **Templates** → **altijd templates/**  
-   **Uitzondering**: Templates vormen altijd een uitzondering op de bovenstaande regel. Alle templates (ongeacht value stream of agent-soort) worden opgeslagen in de `templates/` folder. Dit geldt voor:
+2. **Publicaties naar buiten** → **docs/**  
+   De `docs/` folder is exclusief bedoeld voor publicatie naar buiten:
+   - Externe documentatie en handleidingen
+   - Kennisartikelen bedoeld voor breed publiek
+   - Presentaties en publiceerbare content
+   - **Niet** voor interne agent-resultaten of werkdocumenten
+
+3. **Templates** → **altijd templates/**  
+   Templates vormen een uitzondering op regel 1. Alle templates (ongeacht value stream of agent-soort) worden opgeslagen in de `templates/` folder:
    - Charter-templates
    - Document-templates  
    - Prompt-templates
@@ -198,23 +231,27 @@ Wanneer in charters, prompts of beleid wordt verwezen naar de "workspace-standaa
 
 **Motivatie**:
 - **Voorspelbaarheid**: Agents en mensen weten waar resultaten te vinden zijn
-- **Traceerbaarheid**: Resultaten zijn herleidbaar naar agent en value stream (kernprincipe 3)
-- **Scheiding van concerns**: Templates zijn herbruikbare structuren en horen daarom in een aparte folder, onafhankelijk van de value stream waarbinnen ze ontstaan
+- **Traceerbaarheid**: Resultaten zijn herleidbaar naar agent (kernprincipe 3)
+- **Scheiding van concerns**: Interne artefacten (artefacten/) gescheiden van externe publicaties (docs/)
+- **Schaalbaarheid**: Elke agent heeft zijn eigen folder, voorkomt vermenging
 - **Consistentie met Constitutie**: Volgt Artikel 2 (Canon, Governance lezen, Samenwerking met duidelijke taakverdeling)
 
 **Voorbeelden**:
 
-| Agent-resultaat | Value Stream | Locatie |
-|-----------------|--------------|---------|
-| Kennisartikel | Kennispublicatie | `docs/resultaten/artikel-schrijver/` |
-| Analyse-rapport | Kennispublicatie | `docs/resultaten/moeder/` |
-| Charter-template | N.v.t. | `templates/agent.charter.template.md` |
-| Fase-charter-template | N.v.t. | `templates/phase.charter.template.md` |
-| Prompt-template | N.v.t. | `templates/agent-prompt.template.md` |
+| Agent-resultaat | Doel | Locatie |
+|-----------------|------|---------|
+| Analyse-rapport | Intern gebruik | `artefacten/moeder/analyse-2026-01-24.md` |
+| Agent boundary | Intern gebruik | `artefacten/agent-curator/agent-boundary-moeder.md` |
+| Charter draft | Intern gebruik | `artefacten/agent-smeder/charter-nieuwe-agent.md` |
+| Kennisartikel | Externe publicatie | `docs/artikelen/ai-in-enterprises.md` |
+| Handleiding | Externe publicatie | `docs/handleidingen/agent-gebruik.md` |
+| Charter-template | Herbruikbaar | `templates/agent.charter.template.md` |
+| Fase-charter-template | Herbruikbaar | `templates/phase.charter.template.md` |
 
 **Gevolgen voor Agent-Charters en Prompts**:
 - Alle agents die output leveren **MOETEN** deze norm respecteren
 - Agent-prompts specificeren de correcte output-locatie conform deze norm
+- Agents moeten expliciet aangeven of output intern (artefacten/) of extern (docs/) is
 - Afwijkingen van deze norm zijn **alleen** toegestaan indien expliciet gemotiveerd in het agent-charter en goedgekeurd door Architecture & AI Enablement
 
 ---
@@ -273,3 +310,5 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 | 2026-01-16 | 1.1.1  | UITZONDERING toegevoegd: workspace-doctrine structuur niet van toepassing op workspaces agent-services en canon | Canon Curator |
 | 2026-01-24 | 1.3.0  | .github structuur verduidelijkt: .github/agents/ bevat agent-contracten, .github/prompts/ bevat weergave van agents | Constitutioneel Auteur |
 | 2026-01-24 | 1.3.1  | Correctie .github structuur: .github/prompts/ bevat agent-contracten (geen aparte agents/ folder); prompt-bestanden bevatten volledige contract-specificatie | Constitutioneel Auteur |
+| 2026-01-24 | 1.4.0  | Nieuwe folder artefacten/ toegevoegd voor agent-resultaten per agent; docs/ rol aangepast naar exclusief externe publicaties; docs/resultaten/ verwijderd; sectie 5.1 herzien | Constitutioneel Auteur |
+| 2026-01-24 | 1.4.1  | Verplicht bestand beleid-workspace.md toegevoegd aan root (sectie 3.2) voor workspace-specifiek beleid | Constitutioneel Auteur |
