@@ -20,6 +20,11 @@ met kennis over value stream management en gebruikersopdrachten.
 - Gebruikersopdracht (ontvangen op 2026-01-24, exacte tijd niet beschikbaar):
   voeg veranderverkenning value stream toe met focus op procesanalyse,
   knelpuntenidentificatie en veranderhypotheses
+- Bestaande value-streams.md (versie met veranderverkenning, gelezen op 2026-01-24,
+  exacte tijd niet beschikbaar)
+- Gebruikersopdracht (ontvangen op 2026-01-24, exacte tijd niet beschikbaar):
+  voeg markt-en-investeringsvorming value stream toe met focus op visie,
+  marktpositie, businessmodellen en investeringsscenario's
 
 **Toelichting op structuur en wijzigingen**:
 Dit document geeft een workspace-overstijgend overzicht van alle erkende value
@@ -36,6 +41,9 @@ Wijzigingen in deze versie:
 - Veranderverkenning value stream toegevoegd (sectie 4) met focus op
   procesanalyse, knelpuntidentificatie, thema-onderkenning en veranderhypotheses
 - Architectuur-en-oplossingsontwerp hernummerd van sectie 4 naar 5
+- Markt-en-investeringsvorming value stream toegevoegd (sectie 6) met focus op
+  visie, marktpositie, businessmodellen en investeringsscenario's
+- Architectuur-en-oplossingsontwerp hernummerd van sectie 5 naar 6
 
 ---
 
@@ -209,7 +217,53 @@ die later in `artefacten/0-governance/` wordt vastgelegd.
 
 ---
 
-## 5. Architectuur-en-oplossingsontwerp
+## 5. Markt-en-investeringsvorming
+
+De value stream **Markt-en-investeringsvorming** richt zich op het uitwerken
+van visie, marktpositie, businessmodellen en investeringsscenario's om de
+onderneming levensvatbaar en investeerbaar te maken.
+
+Doel:
+
+- ontwikkelen van een heldere ondernemingsvisie en strategische richting;
+- bepalen van marktpositie, propositie en concurrentievoordeel;
+- uitwerken van levensvatbare businessmodellen en revenue streams;
+- formuleren van investeringsscenario's en financiële haalbaarheid;
+- creëren van vertrouwen bij investeerders, stakeholders en partners.
+
+Typische stages (fases):
+
+1. **Visie en strategische richting** (Vision & Strategic Direction)  
+   Formuleren van de ondernemingsvisie, missie en langetermijndoelen. Bepalen
+   van strategische keuzes en prioriteiten. Identificeren van kernwaarden en
+   unique selling points.
+
+2. **Marktanalyse en positionering** (Market Analysis & Positioning)  
+   Onderzoeken van doelmarkten, klantbehoeften en concurrentielandschap.
+   Bepalen van marktpositie en propositie. Identificeren van
+   concurrentievoordelen en differentiatie.
+
+3. **Businessmodel-uitwerking** (Business Model Elaboration)  
+   Ontwerpen van businessmodel met revenue streams, kostenstructuur en
+   waardeketens. Specificeren van klantrelaties, kanalen en key partnerships.
+   Valideren van aannames en haalbaarheid.
+
+4. **Investeringsscenario's en financiële planning** (Investment Scenarios & Financial Planning)  
+   Opstellen van investeringsscenario's met financiële prognoses. Uitwerken
+   van funding requirements, ROI en break-even analyses. Voorbereiden van
+   pitch decks en investeerderscommunicatie.
+
+5. **Go-to-market en realisatie** (Go-to-Market & Realization)  
+   Voorbereiden van marktintroductie en commerciële strategie. Opstellen van
+   implementatieplannen en mijlpalen. Monitoren van business performance en
+   bijsturen van strategie.
+
+Deze beschrijving vormt de basis voor een formele **Markt-en-investeringsvorming-doctrine**
+die later in `artefacten/0-governance/` wordt vastgelegd.
+
+---
+
+## 6. Architectuur-en-oplossingsontwerp
 
 De value stream **Architectuur-en-oplossingsontwerp** richt zich op het
 systematisch ontwerpen van architecturen en oplossingen die beantwoorden aan

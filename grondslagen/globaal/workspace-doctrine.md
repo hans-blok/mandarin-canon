@@ -1,6 +1,6 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.4.1  
+**Versie**: 1.5.0  
 **Status**: Actief  
 **Datum**: 2026-01-24  
 **Eigenaar**: Architecture & AI Enablement  
@@ -49,6 +49,14 @@ Dit normatief artefact is afgeleid op basis van de volgende bronnen:
 - Verplicht bestand beleid-workspace.md toegevoegd aan root (sectie 3.2): bevat workspace-specifiek beleid
 - Gebruikersinstructie verwerkt (ontvangen op 2026-01-24, exacte tijd niet beschikbaar)
 - Geraadpleegde bronnen: workspace-doctrine v1.4.0 (gelezen op 2026-01-24, exacte tijd niet beschikbaar)
+
+**Wijzigingen in versie 1.5.0**:
+- Sectie 5.1 uitgebreid met expliciete PUBLISHER uitzondering: Publisher agent zet output in docs/ (niet artefacten/)
+- Rol van docs/ verduidelijkt: publicaties naar buiten + workspace-uitleg en documentatie
+- Workspace-uitzonderingen verduidelijkt: mandarin-agents en mandarin-canon volgen eigen structuur (naast agent-services en canon)
+- Voorbeeldtabel uitgebreid met essayist en publisher voorbeelden
+- Gebruikersinstructie verwerkt (ontvangen op 2026-01-24, exacte tijd niet beschikbaar)
+- Geraadpleegde bronnen: workspace-doctrine v1.4.1 (gelezen op 2026-01-24, exacte tijd niet beschikbaar)
 
 ---
 
@@ -108,7 +116,7 @@ Deze principes zijn nader uitgewerkt in de twee onderliggende onderdelen van de 
 
 Elke workspace **moet** de volgende root-structuur hebben:
 
-**UITZONDERING**: Deze structuur is niet van toepassing op de workspaces **agent-services** en **canon**. Deze workspaces volgen een eigen, specifieke architectuur buiten deze doctrine.
+**UITZONDERING**: Deze structuur is niet van toepassing op de workspaces **agent-services**, **canon**, **mandarin-agents** en **mandarin-canon**. Deze workspaces volgen een eigen, specifieke architectuur buiten deze doctrine.
 
 ### 3.1 Verplichte folders in root
 
@@ -130,9 +138,11 @@ Elke workspace **moet** de volgende root-structuur hebben:
   - Bevat alle interne artefacten die agents produceren
   - Structuur per agent bepaald door agent-charter
 - **beleid/**: Workspace-specifieke beleidsregels, gedragscode en charters
-- **docs/**: Exclusief voor publicatie naar buiten (externe documentatie, handleidingen, kennisartikelen)
+- **docs/**: Publicaties naar buiten en workspace-uitleg
+  - Externe documentatie, handleidingen, kennisartikelen
+  - Workspace-uitleg en README-aanvullingen
+  - Output van de **Publisher agent** (enige uitzondering op artefacten/-regel)
   - **Niet** voor interne agent-resultaten (die gaan naar artefacten/)
-  - Bevat alleen content bedoeld voor externe verspreiding
 - **scripts/**: Python runners en hulpscripts voor agents
 - **logs/**: Tijdelijke logbestanden, **altijd in .gitignore**
 
@@ -312,3 +322,4 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 | 2026-01-24 | 1.3.1  | Correctie .github structuur: .github/prompts/ bevat agent-contracten (geen aparte agents/ folder); prompt-bestanden bevatten volledige contract-specificatie | Constitutioneel Auteur |
 | 2026-01-24 | 1.4.0  | Nieuwe folder artefacten/ toegevoegd voor agent-resultaten per agent; docs/ rol aangepast naar exclusief externe publicaties; docs/resultaten/ verwijderd; sectie 5.1 herzien | Constitutioneel Auteur |
 | 2026-01-24 | 1.4.1  | Verplicht bestand beleid-workspace.md toegevoegd aan root (sectie 3.2) voor workspace-specifiek beleid | Constitutioneel Auteur |
+| 2026-01-24 | 1.5.0  | PUBLISHER uitzondering toegevoegd in sectie 5.1: Publisher agent zet output in docs/ (niet artefacten/); docs/ rol verduidelijkt; workspace-uitzonderingen uitgebreid met mandarin-agents en mandarin-canon; voorbeelden uitgebreid | Constitutioneel Auteur |
