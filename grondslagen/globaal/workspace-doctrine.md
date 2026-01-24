@@ -1,8 +1,8 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.2.0  
+**Versie**: 1.3.1  
 **Status**: Actief  
-**Datum**: 2026-01-18  
+**Datum**: 2026-01-24  
 **Eigenaar**: Architecture & AI Enablement  
 **Type**: Normerend Doctrine-document
 
@@ -27,6 +27,15 @@ Dit normatief artefact is afgeleid op basis van de volgende bronnen:
 **Wijzigingen in versie 1.2.0**:
 - Norm toegevoegd voor locatie van agent-resultaten (sectie 5.1): resultaten van value stream Kennispublicatie → docs/, templates → altijd in templates/
 - Herkomstverantwoording bijgewerkt met constitutie v1.2.1 en gebruikersinstructies
+
+**Wijzigingen in versie 1.3.0**:
+- .github structuur verduidelijkt (sectie 3.1): .github/agents/ bevat agent-contracten, .github/prompts/ bevat weergave van agents
+- Gebruikersinstructie verwerkt (ontvangen op 2026-01-24): scheiding tussen contractdefinitie (agents/) en weergave (prompts/)
+
+**Wijzigingen in versie 1.3.1**:
+- Correctie .github structuur (sectie 3.1): .github/prompts/ bevat agent-contracten (geen aparte agents/ folder)
+- Verduidelijkt dat prompt-bestanden het volledige contract bevatten (input, output, foutafhandeling)
+- Gebruikersinstructie verwerkt (ontvangen op 2026-01-24): align met feitelijke implementatie
 
 ---
 
@@ -100,7 +109,8 @@ Elke workspace **moet** de volgende root-structuur hebben:
 ```
 
 **Toelichting**:
-- **.github/**: Bevat prompts (.github/prompts/), workflows (.github/workflows/) en copilot configuratie (.github/copilot/)
+- **.github/**: Bevat agent-contracten (.github/prompts/), workflows (.github/workflows/) en copilot configuratie (.github/copilot/)
+  - `.github/prompts/`: Agent-contracten met volledige specificaties (input, output, foutafhandeling, werkwijze). Elk prompt-bestand is een volledig contract.
 - **beleid/**: Workspace-specifieke beleidsregels, gedragscode en charters
 - **docs/**: Alle documentatie inclusief docs/resultaten/{agent-naam}/ voor agent-output
 - **scripts/**: Python runners en hulpscripts voor agents
@@ -261,3 +271,5 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 | 2026-01-14 | 1.0.0  | Eerste versie, bundelt workspace-architectuur en workspace-standaard in één workspace-doctrine | Charter Schrijver |
 | 2026-01-14 | 1.1.0  | Root-structuur aangescherpt: verplichte folders (.github, beleid, docs, scripts, logs), verplichte root-bestanden (.gitignore, README.md, <workspace>.ping, state-<naam-workspace>.md), Herkomstverantwoording sectie toegevoegd | Constitutioneel Auteur |
 | 2026-01-16 | 1.1.1  | UITZONDERING toegevoegd: workspace-doctrine structuur niet van toepassing op workspaces agent-services en canon | Canon Curator |
+| 2026-01-24 | 1.3.0  | .github structuur verduidelijkt: .github/agents/ bevat agent-contracten, .github/prompts/ bevat weergave van agents | Constitutioneel Auteur |
+| 2026-01-24 | 1.3.1  | Correctie .github structuur: .github/prompts/ bevat agent-contracten (geen aparte agents/ folder); prompt-bestanden bevatten volledige contract-specificatie | Constitutioneel Auteur |

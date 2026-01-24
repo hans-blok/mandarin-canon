@@ -3,9 +3,9 @@
 **Type**: Normatief Governance Document  
 **Repository**: standards  
 **Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.2.6  
+**Version**: 1.3.0  
 **Status**: Active  
-**Last Updated**: 2026-01-18  
+**Last Updated**: 2026-01-24  
 **Owner**: Architecture & AI Enablement
 
 ---
@@ -52,6 +52,13 @@ Dit normatief artefact is bijgewerkt op basis van de volgende geraadpleegde bron
 - Vastlegt welke logica in agent (context-afhankelijk) vs runner (deterministisch)
 - Vereist dat agent expliciet aangeeft of runner moet worden aangemaakt
 - Voorbeelden gegeven voor splitsing
+
+**Update 2026-01-24 (agent-structuur en naamgeving)**:
+- Nieuwe norm toegevoegd: sectie 12.3 "Norm: Agent Bestanden en Naamgeving" — vastlegt folder-structuur .github/agents/ en .github/prompts/
+- Naamgevingsconventies gespecificeerd: agents zonder prefix, prompts met mandarin. prefix
+- Frontmatter-structuur voor prompts gedefinieerd (agent, intent, charter_ref)
+- Charter-naamgeving aangepast: <agent>.charter.md in plaats van charter.<agent>.md
+- Gebruikersinstructies verwerkt (ontvangen op 2026-01-24): formele scheiding tussen contract (agents/) en weergave (prompts/)
 
 ---
 
@@ -311,9 +318,16 @@ Deze componenten zijn logisch gescheiden maar inhoudelijk consistent:
 
 **Richtlijn meerdere prompts per agent**:
 - Een agent mag meerdere prompts hebben, mits:
-  - alle prompts expliciet naar hetzelfde charter verwijzen;
+  - alle prompts expliciet naar hetzelfde charter verwijzen (via charter_ref in frontmatter);
   - de prompts verschillende, duidelijk gedefinieerde ingangen of scenario's bedienen (bijvoorbeeld: schrijven, valideren, publiceren);
-  - er geen tegenstrijdige instructies tussen prompts bestaan.
+  - er geen tegenstrijdige instructies tussen prompts bestaan;
+  - elke prompt een unieke intent heeft die overeenkomt met de bestandsnaam.
+
+**Voorbeelden van multi-prompt agents**:
+- `moeder`: meerdere prompts voor verschillende taken (beheer-git, orden-workspace, schrijf-beleid)
+- `python-expert`: meerdere prompts voor verschillende activiteiten (review-code, run-script, schrijf-script)
+
+Zie sectie 12.3 voor details over bestandsstructuur en naamgeving.
 
 ### Norm: Workspace Beleid als Agent Initialisatie (sectie 12.1)
 
@@ -462,7 +476,99 @@ Voor elke wijziging die impact heeft op de gedeelde werkelijkheid geldt:
 
 Agent-charters, prompts en runners **MOETEN** deze loggingplicht expliciet maken en afdwingen waar dat binnen hun scope valt.
 
-### Norm: Agent vs. Runner — Determinisme en Taaksplitsing
+### Norm: Agent Bestanden en Naamgeving (sectie 12.3)
+
+**Kernprincipe**: Elk agent-ecosysteem heeft een uniforme bestands- en naamgevingsstructuur die scheiding afdwingt tussen contract (agents/), weergave (prompts/) en charter.
+
+**Folder-structuur**:
+
+```
+.github/
+├── agents/          # Agent-contracten (specificaties)
+│   ├── <agent>.<actie>.agent.md
+│   └── ...
+├── prompts/         # Agent-weergave voor gebruikers
+│   ├── mandarin.<agent>.<actie>.prompt.md
+│   └── ...
+
+charters-agents/
+├── <agent>.charter.md
+└── ...
+```
+
+**Naamgevingsconventies**:
+
+1. **Agent-contracten** (`.github/agents/`):
+   - Pattern: `<agent>.<actie>.agent.md`
+   - Voorbeelden: `moeder.beheer-git.agent.md`, `python-expert.review-code.agent.md`
+   - Agent-naam met koppeltekens (spaces worden hyphens)
+   - Actie met koppeltekens (API-stijl)
+   - **Geen ecosysteem-prefix** (bestand is al in workspace-context)
+
+2. **Agent-prompts** (`.github/prompts/`):
+   - Pattern: `mandarin.<agent>.<actie>.prompt.md`
+   - Voorbeelden: `mandarin.moeder.beheer-git.prompt.md`, `mandarin.python-expert.review-code.prompt.md`
+   - **Volledige ecosysteem-naam als prefix** (voor herkenning en branding)
+   - Zelfde agent/actie-conventies als contracts
+
+3. **Charters** (`charters-agents/`):
+   - Pattern: `<agent>.charter.md`
+   - Voorbeelden: `moeder.charter.md`, `python-expert.charter.md`
+   - Agent-naam met koppeltekens
+
+**Frontmatter voor Prompts**:
+
+Elk prompt-bestand **MOET** beginnen met YAML frontmatter:
+
+```yaml
+---
+agent: mandarin.<agent>
+intent: <actie>
+charter_ref: @main:charters-agents/<agent>.charter.md
+---
+```
+
+**Verplichte velden**:
+- `agent`: Volledige agent-identifier met ecosysteem-prefix
+- `intent`: Wat deze prompt doet (komt overeen met <actie> in bestandsnaam)
+- `charter_ref`: Verwijzing naar het charter (@main: = hoofdbranch in repository)
+
+**Relatie tussen bestanden**:
+
+```
+Agent: moeder
+├── Contract:  .github/agents/moeder.beheer-git.agent.md
+├── Prompt:    .github/prompts/mandarin.moeder.beheer-git.prompt.md
+└── Charter:   charters-agents/moeder.charter.md
+```
+
+- **Contract** (agent.md): Specificatie van input, output, foutafhandeling (technisch)
+- **Prompt** (prompt.md): Gebruiksvriendelijke presentatie met frontmatter (interface)
+- **Charter**: Volledige normatieve beschrijving van agent (governance)
+
+**Gevolgen**:
+
+1. Agent-ontwikkeling:
+   - Contract en prompt worden synchroon ontwikkeld
+   - Contract bevat de specificatie, prompt de gebruikersinterface
+   - Charter blijft leidend voor alle beslissingen
+
+2. Validatie:
+   - Frontmatter in prompts moet verwijzen naar bestaand charter
+   - Agent-naam in prompt moet overeenkomen met contract
+   - Intent in frontmatter moet overeenkomen met bestandsnaam
+
+3. Publicatie:
+   - Prompts worden gepubliceerd naar gebruikers (met mandarin. branding)
+   - Contracts blijven intern (ontwikkelaars en tooling)
+   - Charters zijn publiek (governance)
+
+**Normatief Fundament**:
+- Zie workspace-doctrine sectie 3.1 (.github/ structuur)
+- Zie Constitutie Artikel 7 (Taal en terminologie)
+- Zie workspace-doctrine versie 1.3.1 (correctie .github structuur)
+
+### Norm: Agent vs. Runner — Determinisme en Taaksplitsing (sectie 12.4)
 
 **Kernprincipe**: Bij het ontwerpen van agent-charters wordt expliciet bepaald welke logica in de agent zit (AI-gedreven, context-aware) en welke in de runner (deterministisch, herhaalbaar). Dit waarborgt maximaal determinisme.
 
@@ -707,6 +813,7 @@ Voor elke output:
 | 2026-01-18 | 1.2.4  | Terminologie-keuze "agent-soort" vastgesteld; Artikel-Schrijver voorbeeld-charter toegevoegd (sectie 14) | Constitutioneel Auteur |
 | 2026-01-18 | 1.2.5  | Norm aangepast: adviserende agents plaatsen adviezen in logs/ (niet temp/); conform workspace-doctrine | Constitutioneel Auteur |
 | 2026-01-18 | 1.2.6  | Norm toegevoegd: Agent vs. Runner — Determinisme en Taaksplitsing; agent moet aangeven of runner vereist | Constitutioneel Auteur / Canon Curator |
+| 2026-01-24 | 1.3.0  | Norm toegevoegd: Agent Bestanden en Naamgeving (sectie 12.3); folder-structuur .github/agents/ en .github/prompts/ met naamgevingsconventies; frontmatter-specificatie voor prompts; charter-naamgeving aangepast | Constitutioneel Auteur |
 
 ---
 
