@@ -1,6 +1,6 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.5.0  
+**Versie**: 1.5.1  
 **Status**: Actief  
 **Datum**: 2026-01-24  
 **Eigenaar**: Architecture & AI Enablement  
@@ -57,6 +57,12 @@ Dit normatief artefact is afgeleid op basis van de volgende bronnen:
 - Voorbeeldtabel uitgebreid met essayist en publisher voorbeelden
 - Gebruikersinstructie verwerkt (ontvangen op 2026-01-24, exacte tijd niet beschikbaar)
 - Geraadpleegde bronnen: workspace-doctrine v1.4.1 (gelezen op 2026-01-24, exacte tijd niet beschikbaar)
+
+**Wijzigingen in versie 1.5.1**:
+- Presentatie-architect toegevoegd als tweede uitzondering in sectie 5.1: Presentatie-architect zet CSS-files en presentatie-assets in docs/
+- Voorbeeldtabel uitgebreid met Presentatie-architect voorbeelden
+- Gebruikersinstructie verwerkt (ontvangen op 2026-01-24, exacte tijd niet beschikbaar)
+- Geraadpleegde bronnen: workspace-doctrine v1.5.0 (gelezen op 2026-01-24, exacte tijd niet beschikbaar)
 
 ---
 
@@ -213,55 +219,76 @@ Wanneer in charters, prompts of beleid wordt verwezen naar de "workspace-standaa
 
 ## 5.1 Norm: Locatie van Agent-Resultaten
 
-**Kernprincipe**: Agent-resultaten worden opgeslagen op voorspelbare locaties met duidelijke scheiding tussen interne artefacten en externe publicaties. Dit waarborgt traceerbaarheid en consistente structuur (kernprincipe 3 van deze doctrine).
+**Kernprincipe**: Alle agents zetten hun resultaten in `artefacten/{agent-naam}/`, met twee uitzonderingen: **Publisher** en **Presentatie-architect** zetten hun output in `docs/`. Dit waarborgt traceerbaarheid en consistente structuur (kernprincipe 3 van deze doctrine).
 
 **Norm**:
 
-1. **Agent-resultaten** → **artefacten/{agent-naam}/**  
-   Alle interne resultaten die agents produceren worden opgeslagen in de `artefacten/` folder, georganiseerd per agent in een eigen subfolder:
+1. **Standaardregel: Agent-resultaten** → **artefacten/{agent-naam}/**  
+   Alle agents zetten hun resultaten in de `artefacten/` folder, georganiseerd per agent in een eigen subfolder:
    - Structuur: `artefacten/{agent-naam}/`
-   - Voorbeelden: `artefacten/moeder/`, `artefacten/python-expert/`, `artefacten/artikel-schrijver/`
+   - Voorbeelden: `artefacten/moeder/`, `artefacten/essayist/`, `artefacten/python-expert/`, `artefacten/artikel-schrijver/`
    - Elke agent krijgt zijn eigen folder voor alle output
    - Subfolder-structuur binnen agent-folder bepaald door agent-charter
+   - Deze regel geldt voor **alle agents**, inclusief Essayist, Moeder, Python-expert, Agent-smeder, etc.
 
-2. **Publicaties naar buiten** → **docs/**  
-   De `docs/` folder is exclusief bedoeld voor publicatie naar buiten:
-   - Externe documentatie en handleidingen
-   - Kennisartikelen bedoeld voor breed publiek
-   - Presentaties en publiceerbare content
-   - **Niet** voor interne agent-resultaten of werkdocumenten
+2. **UITZONDERINGEN: Publisher en Presentatie-architect** → **docs/**  
+   **Publisher** en **Presentatie-architect** zijn de enige agents die hun output **niet** in `artefacten/` zetten, maar in `docs/`:
+   
+   **Publisher agent**:
+   - Produceert content bedoeld voor publicatie naar buiten
+   - Verzorgt workspace-uitleg en documentatie
+   - Voorbeelden: `docs/artikelen/`, `docs/handleidingen/`, `docs/workspace-overzicht.md`
+   
+   **Presentatie-architect agent**:
+   - Produceert presentatie-assets en styling voor publicatie
+   - Verzorgt CSS-files, afbeeldingen en andere presentatie-elementen
+   - Voorbeelden: `docs/css/`, `docs/assets/`, `docs/styles/theme.css`
+   
+   docs/ is exclusief voor Publisher- en Presentatie-architect-output plus externe publicaties.
 
 3. **Templates** → **altijd templates/**  
-   Templates vormen een uitzondering op regel 1. Alle templates (ongeacht value stream of agent-soort) worden opgeslagen in de `templates/` folder:
+   Templates vormen een uitzondering op regel 1. Alle templates (ongeacht agent) worden opgeslagen in de `templates/` folder:
    - Charter-templates
    - Document-templates  
    - Prompt-templates
    - Fase-charter-templates
    - Alle andere herbruikbare structuren
 
+**Workspace-uitzonderingen**:
+
+Deze norm is **niet** van toepassing op de workspaces **mandarin-agents** en **mandarin-canon**. Deze workspaces hebben een eigen structuur.
+
 **Motivatie**:
 - **Voorspelbaarheid**: Agents en mensen weten waar resultaten te vinden zijn
 - **Traceerbaarheid**: Resultaten zijn herleidbaar naar agent (kernprincipe 3)
 - **Scheiding van concerns**: Interne artefacten (artefacten/) gescheiden van externe publicaties (docs/)
 - **Schaalbaarheid**: Elke agent heeft zijn eigen folder, voorkomt vermenging
+- **Publicatie-rol**: Publisher en Presentatie-architect zijn de poorten naar buiten; alleen zij produceren voor docs/
 - **Consistentie met Constitutie**: Volgt Artikel 2 (Canon, Governance lezen, Samenwerking met duidelijke taakverdeling)
 
 **Voorbeelden**:
 
-| Agent-resultaat | Doel | Locatie |
-|-----------------|------|---------|
-| Analyse-rapport | Intern gebruik | `artefacten/moeder/analyse-2026-01-24.md` |
-| Agent boundary | Intern gebruik | `artefacten/agent-curator/agent-boundary-moeder.md` |
-| Charter draft | Intern gebruik | `artefacten/agent-smeder/charter-nieuwe-agent.md` |
-| Kennisartikel | Externe publicatie | `docs/artikelen/ai-in-enterprises.md` |
-| Handleiding | Externe publicatie | `docs/handleidingen/agent-gebruik.md` |
-| Charter-template | Herbruikbaar | `templates/agent.charter.template.md` |
-| Fase-charter-template | Herbruikbaar | `templates/phase.charter.template.md` |
+| Agent | Resultaat-type | Locatie |
+|-------|----------------|---------|
+| Moeder | Analyse-rapport | `artefacten/moeder/analyse-2026-01-24.md` |
+| Agent-curator | Agent boundary | `artefacten/agent-curator/agent-boundary-moeder.md` |
+| Agent-smeder | Charter draft | `artefacten/agent-smeder/charter-nieuwe-agent.md` |
+| Essayist | Essay | `artefacten/essayist/essay-ai-transformatie.md` |
+| Artikel-schrijver | Artikel draft | `artefacten/artikel-schrijver/artikel-draft.md` |
+| Python-expert | Code review | `artefacten/python-expert/review-2026-01-24.md` |
+| **Publisher** | Gepubliceerd artikel | `docs/artikelen/ai-in-enterprises.md` |
+| **Publisher** | Workspace handleiding | `docs/handleidingen/agent-gebruik.md` |
+| **Publisher** | Workspace-uitleg | `docs/workspace-overzicht.md` |
+| **Presentatie-architect** | CSS stylesheet | `docs/css/theme.css` |
+| **Presentatie-architect** | Presentatie-assets | `docs/assets/logo.png` |
+| **Presentatie-architect** | Style guide | `docs/styles/brand-guide.md` |
+| (elk agent) | Template | `templates/agent.charter.template.md` |
 
 **Gevolgen voor Agent-Charters en Prompts**:
-- Alle agents die output leveren **MOETEN** deze norm respecteren
-- Agent-prompts specificeren de correcte output-locatie conform deze norm
-- Agents moeten expliciet aangeven of output intern (artefacten/) of extern (docs/) is
+- **Alle agents** (behalve Publisher en Presentatie-architect) **MOETEN** hun output in `artefacten/{agent-naam}/` plaatsen
+- **Publisher** en **Presentatie-architect** **MOETEN** hun output in `docs/` plaatsen
+- Agent-charters specificeren de correcte output-locatie conform deze norm
+- Agent-prompts moeten deze locaties afdwingen
 - Afwijkingen van deze norm zijn **alleen** toegestaan indien expliciet gemotiveerd in het agent-charter en goedgekeurd door Architecture & AI Enablement
 
 ---
@@ -323,3 +350,4 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 | 2026-01-24 | 1.4.0  | Nieuwe folder artefacten/ toegevoegd voor agent-resultaten per agent; docs/ rol aangepast naar exclusief externe publicaties; docs/resultaten/ verwijderd; sectie 5.1 herzien | Constitutioneel Auteur |
 | 2026-01-24 | 1.4.1  | Verplicht bestand beleid-workspace.md toegevoegd aan root (sectie 3.2) voor workspace-specifiek beleid | Constitutioneel Auteur |
 | 2026-01-24 | 1.5.0  | PUBLISHER uitzondering toegevoegd in sectie 5.1: Publisher agent zet output in docs/ (niet artefacten/); docs/ rol verduidelijkt; workspace-uitzonderingen uitgebreid met mandarin-agents en mandarin-canon; voorbeelden uitgebreid | Constitutioneel Auteur |
+| 2026-01-24 | 1.5.1  | PRESENTATIE-ARCHITECT uitzondering toegevoegd in sectie 5.1: Presentatie-architect zet CSS-files en presentatie-assets in docs/ (naast Publisher); voorbeelden uitgebreid | Constitutioneel Auteur |
