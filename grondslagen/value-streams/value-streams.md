@@ -15,6 +15,11 @@ met kennis over value stream management en gebruikersopdrachten.
   sectie, gelezen op 2026-01-23 14:00)
 - Gebruikersopdracht (ontvangen op 2026-01-23): voeg kennispublicatie value
   stream toe met focus op hoogwaardige, niet AI-herkenbare teksten en publicatie
+- Bestaande value-streams.md (versie met kennispublicatie, gelezen op 2026-01-24,
+  exacte tijd niet beschikbaar)
+- Gebruikersopdracht (ontvangen op 2026-01-24, exacte tijd niet beschikbaar):
+  voeg veranderverkenning value stream toe met focus op procesanalyse,
+  knelpuntenidentificatie en veranderhypotheses
 
 **Toelichting op structuur en wijzigingen**:
 Dit document geeft een workspace-overstijgend overzicht van alle erkende value
@@ -28,6 +33,9 @@ Wijzigingen in deze versie:
   schrijven, redactie en verfijning, publicatie en distributie, evaluatie en
   bijsturing
 - Architectuur-en-oplossingsontwerp hernummerd van sectie 5 naar 4
+- Veranderverkenning value stream toegevoegd (sectie 4) met focus op
+  procesanalyse, knelpuntidentificatie, thema-onderkenning en veranderhypotheses
+- Architectuur-en-oplossingsontwerp hernummerd van sectie 4 naar 5
 
 ---
 
@@ -154,7 +162,54 @@ die later in `artefacten/0-governance/` wordt vastgelegd.
 
 ---
 
-## 4. Architectuur-en-oplossingsontwerp
+## 4. Veranderverkenning
+
+De value stream **Veranderverkenning** richt zich op het systematisch analyseren
+van bestaande processen, begrippen en knelpunten, en het formuleren van
+veranderhypotheses die als basis dienen voor latere oplossings- en
+architectuurkeuzes.
+
+Doel:
+
+- in kaart brengen van bestaande processen, systemen en werkwijzen;
+- identificeren van knelpunten, inefficiënties en verbetermogelijkheden;
+- onderkennen van strategische thema's die richting geven aan verandering;
+- formuleren van veranderhypotheses voor epics en thema's;
+- beschrijven van concrete verbeteringen als features die later worden uitgewerkt.
+
+Typische stages (fases):
+
+1. **Huidige situatie analyseren** (As-Is Analysis)  
+   Verzamelen en documenteren van bestaande processen, systemen en werkwijzen.
+   Identificeren van stakeholders, rollen en verantwoordelijkheden. Vastleggen
+   van begrippen en definities die binnen de huidige situatie worden gebruikt.
+
+2. **Knelpunten identificeren** (Pain Point Identification)  
+   Onderzoeken waar inefficiënties, risico's of problemen zich voordoen.
+   Analyseren van root causes en impact. Prioriteren van knelpunten op basis
+   van business value en urgentie.
+
+3. **Thema's onderkennen** (Theme Recognition)  
+   Clusteren van gerelateerde knelpunten tot strategische thema's. Vaststellen
+   van de scope en richting van verandering per thema. Definiëren van de
+   gewenste business outcomes en doelstellingen.
+
+4. **Veranderhypotheses formuleren** (Change Hypothesis Formulation)  
+   Opstellen van hypotheses over hoe verandering waarde oplevert. Beschrijven
+   van epics die de thema's vertalen naar uitvoerbare initiatieven. Valideren
+   van aannames en haalbaarheid met stakeholders.
+
+5. **Verbeteringen beschrijven** (Feature Definition)  
+   Uitwerken van concrete features die de veranderhypotheses realiseren.
+   Specificeren van acceptance criteria en success metrics. Voorbereiden van
+   overdracht naar oplossings- en architectuurtrajecten.
+
+Deze beschrijving vormt de basis voor een formele **Veranderverkenning-doctrine**
+die later in `artefacten/0-governance/` wordt vastgelegd.
+
+---
+
+## 5. Architectuur-en-oplossingsontwerp
 
 De value stream **Architectuur-en-oplossingsontwerp** richt zich op het
 systematisch ontwerpen van architecturen en oplossingen die beantwoorden aan

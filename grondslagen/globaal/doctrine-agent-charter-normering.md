@@ -3,7 +3,7 @@
 **Type**: Normatief Governance Document  
 **Repository**: standards  
 **Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.3.0  
+**Version**: 1.3.1  
 **Status**: Active  
 **Last Updated**: 2026-01-24  
 **Owner**: Architecture & AI Enablement
@@ -59,6 +59,12 @@ Dit normatief artefact is bijgewerkt op basis van de volgende geraadpleegde bron
 - Frontmatter-structuur voor prompts gedefinieerd (agent, intent, charter_ref)
 - Charter-naamgeving aangepast: <agent>.charter.md in plaats van charter.<agent>.md
 - Gebruikersinstructies verwerkt (ontvangen op 2026-01-24): formele scheiding tussen contract (agents/) en weergave (prompts/)
+
+**Update 2026-01-24 (agent-prompt-intent relatie)**:
+- Sectie 12.3 uitgebreid met expliciete beschrijving van de relatie tussen agents, prompts, intent en charter
+- Vastgelegd dat één agent meerdere prompts kan hebben, elk met eigen intent
+- Naamgevingsconventie verduidelijkt: mandarin.<agent-naam>.<intent>.prompt parallelliseert met <agent-naam>.<intent>.agent
+- Geraadpleegde bronnen: doctrine-agent-charter-normering.md versie 1.3.0, gebruikersinstructies ontvangen op 2026-01-24 (exacte tijd niet beschikbaar)
 
 ---
 
@@ -480,6 +486,32 @@ Agent-charters, prompts en runners **MOETEN** deze loggingplicht expliciet maken
 
 **Kernprincipe**: Elk agent-ecosysteem heeft een uniforme bestands- en naamgevingsstructuur die scheiding afdwingt tussen contract (agents/), weergave (prompts/) en charter.
 
+**Agent-Prompt-Intent Architectuur**:
+
+Één agent kan **één of meerdere prompts** hebben. Elke prompt representeert een specifieke **intent** (intentie, gebruiksdoel) van die agent. De relatie tussen agent, prompts, intent en charter is als volgt:
+
+1. **Agent** — de centrale AI-functie met een unieke naam (bijv. `moeder`, `python-expert`, `agent-smeder`)
+2. **Charter** — het normatieve document dat de volledige scope, bevoegdheden en verantwoordelijkheden van de agent beschrijft
+3. **Prompts** — één of meerdere gebruikersinterfaces die elk een specifieke intent bedienen
+4. **Intent** — het specifieke gebruiksdoel van een prompt (bijv. `beheer-git`, `review-code`, `schrijf-script`)
+
+**Voorbeeld**:
+- Agent `moeder` heeft drie prompts:
+  - `mandarin.moeder.beheer-git.prompt.md` (intent: beheer-git)
+  - `mandarin.moeder.orden-workspace.prompt.md` (intent: orden-workspace)
+  - `mandarin.moeder.schrijf-beleid.prompt.md` (intent: schrijf-beleid)
+- Alle drie prompts verwijzen naar hetzelfde charter: `moeder.charter.md`
+- Alle drie prompts hebben corresponderende contracten in `.github/agents/`:
+  - `moeder.beheer-git.agent.md`
+  - `moeder.orden-workspace.agent.md`
+  - `moeder.schrijf-beleid.agent.md`
+
+Deze architectuur waarborgt:
+- **Herbruikbaarheid**: Eén agent-definitie (charter) ondersteunt meerdere use cases (intents)
+- **Consistentie**: Alle prompts van één agent delen dezelfde normatieve basis (charter)
+- **Onderhoudbaarheid**: Wijziging van agent-scope gebeurt in één charter, niet in meerdere prompts
+- **Gebruiksvriendelijkheid**: Elke prompt is specifiek voor één taak, niet overladen met meerdere intents
+
 **Folder-structuur**:
 
 ```
@@ -523,15 +555,33 @@ Elk prompt-bestand **MOET** beginnen met YAML frontmatter:
 ```yaml
 ---
 agent: mandarin.<agent>
-intent: <actie>
+intent: <intent>
 charter_ref: @main:charters-agents/<agent>.charter.md
 ---
 ```
 
 **Verplichte velden**:
-- `agent`: Volledige agent-identifier met ecosysteem-prefix
-- `intent`: Wat deze prompt doet (komt overeen met <actie> in bestandsnaam)
+- `agent`: Volledige agent-identifier met ecosysteem-prefix (bijv. `mandarin.moeder`)
+- `intent`: Het specifieke gebruiksdoel van deze prompt (komt overeen met `<intent>` in bestandsnaam)
 - `charter_ref`: Verwijzing naar het charter (@main: = hoofdbranch in repository)
+
+**Betekenis van intent**:
+
+De `intent` is het antwoord op de vraag: "Wat wil de gebruiker bereiken met deze specifieke prompt?"
+
+- Intent is **niet** de algemene scope van de agent (dat staat in het charter)
+- Intent is **wel** de specifieke taak die deze prompt bedient
+- Eén agent kan meerdere intents bedienen via meerdere prompts
+- Elke intent correspondeert met een unieke prompt en een uniek contract
+
+**Voorbeelden van intent**:
+- Agent `python-expert` kan intents hebben zoals: `review-code`, `run-script`, `schrijf-script`, `debug-error`
+- Agent `moeder` kan intents hebben zoals: `beheer-git`, `orden-workspace`, `schrijf-beleid`
+- Agent `agent-smeder` kan intents hebben zoals: `1-initiele-agent`, `2-verfijn-agent`, `3-publiceer-agent`
+
+**Relatie intent met charter**:
+
+Alle prompts van één agent verwijzen naar **hetzelfde charter**. Het charter definieert de volledige scope van de agent; elke prompt bedient een subset van die scope via een specifieke intent.
 
 **Relatie tussen bestanden**:
 
@@ -814,6 +864,7 @@ Voor elke output:
 | 2026-01-18 | 1.2.5  | Norm aangepast: adviserende agents plaatsen adviezen in logs/ (niet temp/); conform workspace-doctrine | Constitutioneel Auteur |
 | 2026-01-18 | 1.2.6  | Norm toegevoegd: Agent vs. Runner — Determinisme en Taaksplitsing; agent moet aangeven of runner vereist | Constitutioneel Auteur / Canon Curator |
 | 2026-01-24 | 1.3.0  | Norm toegevoegd: Agent Bestanden en Naamgeving (sectie 12.3); folder-structuur .github/agents/ en .github/prompts/ met naamgevingsconventies; frontmatter-specificatie voor prompts; charter-naamgeving aangepast | Constitutioneel Auteur |
+| 2026-01-24 | 1.3.1  | Sectie 12.3 uitgebreid met expliciete agent-prompt-intent-charter architectuur; vastgelegd dat één agent meerdere prompts kan hebben, elk met eigen intent | Constitutioneel Auteur |
 
 ---
 
