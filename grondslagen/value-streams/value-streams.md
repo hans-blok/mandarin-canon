@@ -25,6 +25,11 @@ met kennis over value stream management en gebruikersopdrachten.
 - Gebruikersopdracht (ontvangen op 2026-01-24, exacte tijd niet beschikbaar):
   voeg markt-en-investeringsvorming value stream toe met focus op visie,
   marktpositie, businessmodellen en investeringsscenario's
+- Bestaande value-streams.md (versie met markt-en-investeringsvorming, gelezen op
+  2026-01-25, exacte tijd niet beschikbaar)
+- Gebruikersopdracht (ontvangen op 2026-01-25, exacte tijd niet beschikbaar):
+  voeg werkvoorbereiding value stream toe met focus op expliciet maken,
+  structureren en ordenen van toekomstig werk (thema's, verbeteringen, werktaken)
 
 **Toelichting op structuur en wijzigingen**:
 Dit document geeft een workspace-overstijgend overzicht van alle erkende value
@@ -41,9 +46,12 @@ Wijzigingen in deze versie:
 - Veranderverkenning value stream toegevoegd (sectie 4) met focus op
   procesanalyse, knelpuntidentificatie, thema-onderkenning en veranderhypotheses
 - Architectuur-en-oplossingsontwerp hernummerd van sectie 4 naar 5
-- Markt-en-investeringsvorming value stream toegevoegd (sectie 6) met focus op
+- Markt-en-investeringsvorming value stream toegevoegd (sectie 5) met focus op
   visie, marktpositie, businessmodellen en investeringsscenario's
 - Architectuur-en-oplossingsontwerp hernummerd van sectie 5 naar 6
+- Werkvoorbereiding value stream toegevoegd (sectie 6) met focus op expliciet
+  maken, structureren en ordenen van toekomstig werk
+- Architectuur-en-oplossingsontwerp hernummerd van sectie 6 naar 7
 
 ---
 
@@ -263,7 +271,61 @@ die later in `artefacten/0-governance/` wordt vastgelegd.
 
 ---
 
-## 6. Architectuur-en-oplossingsontwerp
+## 6. Werkvoorbereiding
+
+De value stream **Werkvoorbereiding** is verantwoordelijk voor het expliciet
+maken, structureren, ordenen en prioriteren van toekomstig werk in de vorm van
+thema's (epics), verbeteringen (features) en werktaken (stories). Deze value
+stream ontvangt input uit Veranderverkenning en levert geprioriteerd werk op
+dat als input dient voor IT-development en andere realisatie-value streams.
+
+Doel:
+
+- expliciet maken van toekomstig werk door beschrijving en structurering;
+- vertalen van veranderhypotheses en knelpunten (uit Veranderverkenning) naar gestructureerde werkitems;
+- waarborgen van volledigheid en heldere afbakening per werkitem;
+- prioriteren van werk op basis van business value, urgentie en afhankelijkheden;
+- opleveren van geprioriteerde backlog die klaar is voor IT-development en realisatie;
+- creëren van gedeeld begrip over wat er moet gebeuren en in welke volgorde.
+
+Typische stages (fases):
+
+1. **Thema's identificeren** (Theme Identification)  
+   Identificeren en beschrijven van strategische thema's (epics) op basis van
+   veranderhypotheses uit Veranderverkenning. Vastleggen van de scope,
+   business value en relatie tot organisatiedoelen.
+
+2. **Verbeteringen uitwerken** (Feature Elaboration)  
+   Uitwerken van thema's in concrete verbeteringen (features) met heldere
+   beschrijvingen, acceptance criteria en afhankelijkheden. Waarborgen dat
+   elke feature zelfstandig begrijpelijk is en gereed voor schatting.
+
+3. **Werktaken specificeren** (Story Specification)  
+   Opsplitsen van features in uitvoerbare werktaken (stories) met duidelijke
+   beschrijving, acceptatiecriteria en definitie van 'done'. Zorgen dat stories
+   klein genoeg zijn voor uitvoering binnen één iteratie.
+
+4. **Afhankelijkheden en relaties vastleggen** (Dependencies & Relationships)  
+   Identificeren en documenteren van afhankelijkheden tussen werkitems.
+   Vastleggen van relaties tussen stories, features en thema's. Detecteren
+   van potentiële blokkades en kritieke paden.
+
+5. **Prioritering en backlog-ordening** (Prioritization & Backlog Ordering)  
+   Prioriteren van werkitems op basis van business value, risico, afhankelijkheden
+   en capaciteit. Ordenen van de backlog voor overdracht naar IT-development.
+   Waarborgen dat hoogste prioriteit werk klaar is voor realisatie.
+
+6. **Validatie en overdracht** (Validation & Handover)  
+   Reviewen van werkitems en backlog op volledigheid, helderheid en haalbaarheid.
+   Verfijnen van beschrijvingen en criteria. Formaliseren van overdracht naar
+   IT-development of andere realisatie-value streams.
+
+Deze beschrijving vormt de basis voor een formele **Werkvoorbereiding-doctrine**
+die later in `artefacten/0-governance/` wordt vastgelegd.
+
+---
+
+## 7. Architectuur-en-oplossingsontwerp
 
 De value stream **Architectuur-en-oplossingsontwerp** richt zich op het
 systematisch ontwerpen van architecturen en oplossingen die beantwoorden aan
