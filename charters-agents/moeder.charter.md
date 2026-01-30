@@ -53,7 +53,7 @@ Bron: `moeder-orden-workspace.prompt.md` + `moeder.prompt.md`
 
 Moeder zorgt ervoor dat alle bestanden op de juiste plek staan volgens `governance/workspace-doctrine.md`:
 
-- **Folderstructuur**: `/docs`, `/governance`, `/scripts`, `/temp`, `/templates`, optioneel `/docs/resultaten/{agent-naam}/` voor workspace-specifieke agents
+- **Folderstructuur**: `/docs`, `/governance`, `/scripts`, `/temp`, `/templates`, optioneel `/artefacten/{agent-naam}/` voor workspace-specifieke agents
 - **Bestandsnaamgeving**: lowercase met hyphens, geen spaties of hoofdletters (scope: `names`)
 - **Markdown kwaliteit**: Correcte headers (H1→H2→H3), relative paths, code blocks met taal, consistente lijsten (scope: `markdown`)
 - **Links valideren**: Controleer broken links, update verwijzingen na verplaatsing
@@ -123,7 +123,7 @@ domein: {woord of korte frase waar het over gaat}
 ```
 
 **Deliverable bestand**:
-- Locatie: `docs/resultaten/moeder/agent-boundary-{agent-naam}.md`
+- Locatie: `artefacten/moeder/agent-boundary-{agent-naam}.md`
 - Inhoud: De 4 regels hierboven
 - Deze boundary is input voor Agent Smeder handoff en dient als traceerbaarheid
 
@@ -132,7 +132,7 @@ domein: {woord of korte frase waar het over gaat}
 - Stopt als agent buiten `beleid.md` scope valt
 - Stopt als er overlap is met bestaande agent
 
-**Handoff**: De boundary wordt opgeslagen in `docs/resultaten/moeder/agent-boundary-{agent-naam}.md` en gaat vervolgens naar Agent Smeder, die prompts/charter/runner ontwerpt.
+**Handoff**: De boundary wordt opgeslagen in `artefacten/moeder/agent-boundary-{agent-naam}.md` en gaat vervolgens naar Agent Smeder, die prompts/charter/runner ontwerpt.
 
 ### 6. Governance Compliance
 Bron: `moeder-valideer-governance.prompt.md`
@@ -222,7 +222,7 @@ Dit gedrag is **by design**: fetching installeert de canonieke versie uit agent-
 - Waarschuwingen geven bij governance conflicts
 - Wijzigingen aan canonieke/normatieve artefacten loggen in workspace state
 - Ping-actualiteit bewaken en signaleren
-- Boundary opslaan in `docs/resultaten/moeder/agent-boundary-{agent-naam}.md` als deliverable
+- Boundary opslaan in `artefacten/moeder/agent-boundary-{agent-naam}.md` als deliverable
 - Agents implementeren zonder Agent Smeder (altijd via handoff met 4-regels boundary)
 - CodState Lezen**: Lees `state-<workspace-naam>.md` indien aanwezig (legitimiteitsvoorwaarde)
 2. **Beleid Genereren**: Lees `temp/context.md` en genereer `governance/beleid.md` (zie Kerntaak 4)
@@ -289,7 +289,7 @@ domein: {woord of frase}
 ```
 
 **Deliverable bestand**:
-- Locatie: `docs/resultaten/moeder/agent-boundary-{agent-naam}.md`
+- Locatie: `artefacten/moeder/agent-boundary-{agent-naam}.md`
 - Inhoud: De 4 regels hierboven
 - Deze boundary dient als traceerbaarheid en input voor handoff
 
@@ -307,7 +307,7 @@ Gebruik `.github/prompts/moeder-orden-workspace.prompt.md`:
 - `structure`: Folderstructuur en bestandslocaties
 - `names`: Bestandsnaamgeving conventies
 - `markdown`: Markdown kwaliteit en links
-- `docs-resultaten`: Agent resultaten organiseren in `/docs/resultaten/{agent-naam}/`
+- `artefacten`: Agent resultaten organiseren in `/artefacten/{agent-naam}/`
 - `github-prompts`: Prompt bestanden in `.github/prompts/`
 
 **Acties**:

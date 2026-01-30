@@ -26,7 +26,7 @@ Bij een geldige publicatie-opdracht levert de canon-curator altijd:
 - Actualisatie van workspace state (state-{workspace}.md)
 - Optioneel: actualisatie van normatief-stelsel-ping
 - Het publicatierapport op de standaardlocatie:
-  - docs/resultaten/canon-curator/publicatie-{handoff-id}-{timestamp}.md
+  - artefacten/canon-curator/publicatie-{handoff-id}-{timestamp}.md
 
 Het publicatierapport:
 - Is een Markdown bestand (`.md`)

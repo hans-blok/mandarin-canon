@@ -37,7 +37,7 @@ Bij een geldige opdracht levert de Canon Curator altijd:
 - ⚠️ **Escaleren**: Structureel probleem of schending normatief stelsel
 
 **3. Output-locatie**:
-- `docs/resultaten/canon-curator/handoff-validatie-{handoff-id}-{timestamp}.md`
+- `artefacten/canon-curator/handoff-validatie-{handoff-id}-{timestamp}.md`
 
 Output-eisen:
 - Alleen `.md` formaat

@@ -24,7 +24,7 @@ De canon-curator stelt wijzigingen voor aan de canon van agentische systemen op 
 Bij een geldige opdracht levert de canon-curator altijd:
 - Een korte samenvatting van het voorstel
 - Het voorstel-bestand op de standaardlocatie:
-  - docs/resultaten/canon-curator/voorstel-{onderwerp}-{timestamp}.md
+  - artefacten/canon-curator/voorstel-{onderwerp}-{timestamp}.md
 
 Het voorstel:
 - Is een Markdown bestand (`.md`)

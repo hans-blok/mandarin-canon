@@ -26,19 +26,30 @@ Deze workspace bevat:
 
 ```
 mandarin-canon/
-├── agent-services/          # Agent-configuraties en publicaties
-│   ├── agents-publicatie.json
-│   ├── agent-charters/      # Charter-definities
-│   └── copilot/             # Copilot agents en workflows
-├── docs/                    # Documentatie en resultaten
-│   └── resultaten/          # Output van agents
-├── exports/                 # Geëxporteerde configuraties
+├── .github/                 # Prompts en agent-contracts
+│   ├── agents/              # Agent contract bestanden
+│   └── prompts/             # Agent prompt bestanden
+├── artefacten/              # Agent-resultaten per agent
+│   ├── canon-curator/       # Rapporten, voorstellen, validaties
+│   ├── moeder/              # Agent boundaries, analyses
+│   └── {agent-naam}/        # Output van andere agents
+├── charters-agents/         # Agent charters
+├── docs/                    # Documentatie en publicaties
+│   └── assets/              # Afbeeldingen en resources
+├── grondslagen/             # Normatieve artefacten
+│   ├── globaal/             # Constitutie, workspace-doctrine, etc.
+│   ├── it-development/      # IT Development doctrines
+│   └── value-streams/       # Value stream specifieke doctrines
+├── logs/                    # Log bestanden
 ├── scripts/                 # Utility scripts en runners
 │   └── runners/             # Agent runner scripts
-├── charters-agents/         # Agent charters
+├── temp/                    # Tijdelijke bestanden
+├── templates/               # Sjablonen voor charters, etc.
 ├── beleid-mandarin-canon.md # Workspace-specifiek beleid
 └── README.md                # Dit bestand
 ```
+
+**Let op**: Alleen **Publisher** en **Presentatie-architect** mogen schrijven naar `docs/`. Alle andere agents schrijven naar `artefacten/{agent-naam}/` conform workspace-doctrine v1.4.0.
 
 ---
 

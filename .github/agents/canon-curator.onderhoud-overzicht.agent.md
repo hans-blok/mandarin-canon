@@ -22,7 +22,7 @@ De canon-curator onderhoudt een consistent overzicht van alle artefacten in het 
 Bij een geldige opdracht levert de canon-curator altijd:
 - Een korte samenvatting van de bevindingen
 - Het rapport-bestand op de standaardlocatie:
-  - docs/resultaten/canon-curator/rapport-{timestamp}.md
+  - artefacten/canon-curator/rapport-{timestamp}.md
 
 Het rapport:
 - Is een Markdown bestand (`.md`)

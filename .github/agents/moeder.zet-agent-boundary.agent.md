@@ -31,7 +31,7 @@ Bij een geldige opdracht levert Moeder altijd:
 2. Deze 4 regels opgeslagen in het deliverable bestand
 
 **Deliverable bestand**:
-- Locatie: `docs/resultaten/moeder/agent-boundary-<agent-naam>.md`
+- Locatie: `artefacten/moeder/agent-boundary-<agent-naam>.md`
 - Inhoud: De 4 regels hieronder
 - Deze boundary is input voor Agent Smeder handoff
 
@@ -43,7 +43,7 @@ doel: <één zin>
 domein: <één woord of korte frase>
 ```
 
-**Let op**: Deze boundary-output is een deliverable document in `docs/resultaten/moeder/` en MOET daarom beginnen met `## Herkomstverantwoording`.
+**Let op**: Deze boundary-output is een deliverable document in `artefacten/moeder/` en MOET daarom beginnen met `## Herkomstverantwoording`.
 
 ### Foutafhandeling
 

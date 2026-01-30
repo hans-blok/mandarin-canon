@@ -24,9 +24,9 @@ Bij een geldige opdracht levert de Layout Optimizer altijd:
 - Een korte samenvatting van de analyse en/of voorgestelde optimalisaties.
 - Een overzicht van relevante metrics (zoals crossings en back-edges) voor en na optimalisatie, voor zover afleidbaar uit de input.
 - Een voorstel voor verbeterde layout (bij voorkeur als beschrijving en/of voorbeeld-fragment in Markdown).
-- Een layout-rapport in Markdown-vorm dat geschikt is om op te slaan onder `docs/resultaten/layout-optimizer/`.
-- (Bij daadwerkelijke optimalisatie, dus niet in `--check-only` modus) een geoptimaliseerd diagram-bestand onder `docs/resultaten/layout-optimizer/`, bij voorkeur met een tijdstempel in de bestandsnaam (bijvoorbeeld `<bronnaam>-optimized-yyyy-mm-dd_hh-mm.ext`).
-- Wanneer het bronformaat een Structurizr DSL-workspace (`formaat = dsl`) is, wordt de laatst geoptimaliseerde versie ook gekopieerd naar `docs/resultaten/c4-modelleur/.structurizr/workspace.dsl`, zodat de visualisatie op poort 8080 de nieuwste layout toont.
+- Een layout-rapport in Markdown-vorm dat geschikt is om op te slaan onder `artefacten/layout-optimizer/`.
+- (Bij daadwerkelijke optimalisatie, dus niet in `--check-only` modus) een geoptimaliseerd diagram-bestand onder `artefacten/layout-optimizer/`, bij voorkeur met een tijdstempel in de bestandsnaam (bijvoorbeeld `<bronnaam>-optimized-yyyy-mm-dd_hh-mm.ext`).
+- Wanneer het bronformaat een Structurizr DSL-workspace (`formaat = dsl`) is, wordt de laatst geoptimaliseerde versie ook gekopieerd naar `artefacten/c4-modelleur/.structurizr/workspace.dsl`, zodat de visualisatie op poort 8080 de nieuwste layout toont.
 - Eventuele waarschuwingen als input onvolledig is, buiten scope valt of als aannames nodig zijn.
 
 ### Foutafhandeling

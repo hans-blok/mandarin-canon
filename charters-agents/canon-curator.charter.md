@@ -155,21 +155,21 @@ Gebruik `.github/prompts/canon-curator-onderhoud-overzicht.prompt.md`:
 1. Scan workspace voor normatieve artefacten
 2. Registreer metadata (naam, versie, datum, status)
 3. Leg relaties vast (verwijzingen, afhankelijkheden)
-4. Produceer overzicht in `docs/resultaten/canon-curator/rapport-{timestamp}.md`
+4. Produceer overzicht in `artefacten/canon-curator/rapport-{timestamp}.md`
 
 ### Bij consistentiecontrole
 Gebruik `.github/prompts/canon-curator-onderhoud-overzicht.prompt.md`:
 1. Lees alle normatieve artefacten
 2. Vergelijk definities en afspraken
 3. Detecteer tegenstrijdigheden
-4. Rapporteer bevindingen in `docs/resultaten/canon-curator/rapport-{timestamp}.md`
+4. Rapporteer bevindingen in `artefacten/canon-curator/rapport-{timestamp}.md`
 
 ### Bij lacune-detectie
 Gebruik `.github/prompts/canon-curator-onderhoud-overzicht.prompt.md`:
 1. Analyseer bestaande structuur
 2. Identificeer ontbrekende elementen
 3. Vergelijk met externe canon
-4. Rapporteer aanbevelingen in `docs/resultaten/canon-curator/rapport-{timestamp}.md`
+4. Rapporteer aanbevelingen in `artefacten/canon-curator/rapport-{timestamp}.md`
 
 ### Bij voorstellen voor canon-wijziging
 Gebruik `.github/prompts/canon-curator-stel-voor-canonwijziging.prompt.md`:
@@ -177,7 +177,7 @@ Gebruik `.github/prompts/canon-curator-stel-voor-canonwijziging.prompt.md`:
 2. Beschrijf huidige situatie en voorgestelde wijziging
 3. Analyseer impact
 4. Formuleer aanbeveling voor constitutioneel-auteur of governance
-5. Documenteer in `docs/resultaten/canon-curator/voorstel-{onderwerp}-{timestamp}.md`
+5. Documenteer in `artefacten/canon-curator/voorstel-{onderwerp}-{timestamp}.md`
 
 ### Bij publicatie normatieve wijzigingen
 Gebruik `.github/prompts/canon-curator-publiceer-normatieve-wijziging.prompt.md`:
@@ -188,7 +188,7 @@ Gebruik `.github/prompts/canon-curator-publiceer-normatieve-wijziging.prompt.md`
 5. Registreer wijzigingen in workspace state (change log entry met tijdreferentie)
 6. Beoordeel en actualiseer normatief-stelsel-ping (indien aannames geïnvalideerd)
 7. Archiveer handoff (status: accepted, timestamp: publicatietijd)
-8. Rapporteer publicatie in `docs/resultaten/canon-curator/publicatie-{handoff-id}-{timestamp}.md`
+8. Rapporteer publicatie in `artefacten/canon-curator/publicatie-{handoff-id}-{timestamp}.md`
 
 ## Communicatie
 
@@ -200,7 +200,7 @@ De canon-curator communiceert:
 
 ## Herkomstverantwoording in deliverables
 
-**VERPLICHT**: Alle deliverable documenten die Canon Curator produceert in `docs/resultaten/canon-curator/` **MOETEN** beginnen met een sectie `## Herkomstverantwoording`.
+**VERPLICHT**: Alle deliverable documenten die Canon Curator produceert in `artefacten/canon-curator/` **MOETEN** beginnen met een sectie `## Herkomstverantwoording`.
 
 Dit geldt voor:
 - Validatie rapporten
