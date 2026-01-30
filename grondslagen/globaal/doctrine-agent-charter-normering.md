@@ -3,68 +3,40 @@
 **Type**: Normatief Governance Document  
 **Repository**: standards  
 **Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.3.1  
+**Version**: 1.3.2  
 **Status**: Active  
-**Last Updated**: 2026-01-24  
+**Last Updated**: 2026-01-30  
 **Owner**: Architecture & AI Enablement
 
 ---
 
 ## Herkomstverantwoording
 
-Dit normatief artefact is bijgewerkt op basis van de volgende geraadpleegde bronnen. De wijzigingen zijn uitgevoerd op 2026-01-17 ter verduidelijking van workspace-beleid als verplichte agent-initialisatie-stap.
+Dit normatief artefact is bijgewerkt op 2026-01-30 met een nieuwe norm voor agent-communicatie over gelezen en gewijzigde bestanden.
 
 **Geraadpleegde bronnen**:
-- Constitutie Mandarin (versie 1.2.1, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
-- workspace-doctrine.md (versie 1.1.0, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
-- Eerdere versie doctrine-agent-charter-normering.md (versie 1.2.0, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
-- templates/type agents.md (referentie-tabel voor agent-categorisering inclusief beheeragent, gelezen op 2026-01-18, exacte tijd niet beschikbaar)
+- doctrine-agent-charter-normering.md (versie 1.3.1, gelezen op 2026-01-30, exacte tijd niet beschikbaar)
+- Constitutie Mandarin (versie 1.2.1, gelezen op 2026-01-30, exacte tijd niet beschikbaar)
+- workspace-doctrine.md (versie 1.4.0, gelezen op 2026-01-30, exacte tijd niet beschikbaar)
+- Gebruikersinstructie ontvangen op 2026-01-30: "Elke agent begint met bulletsgewijs opsommen welke bestanden hij heeft gelezen. Hij eindigt met bulletsgewijs opsommen welke bestanden zijn gewijzigd. Dit met een klikbaar linkje naar het bestand."
 
-**Toelichting tijdreferenties**: Conform de norm "Tijd is Context" (sectie 11.1) worden geen tijdstippen ingevuld indien deze niet expliciet beschikbaar zijn. Alleen de datum (2026-01-18) is bekend uit de beschikbare context.
+**Toelichting tijdreferenties**: Conform de norm "Tijd is Context" (sectie 11.1) worden geen tijdstippen ingevuld indien deze niet expliciet beschikbaar zijn. Alleen de datum (2026-01-30) is bekend uit de beschikbare context.
 
-**Wijzigingen in versie 1.2.1**:
-- Nieuwe norm toegevoegd: sectie 12.1 "Norm: Workspace Beleid als Agent Initialisatie" — vastlegt dat elke agent vóór activatie het beleid van de workspace moet lezen en aldaar doorverwezen wordt naar de context van zijn werkgebied
-- Verduidelijking dat workspace-beleid de eerste gezagsbron is waarmee agents werken voordat ze hun charter activeren
-- Conformiteit met Constitutie 1.2.1 (artikel 2 over canon en governance lezen)
+**Wijzigingen in versie 1.3.2**:
+- Nieuwe norm toegevoegd: sectie 12.2.5 "Norm: Agent Communicatie — Gelezen en Gewijzigde Bestanden"
+- Verplicht agents om aan begin van interactie alle gelezen bestanden op te sommen met klikbare links
+- Verplicht agents om aan einde van interactie alle gewijzigde bestanden op te sommen met klikbare links
+- Formaat vastgelegd: workspace-relative paden als Markdown links
+- Onderscheid tussen nieuwe bestanden (met ✨ prefix) en gewijzigde bestanden
+- Uitzondering gedefinieerd: norm geldt niet voor interne tooling-operaties
+- Normatief fundament: Constitutie Artikel 2 (Transparantie) en Artikel 4 (Wijzigingsbeheer)
 
-**Update 2026-01-18**:
-- Nieuwe norm toegevoegd: sectie 12.2 "Norm: Agent-Soorten en Gezag-Relatie" — vastlegt het onderscheid tussen adviserende en uitvoerende agents en hun relatie tot gezag en risico
-- Integratie van referentie-tabel type agents.md in normatief kader
-
-**Update 2026-01-18 (verduidelijking)**:
-- Beheeragent toegevoegd als derde agent-soort in sectie 12.2
-- Onderscheid tussen inhoud-wijziging (uitvoerend) en structuur-wijziging (beheer)
-- Definities, risico's en charter-consequenties vastgelegd
-- templates/type agents.md bijgewerkt als referentie-bron
-
-**Update 2026-01-18 (terminologie & voorbeeld)**:
-- Terminologische keuze "agent-soort" (niet "agent-type") normatief vastgesteld met juridische grondslag
-- Voorbeeld-charter toegevoegd: Artikel-Schrijver Agent (sectie 14)
-- Duidelijk onderscheid gemaakt tussen normatief en beschrijvend (domein is beschrijvend, niet normatief)
-- Aandacht voor verschil tussen governance-vereisten en praktische context
-
-**Update 2026-01-18 (locatie adviezen)**:
-- Norm aangepast: adviserende agents plaatsen adviezen in logs/ folder (niet temp/)
-- Conform workspace-doctrine: logs/ voor tijdelijke agent-output, niet in Git
-
-**Update 2026-01-18 (agent vs runner determinisme)**:
-- Norm toegevoegd: Agent vs. Runner — Determinisme en Taaksplitsing
-- Vastlegt welke logica in agent (context-afhankelijk) vs runner (deterministisch)
-- Vereist dat agent expliciet aangeeft of runner moet worden aangemaakt
-- Voorbeelden gegeven voor splitsing
-
-**Update 2026-01-24 (agent-structuur en naamgeving)**:
-- Nieuwe norm toegevoegd: sectie 12.3 "Norm: Agent Bestanden en Naamgeving" — vastlegt folder-structuur .github/agents/ en .github/prompts/
-- Naamgevingsconventies gespecificeerd: agents zonder prefix, prompts met mandarin. prefix
-- Frontmatter-structuur voor prompts gedefinieerd (agent, intent, charter_ref)
-- Charter-naamgeving aangepast: <agent>.charter.md in plaats van charter.<agent>.md
-- Gebruikersinstructies verwerkt (ontvangen op 2026-01-24): formele scheiding tussen contract (agents/) en weergave (prompts/)
-
-**Update 2026-01-24 (agent-prompt-intent relatie)**:
-- Sectie 12.3 uitgebreid met expliciete beschrijving van de relatie tussen agents, prompts, intent en charter
-- Vastgelegd dat één agent meerdere prompts kan hebben, elk met eigen intent
-- Naamgevingsconventie verduidelijkt: mandarin.<agent-naam>.<intent>.prompt parallelliseert met <agent-naam>.<intent>.agent
-- Geraadpleegde bronnen: doctrine-agent-charter-normering.md versie 1.3.0, gebruikersinstructies ontvangen op 2026-01-24 (exacte tijd niet beschikbaar)
+**Eerdere wijzigingen** (zie Change Log sectie 18 voor volledige historie):
+- Versie 1.3.1: Agent-prompt-intent relatie verduidelijkt
+- Versie 1.3.0: Agent bestanden en naamgeving norm toegevoegd
+- Versie 1.2.x: Herkomstverantwoording, Agent-soorten, Runner-determinisme normen toegevoegd
+- Versie 1.1.x: Workspace state logging norm toegevoegd
+- Versie 1.0.0: Initiële versie
 
 ---
 
@@ -481,6 +453,67 @@ Voor elke wijziging die impact heeft op de gedeelde werkelijkheid geldt:
 - wijzigingen die niet in de workspace state zijn gelogd, worden canoniek geacht **niet te bestaan**.
 
 Agent-charters, prompts en runners **MOETEN** deze loggingplicht expliciet maken en afdwingen waar dat binnen hun scope valt.
+
+### Norm: Agent Communicatie — Gelezen en Gewijzigde Bestanden (sectie 12.2.5)
+
+**Kernprincipe**: Elke agent-interactie begint met transparantie over gelezen bronnen en eindigt met transparantie over gewijzigde bestanden. Dit waarborgt traceerbaarheid en verantwoordelijkheid.
+
+**Verplichte Communicatie-structuur**:
+
+1. **Begin van agent-interactie** — Gelezen Bestanden:
+   - Elke agent **MOET** aan het begin van zijn antwoord een bulletlijst tonen van alle bestanden die hij heeft gelezen
+   - Elk bestand wordt weergegeven als klikbaar Markdown-link: `[pad/naar/bestand.md](pad/naar/bestand.md)`
+   - Gebruik workspace-relative paden (geen absolute paths of drive letters)
+   - Formaat:
+     ```markdown
+     **Gelezen bestanden:**
+     - [grondslagen/globaal/constitutie.md](grondslagen/globaal/constitutie.md)
+     - [charters-agents/moeder.charter.md](charters-agents/moeder.charter.md)
+     - [beleid-mandarin-canon.md](beleid-mandarin-canon.md)
+     ```
+
+2. **Einde van agent-interactie** — Gewijzigde Bestanden:
+   - Elke agent **MOET** aan het einde van zijn antwoord een bulletlijst tonen van alle bestanden die hij heeft gewijzigd
+   - Elk bestand wordt weergegeven als klikbaar Markdown-link: `[pad/naar/bestand.md](pad/naar/bestand.md)`
+   - Bij nieuwe bestanden: gebruik prefix "✨ (nieuw)" 
+   - Bij gewijzigde bestanden: geen prefix
+   - Gebruik workspace-relative paden
+   - Formaat:
+     ```markdown
+     **Gewijzigde bestanden:**
+     - [charters-agents/canon-curator.charter.md](charters-agents/canon-curator.charter.md)
+     - [charters-agents/moeder.charter.md](charters-agents/moeder.charter.md)
+     - ✨ [artefacten/README.md](artefacten/README.md) (nieuw)
+     ```
+
+3. **Indien geen wijzigingen**:
+   - Als de agent alleen leest en niet schrijft: vermeld "**Gewijzigde bestanden:** Geen"
+
+**Gevolgen**:
+
+- Gebruikers kunnen direct navigeren naar gelezen en gewijzigde bestanden
+- Traceerbaarheid is ingebouwd in de agent-interactie
+- Agents kunnen niet stiekem bestanden lezen of wijzigen
+- Wijzigingen zijn direct verifieerbaar
+- Consistent met Herkomstverantwoording-norm (sectie 12.2)
+
+**Uitzondering**:
+
+Deze norm geldt **niet** voor:
+- Interne tooling-operaties (bijv. grep_search, list_dir)
+- Read-only queries die geen deliverable opleveren
+- Diagnostische operaties
+
+Deze norm geldt **wel** voor:
+- Alle deliverables (rapporten, charters, voorstellen)
+- Alle wijzigingen aan normatieve artefacten
+- Alle agent-interacties die workspace-state wijzigen
+
+**Normatief Fundament**:
+- Zie Constitutie Artikel 2 (Transparantie in automatisering)
+- Zie Constitutie Artikel 4 (Wijzigingsbeheer en traceerbaarheid)
+- Zie sectie 12.2 (Herkomstverantwoording-norm)
+- Zie workspace-doctrine kernprincipe 3 (Traceerbaarheid)
 
 ### Norm: Agent Bestanden en Naamgeving (sectie 12.3)
 
@@ -1165,6 +1198,7 @@ Een agent-charter is conform deze standaard wanneer:
 
 | Datum      | Versie | Wijziging                                                             | Auteur                    |
 |------------|--------|-----------------------------------------------------------------------|---------------------------|
+| 2026-01-30 | 1.3.2  | Nieuwe norm toegevoegd: Agent Communicatie — Gelezen en Gewijzigde Bestanden (sectie 12.2.5); verplichte transparantie over gelezen en gewijzigde bestanden met klikbare links | Canon Curator |
 | 2026-01-14 | 1.2.0  | Herkomstverantwoording toegevoegd; nieuwe norm: tijd is context (agents leiden tijd nooit af, melden ontbrekende tijdreferentie expliciet); timestamps met timezone (CET) | Constitutioneel Auteur |
 | 2026-01-14 | 1.1.2  | Toegevoegd: norm dat agents wijzigingen in de gedeelde werkelijkheid moeten loggen in de workspace state | Charter Schrijver Agent |
 | 2026-01-14 | 1.1.1  | Verduidelijkt dat documentair agent-resultaat zonder Herkomstverantwoording ongeldig is | Charter Schrijver Agent |
