@@ -73,11 +73,18 @@ Dit beleid vult deze aan met korte afspraken specifiek voor deze workspace.
 
 ## 4. Agent Werking
 
-- in deze workspace zijn in de basis twee typen agents relevant: de Moeder-agent en per workspace één schrijvende agent die documenten zoals doctrines en beleid opstelt;  
-- deze agents vallen bij uitzondering niet onder een value stream, maar onder de agent-ecosysteem constitutie;  
-- de bron van agent-charters en prompts ligt in de centrale agent-services repositories, niet in deze workspace;  
-- **voordat** agents een taak uitvoeren, lezen zij eerst de constitutie en waar nodig de gedragscode en relevante doctrines;  
-- agents gebruiken deze workspace om normen, templates, doctrines en stage-charters te lezen en schrijven geen projectartefacten in deze repository.
+- in deze workspace opereren uitsluitend **ecosysteem uitvoerende agents**: Canon Curator, Constitutioneel Auteur en Moeder
+- deze agents wijzigen governance-artefacten en vallen niet onder een value stream, maar onder de agent-ecosysteem constitutie
+- de bron van agent-charters en prompts ligt in de centrale agent-services repositories, niet in deze workspace
+- **voordat** ecosysteem uitvoerende agents een taak uitvoeren, lezen zij in deze volgorde:
+  1. **concepten-en-architectonische-grondslagen.md** — fundamentele taal en bouwstenen van het ecosysteem
+  2. **constitutie** — hoogste gezagsbron en normatief fundament
+  3. **dit beleid** (beleid-mandarin-canon.md) — workspace-specifieke context en grenzen
+  4. **relevante doctrines** — waar nodig voor specifieke taken (bijv. doctrine-agent-charter-normering.md)
+- deze volgorde is conform doctrine-agent-charter-normering.md sectie 12.1 (agent-soort-specifieke initialisatie)
+- **rationale voor volgorde**: ecosysteem uitvoerende agents moeten de conceptuele taal kennen voordat ze normerende documenten zoals de constitutie correct kunnen interpreteren (termen als "agent-soort", "governance-artefact", "ecosysteem uitvoerende agent" worden in conceptendocument gedefinieerd)
+- agents gebruiken deze workspace om governance-artefacten (normen, templates, doctrines, charters) te lezen en te schrijven
+- agents schrijven geen projectartefacten of waarde-artefacten in deze repository
 
 ---
 

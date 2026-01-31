@@ -1,8 +1,8 @@
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.5.1  
+**Versie**: 1.5.2  
 **Status**: Actief  
-**Datum**: 2026-01-24  
+**Datum**: 2026-01-31  
 **Eigenaar**: Architecture & AI Enablement  
 **Type**: Normerend Doctrine-document
 
@@ -138,10 +138,10 @@ Elke workspace **moet** de volgende root-structuur hebben:
 
 **Toelichting**:
 - **.github/**: Bevat agent-contracten (.github/prompts/), workflows (.github/workflows/) en copilot configuratie (.github/copilot/)
-  - `.github/prompts/`: Agent-contracten met volledige specificaties (input, output, foutafhandeling, werkwijze). Elk prompt-bestand is een volledig contract.
+  - `.github/prompts/`: Agent-contracten met volledige specificaties (input, output, foutafhandeling, werkwijze). Elk prompt-bestand is een volledig agent-contract.
 - **artefacten/**: Agent-resultaten, georganiseerd per agent in subfolder `artefacten/{agent-naam}/`
   - Elke agent krijgt zijn eigen folder voor output
-  - Bevat alle interne artefacten die agents produceren
+  - Bevat alle interne Mandarin-artefacten die agents produceren
   - Structuur per agent bepaald door agent-charter
 - **beleid/**: Workspace-specifieke beleidsregels, gedragscode en charters
 - **docs/**: Publicaties naar buiten en workspace-uitleg

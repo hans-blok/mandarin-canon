@@ -1,4 +1,4 @@
-# Phase Charter — <Phase Name>
+# Phase Agent-charter — <Phase Name>
 
 **Doctrine IT Development**: doctrine-it-development.md  
 **Phase Identifier**: <repo>.charter.phase.<phase-name>  
@@ -38,7 +38,7 @@ Doelen zijn **toetsbaar, expliciet en herhaalbaar**.
 
 ### In Scope (DOES)
 - Activiteiten die expliciet tot deze fase behoren
-- Artefacten die in deze fase worden gecreëerd of gevalideerd
+- Mandarin-artefacten die in deze fase worden gecreëerd of gevalideerd
 - Beslissingen die in deze fase genomen mogen worden
 
 ### Out of Scope (DOES NOT)
@@ -51,14 +51,14 @@ Doelen zijn **toetsbaar, expliciet en herhaalbaar**.
 ## 4. Entry Criteria (Input Quality Gate)
 
 Deze fase mag **alleen starten** als aan alle onderstaande criteria is voldaan:
-- ☐ Vereiste input-artefacten zijn aanwezig
-- ☐ Inputs voldoen aan hun eigen phase charters
+- ☐ Vereiste input-Mandarin-artefacten zijn aanwezig
+- ☐ Inputs voldoen aan hun eigen phase Agent-charters
 - ☐ Openstaande issues zijn expliciet gelabeld
 - ☐ Aannames zijn zichtbaar en gevalideerd
 
 ### Vereiste Inputs
 
-| Artefact | Herkomst | Minimale Kwaliteitseis |
+| Mandarin-artefact | Herkomst | Minimale Kwaliteitseis |
 |--------|----------|------------------------|
 |        |          |                        |
 
@@ -126,7 +126,7 @@ Deze fase committeert zich aan:
 
 In deze fase is het expliciet verboden om:
 - Vooruit te implementeren
-- Onvolledige artefacten als definitief te markeren
+- Onvolledige Mandarin-artefacten als definitief te markeren
 - Conflicten te verbergen
 - Beslissingen impliciet door te schuiven
 

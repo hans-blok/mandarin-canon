@@ -42,12 +42,12 @@ Niet vermeld = niet van toepassing.
 
 ---
 
-## Active Charters
+## Active Agent-charters
 
-Lijst van charters die in deze workspace geldig zijn.
+Lijst van Agent-charters die in deze workspace geldig zijn.
 
-- <charter-naam> — status: <active | deprecated | draft>
-- <charter-naam> — status: <active | deprecated | draft>
+- <Agent-charter-naam> — status: <active | deprecated | draft>
+- <Agent-charter-naam> — status: <active | deprecated | draft>
 
 ---
 

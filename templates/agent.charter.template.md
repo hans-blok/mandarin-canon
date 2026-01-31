@@ -1,4 +1,4 @@
-# Agent Charter — <Agent Name>
+# Agent-charter — <Agent Name>
 
 **Repository**: <code repo>  
 **Agent Identifier**: <code repo>.charter.agent.<agent-name>  
@@ -25,7 +25,7 @@ Beschrijf in één korte alinea *waarom* deze agent bestaat en welke klantwaarde
 
 ### In Scope (DOES)
 - Wat deze agent expliciet doet
-- Welke artefacten hij mag creëren of wijzigen
+- Welke Mandarin-artefacten hij mag creëren of wijzigen
 - Welke analyses of beslissingen hij mag uitvoeren
 
 ### Out of Scope (DOES NOT)
@@ -69,7 +69,7 @@ Dit houdt verantwoordelijkheden zuiver en voorkomt scope-vervuiling.
 
 ## 5. Phase Quality Commitments
 
-Voor elke ondersteunde fase committeert deze agent zich aan de geldende **Phase Quality Charter**.
+Voor elke ondersteunde fase committeert deze agent zich aan de geldende **Phase Quality Agent-charter**.
 
 ### Algemene Kwaliteitsprincipes
 - Volledigheid boven snelheid
@@ -78,7 +78,7 @@ Voor elke ondersteunde fase committeert deze agent zich aan de geldende **Phase 
 - Expliciete markering van onzekerheden en aannames
 
 ### Quality Gates (voorbeeld)
-- ☐ Alle outputs zijn herleidbaar naar input-artefacten
+- ☐ Alle outputs zijn herleidbaar naar input-Mandarin-artefacten
 - ☐ Geen impliciete scope-uitbreiding
 - ☐ Terminologie consistent met conceptueel datamodel
 - ☐ Conflicten expliciet benoemd
@@ -147,7 +147,7 @@ Deze agent mag NOOIT:
 
 Deze agent escaleert naar Moeder Agent of menselijke eigenaar wanneer:
 
-- Scope-conflict met ander agent-charter wordt gedetecteerd
+- Scope-conflict met ander Agent-charter wordt gedetecteerd
 - Ontbrekende of tegenstrijdige input die niet op te lossen is
 - Meer dan 3 expliciete aannames nodig zijn
 - Fundamentele onduidelijkheid over verantwoordelijkheid

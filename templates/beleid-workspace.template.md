@@ -76,7 +76,7 @@ Beschrijf hoe agents in deze workspace werken, in lijn met de constitutie en de 
 
 - welke agents hier actief zijn (Genesis + workspace-specifiek);
 - onder welke value stream(s) en doctrine(s) zij vallen;
-- welke artefacten zij lezen en schrijven.
+- welke Mandarin-artefacten zij lezen en schrijven.
 
 ## 5. Kwaliteitsnormen
 

@@ -1,12 +1,11 @@
 # Doctrine Normering voor Agent Charters
 
 **Type**: Normatief Governance Document  
-**Repository**: standards  
-**Identifier**: standards.governance.agent-charter-normering  
-**Version**: 1.3.2  
+**Repository**: mandarin-canon  
+**Identifier**: mandarin-canon.grondslagen.globaal.agent-charter-normering  
+**Version**: 1.3.3  
 **Status**: Active  
-**Last Updated**: 2026-01-30  
-**Owner**: Architecture & AI Enablement
+**Last Updated**: 2026-01-31  
 
 ---
 
@@ -283,15 +282,15 @@ Agents hebben geen betrouwbare kennis van de huidige tijd tenzij deze expliciet 
 
 Elke agent in een document-repository heeft minimaal de volgende zichtbare componenten:
 
-1. **Charter** — normatief contract voor gedrag en scope (verplicht);
+1. **Agent-charter** — normatief document voor gedrag en scope (verplicht);
 2. **Beschrijvend document** — menselijke rolbeschrijving / samenvatting (verplicht);
-3. **Prompt(s)** — één of meer interface-contracten voor AI-gebruik (verplicht);
+3. **Prompt(s)** — één of meer interface-specificaties voor AI-gebruik (verplicht);
 4. **Runner(s)** — optionele automation-scripts zonder AI (aanbevolen voor herhaalbare taken).
 
 Deze componenten zijn logisch gescheiden maar inhoudelijk consistent:
-- Het charter is de bron van waarheid voor beslissingsbevoegdheid, scope, inputs/outputs, anti-patterns en escalatie;
+- Het agent-charter is de bron van waarheid voor beslissingsbevoegdheid, scope, inputs/outputs, anti-patterns en escalatie;
 - De beschrijvende roltekst vertaalt dit naar mensvriendelijke taal;
-- De prompts maken het charter bruikbaar als Copilot-contract (meerdere prompts per agent zijn toegestaan, bijvoorbeeld per taak of doelgroep);
+- De prompts maken het agent-charter bruikbaar als Copilot-interface (meerdere prompts per agent zijn toegestaan, bijvoorbeeld per taak of doelgroep);
 - Runners maken veelvoorkomende taken automatiseerbaar buiten AI om.
 
 **Richtlijn meerdere prompts per agent**:
@@ -318,12 +317,17 @@ Zie sectie 12.3 voor details over bestandsstructuur en naamgeving.
    - Het beleid verwijst naar de Constitutie.
    - Het beleid verwijst naar de workspace-specifieke repository of context waarin de agent opereert.
 
-2. **Doorverwijzing naar Workspace/Repository**: Na het lezen van het beleid wordt de agent doorverwezen naar de betreffende workspace of repository.
+2. **Concepten Lezen** (voor ecosysteem uitvoerende agents): 
+   - **Ecosysteem uitvoerende agents** (zoals Canon Curator, Constitutioneel Auteur, Agent Smeder) lezen `concepten-en-architectonische-grondslagen.md` als fundamentele referentie.
+   - Dit document definieert alle bouwstenen en agent-soorten die in governance-documenten worden gebruikt.
+   - Adviserende agents en waarde-uitvoerende agents raadplegen concepten selectief bij onduidelijke termen.
+
+3. **Doorverwijzing naar Workspace/Repository**: Na het lezen van het beleid wordt de agent doorverwezen naar de betreffende workspace of repository.
    - De workspace kan zijn: een document-repository, een projectfolder, een governance-register, etc.
    - Deze verwijzing bepaalt waar de agent zich bevindt en welke grenzen gelden.
    - De workspace-context staat expliciet in het beleid vermeld.
 
-3. **Charter Activatie**: Pas na het lezen van het beleid en de context van de workspace kan de agent zijn eigen charter en prompts activeren.
+4. **Charter Activatie**: Pas na het lezen van het beleid en de context van de workspace kan de agent zijn eigen charter en prompts activeren.
    - Niet eerder.
 
 **Gevolgen**:
@@ -517,7 +521,7 @@ Deze norm geldt **wel** voor:
 
 ### Norm: Agent Bestanden en Naamgeving (sectie 12.3)
 
-**Kernprincipe**: Elk agent-ecosysteem heeft een uniforme bestands- en naamgevingsstructuur die scheiding afdwingt tussen contract (agents/), weergave (prompts/) en charter.
+**Kernprincipe**: Elk agent-ecosysteem heeft een uniforme bestands- en naamgevingsstructuur die scheiding afdwingt tussen agent-contract (agents/), weergave (prompts/) en agent-charter.
 
 **Agent-Prompt-Intent Architectuur**:
 
@@ -620,25 +624,25 @@ Alle prompts van één agent verwijzen naar **hetzelfde charter**. Het charter d
 
 ```
 Agent: moeder
-├── Contract:  .github/agents/moeder.beheer-git.agent.md
+├── Agent-contract:  .github/agents/moeder.beheer-git.agent.md
 ├── Prompt:    .github/prompts/mandarin.moeder.beheer-git.prompt.md
 └── Charter:   charters-agents/moeder.charter.md
 ```
 
-- **Contract** (agent.md): Specificatie van input, output, foutafhandeling (technisch)
+- **Agent-contract** (agent.md): Specificatie van input, output, foutafhandeling (technisch)
 - **Prompt** (prompt.md): Gebruiksvriendelijke presentatie met frontmatter (interface)
 - **Charter**: Volledige normatieve beschrijving van agent (governance)
 
 **Gevolgen**:
 
 1. Agent-ontwikkeling:
-   - Contract en prompt worden synchroon ontwikkeld
-   - Contract bevat de specificatie, prompt de gebruikersinterface
+   - Agent-contract en prompt worden synchroon ontwikkeld
+   - Agent-contract bevat de specificatie, prompt de gebruikersinterface
    - Charter blijft leidend voor alle beslissingen
 
 2. Validatie:
    - Frontmatter in prompts moet verwijzen naar bestaand charter
-   - Agent-naam in prompt moet overeenkomen met contract
+   - Agent-naam in prompt moet overeenkomen met agent-contract
    - Intent in frontmatter moet overeenkomen met bestandsnaam
 
 3. Publicatie:
@@ -1198,6 +1202,7 @@ Een agent-charter is conform deze standaard wanneer:
 
 | Datum      | Versie | Wijziging                                                             | Auteur                    |
 |------------|--------|-----------------------------------------------------------------------|---------------------------|
+| 2026-01-31 | 1.3.3  | Terminologie geüniformeerd: "governance-uitvoerende agents" vervangen door "ecosysteem uitvoerende agents" conform concepten-en-architectonische-grondslagen.md | Canon Curator |
 | 2026-01-30 | 1.3.2  | Nieuwe norm toegevoegd: Agent Communicatie — Gelezen en Gewijzigde Bestanden (sectie 12.2.5); verplichte transparantie over gelezen en gewijzigde bestanden met klikbare links | Canon Curator |
 | 2026-01-14 | 1.2.0  | Herkomstverantwoording toegevoegd; nieuwe norm: tijd is context (agents leiden tijd nooit af, melden ontbrekende tijdreferentie expliciet); timestamps met timezone (CET) | Constitutioneel Auteur |
 | 2026-01-14 | 1.1.2  | Toegevoegd: norm dat agents wijzigingen in de gedeelde werkelijkheid moeten loggen in de workspace state | Charter Schrijver Agent |

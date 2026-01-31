@@ -79,7 +79,10 @@ Daarom geldt:
 
 ## De enige geldige bronnen van gezag
 
-Binnen het ecosysteem bestaan vijf geldige gezagsbronnen die samen de **grondslagen** vormen.
+Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslagen** vormen.
+
+0. **Concepten en Architectonische Grondslagen**  
+  Fundamentele definities van bouwstenen, structuren en agent-soorten binnen het ecosysteem. Dit document dient als woordenboek en referentie voor alle andere governance-documenten.
 
 1. **De Constitutie**  
   Onveranderlijke, hoogste regels.
