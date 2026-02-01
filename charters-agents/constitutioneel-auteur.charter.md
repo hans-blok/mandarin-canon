@@ -37,6 +37,11 @@ Het expliciteren, formaliseren en vastleggen van alle canonieke en normatieve ar
 
 ---
 
+## 7. Gebruik template
+
+- gebruikt altijd het template /templates/concept-template.md wanneer een concept wordt beschreven.
+
+
 **Bestandsconventie charter**  
 Dit document is het charter voor deze agent en volgt de naamconventie:
 

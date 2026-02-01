@@ -1,8 +1,8 @@
 # Mandarin Value Streams en Fasen
 
-**Versie**: 1.1.0  
+**Versie**: 1.2.0  
 **Status**: Actief  
-**Datum**: 2026-01-31  
+**Datum**: 2026-02-01  
 **Auteur**: Constitutioneel Auteur  
 
 ---
@@ -13,7 +13,7 @@ Dit normatief artefact is afgeleid op basis van de volgende geraadpleegde bronne
 
 **Geraadpleegde bronnen**:
 - constitutie.md (versie 1.2.1, als normatief kader voor value stream begrip)
-- concepten-en-architectonische-grondslagen.md (versie 1.3.0, voor definities van Value stream en Value stream fase)
+- concepten-en-architectonische-grondslagen.md (versie 1.5.0, voor definities van Value stream en Value stream fase)
 
 **Toelichting**:
 Dit document legt vast welke value streams binnen het Mandarin-ecosysteem worden onderkend en welke fasen per value stream bestaan. Adviserende agents en uitvoerende agents worden toegekend aan één of meerdere value stream fasen. Beheeragents opereren in alle fasen. Utility agents staan orthogonaal op de value stream structuur en kunnen in willekeurige contexten worden ingezet.
@@ -80,7 +80,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 ### 3.0 Agent Ecosysteem Ontwikkeling
 
 **Type**: Ecosysteem value stream  
-**Omschrijving**: Deze value stream richt zich op het vormen, inrichten en laten evolueren van het agent-ecosysteem zelf. Agents in deze value stream produceren governance-artefacten, niet waarde-artefacten.
+**Omschrijving**: Deze value stream richt zich op het vormen, inrichten en laten evolueren van het agent-ecosysteem zelf. Agents in deze value stream produceren **governance-artefacten** (een specialisatie van normerende artefacten), geen bedrijfs-artefacten. Governance-artefacten worden **alleen en alleen** in deze value stream aangemaakt.
 
 **Fasen**:
 
@@ -95,7 +95,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 ### 3.1 Softwareontwikkeling
 
 **Type**: Waarde value stream  
-**Omschrijving**: De kern value stream voor het realiseren, wijzigen en onderhouden van software. Deze value stream sluit inhoudelijk aan op SAFe (Scaled Agile Framework), maar hanteert Nederlandstalige, architectonisch neutrale terminologie die binnen het Mandarin-ecosysteem is vastgesteld.
+**Omschrijving**: De kern value stream voor het realiseren, wijzigen en onderhouden van software. Deze value stream sluit inhoudelijk aan op SAFe (Scaled Agile Framework), maar hanteert Nederlandstalige, architectonisch neutrale terminologie die binnen het Mandarin-ecosysteem is vastgesteld. Agents in deze value stream produceren **bedrijfs-artefacten** (een specialisatie van normerende artefacten).
 
 **Fasen**:
 
@@ -128,7 +128,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 ### 3.2 Architectuur- en Oplossingsontwerp
 
 **Type**: Waarde value stream  
-**Omschrijving**: Deze value stream richt zich op het ontwerpen en onderbouwen van oplossingsrichtingen, los van concrete implementatie. Het betreft strategische en tactische architectuurkeuzes die richting geven aan softwareontwikkeling.
+**Omschrijving**: Deze value stream richt zich op het ontwerpen en onderbouwen van oplossingsrichtingen, los van concrete implementatie. Het betreft strategische en tactische architectuurkeuzes die richting geven aan softwareontwikkeling. Agents in deze value stream produceren **bedrijfs-artefacten** (een specialisatie van normerende artefacten).
 
 **Fasen**:
 
@@ -149,7 +149,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 ### 3.3 Kennisvastlegging
 
 **Type**: Waarde value stream  
-**Omschrijving**: Deze value stream richt zich op het expliciet maken, structureren en duurzaam vastleggen van kennis. Het doel is om kennis herbruikbaar, doorzoekbaar en overdraagbaar te maken binnen en buiten het ecosysteem.
+**Omschrijving**: Deze value stream richt zich op het expliciet maken, structureren en duurzaam vastleggen van kennis. Het doel is om kennis herbruikbaar, doorzoekbaar en overdraagbaar te maken binnen en buiten het ecosysteem. Agents in deze value stream produceren **bedrijfs-artefacten** (een specialisatie van normerende artefacten).
 
 **Fasen**:
 
@@ -167,71 +167,6 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 ---
 
-## 4. Value Stream Agents vs Utility Agents
-
-### 4.1 Value Stream Agents
-
-**Value stream agents** zijn adviserende agents of uitvoerende agents die direct gekoppeld zijn aan één of meerdere fasen binnen een specifieke value stream.
-
-**Kenmerken**:
-- Gebonden aan specifieke value stream fase(n)
-- Produceren waarde-artefacten of governance-artefacten binnen hun value stream
-- Opereren binnen de grenzen van hun toegekende fase(n)
-- Agent-soort: adviserende agent of uitvoerende agent
-
-**Voorbeelden**:
-- **Constitutioneel Auteur** — ecosysteem uitvoerende agent, fase: Grondslagvorming
-- **Canon Curator** — ecosysteem uitvoerende agent, fase: Ecosysteeminrichting
-- **Feature-analist** — waarde uitvoerende agent, value stream: Softwareontwikkeling, fase: Analyse
-- **Service-architect** — waarde uitvoerende agent, value stream: Softwareontwikkeling, fase: Ontwerp
-
-### 4.2 Utility Agents
-
-**Utility agents** staan orthogonaal op de value stream structuur. Zij zijn niet gekoppeld aan value stream fasen en leveren generieke, ondersteunende diensten die in willekeurige contexten kunnen worden ingezet.
-
-**Kenmerken**:
-- Niet gebonden aan value stream fasen
-- Leveren technische of ondersteunende capabilities
-- Kunnen door meerdere value streams en agents worden gebruikt
-- Produceren ondersteunende artefacten, geen waarde-artefacten
-- Agent-soort: vaak uitvoerende agent, maar met generieke scope
-
-**Voorbeelden** (conform agents/ directory):
-- **format-vertaler** — transformeert documenten tussen formaten (Markdown, Word)
-- **kort-schrijver** — herformuleert en optimaliseert teksten
-- **docker-steward** — beheert container-infrastructuur
-- **python-expert** — schrijft en reviewt Python-scripts
-- **layout-optimizer** — optimaliseert documentstructuur
-- **publicatie-agent** — publiceert artefacten
-
-### 4.3 Beheeragents
-
-**Beheeragents** opereren in alle fasen van alle value streams. De primaire beheeragent is de **Moeder agent**.
-
-**Kenmerken**:
-- Niet gebonden aan specifieke fasen, maar opereren in **alle** fasen
-- Wijzigen geen inhoud, maar wel structuur en governance
-- Zorgen voor operationele continuïteit
-- Agent-soort: beheeragent
-
-**Voorbeeld**:
-- **Moeder agent** — beheert workspace-state, beleid, governance, handoffs
-
-### 4.4 Positionering binnen het ecosysteem
-
-Alle drie de categorieën opereren binnen het Mandarin-ecosysteem en vallen onder dezelfde governance-principes:
-
-- Alle agents hebben een Agent-charter dat hun scope, bevoegdheden en verantwoordelijkheden vastlegt.
-- Alle agents produceren traceerbare Mandarin-artefacten.
-- Alle agents opereren onder gezag van de constitutie en relevante doctrines.
-
-**Verschil in positionering**:
-
-| Categorie | Value Stream Koppeling | Fase Koppeling | Primaire Output |
-|-----------|------------------------|----------------|------------------|
-| Value stream agents | Ja, specifieke value stream | Ja, één of meerdere fasen | Waarde-artefacten of governance-artefacten |
-| Beheeragents | Nee, overstijgt value streams | Nee, opereren in alle fasen | Governance-artefacten en structuur |
-| Utility agents | Nee, orthogonaal | Nee, willekeurig inzetbaar | Ondersteunende artefacten |
 
 ---
 
@@ -239,6 +174,7 @@ Alle drie de categorieën opereren binnen het Mandarin-ecosysteem en vallen onde
 
 | Datum | Versie | Wijziging | Auteur |
 |-------|--------|-----------|--------|
+| 2026-02-01 | 1.2.0 | Verduidelijking artefacttypes per value stream: governance-artefacten (normerende artefacten) alleen in value stream 0, bedrijfs-artefacten (normerende artefacten) in waarde value streams 1-n | Constitutioneel Auteur |
 | 2026-01-31 | 1.1.0 | Verduidelijking agent-toekenning per agent-soort: value stream agents (adviserende/uitvoerende), beheeragents (alle fasen), utility agents (orthogonaal) | Constitutioneel Auteur |
 | 2026-01-31 | 1.0.0 | Initiële versie — canonieke vastlegging van value streams en fasen | Constitutioneel Auteur |
 
@@ -252,5 +188,5 @@ Dit document is normatief en dient als bron voor:
 - **Doctrine-documenten**: Specifieke doctrines kunnen gelden per value stream of fase.
 
 Dit document verwijst naar:
-- **concepten-en-architectonische-grondslagen.md** (v1.3.0) voor de definitie van "Value stream" en "Value stream fase".
+- **concepten-en-architectonische-grondslagen.md** (v1.5.0) voor de definitie van "Value stream" en "Value stream fase".
 - **constitutie.md** (v1.2.1) als hoogste normatieve bron.
