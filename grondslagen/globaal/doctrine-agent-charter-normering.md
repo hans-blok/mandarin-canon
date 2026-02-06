@@ -3,7 +3,7 @@
 **Type**: Doctrine  
 **Repository**: mandarin-canon  
 **Identifier**: mandarin-canon.doctrine.agent-charter-normering  
-**Version**: 2.4.0  
+**Version**: 2.5.0  
 **Status**: Active  
 **Last Updated**: 2026-02-06  
 **Owner**: Hans Blok
@@ -227,6 +227,11 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
     - Wanneer deze primaire output de status heeft van **normerend artefact** (bijvoorbeeld governance-artefact of bedrijfs-artefact volgens mandarin-ordeningsconcepten), wordt deze **altijd** vastgelegd als Markdown-bestand (`.md`).  
     - Andere bestandsformaten (bijlagen, diagrammen, datasets) zijn toegestaan als **afgeleide artefacten**, maar vervangen nooit het normerende Markdown-artefact.
 
+6. **Norm 10.6 — Raadplegen van concept-curator-bestanden vóór uitvoering**  
+   - Voordat een **mandarin-agent** zijn primaire taken in een workspace uitvoert, raadpleegt hij de relevante concept-artefacten van de **concept-curator** in diezelfde workspace (bijvoorbeeld conceptdefinities en toetsingsrapporten).  
+   - Als er in de workspace een gecharterde concept-curator bestaat, worden de door die agent vastgelegde conceptbestanden beschouwd als de canonieke bron voor begrippen en terminologie binnen die workspace.  
+   - Wanneer concept-curator-bestanden ontbreken of inconsistent zijn, signaleert de agent dit expliciet in zijn output of log, en gaat hij alleen verder wanneer dit in lijn is met zijn eigen charter en hogere governance (bijvoorbeeld workspace-doctrine en constitutie).
+
 ---
 
 ## 11. Locatie en workspace-afspraken
@@ -246,6 +251,7 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
 
 | Datum      | Versie | Wijziging                                                                                                   | Auteur                |
 |------------|--------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| 2026-02-06 | 2.5.0  | Toegevoegd: norm 10.6 dat mandarin-agents vóór uitvoering de concept-curator-bestanden in de eigen workspace raadplegen | Constitutioneel Auteur |
 | 2026-02-06 | 2.4.0  | Norm 9.1 aangepast tot verwijzing naar constitutie (Artikel 4, punt 3) als bron voor versiebeheer via git | Constitutioneel Auteur |
 | 2026-02-06 | 2.3.0  | Aangepast versiebeheer: agent-charters hebben geen intern versieveld meer; versie en historie lopen via git (Norm 5 en 9) | Constitutioneel Auteur |
 | 2026-02-06 | 2.2.0  | Toegevoegd: norm 10.5 over outputbestanden van inhoudelijke agents en verplichte Markdown-vorm voor normerende artefacten | Constitutioneel Auteur |
