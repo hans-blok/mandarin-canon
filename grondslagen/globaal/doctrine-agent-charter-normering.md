@@ -3,7 +3,7 @@
 **Type**: Doctrine  
 **Repository**: mandarin-canon  
 **Identifier**: mandarin-canon.doctrine.agent-charter-normering  
-**Version**: 2.1.0  
+**Version**: 2.4.0  
 **Status**: Active  
 **Last Updated**: 2026-02-06  
 **Owner**: Hans Blok
@@ -109,7 +109,8 @@ Deze doctrine beschrijft de **normen** voor het opstellen, onderhouden en gebrui
 Een geldig agent-charter bevat minimaal de volgende elementen (overeenkomstig het template):
 
 1. **Identificatieblok**  
-   - Repository, Agent Identifier, Version, Status, Last Updated, Owner.
+   - Repository, Agent Identifier, Status, Owner (en optioneel aanvullende metadata zoals tags of classificaties).  
+   - Versiebeheer van het charter gebeurt **niet** via een versieveld in het bestand, maar via git (zie Norm 9.1).
 
 2. **Purpose (Missie en waarde)**  
    - Heldere, beknopte mission statement.
@@ -183,9 +184,9 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
 
 ## 9. Herkomst, versiebeheer en legitimiteit
 
-1. **Norm 9.1 — Versiebeheer**  
-   - Elk agent-charter heeft een expliciet versieveld.
-   - Wijzigingen worden gedocumenteerd in een lokale changelog of via publicatie-artefacten.
+1. **Norm 9.1 — Versiebeheer (verwijzing Constitutie)**  
+   - Voor versiebeheer en traceerbaarheid van agent-charters geldt rechtstreeks **Artikel 4, punt 3** van de Constitutie Mandarin (versiebeheer via git).  
+   - Deze doctrine voegt geen aanvullend intern versieveld toe aan agent-charters; zij volgen de constitutionele regel dat bestanden geen verplicht intern versieveld nodig hebben en dat nieuwe versies de vorige inhoud op hetzelfde bestandspad **overschrijven**.
 
 2. **Norm 9.2 — Herkomstverantwoording**  
    - Nieuwe of ingrijpend herziene agent-charters bevatten een korte herkomstverantwoording (verwijzing naar constitutie, doctrines, templates en relevante besluiten).
@@ -220,6 +221,11 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
      - welke bestanden zijn **aangepast** (met pad).  
    - Deze norm geldt voor **alle mandarin-agents**, ongeacht value stream of rol, tenzij een hogere norm anders voorschrijft.
 
+5. **Norm 10.5 — Output van inhoudelijke agents**  
+    - **Mandarin-agents** die op de **werkingsas** als *inhoudelijk* zijn gepositioneerd, produceren hun primaire output als bestand in de betreffende workspace.  
+    - Wanneer deze primaire output de status heeft van **normerend artefact** (bijvoorbeeld governance-artefact of bedrijfs-artefact volgens mandarin-ordeningsconcepten), wordt deze **altijd** vastgelegd als Markdown-bestand (`.md`).  
+    - Andere bestandsformaten (bijlagen, diagrammen, datasets) zijn toegestaan als **afgeleide artefacten**, maar vervangen nooit het normerende Markdown-artefact.
+
 ---
 
 ## 11. Locatie en workspace-afspraken
@@ -239,6 +245,9 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
 
 | Datum      | Versie | Wijziging                                                                                                   | Auteur                |
 |------------|--------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| 2026-02-06 | 2.4.0  | Norm 9.1 aangepast tot verwijzing naar constitutie (Artikel 4, punt 3) als bron voor versiebeheer via git | Constitutioneel Auteur |
+| 2026-02-06 | 2.3.0  | Aangepast versiebeheer: agent-charters hebben geen intern versieveld meer; versie en historie lopen via git (Norm 5 en 9) | Constitutioneel Auteur |
+| 2026-02-06 | 2.2.0  | Toegevoegd: norm 10.5 over outputbestanden van inhoudelijke agents en verplichte Markdown-vorm voor normerende artefacten | Constitutioneel Auteur |
 | 2026-02-06 | 2.1.0  | Toegevoegd: norm 10.4 over verplichte logging van gelezen en aangepaste bestanden bij handmatige initialisatie van alle mandarin-agents | Constitutioneel Auteur |
 | 2026-02-01 | 2.0.0  | Herijkte doctrine op basis van vernieuwde conceptuele en ordeningsgrondslagen; expliciete integratie van Template- en Prompt-concepten | Constitutioneel Auteur |
 

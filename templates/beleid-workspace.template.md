@@ -1,96 +1,54 @@
-# Workspace Beleid — <workspace-naam>
+# Beleid voor de <workspace-naam> workspace
 
-> Vul dit sjabloon in bij het opstellen van `governance/beleid.md` voor een nieuwe workspace.
-> Houd taalniveau B1 aan en verwijs waar nodig naar bestaande documenten in de standards-workspace.
+Deze workspace hoort bij de waardestroom **<value-stream-naam>**.
 
----
+## Scope
 
-**Constitutie**  
-Bron van alle regels voor het eco-systeem.
-
-- URL naar constitutie in standards:  
-  `<url-naar-standards/governance/constitutie.md>`
+- Deze workspace gaat over <korte beschrijving van de scope en doelen van deze workspace>.
+- Andere domeinen (zoals <voorbeelden van zaken die niet in deze workspace horen>) vallen buiten deze workspace en horen in andere repositories.
 
 **Value Stream**  
-Welke waardestroom is primair van toepassing op deze workspace?
+Deze workspace hoort bij de waardestroom **<value-stream-naam>**.
 
-- Value stream: `<bijv. Operational IT Development, of 'niet van toepassing' voor centrale eco-systeem workspaces>`
+## Richtlijnen
 
-**Scope (domein / product)**  
-Kern van het domein of product waar deze workspace over gaat.
+**Constitutie (verplicht)**
 
-- Scope: `<bijv. eCMR, data-platform, kennisbank>`
+De constitutie, algemene regels en governance voor alle workspaces staan in:
 
-**Taal**  
-Taalafspraak voor deze workspace.
+- https://github.com/hans-blok/mandarin-canon.git
 
-- Taal: `<bijv. Nederlands (B1)>`
+1. **Canon Repository Synchronisatie**: In alle geautomatiseerde en handmatig processen wordt daarom de centrale canon repository (`https://github.com/hans-blok/mandarin-canon.git`) geraadpleegd. Dit gebeurt altijd eerst met een `git pull`. Dit om te waarborgen dat de meest recente grondslagen worden gebruikt.
 
-**Doctrine**  
-Welke doctrine(s) zijn leidend voor het werk in deze workspace?
+**Foutmelding**: Wanneer de mandarin-canon-repository niet bereikbaar is of niet kan worden gevonden, wordt een foutmelding gegeven en stopt het proces.
 
-- Doctrine(s): `<bijv. IT Development Doctrine, Documentatie Doctrine>`
+## Dit beleid is workspace-specifiek
 
+Dit beleid beschrijft alleen de workspace-specifieke scope. Voor alle regels, uitzonderingen, details en constitutionele bepalingen volgen we volledig de richtlijnen in `hans-blok/mandarin-canon`.
 
-**Aanvullend beleid**  
-Eventuele aanvullende beleidsdocumenten specifiek voor deze workspace.
-
-- Aanvullend beleid: `<bijv. workspace-beleid.md in deze workspace>`
+<Optionele workspace-specifieke aanvullingen zoals:
+- Specifieke werkwijzen voor deze workspace
+- Bijzondere afhankelijkheden of integraties
+- Workspace-specifieke automatiseringen
+- etc.>
 
 ---
 
-## 1. Context
+## Instructies voor gebruik van dit template
 
-Beschrijf kort en duidelijk:
+1. Vervang `<workspace-naam>` met de naam van je workspace (bijvoorbeeld: "kennispublicatie", "architectuur-ontwerp")
+2. Vervang `<value-stream-naam>` met de juiste value stream naam (bijvoorbeeld: "agent-enablement", "markt-en-investeringsvorming", "kennisverwerving-en-verspreiding")
+3. Vervang `<korte beschrijving van de scope en doelen van deze workspace>` met een concrete beschrijving van wat deze workspace wel en niet doet
+4. Vervang `<voorbeelden van zaken die niet in deze workspace horen>` met specifieke voorbeelden
+5. Voeg eventuele workspace-specifieke aanvullingen toe in de laatste sectie
+6. Verwijder deze instructiesectie na het invullen
 
-- waarom deze workspace bestaat (doel);
-- welk domein of product centraal staat;
-- welke value stream en doctrine(s) hierop van toepassing zijn.
+### Value Stream Opties
 
-## 2. Scope
-
-### 2.1 Binnen scope (wel)
-
-Noem concrete voorbeelden van wat **wel** binnen de scope van deze workspace valt.
-
-- `<voorbeeld 1>`
-- `<voorbeeld 2>`
-
-### 2.2 Buiten scope (niet)
-
-Noem concrete voorbeelden van wat **niet** binnen de scope valt, om misverstanden te voorkomen.
-
-- `<voorbeeld 1>`
-- `<voorbeeld 2>`
-
-## 3. Niet in scope (expliciete uitsluitingen)
-
-Beschrijf expliciet welke onderwerpen dit beleid **niet** regelt (bijvoorbeeld technische implementatie, teamprocessen, specifieke SLA’s).
-
-- `<uitgesloten onderwerp 1>`
-- `<uitgesloten onderwerp 2>`
-
-## 4. Agent Werking
-
-Beschrijf hoe agents in deze workspace werken, in lijn met de constitutie en de standards-workspace:
-
-- welke agents hier actief zijn (Genesis + workspace-specifiek);
-- onder welke value stream(s) en doctrine(s) zij vallen;
-- welke Mandarin-artefacten zij lezen en schrijven.
-
-## 5. Kwaliteitsnormen
-
-Leg workspace-specifieke kwaliteitsnormen vast, aanvullend op de constitutie en de gedragscode:
-
-- taalniveau (B1);
-- eisen aan documentstructuur en naamgeving;
-- eisen aan traceerbaarheid (bijvoorbeeld koppeling aan value stream, doctrine en fase);
-- eventuele extra review- of escalatieregels.
-
-## 6. Samenvatting
-
-Geef een korte samenvatting (maximaal 5 bullets) met:
-
-- doel en scope van de workspace;
-- gekoppelde value stream(s) en doctrine(s);
-- belangrijkste afspraken over agents en kwaliteit.
+Bekende value streams:
+- **AEO** (Agent Enablement & Orchestratie): Het ontwerpen, bouwen en beheren van agents
+- **SFW** (Software-ontwikkeling): Software architectuur, development, testen
+- **AOD** (Architectuur- en Oplossingsontwerp): Enterprise architectuur, C4-modellen, ArchiMate
+- **KVL** (Kennisverwerving en -verspreiding): Publicaties, artikelen, essays, communicatie
+- **MIV** (Markt- en Investeringsvorming): Strategie, marktverkenning, business cases
+- **FND** (Foundation): Basis tooling, workspace management, engineering support

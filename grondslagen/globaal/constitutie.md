@@ -1,8 +1,8 @@
 # Constitutie Mandarin
 
-**Versie**: 1.2.1
+**Versie**: 1.3.0
 **Status**: Actief
-**Datum**: 2026-01-17
+**Datum**: 2026-02-06
 
 ---
 
@@ -145,7 +145,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 1. **Menselijke controle**: Inhoudelijke wijzigingen aan de Constitutie (nieuwe regels, gewijzigde principes) mogen door een mens en door de agent constitutioneel-auteur worden gedaan.
 2. **Verbod voor automatisering**: Geautomatiseerde tooling of processen mogen de Constitutie op geen enkele wijze wijzigen.
-3. **Versiebeheer**: Versies worden beheerd via duidelijke versienummers en een wijzigingslog.
+3. **Versiebeheer**: Canon en alle Mandarin-artefacten zijn versieerbaar en traceerbaar via **git-versiebeheer**. Bestanden hoeven geen intern versieveld te bevatten; de actuele staat is de HEAD-versie in git. Nieuwe versies overschrijven de vorige inhoud op hetzelfde bestandspad; oudere versies blijven raadpleegbaar via git-historie en eventuele publicatie-artefacten.
 4. **Herkomstverantwoording**: Alle wijzigingen in de canon kennen een herkomstverantwoording. Dit is verder uitgewerkt in doctrine-handoff-creatie-en-overdrachtsdiscipline.md.
 5. **Verantwoording agents**: Agents leggen verantwoording af.
 6. **Transparante ontstaansgeschiedenis**: Artefacten leggen hun ontstaansgeschiedenis bloot.
@@ -243,6 +243,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-02-06 | 1.3.0  | Versiebeheer van canon en Mandarin-artefacten geconcretiseerd: versie en historie lopen via git, bestanden hoeven geen intern versieveld te bevatten | Constitutioneel Auteur |
 | 2026-01-08 | 1.1.0  | Eerste publieke versie                                               | Constitutioneel Auteur |
 | 2026-01-16 | 1.2.0  | Artikel 2 ingekort tot verwijzing naar workspace-doctrine; Artikel 4 (Automatisering) verplaatst naar Artikel 2; artikelen hernummerd | Canon Curator |
 | 2026-01-17 | 1.2.1  | Spelling- en nummeringscorrecties; herkomstverantwoording en auteurschap bijgewerkt; ChatGPT-sessie verwerkt | Hans Blok |
