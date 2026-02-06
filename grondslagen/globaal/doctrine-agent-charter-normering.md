@@ -219,6 +219,7 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
    - De inhoud van het logbestand bevat ten minste een expliciete opsomming van:  
      - welke bestanden zijn **gelezen** (met pad), en  
      - welke bestanden zijn **aangepast** (met pad).  
+   - - welke bestanden zijn **aangemaakt** (met pad).  
    - Deze norm geldt voor **alle mandarin-agents**, ongeacht value stream of rol, tenzij een hogere norm anders voorschrijft.
 
 5. **Norm 10.5 — Output van inhoudelijke agents**  
