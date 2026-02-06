@@ -263,7 +263,7 @@ Voorbeeld:
 
 ---
 
-### U. Utility — Supporting Services
+### U. Ondersteunende diensten — Supporting Services
 **SAFe Concept**: Shared Services, Enablers
 
 **Doel**: Generieke ondersteunende taken die niet direct in de lineaire workflow passen maar wel essentieel zijn voor de development value stream
@@ -272,7 +272,7 @@ Voorbeeld:
 - Data transformatie en conversie
 - Document generatie en formatting
 - Code en template processing
-- Cross-cutting utilities
+- Cross-cutting ondersteunende functies
 - Herbruikbare helper functies
 
 **Artefacten**:
@@ -354,16 +354,16 @@ Voorbeeld:
 
 ## Agent Positionering
 
-### Moeder-Agent Verantwoordelijkheid
+### Workspace-steward verantwoordelijkheid
 
-De **moeder-agent** plaatst elke nieuwe agent in een fase van de workflow:
+De **workspace-steward** plaatst elke nieuwe agent in een fase van de workflow:
 
-1. **Agent creatie**: Moeder-agent vraagt om:
+1. **Agent creatie**: De workspace-steward vraagt om:
    - Naam van de agent
    - Domein van de agent
    - Context (wat doet de agent)
 
-2. **Fase bepaling**: Op basis van de agent-context bepaalt de moeder-agent in welke fase de agent hoort
+2. **Fase bepaling**: Op basis van de agent-context bepaalt de workspace-steward in welke fase de agent hoort
 
 3. **Folder structuur**: Artefacten worden geplaatst in artefacten-folders:
    ```
@@ -375,7 +375,7 @@ De **moeder-agent** plaatst elke nieuwe agent in een fase van de workflow:
        /e.bouw/
        /f.validatie/
        /g.deployment/
-       /u.utility/
+       /u.ondersteunend/
    ```
 
    **Agent bestanden blijven in de standards repository**:
@@ -389,7 +389,7 @@ De **moeder-agent** plaatst elke nieuwe agent in een fase van de workflow:
        └── std.agent.charter.<fase>.<naam>.md
    ```
 
-4. **Autonome plaatsing**: De moeder-agent neemt deze beslissing zelfstandig op basis van de agent-context
+4. **Autonome plaatsing**: De workspace-steward neemt deze beslissing zelfstandig op basis van de agent-context
 
 ### Agent Naamgeving
 
@@ -398,7 +398,7 @@ De **moeder-agent** plaatst elke nieuwe agent in een fase van de workflow:
 **Voorbeelden**:
 - `std.c.specificeer` — Specificatie agent
 - `std.e.genereer` — Code generatie agent
-- `std.u.convert` — Utility conversie agent
+- `std.u.convert` — Ondersteunende conversie-agent
 - `std.b.adr` — Architectuur beslissing agent
 
 **Fase-letters (lowercase)**:
@@ -409,7 +409,7 @@ De **moeder-agent** plaatst elke nieuwe agent in een fase van de workflow:
 - `e` = Bouw
 - `f` = Validatie
 - `g` = Deployment
-- `u` = Utility
+- `u` = Ondersteunend
 
 ### Agent Bestanden
 

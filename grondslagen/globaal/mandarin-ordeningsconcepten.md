@@ -3,9 +3,9 @@
 **Type**: Concepten en Definities  
 **Repository**: mandarin-canon  
 **Identifier**: mandarin-canon.concepten.meta  
-**Version**: 1.5.0  
+**Version**: 1.7.0  
 **Status**: Active  
-**Last Updated**: 2026-02-01  
+**Last Updated**: 2026-02-02  
 **Owner**: Hans Blok
 
 ---
@@ -32,6 +32,7 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 - [**mandarin-agent**-boundary](#**mandarin-agent**-boundary) — Expliciete afbakening van verantwoordelijkheid
 - [mandarin-agent-classificatie](#mandarin-agent-classificatie) — Positionering langs orthogonale assen
 - [As](#as) — Ordeningsdimensie voor positionering
+- [Artefact-functie-as](#artefact-functie-as) — Functierol van Mandarin-artefacten
 - [Artefactclassificatie](#artefactclassificatie) — Indeling van Mandarin-artefacten
 
 ### mandarin-agent-classificatie Assen
@@ -46,7 +47,6 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
   - [Governance-artefact](#governance-artefact) — Specialisatie: governance in ecosysteem (value stream 0)
   - [Richtinggevend artefact](#richtinggevend-artefact) — Specialisatie: normerende richting in waarde value streams (1-n)
 - [Realiserend artefact](#realiserend-artefact) — Artefact dat gedrag of structuur in systemen realiseert
-- [Afgeleid artefact](#afgeleid-artefact) — Artefact dat is afgeleid uit andere artefacten
 - [Beschrijvend artefact](#beschrijvend-artefact) — Artefact dat inzicht en uitleg biedt
 - [Documenterend artefact](#documenterend-artefact) — Artefact dat documenteert (inclusief modellen)
 - [Representatievorm](#representatievorm) — Vorm waarin betekenis wordt uitgedrukt
@@ -55,7 +55,7 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 
 ---
 
-## mandarin-agent-classificatie
+## Mandarin-agent-classificatie
 
 ### Definitie 📝
 mandarin-agent-classificatie is het expliciet positioneren van een **mandarin-agent** langs een vast stelsel van orthogonale assen, waarmee wordt vastgelegd wat het effect van de **mandarin-agent** is, waarop hij intervenieert, in welke context hij inzetbaar is en hoe hij handelt.
@@ -304,17 +304,91 @@ De **werkingsas** is een classificatie-as binnen mandarin-agent-classificatie di
 De **werkingsas** maakt cruciaal onderscheid tussen **mandarin-agents** die inhoud beïnvloeden en **mandarin-agents** die de voorwaarden voor inhoudelijk werk bewaken. Conditionele **mandarin-agents** zijn essentieel maar werken op een ander niveau.
 
 ---
+## Artefact-functie-as
+
+### Definitie 📝
+De **artefact-functie-as** is een classificatie-as voor **Mandarin-artefacten** die beschrijft *welke functie* een artefact vervult in de besluit- en waardeketen binnen het ecosysteem.
+
+**Leidende vraag:** *Welke normerende, realiserende, beschrijvende, documenterende of afgeleide functie heeft dit artefact in het ecosysteem?*
+
+### Kenmerken ⭐
+- Is een ordenings-as specifiek voor **Mandarin-artefacten** (niet voor **mandarin-agents**)
+- Positioneert artefacten op basis van hun rol in besluitvorming, uitvoering, inzicht, documentatie en afleiding
+- Vormt samen met de **representatievorm-as** de kern van **Artefactclassificatie**
+- Is onafhankelijk van bestandsformaat, tooling of repository-structuur
+- Is onafhankelijk van procesfase of value stream-fase; hetzelfde artefact kan in meerdere fasen worden gebruikt, maar heeft één primaire functie
+- Maakt onderscheid tussen primaire, normerende artefacten en afgeleide of ondersteunende artefacten
+
+### Posities 💫
+
+Op de **artefact-functie-as** worden ten minste de volgende canonieke posities onderscheiden:
+
+**1. Normerend artefact**
+- Legt normen, regels, kaders of richting vast
+- Bevat bindende afspraken of voorschriften
+- Specialisaties: **governance-artefact** (ecosysteem- en value-stream-overstijgend) en **richtinggevend artefact** (waarde value streams 1-n)
+
+**2. Realiserend artefact**
+- Realiseert direct gedrag, structuur of configuratie in systemen of processen
+- Heeft uitvoerbare of door tooling direct interpreteerbare impact
+- Voorbeelden: database-schema's, deployment-configuraties, codegeneratie-templates met normerend karakter
+
+**3. Beschrijvend artefact**
+- Maakt bestaande of voorgenomen werkelijkheid inzichtelijk
+- Legt analyse, structuur of samenhang vast zonder zelf normerend of realiserend te zijn
+- Voorbeelden: modellen, analyses, overzichten
+
+**4. Documenterend artefact**
+- Documenteert keuzes, werking, besluiten of context
+- Is vaak (deels) afgeleid van andere artefacten
+- Voorbeelden: handleidingen, README's, API-documentatie
+
+**5. Afgeleid artefact**
+- Is expliciet afgeleid van één of meer andere artefacten
+- Kan beschrijvend of documenterend zijn, maar is niet primair normerend
+- Voorbeelden: gegenereerde documentatie, views, samenvattende overzichten
+
+### Wat het niet is ❌
+- Geen indeling naar bestandsformaat, repository of tooling
+- Geen kwaliteitsmeting of volwassenheidsniveau van artefacten
+- Geen fasering van werk of levenscyclus-status (concept, draft, definitief)
+- Geen indeling naar betrokken personen, teams of rollen
+
+### Voorbeelden 💡
+- Een **constitutie** of **doctrine** staat op de **artefact-functie-as** als **normerend artefact** (met rol **governance-artefact**)
+- Een **application-charter** of themabeschrijving staat als **richtinggevend artefact** (dus normerend binnen een specifieke value stream)
+- Een logisch datamodel dat direct systeemgedrag bepaalt staat als **realiserend artefact**
+- Een architectuurdiagram of analysemodel zonder bindende normatieve status staat als **beschrijvend artefact**
+- Een gegenereerde API-referentie of gebruikershandleiding staat als **documenterend artefact**, vaak ook als **afgeleid artefact**
+
+### Synoniemen 🏷️
+- Artefact-rol-as
+- Functie-as voor artefacten
+
+### Analogieën 🔄
+- In informatiebeheer: beleid / proces / registratie als verschillende functies van informatie-objecten
+- In softwareontwikkeling: onderscheid tussen specificatie, implementatie, documentatie en gegenereerde artefacten
+
+### Toelichting 💬
+De **artefact-functie-as** maakt zichtbaar *wat* een artefact doet in het ecosysteem: of het kaders schept (normerend), gedrag realiseert (realiserend), inzicht geeft (beschrijvend), vastlegt en uitlegt (documenterend) of is afgeleid van andere artefacten (afgeleid). Deze as werkt samen met de **representatievorm-as**: dezelfde functie kan in verschillende representatievormen bestaan zonder dat de positie op de **artefact-functie-as** verandert.
+
+De posities op de **artefact-functie-as** corresponderen direct met de ordeningsconcepten **normerend artefact**, **governance-artefact**, **richtinggevend artefact**, **realiserend artefact**, **beschrijvend artefact**, **documenterend artefact** en **afgeleid artefact**. **Artefactclassificatie** gebruikt deze as expliciet om artefacten te positioneren naar hun functie, los van vorm, tooling en proces.
+
+---
 ## Artefactclassificatie
 
 ### Definitie 📝
-**Artefactclassificatie** is het expliciet ordenen en positioneren van **Mandarin-artefacten** langs een samenhangende set van artefact-typen, zodat helder is welk artefact normen vastlegt, welke artefacten waarde vertegenwoordigen, welke artefacten beschrijven en welke artefacten documenteren.
+**Artefactclassificatie** is het expliciet ordenen en positioneren van **Mandarin-artefacten** langs twee orthogonale assen:
+- een **artefact-functie-as** (normerend, richtinggevend, realiserend, beschrijvend, documenterend, afgeleid), en
+- een **representatievorm-as** (tekstueel, gestructureerd, visueel, machine-leesbaar, …),
+zodat helder is *welk* type artefact iets is en *in welke vorm* het wordt uitgedrukt.
 
 ### Kenmerken ⭐
-- Biedt een consistent classificatiekader voor alle Mandarin-artefacten
-- Onderscheidt drie hoofdklassen: **normerende artefacten**, **beschrijvende artefacten** en **documenterende artefacten**
-- Maakt binnen **normerende artefacten** onderscheid tussen **governance-artefacten** en **richtinggevende artefacten**
-- Is tooling-onafhankelijk: de classificatie verandert niet door formaat of implementatie
-- Verbindt artefacten expliciet met hun rol in value streams en in het ecosysteem
+- Biedt een consistent, tweedimensionaal classificatiekader voor alle **Mandarin-artefacten**
+- Gebruikt op de **artefact-functie-as** posities als: **normerend artefact** (met specialisaties **governance-artefact** en **richtinggevend artefact**), **realiserend artefact**, **beschrijvend artefact**, **documenterend artefact** en **afgeleid artefact**
+- Gebruikt op de **representatievorm-as** de concepten uit **representatievorm** (bijv. tekstueel, gestructureerd, visueel, machine-leesbaar) zonder voor elke positie een apart concept te introduceren
+- Is tooling-onafhankelijk: de classificatie verandert niet door bestandsformaat, repository of implementatiedetail
+- Verbindt artefacten expliciet met hun rol in **value streams** en in het ecosysteem
 - Maakt duidelijk welke artefacten primair zijn (niet-afgeleid) en welke artefacten afgeleid of ondersteunend zijn
 
 ### Wat het niet is ❌
@@ -324,10 +398,11 @@ De **werkingsas** maakt cruciaal onderscheid tussen **mandarin-agents** die inho
 - Geen technische classificatie (bijvoorbeeld op basis van repository of folderstructuur)
 
 ### Voorbeelden 💡
-- Een **doctrine** of **constitutie** wordt geclassificeerd als **normerend artefact** (deze zijn ecosysteemgericht; van toepassing is de specialisatie **governance-artefact**)
-- Een requirements-specificatie of thema-beschrijving wordt geclassificeerd als **richtinggevende-artefacten** (normerend binnen een waarde value stream)
-- Een **architectuurvisie**, **ArchiMate-model** of **analyse-rapport** wordt geclassificeerd als **beschrijvend artefact**
-- Een **handleiding**, README, een mandarin-agent-overzicht, of **API-documentatie** wordt geclassificeerd als **documenterend artefact**
+- Een **doctrine** of **constitutie** wordt geclassificeerd als **normerend artefact** met rol **governance-artefact**, meestal in een tekstuele representatievorm (bijv. Markdown)
+- Een requirements-specificatie of thema-beschrijving wordt geclassificeerd als **richtinggevend artefact** (normerend binnen een waarde value stream), vaak tekstueel of gestructureerd
+- Een **ArchiMate-model** of ander analysemodel wordt geclassificeerd als **beschrijvend artefact** in een visuele of model-gebaseerde representatievorm
+- Een **handleiding**, README, mandarin-agent-overzicht of **API-documentatie** wordt geclassificeerd als **documenterend artefact**, vaak deels gegenereerd uit andere artefacten
+- Een logisch datamodel dat direct systeemgedrag realiseert wordt geclassificeerd als **realiserend artefact** in een gestructureerde, machine-leesbare vorm (bijv. DDL, model-XML)
 
 ### Synoniemen 🏷️
 - Artefact-positionering
@@ -338,52 +413,14 @@ De **werkingsas** maakt cruciaal onderscheid tussen **mandarin-agents** die inho
 - In softwareontwikkeling: onderscheid tussen source artefacts, design docs en generated documentation
 
 ### Toelichting 💬
-**Artefactclassificatie** vormt de meta-laag boven op de concrete definities van **Mandarin-artefact**, **normerend artefact**, **governance-artefact**, **richtinggevend artefact**, **beschrijvend artefact**, **realiserend-artefact**,  en **documenterend artefact**. Zij legt vast *hoe* deze artefact-typen zich tot elkaar verhouden en welke rol zij spelen in het Mandarin-ecosysteem.
+**Artefactclassificatie** vormt de meta-laag boven op de concrete definities van **Mandarin-artefact**, **normerend artefact**, **governance-artefact**, **richtinggevend artefact**, **realiserend artefact**, **beschrijvend artefact**, **documenterend artefact**, **afgeleid artefact**, **representatie** en **representatievorm**. Zij legt vast *langs welke assen* artefacten worden geordend en welke posities op die assen canoniek zijn.
 
-Door deze classificatie wordt helder:
-- welke artefacten bindend en prescriptief zijn (normerend, met governance- en richtinggevende artefacten als specialisaties),
-- welke artefacten uitleg en inzicht bieden (beschrijvend), en
-- welke artefacten duurzame documentatie en modellen leveren (documenterend).
+Samengevat:
+- de **artefact-functie-as** Positioneert artefacten op basis van hun normerende en afgeleide functie binnen het ecosysteem. Met deze functie krijgt het artefact betekenis.
+- de **representatievorm-as** maakt zichtbaar *hoe* die betekenis wordt uitgedrukt (tekstueel, gestructureerd, visueel, machine-leesbaar, …).
 
-Dit maakt het mogelijk om werk, governance en documentatie scherp van elkaar te scheiden, tooling verwisselbaar te houden en de betekenis van elk artefact type vast en toetsbaar te maken.
+Door deze tweedimensionale classificatie wordt helder welke artefacten bindend en prescriptief zijn, welke artefacten uitleg en inzicht bieden, welke artefacten duurzame documentatie en modellen leveren en hoe al deze artefacten in verschillende representatievormen kunnen bestaan zonder dat hun rol verandert. Dit maakt het mogelijk om werk, governance en documentatie scherp van elkaar te scheiden, tooling verwisselbaar te houden en de betekenis van elk artefacttype vast en toetsbaar te maken.
 
----
-## Mandarin-artefact
-
-### Definitie 📝
-Een **Mandarin-artefact** is een duurzame, expliciete en overdraagbare vastlegging van resultaat of besluitvorming, die binnen een **value stream fase** waarde representeert en als input kan dienen voor vervolgwerk.
-
-### Kenmerken ⭐
-- Duurzaam (blijft bestaan)
-- Expliciet (leesbaar, inspecteerbaar)
-- Overdraagbaar (kan door anderen of **mandarin-agents** gebruikt worden)
-- Waarde-dragend (vertegenwoordigt gerealiseerde waarde)
-
-### Wat het niet is ❌
-- Geen tijdelijke notitie
-- Geen impliciete kennis
-- Geen niet-overdraagbaar resultaat
-
-### Voorbeelden 💡
-- Zie: **waarde-artefacten** en **governance-artefacten**
-
-### Synoniemen 🏷️
-- **Artefact**
-
-### Analogieën 🔄
-- Vergelijkbaar met een **artefact** in softwareontwikkeling (build-artifact, document)
-- In projectmanagement: **deliverable**
-- In DDD: **Aggregate Result** of **Documented Outcome**
-
-### Toelichting 💬
-Er zijn drie hoofdklassen van **Mandarin-artefacten**:
-1. **Normerende artefacten** — leggen normen en regels vast, operationeel in maximaal één value stream fase
-   - **Governance-artefacten** (specialisatie) — ontstaan in value stream "**mandarin-agent** Ecosysteem Ontwikkeling"
-  - **Richtinggevende artefacten** (specialisatie) — ontstaan in waarde value streams (1-n)
-2. **Beschrijvende artefacten** — bieden inzicht en uitleg
-3. **Documenterende artefacten** — documenteren (inclusief modellen)
-
-Deze indeling scheidt **betekenis van vorm**, maakt tooling verwisselbaar, houdt governance scherp en klein, en erkent modellen als uitleg (niet als waarheid).
 
 ---
 
@@ -791,6 +828,8 @@ Een bronrepresentatie is leidend bij verschil van interpretatie, niet per defini
 
 | Datum      | Versie | Wijziging                                                           | Auteur     |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-02-02 | 1.7.0  | Toegevoegd: Artefact-functie-as als expliciete ordenings-as voor Mandarin-artefacten, gekoppeld aan Artefactclassificatie | Constitutioneel Auteur  |
+| 2026-02-02 | 1.6.0  | Herziening Artefactclassificatie: expliciete tweedimensionale ordening langs artefact-functie-as en representatievorm-as, voorbeelden uitgebreid | Constitutioneel Auteur  |
 | 2026-02-01 | 1.5.0  | Bedrijfs-artefact hernoemd naar Richtinggevend artefact; toegevoegd: Realiserend artefact en Afgeleid artefact als aanvullende ordeningsconcepten | Constitutioneel Auteur  |
 | 2026-02-01 | 1.4.0  | Toegevoegd: meta-concept Representatiestatus met categorie Bronrepresentatie | Constitutioneel Auteur  |
 | 2026-02-01 | 1.3.0  | Toegevoegd: meta-concept Representatie als concrete uitdrukking van betekenis in een representatievorm | Constitutioneel Auteur  |

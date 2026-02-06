@@ -67,7 +67,7 @@ Doelen zijn **toetsbaar, expliciet en herhaalbaar**.
 - **Technische risico's**: Identificeren en mitigation strategieën
 - **Architectural Runway**: Fundament voor toekomstige features
 - **Intentional Architecture**: Bewuste architecturale keuzes aligned met business strategie
-- **Service Types definiëren**: Entity, Task, Orchestration, Rule, Utility services
+- **Service Types definiëren**: Entity, Task, Orchestration, Rule en ondersteunende services
 
 ### Buiten Scope (DOET NIET)
 - **Gedetailleerd API-ontwerp**: Geen specifieke endpoints, JSON schemas, validaties (dat is fase D)
@@ -124,13 +124,13 @@ Deze fase mag **alleen starten** als aan alle onderstaande criteria is voldaan:
 ### Methoden en Referenties
 - **Architecture Decision Records (ADR)**: Structured format voor architecturale beslissingen
 - **Domain-Driven Design (DDD)**: Bounded contexts, ubiquitous language, context mapping
-- **SOA Methodologie (Thomas Erl)**: Service types (Entity, Task, Utility)
+- **SOA Methodologie (Thomas Erl)**: Service types (Entity, Task en ondersteunende services)
 - **Arcitura SOA Patterns**: [https://patterns.arcitura.com/soa-patterns](https://patterns.arcitura.com/soa-patterns)
 - **Hybride REST Architectuur**: Resource APIs (CRUD) vs Function APIs (acties)
 - **C4 Model**: Context, Container, Component, Code diagrams
 - **Architectural Runway (SAFe)**: Intentional architecture voor toekomstige features
 - **Quality Attribute Scenarios**: Voor NFR-definitie en validatie
-- **TLX Service Architectuur**: Entity (E), Task (T), Orchestration (O), Rule (R), Utility (U)
+- **TLX Service Architectuur**: Entity (E), Task (T), Orchestration (O), Rule (R), Ondersteunend (U)
 
 Focus: **strategische beslissingen en architecturale runway**, niet detail.
 
@@ -161,7 +161,7 @@ Focus: **strategische beslissingen en architecturale runway**, niet detail.
    - Consequenties en trade-offs
 
 2. **Architectuurpatronen Documentatie**:
-   - Service architectuur (Entity, Task, Orchestration, Rule, Utility)
+- Service architectuur (Entity, Task, Orchestration, Rule, Ondersteunend)
    - API-stijl (Resource APIs vs Function APIs)
    - Messaging patterns
    - Data patterns
@@ -330,7 +330,7 @@ Deze fase definieert de **TLX Service Types** die in alle downstream fases gebru
 | **Task** | T | ++ | ++ | Composition | ❌ Nee | ❌ Nee (orchestreert Entity services) |
 | **Orchestration** | O | + | +++ | Proces Composition | ❌ Nee | ❌ Nee |
 | **Rule** | R | +++ | - | Rules | ✅ Ja | ✅ Ja (binnen context) |
-| **Utility** | U | + | +++ | Divers | ❌ Nee | Contextafhankelijk |
+| **Ondersteunend** | U | + | +++ | Divers | ❌ Nee | Contextafhankelijk |
 
 **Legend**: +++ = primair gebruik, ++ = regelmatig, + = beperkt, - = niet van toepassing
 
@@ -363,7 +363,7 @@ Deze fase definieert de **TLX Service Types** die in alle downstream fases gebru
 3. **Bounded Context Respect**:
    - Entity (E) en Rule (R) blijven binnen context
    - Task (T) en Orchestration (O) mogen cross-context zijn
-   - Utility (U) is context-agnostisch
+   - Ondersteunende services (U) zijn context-agnostisch
 
 4. **Geen SQL in Task Services**: Task orchestreert Entity services (geen directe database access)
 
@@ -377,7 +377,7 @@ Deze fase definieert de **TLX Service Types** die in alle downstream fases gebru
 |  | **Business** | **Non-business** |
 |---|--------------|------------------|
 | **Proces non-agnostisch** | [Task Services](https://patterns.arcitura.com/soa-patterns/basics/soamethodology/task_services) | - |
-| **Proces agnostisch** | [Entity Services](https://patterns.arcitura.com/soa-patterns/basics/soamethodology/entity_services) | [Utility Services](https://patterns.arcitura.com/soa-patterns/basics/soamethodology/utility_services) |
+| **Proces agnostisch** | [Entity Services](https://patterns.arcitura.com/soa-patterns/basics/soamethodology/entity_services) | Ondersteunende services zoals beschreven in de SOA-methodologie |
 
 **Referenties**:
 - [Arcitura SOA Patterns](https://patterns.arcitura.com/soa-patterns)

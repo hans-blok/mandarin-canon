@@ -39,7 +39,7 @@ Conflicten worden altijd opgelost volgens deze volgorde.
 
 ### Geldt WEL voor:
 - Alle softwareproducten (ECMR, facturatie, EFTI, etc.)
-- Alle SAFe-fases (A t/m G + Utility)
+- Alle SAFe-fases (A t/m G + U)
 - Menselijke en AI-gedreven activiteiten
 - Alle agents die bijdragen aan de applicatie
 
@@ -94,7 +94,7 @@ Elke applicatie doorloopt expliciet de volgende fases:
 | E | Bouw | Werkende code + CI |
 | F | Validatie | Bewijs van voldoen aan criteria |
 | G | Deployment | Release, runbooks |
-| U | Utility | Ondersteunende services |
+| U | Ondersteunend | Ondersteunende services |
 
 Geen fase mag worden overgeslagen.
 

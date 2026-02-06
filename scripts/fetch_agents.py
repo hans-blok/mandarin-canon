@@ -34,14 +34,15 @@ from typing import Dict, List, Tuple
 @dataclass
 class AgentSpec:
     name: str
-    agent_type: str  # utility or value-stream
+    agent_type: str  # type-indicatie, bijv. value-stream of ecosysteem-breed
     value_streams: List[str] = field(default_factory=list)
     files: List[Path] = field(default_factory=list)
     metadata: Dict[str, str] = field(default_factory=dict)
 
     def is_applicable_to(self, value_stream: str) -> bool:
         value_stream = value_stream.lower()
-        if self.agent_type == "utility":
+        # Ecosysteem-brede agents zijn altijd van toepassing tenzij expliciet beperkt
+        if self.agent_type == "ecosysteem-breed":
             return True if not self.value_streams or "*" in self.value_streams else value_stream in self.value_streams
         return value_stream in self.value_streams or "*" in self.value_streams
 
@@ -147,7 +148,7 @@ def load_manifest(repo_path: Path, manifest_name: str) -> Tuple[List[AgentSpec],
         if not naam or not value_stream:
             raise ValueError(f"Agent entry {idx} missing naam/valueStream")
 
-        agent_type = "utility" if value_stream.lower() == "utility" else "value-stream"
+        agent_type = "ecosysteem-breed" if value_stream.lower() == "ecosysteem-breed" else "value-stream"
         files: List[Path] = []
         # charter
         charter_tpl = get_template(locaties.get("charters"), value_stream)
@@ -166,7 +167,7 @@ def load_manifest(repo_path: Path, manifest_name: str) -> Tuple[List[AgentSpec],
             AgentSpec(
                 name=str(naam),
                 agent_type=agent_type,
-                value_streams=["*"] if agent_type == "utility" else [value_stream.lower()],
+                value_streams=["*"] if agent_type == "ecosysteem-breed" else [value_stream.lower()],
                 files=files,
                 metadata={"aantalPrompts": str(aantal_prompts), "aantalRunners": str(aantal_runners)},
             )
@@ -201,17 +202,17 @@ def filter_agents(specs: List[AgentSpec], value_stream: str) -> Tuple[List[Agent
 
 
 def resolve_files(repo_path: Path, specs: List[AgentSpec]) -> Tuple[List[Path], List[Path], List[Path], List[str]]:
-    """Resolve agent files. Returns (vs_files, util_files, runner_modules, missing).
+    """Resolve agent files. Returns (vs_files, eco_files, runner_modules, missing).
     
     runner_modules zijn directories die volledig moeten worden overschreven.
     """
     vs_files: List[Path] = []
-    util_files: List[Path] = []
+    eco_files: List[Path] = []
     runner_modules: List[Path] = []  # Module folders to replace entirely
     missing: List[str] = []
 
     for spec in specs:
-        bucket = util_files if spec.agent_type == "utility" else vs_files
+        bucket = eco_files if spec.agent_type == "ecosysteem-breed" else vs_files
         for rel in spec.files:
             if "*" in rel.name:
                 parent = (repo_path / rel).parent
@@ -266,10 +267,10 @@ def organize(vs_files: List[Path], util_files: List[Path], runner_modules: List[
     scripts_dir = workspace / "scripts"
     stats = {"new": 0, "updated": 0, "unchanged": 0, "error": 0, "modules_replaced": 0}
 
-    all_files = vs_files + util_files
+    all_files = vs_files + eco_files
     print(f"\n[INFO] Organizing {len(all_files)} files + {len(runner_modules)} runner modules...")
     print(f"       Value-stream files: {len(vs_files)}")
-    print(f"       Utility files: {len(util_files)}")
+    print(f"       Ecosysteem-brede files: {len(eco_files)}")
     print(f"       Runner modules: {len(runner_modules)}")
 
     # Handle runner modules first - FULL REPLACEMENT
@@ -433,7 +434,6 @@ def main() -> int:
             for s in streams:
                 applicable, _ = filter_agents(specs, s)
                 print(f"  - {s} ({len(applicable)} agents)")
-            print(f"  - utility (always included for utility agents)")
             print(f"Manifest version: {meta['version']} published: {meta['published_at']}")
             return 0
 
@@ -441,7 +441,7 @@ def main() -> int:
             print("[ERROR] value-stream argument is required (or use --list)")
             return 1
 
-        if streams and value_stream.lower() not in streams and value_stream.lower() != "utility":
+        if streams and value_stream.lower() not in streams:
             print(f"[WARN] Value-stream '{value_stream}' not in manifest streams: {', '.join(streams)}")
 
         applicable, skipped = filter_agents(specs, value_stream)
@@ -457,7 +457,7 @@ def main() -> int:
             print(f"       Prompts removed: {cleanup_stats['prompts_removed']}")
             print(f"       Total removed: {cleanup_stats['total_removed']}")
 
-        vs_files, util_files, runner_modules, missing = resolve_files(repo, applicable)
+        vs_files, eco_files, runner_modules, missing = resolve_files(repo, applicable)
         if missing:
             print("[WARN] Missing files:")
             for m in missing:

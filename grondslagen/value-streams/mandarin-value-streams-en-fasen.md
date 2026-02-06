@@ -1,8 +1,8 @@
 # Mandarin Value Streams en Fasen
 
-**Versie**: 1.4.0  
+**Versie**: 1.5.0  
 **Status**: Actief  
-**Datum**: 2026-02-02  
+**Datum**: 2026-02-05  
 **Auteur**: Constitutioneel Auteur  
 
 ---
@@ -16,7 +16,7 @@ Dit normatief artefact is afgeleid op basis van de volgende geraadpleegde bronne
 - concepten-en-architectonische-grondslagen.md (versie 1.5.0, voor definities van Value stream en Value stream fase)
 
 **Toelichting**:
-Dit document legt vast welke value streams binnen het Mandarin-ecosysteem worden onderkend en welke fasen per value stream bestaan. Value stream specifieke agents worden toegekend aan één of meerdere value stream fasen. Daarnaast zijn er value-stream-overstijgende agents. Deze worden in alle workspaces ingezet.
+Dit document legt vast welke value streams binnen het Mandarin-ecosysteem worden onderkend en welke fasen per value stream bestaan. Adviserende agents en uitvoerende agents worden toegekend aan één of meerdere value stream fasen. Beheeragents opereren in alle fasen. Daarnaast zijn er value-stream-overstijgende agents die orthogonaal op de value stream structuur staan en in willekeurige contexten kunnen worden ingezet.
 
 ---
 
@@ -26,9 +26,14 @@ Dit document legt vast welke value streams binnen het Mandarin-ecosysteem worden
 
 Dit document beschrijft de canonieke set van **value streams** die binnen het Mandarin-ecosysteem worden onderkend, met de bijbehorende **fasen** per value stream. Value streams representeren de verschillende waardestromen waarin agents opereren en waarde-artefacten produceren.
 
+### 1.2 Agent-toekenning aan value streams
+In project workspaces wordt waarde toegevoegd. Dit gebeurt door minimaal één value stream uit te voeren. Dit kunnen er ook meerdere zijn. 
+Bij de inrichting van de workspace worden de agents die operationeel zijn in die value stream _gefechted_ naar deze workspace. Zo ordenen we het eco-systeem en kunnen we workspaces efficient inrichten. 
+Daar kent Mandarin agents die value stream overstijgend werk doen. Dit zijn _foundational agents_. Deze worden altijd _gefetched_.
+
 ---
 
-## 1. Overzicht Value Streams
+## 2. Overzicht Value Streams
 
 Het Mandarin-ecosysteem onderkent de volgende value streams:
 
@@ -38,7 +43,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 | 1 | SFW  | Softwareontwikkeling | Waarde | Realiseren, wijzigen en onderhouden van software |
 | 2 | AOD  | Architectuur- en Oplossingsontwerp | Waarde | Ontwerpen en onderbouwen van oplossingsrichtingen |
 | 3 | KNV  | Kennisvastlegging | Waarde | Expliceren, structureren en vastleggen van kennis |
-| 4 | ONV  | Ondernemingsvorming | Waarde | Vormgeven en realiseren van een nieuwe onderneming |
+| 4 | MIV  | Markt- en Investeringsvorming | Waarde | Orde brengen in markt- en investeringskeuzes onder onzekerheid |
 
 ---
 
@@ -57,6 +62,9 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 02. **Ecosysteeminrichting**  
    Het operationaliseren van grondslagen door het creëren van Agent-charters, beleid, workspace-structuren en beheer-instrumenten.
 
+03. **Ecosysteemworkflow en -automatisering**  
+   Het ontwerpen, implementeren en onderhouden van geautomatiseerde workflows en pipelines (fetch, runners, publicatie, logging) die de werking van het agent-ecosysteem ondersteunen en afdwingen op basis van de vastgestelde grondslagen en inrichting.
+
 ---
 
 ### 3.1 Softwareontwikkeling (SFW)
@@ -66,8 +74,8 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 **Fasen**:
 
-01. **Veranderverkenning**  
-   Het verkennen en identificeren van een veranderbehoefte of -trigger in de context van bestaande software of gewenste nieuwe functionaliteit.
+01. **Veranderkenning**  
+   Het herkennen en identificeren van een veranderbehoefte of -trigger in de context van bestaande software of gewenste nieuwe functionaliteit.
 
 02. **Werkvoorbereiding**  
    Het voorbereiden van het werk door het vaststellen van scope, prioriteiten, randvoorwaarden en eerste verkenning van haalbaarheid en impact.
@@ -113,7 +121,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 ---
 
-### 3.3 Kennisvastlegging (KVL)
+### 3.3 Kennisvastlegging (KNV)
 
 **Type**: Waarde value stream  
 **Omschrijving**: Deze value stream richt zich op het expliciet maken, structureren en duurzaam vastleggen van kennis. Het doel is om kennis herbruikbaar, doorzoekbaar en overdraagbaar te maken binnen en buiten het ecosysteem. Agents in deze value stream produceren **bedrijfs-artefacten** (een specialisatie van normerende artefacten).
@@ -132,34 +140,32 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 04. **Publicatie en Onderhoud**  
    Het beschikbaar maken van kennis voor gebruikers en het actueel houden ervan gedurende de levenscyclus.
 
-
 ---
 
-### 3.4 Ondernemingsvorming (ONV)
+### 3.4 Markt- en Investeringsvorming (MIV)
 
 **Type**: Waarde value stream  
-**Omschrijving**: Deze value stream richt zich op het vormgeven, valideren en realiseren van een nieuwe onderneming of initiatief. Het omvat het uitwerken van propositie en businessmodel, het verzamelen van bewijs, en het voorbereiden en geven van pitches aan besluitvormers of investeerders.
+**Omschrijving**: Deze value stream richt zich op het onder voorwaarden en met orde omgaan met fundamentele onzekerheid rond Mandarin als marktproduct en/of investeringsasset. Het doel is niet om zo snel mogelijk één richting te kiezen, maar om onzekerheid stap voor stap te reduceren en keuzeruimte toetsbaar te maken.
 
 **Fasen**:
 
-01. **Kans- en Probleemverkenning**  
-   Het identificeren en expliciteren van het probleem, de marktkans en de doelgroep waarvoor de onderneming waarde wil creëren.
+01. **Strategische intentie expliciteren**  
+   Het expliciet maken waarom Mandarin bestaat buiten eigen gebruik, en of Mandarin primair wordt gezien als intern hefboom-instrument, marktproduct of investeringsasset. In deze fase worden 2–3 strategische intenties en hun spanningen over een horizon van 3–5 jaar expliciet gemaakt, zonder nog te bepalen hoe die worden gerealiseerd.
 
-02. **Propositie- en Businessmodelvorming**  
-   Het uitwerken van waardepropositie, businessmodel, verdienmodel en positionering, inclusief aannames en risico's.
+02. **Waarde-hypotheses formuleren**  
+   Het formuleren van meerdere, expliciete waarde-hypotheses (bijvoorbeeld Excel-vervanging, overnamepotentieel, interne capability, licentieproduct) zonder hier al een keuze in te maken. Per hypothese wordt vastgelegd wie de primaire gebruiker is, welk probleem wordt opgelost en waarom iemand hiervoor zou betalen of investeren.
 
-03. **Bewijsvoering en Validatie**  
-   Het verzamelen van kwalitatieve en kwantitatieve onderbouwing (prototypes, experimenten, klantgesprekken) om de aannames achter de propositie en het businessmodel te toetsen.
+03. **Positioneringsrichtingen verkennen**  
+   Het verkennen van mogelijke positioneringen in de markt, niet als marketing maar als identiteit: bijvoorbeeld tool versus platform versus methode, productbedrijf versus dienstverlener, niche-oplossing versus generiek systeem. Meerdere positioneringen mogen naast elkaar bestaan; waar zij elkaar uitsluiten wordt dat expliciet gemaakt.
 
-04. **Pitchvoorbereiding**  
-   Het structureren van de boodschap, het samenstellen van pitchmateriaal (bijv. pitchdeck) en het afstemmen van verhaal en cijfers op de doelgroep (investeerders, bestuur, directie).
+04. **Monetisatie-logica’s scheiden**  
+   Het onderscheiden van mogelijke monetisatie-logica’s (bijvoorbeeld licentie per gebruiker/organisatie, abonnement op hosting en updates, consultancy/dienstverlening met Mandarin als hefboom, of intern houden met indirecte waarde). Monetisatie wordt hier bewust losgekoppeld van productkeuze; per logica worden implicaties voor governance, support en architectuur in kaart gebracht.
 
-05. **Pitch en Besluitvorming**  
-   Het presenteren van de onderneming of het initiatief aan besluitvormers en investeerders, inclusief beantwoording van vragen en het vastleggen van besluiten en vervolgstappen.
+05. **Investering en kostenrealiteit expliciet maken**  
+   Het inzichtelijk maken van kosten en risico’s van kiezen en van uitstellen, waaronder indicatieve hostingkosten, onderhouds- en supportdruk en risico’s van technische lock-in zonder marktkeuze. Deze fase produceert scenario’s met kosten- en risicoprofielen, inclusief expliciete doorkosten bij uitstel.
 
-06. **Ondernemingsinrichting**  
-   Het formaliseren en inrichten van de gekozen onderneming (structuur, rollen, governance, financieringsafspraken) op basis van de genomen besluiten.
-
+06. **Keuzeruimte structureren (geen besluit)**  
+   Het structureren van het beslislandschap: welke keuzes nu minimaal nodig zijn (bijvoorbeeld basis-hosting), welke keuzes bewust later kunnen worden genomen, en welke keuzes elkaar blokkeren. De uitkomst is een beslislandschap met expliciete uitstel- en keuzepunten, geen definitief besluit.
 
 ---
 
@@ -167,6 +173,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 | Datum | Versie | Wijziging | Auteur |
 |-------|--------|-----------|--------|
+| 2026-02-05 | 1.5.0 | Aanpassing: value stream Ondernemingsvorming (ONV) vervangen door Markt- en Investeringsvorming (MIV) met herziene, op onzekerheidsreductie gerichte fasering | Constitutioneel Auteur |
 | 2026-02-02 | 1.4.0 | Toegevoegd: value stream Ondernemingsvorming (ONV) met genormeerde fasering van kansverkenning tot ondernemingsinrichting | Constitutioneel Auteur |
 | 2026-02-02 | 1.3.0 | Toegevoegd: drie-letterige codes per value stream en genormeerde fasevolgnummers (01, 02, …) per value stream fase | Constitutioneel Auteur |
 | 2026-02-01 | 1.2.0 | Verduidelijking artefacttypes per value stream: governance-artefacten (normerende artefacten) alleen in value stream 0, bedrijfs-artefacten (normerende artefacten) in waarde value streams 1-n | Constitutioneel Auteur |

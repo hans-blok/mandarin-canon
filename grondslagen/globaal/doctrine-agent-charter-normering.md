@@ -3,9 +3,9 @@
 **Type**: Doctrine  
 **Repository**: mandarin-canon  
 **Identifier**: mandarin-canon.doctrine.agent-charter-normering  
-**Version**: 2.0.0  
+**Version**: 2.1.0  
 **Status**: Active  
-**Last Updated**: 2026-02-01  
+**Last Updated**: 2026-02-06  
 **Owner**: Hans Blok
 
 ---
@@ -212,6 +212,14 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
 3. **Norm 10.3 — Evaluatie en herziening**  
    - Bij significante wijziging van scope, beslisbevoegdheid of value stream-inbedding wordt het agent-charter herzien **vóór** aanpassing van contracten of implementatie.
 
+4. **Norm 10.4 — Logging bij handmatige initialisatie**  
+   - Wanneer een **mandarin-agent** handmatig wordt geïnitieerd (dus niet via een geautomatiseerde pipeline of runner), schrijft deze initialisatie een logbestand weg.  
+   - De bestandsnaam volgt het patroon: `yyyyddmm.HHmm <agent-naam>.log` (jaar, dag, maand, 24-uurs tijd zonder dubbele punt, gevolgd door een spatie en de canonieke agent-naam).  
+   - De inhoud van het logbestand bevat ten minste een expliciete opsomming van:  
+     - welke bestanden zijn **gelezen** (met pad), en  
+     - welke bestanden zijn **aangepast** (met pad).  
+   - Deze norm geldt voor **alle mandarin-agents**, ongeacht value stream of rol, tenzij een hogere norm anders voorschrijft.
+
 ---
 
 ## 11. Locatie en workspace-afspraken
@@ -231,6 +239,7 @@ Een agent-charter dat één of meer van bovenstaande onderdelen mist, wordt als 
 
 | Datum      | Versie | Wijziging                                                                                                   | Auteur                |
 |------------|--------|-------------------------------------------------------------------------------------------------------------|-----------------------|
+| 2026-02-06 | 2.1.0  | Toegevoegd: norm 10.4 over verplichte logging van gelezen en aangepaste bestanden bij handmatige initialisatie van alle mandarin-agents | Constitutioneel Auteur |
 | 2026-02-01 | 2.0.0  | Herijkte doctrine op basis van vernieuwde conceptuele en ordeningsgrondslagen; expliciete integratie van Template- en Prompt-concepten | Constitutioneel Auteur |
 
 ---

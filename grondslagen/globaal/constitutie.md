@@ -88,7 +88,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
   Onveranderlijke, hoogste regels.
 
 2. **Beleid**  
-  Beleid geldt per workspace. Het belangrijkste doel is het vastleggen van de scope van de workspace en directe verwijzing naar deze constitutie zodat mandaat duidelijk wordt. Het beleid wordt altijd geschreven door de **moeder**; uit haar ontstaat de workspace.
+  Beleid geldt per workspace. Het belangrijkste doel is het vastleggen van de scope van de workspace en directe verwijzing naar deze constitutie zodat mandaat duidelijk wordt. Het beleid wordt altijd geschreven door de **workspace-steward**; vanuit deze rol ontstaat de workspace.
 
 3. **Doctrines**  
   Voor goede producten en een effectief verbeterproces is een vaste manier van werken voorwaardelijk. Zonder gedeelde uitgangspunten ontstaat willekeur: oplossingen zijn moeilijk vergelijkbaar, besluiten zijn slecht uitlegbaar en leren wordt persoonsafhankelijk. Deze vaste manier van werken is vastgelegd in doctrines. Doctrines behandelen geen details, maar een orde van denken en handelen.

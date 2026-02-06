@@ -4,14 +4,14 @@
 
 Moeder haalt benodigde agents op uit het agent-services repository en installeert deze in de huidige workspace. Dit gebeurt op basis van workspace-behoeften en de beschikbare agents in het centrale register.
 
-**VERPLICHT**: Lees exports/utility/charters-agents/charter.moeder.md voor volledige context, grenzen en werkwijze.
+**VERPLICHT**: Lees exports/agents/charters-agents/charter.moeder.md voor volledige context, grenzen en werkwijze.
 
 ## Contract
 
 ### Input (Wat gaat erin)
 
 **Verplichte parameters**:
-- value-stream: Uit welke value stream moeten agents opgehaald worden? (type: string, bijv. 'kennispublicatie', 'it-development', 'utility', 'ondernemingsvorming')
+- value-stream: Uit welke value stream moeten agents opgehaald worden? (type: string, bijv. 'kennispublicatie', 'it-development', 'ondernemingsvorming')
 - branch: Welke branch van agent-services moet gebruikt worden? (type: string, bijv. 'main', 'develop')
 
 **Optionele parameters**:
@@ -57,5 +57,5 @@ Voor alle details over werkwijze (JSON parsing, Git fetch, installatie-logica, w
 
 ---
 
-Documentatie: Zie [exports/utility/charters-agents/charter.moeder.md](exports/utility/charters-agents/charter.moeder.md)  
-Runner: exports/utility/runners/moeder.py
+Documentatie: Zie [exports/agents/charters-agents/charter.moeder.md](exports/agents/charters-agents/charter.moeder.md)  
+Runner: exports/agents/runners/moeder.py

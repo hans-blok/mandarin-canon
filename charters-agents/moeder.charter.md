@@ -3,7 +3,7 @@
 **Agent**: moeder  
 **Domein**: Workspace-ordening, governance, agent-lifecycle  
 **Agent-soort**: Beheeragent  
-**Value Stream**: utility
+**Value Stream**: ecosysteem-breed
 
 **Governance**: Deze agent volgt het beleid vastgelegd in `beleid-workspace.md` (workspace root), dat doorverwijst naar de constitutie en grondslagen in https://github.com/hans-blok/canon.git. Alle governance-richtlijnen uit de canon zijn bindend.
 
@@ -29,7 +29,7 @@ Moeder's kerntaken zijn traceerbaar naar acht specifieke prompts:
 5. `.github/prompts/moeder-zet-agent-boundary.prompt.md` - Agent boundary definitie
 6. `.github/prompts/moeder-valideer-governance.prompt.md` - Governance compliance validatie
 7. `.github/prompts/moeder-beheer-workspace-state.prompt.md` - Workspace state beheer en logging
-8. `exports/utility/prompts/moeder-fetch-agents.prompt.md` - Agents ophalen uit agent-services repository
+8. `exports/agents/prompts/moeder-fetch-agents.prompt.md` - Agents ophalen uit agent-services repository
 
 ### 1. Repository Beheer (Git)
 Bron: `moeder-beheer-git.prompt.md`
@@ -153,7 +153,7 @@ Bron: `moeder-beheer-workspace-state.prompt.md`
 - **Legitimiteit bewaken**: Valideert dat agents de state hebben gelezen voordat zij handelen (legitimiteitsvoorwaarde)
 
 ### 8. Agents Ophalen (Fetching)
-Bron: `exports/utility/prompts/moeder-fetch-agents.prompt.md`
+Bron: `exports/agents/prompts/moeder-fetch-agents.prompt.md`
 
 - **Register raadplegen**: Leest `agents-publicatie.json` uit agent-services repository
 - **Value stream filtering**: Haalt alle agents op uit opgegeven value stream
@@ -205,7 +205,7 @@ Dit gedrag is **by design**: fetching installeert de canonieke versie uit agent-
 - `state-<workspace-naam>.md` lezen, bijwerken en bewaken conform doctrine workspace state en legitimiteit
 - Capability boundaries definiëren voor nieuwe agents (via `moeder-zet-agent-boundary.prompt.md`)
 - 4-regels agent definitie output voor Agent Smeder handoff
-- **Agents ophalen uit agent-services** (via `exports/utility/prompts/moeder-fetch-agents.prompt.md`)
+- **Agents ophalen uit agent-services** (via `exports/agents/prompts/moeder-fetch-agents.prompt.md`)
 - **agents-publicatie.json lezen en parsen** voor beschikbare agents
 - **Value stream based fetching** van charters, prompts en runners
 - **Branch selectie** bij ophalen (main, develop, etc.)
@@ -339,10 +339,10 @@ Gebruik `.github/prompts/moeder-configureer-github.prompt.md`:
 3. **Automation**: GitHub Pages, branch protection, stale issue cleanup, dependency updates
 
 ### Bij agents ophalen
-Gebruik `exports/utility/prompts/moeder-fetch-agents.prompt.md`:
+Gebruik `exports/agents/prompts/moeder-fetch-agents.prompt.md`:
 
 **Input**:
-- `value-stream`: kennispublicatie | it-development | utility | ondernemingsvorming (verplicht)
+- `value-stream`: kennispublicatie | it-development | ondernemingsvorming (verplicht)
 - `branch`: main | develop | etc. (verplicht)
 - `agent-services-locatie` (optioneel): URL of lokaal pad, default: 'https://github.com/hans-blok/agent-services.git'
 - `include-runners` (optioneel): boolean, default: true
@@ -575,7 +575,7 @@ Actie:
 - `.github/prompts/moeder-zet-agent-boundary.prompt.md` - Agent boundary definitie (4-regels output voor Agent Smeder)
 - `.github/prompts/moeder-valideer-governance.prompt.md` - Governance compliance validatie
 - `.github/prompts/moeder-beheer-workspace-state.prompt.md` - Workspace state beheer en logging
-- `exports/utility/prompts/moeder-fetch-agents.prompt.md` - Agents ophalen uit agent-services repository
+- `exports/agents/prompts/moeder-fetch-agents.prompt.md` - Agents ophalen uit agent-services repository
 
 ---
 

@@ -2,9 +2,9 @@
 
 ## Rolbeschrijving
 
-De Layout Optimizer optimaliseert de visuele layout van bestaande architectuurdiagrammen zonder de semantiek te wijzigen. Details over taken, grenzen en werkwijze staan in exports/utility/charters-agents/charter.layout-optimizer.md.
+De Layout Optimizer optimaliseert de visuele layout van bestaande architectuurdiagrammen zonder de semantiek te wijzigen. Details over taken, grenzen en werkwijze staan in exports/agents/charters-agents/charter.layout-optimizer.md.
 
-**VERPLICHT**: Lees exports/utility/charters-agents/charter.layout-optimizer.md voor volledige context en verantwoordelijkheden.
+**VERPLICHT**: Lees exports/agents/charters-agents/charter.layout-optimizer.md voor volledige context en verantwoordelijkheden.
 
 ## Contract
 
@@ -42,7 +42,7 @@ Deze prompt is een contract op hoofdlijnen. Voor alle details over:
 - hoe diagrammen conceptueel worden vertaald naar een graph-spec,
 - hoe layout-principes worden toegepast en gerapporteerd,
 
-verwijst de Layout Optimizer volledig naar de charter in exports/utility/charters-agents/charter.layout-optimizer.md.
+verwijst de Layout Optimizer volledig naar de charter in exports/agents/charters-agents/charter.layout-optimizer.md.
 
 **Governance**:
 - Respecteert governance/gedragscode.md (waar aanwezig).
@@ -52,5 +52,5 @@ verwijst de Layout Optimizer volledig naar de charter in exports/utility/charter
 
 ---
 
-Documentatie: Zie [exports/utility/charters-agents/charter.layout-optimizer.md](exports/utility/charters-agents/charter.layout-optimizer.md)  
+Documentatie: Zie [exports/agents/charters-agents/charter.layout-optimizer.md](exports/agents/charters-agents/charter.layout-optimizer.md)  
 Runner: scripts/runners/layout-optimizer.py (nog niet geïmplementeerd)

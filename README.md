@@ -41,7 +41,7 @@ mandarin-canon/
 │   ├── it-development/      # IT Development doctrines
 │   └── value-streams/       # Value stream specifieke doctrines
 ├── logs/                    # Log bestanden
-├── scripts/                 # Utility scripts en runners
+├── scripts/                 # Ondersteunende scripts en runners
 │   └── runners/             # Agent runner scripts
 ├── temp/                    # Tijdelijke bestanden
 ├── templates/               # Sjablonen voor charters, etc.
@@ -69,7 +69,7 @@ Het volledige beleid voor deze workspace staat in [beleid-mandarin-canon.md](bel
 ## Agent Werking
 
 In deze workspace zijn twee typen agents primair actief:
-1. **Moeder-agent**: Beheert governance, beleid en documentatie
+1. **Workspace-steward**: Beheert governance, beleid en documentatie
 2. **Schrijvende agents**: Stellen doctrines, beleid en normering op
 
 Deze agents vallen onder de agent-ecosysteem constitutie en niet onder een specifieke value stream.
@@ -97,7 +97,7 @@ Deze agents vallen onder de agent-ecosysteem constitutie en niet onder een speci
 
 | Datum | Versie | Wijziging | Auteur |
 |-------|--------|-----------|--------|
-| 2026-01-23 | 1.0.0 | Initiële creatie van README.md voor mandarin-canon workspace | Moeder Agent |
+| 2026-01-23 | 1.0.0 | Initiële creatie van README.md voor mandarin-canon workspace | Workspace-steward |
 
 ---
 

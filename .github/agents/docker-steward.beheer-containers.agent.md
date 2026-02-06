@@ -2,9 +2,9 @@
 
 ## Rolbeschrijving
 
-De Docker Steward beheert de lokale Docker-omgeving voor deze workspace en maakt architectuurvisualisaties (zoals C4-diagrammen) eenvoudig toegankelijk via de browser. Details over taken, grenzen en werkwijze staan in exports/utility/charters-agents/charter.docker-steward.md.
+De Docker Steward beheert de lokale Docker-omgeving voor deze workspace en maakt architectuurvisualisaties (zoals C4-diagrammen) eenvoudig toegankelijk via de browser. Details over taken, grenzen en werkwijze staan in exports/agents/charters-agents/charter.docker-steward.md.
 
-**VERPLICHT**: Lees exports/utility/charters-agents/charter.docker-steward.md voor volledige context en verantwoordelijkheden.
+**VERPLICHT**: Lees exports/agents/charters-agents/charter.docker-steward.md voor volledige context en verantwoordelijkheden.
 
 ## Contract
 
@@ -38,7 +38,7 @@ Deze prompt is een contract op hoofdlijnen. Voor alle details over:
 - hoe containers worden gekozen en beheerd,
 - hoe architectuurvisualisaties aan Docker-services worden gekoppeld,
 
-verwijst de Docker Steward volledig naar de charter in exports/utility/charters-agents/charter.docker-steward.md.
+verwijst de Docker Steward volledig naar de charter in exports/agents/charters-agents/charter.docker-steward.md.
 
 **Governance**:
 - Respecteert governance/gedragscode.md (waar aanwezig).
@@ -48,5 +48,5 @@ verwijst de Docker Steward volledig naar de charter in exports/utility/charters-
 
 ---
 
-Documentatie: Zie [exports/utility/charters-agents/charter.docker-steward.md](exports/utility/charters-agents/charter.docker-steward.md)  
+Documentatie: Zie [exports/agents/charters-agents/charter.docker-steward.md](exports/agents/charters-agents/charter.docker-steward.md)  
 Runner: scripts/runners/docker-steward.py (nog niet geïmplementeerd)

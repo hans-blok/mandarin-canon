@@ -145,7 +145,7 @@ Deze agent mag NOOIT:
 
 ## 9. Escalatie-triggers
 
-Deze agent escaleert naar Moeder Agent of menselijke eigenaar wanneer:
+Deze agent escaleert naar de workspace-steward of menselijke eigenaar wanneer:
 
 - Scope-conflict met ander Agent-charter wordt gedetecteerd
 - Ontbrekende of tegenstrijdige input die niet op te lossen is
