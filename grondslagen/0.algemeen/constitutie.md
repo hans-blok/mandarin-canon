@@ -1,6 +1,6 @@
 # Constitutie Mandarin
 
-**Versie**: 1.4.0
+**Versie**: 2.0.0
 **Status**: Actief
 **Datum**: 2026-02-08
 
