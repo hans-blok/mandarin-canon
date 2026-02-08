@@ -20,7 +20,6 @@ __pycache__/
 *.egg
 
 # IDE files
-.vscode/
 .idea/
 
 # OS files
