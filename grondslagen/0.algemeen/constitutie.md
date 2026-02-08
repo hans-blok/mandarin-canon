@@ -1,8 +1,8 @@
 # Constitutie Mandarin
 
-**Versie**: 1.3.0
+**Versie**: 1.4.0
 **Status**: Actief
-**Datum**: 2026-02-06
+**Datum**: 2026-02-08
 
 ---
 
@@ -231,7 +231,56 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 ---
 
-## Artikel 7 — Slotbepaling
+## Artikel 7 — Canon, Grondslagen en Toepassingsbereik
+
+### 7.1 Gelaagdheid van de canon
+De canon van dit ecosysteem bestaat uit:
+1. **Algemene grondslagen**, die altijd en voor iedereen van toepassing zijn;
+2. **Value-stream-specifieke grondslagen**, die uitsluitend normatief zijn binnen de betreffende value stream.
+
+Geen enkel document buiten deze canonieke lagen heeft normatieve werking.
+
+### 7.2 Toepassingsbereik van grondslagen
+Een actor (mens of geautomatiseerde rol) mag uitsluitend handelen op basis van:
+- de algemene grondslagen, en
+- de grondslagen van de value stream waarin hij expliciet opereert.
+
+Het raadplegen of toepassen van grondslagen uit andere value streams is niet toegestaan, tenzij dit expliciet en gemotiveerd is vastgelegd.
+
+### 7.3 Verplichte value-stream-positie
+Elke geautomatiseerde rol, agent, runner of orkestratiecomponent:
+- heeft exact één primaire value stream;
+- verklaart deze value stream expliciet als onderdeel van zijn definitie of charter.
+
+Zonder expliciete value-stream-positie is inzet niet toegestaan.
+
+### 7.4 Beperking van context en kennis
+Geautomatiseerde rollen:
+- lezen geen canonieke documenten buiten hun toepassingsbereik;
+- baseren beslissingen en uitvoering uitsluitend op relevante grondslagen;
+- vermijden impliciete afhankelijkheden van niet-normatieve context.
+
+Contextbeperking is een kwaliteits- en governance-eis, geen optimalisatie.
+
+### 7.5 Grondslagen boven implementatie
+Grondslagen beschrijven:
+- principes,
+- normen,
+- afbakeningen,
+- en verantwoordelijkheden.
+
+Implementatiedetails, toolingkeuzes en technische invulling maken geen deel uit van de constitutie en kunnen geen normatieve status verkrijgen.
+
+### 7.6 Conflict en escalatie
+Bij conflict tussen:
+- algemene grondslagen en value-stream-grondslagen, prevaleren de algemene grondslagen;
+- value-stream-grondslagen onderling, is escalatie naar menselijk toezicht verplicht.
+
+Geen enkele geautomatiseerde rol mag conflicten zelfstandig oplossen door normselectie.
+
+---
+
+## Artikel 8 — Slotbepaling
 
 1.  **Onmiddellijke Werking**: Deze Constitutie geldt onmiddellijk voor alle bestaande en toekomstige repositories, workflows en processen.
 2.  **Prevalentie**: Bij conflict tussen deze Constitutie en lagere documenten, geldt altijd de Constitutie.
@@ -243,6 +292,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-02-08 | 1.4.0  | Artikel 7 toegevoegd: Canon, Grondslagen en Toepassingsbereik. Gelaagdheid van canon geformaliseerd, value-stream-specifieke grondslagen geïntroduceerd, contextbeperking als governance-eis vastgelegd. Artikel 7 (Slotbepaling) hernummerd naar Artikel 8 | Constitutioneel Auteur |
 | 2026-02-06 | 1.3.0  | Versiebeheer van canon en Mandarin-artefacten geconcretiseerd: versie en historie lopen via git, bestanden hoeven geen intern versieveld te bevatten | Constitutioneel Auteur |
 | 2026-01-08 | 1.1.0  | Eerste publieke versie                                               | Constitutioneel Auteur |
 | 2026-01-16 | 1.2.0  | Artikel 2 ingekort tot verwijzing naar workspace-doctrine; Artikel 4 (Automatisering) verplaatst naar Artikel 2; artikelen hernummerd | Canon Curator |
