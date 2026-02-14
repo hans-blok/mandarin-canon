@@ -1,7 +1,7 @@
 # Agent Doctrine — Agent Charter Normering
 
 **Doctrine-ID**: `AEO.DOC.001`  
-**Versie**: 2.0.0  
+**Versie**: 2.1.0  
 **Value Stream**: Agent Ecosysteem ontwikkeling 
 
 ---
@@ -158,6 +158,24 @@ Maar alleen binnen de kaders van:
 
 ---
 
+### Principe 9 — Output-formaat Normering voor Inhoudelijke Agents
+
+Agents die op de **werkingsas de positie "Inhoudelijk"** hebben, leveren altijd een bestand als primair artefact.
+
+Wanneer een agent op de **vorm-as "Vormvast"** is gepositioneerd:
+
+- Het **default formaat is Markdown**, tenzij expliciet anders gevraagd in de prompt;
+- Alternatieve formaten (zoals YAML) worden alleen toegepast wanneer expliciet aangevraagd;
+- De keuze voor het formaat wordt gedocumenteerd in de output.
+
+Deze normering waarborgt:
+
+- **Voorspelbaarheid**: ecosysteem-breed consistente output;
+- **Flexibiliteit**: ruimte voor context-specifieke formatering;
+- **Expliciete intentie**: formatwijziging vereist bewuste keuze.
+
+---
+
 ## 4. Ontwerprichting
 
 De creatie van een agent-charter volgt een architectonische discipline:
@@ -199,6 +217,7 @@ Charters die deze doctrine incorporeren, dragen bij aan de **architectonische co
 
 | Datum       | Versie | Wijziging                                                                 | Auteur |
 |------------|--------|---------------------------------------------------------------------------|--------|
+| 2026-02-13 | 2.1.0  | Principe 9 toegevoegd: output-formaat normering voor inhoudelijke agents | —      |
 | 2026-02-12 | 2.0.0  | Fundamentele herziening: focus op ecosysteem-architectuur en -integriteit | —      |
 | YYYY-MM-DD | 1.1.0  | Transparantie- en logplicht expliciet toegevoegd als kernprincipe        | —      |
 | YYYY-MM-DD | 1.0.0  | Initiële doctrine met nadruk op Prompt First en versie-discipline         | —      |

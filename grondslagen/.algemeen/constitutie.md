@@ -1,8 +1,8 @@
 # Constitutie Mandarin
 
-**Versie**: 2.0.2
+**Versie**: 2.1.0
 **Status**: Actief
-**Datum**: 2026-02-08
+**Datum**: 2026-02-14
 
 ---
 
@@ -89,9 +89,13 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 2. **Beleid**  
   Beleid geldt per workspace. Het belangrijkste doel is het vastleggen van de scope van de workspace en directe verwijzing naar deze constitutie zodat mandaat duidelijk wordt. Het beleid wordt altijd geschreven door de **workspace-steward**; vanuit deze rol ontstaat de workspace.
+  
+  **Workspace-beleid heeft precedentie boven doctrines**: binnen de grenzen van de constitutie mag workspace-beleid ecosysteem-brede doctrines overrulen of aanvullen. Bijvoorbeeld: de workspace `mandarin-agents` kan een eigen workspace-doctrine hanteren die afwijkt van algemene doctrines.
 
 3. **Doctrines**  
   Voor goede producten en een effectief verbeterproces is een vaste manier van werken voorwaardelijk. Zonder gedeelde uitgangspunten ontstaat willekeur: oplossingen zijn moeilijk vergelijkbaar, besluiten zijn slecht uitlegbaar en leren wordt persoonsafhankelijk. Deze vaste manier van werken is vastgelegd in doctrines. Doctrines behandelen geen details, maar een orde van denken en handelen.
+  
+  Doctrines zijn ecosysteem-breed van toepassing, tenzij expliciet aangepast of overruled door workspace-beleid.
 
 4. **Agent-normering**  
   Waar doctrines richting geven aan het denken en charters gezag en verantwoordelijkheid expliciteren, zorgt agent-normering voor uniformiteit, vergelijkbaarheid en betrouwbaarheid binnen het geheel. Agent-normering bepaalt niet wat een agent doet, maar aan welke eisen elke agent moet voldoen om überhaupt te mogen bestaan.
@@ -108,7 +112,13 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 ## Artikel 1 — Werkingssfeer en hiërarchie
 
 1. **Bindend**: Deze constitutie geldt voor alle repositories, workflows en artefacten binnen het ecosysteem.
-2. **Hiërarchie**: Bij conflict prevaleert de Constitutie altijd boven de Gedragscode, beleidsdocumenten, charters of andere specificaties. Lagere documenten mogen de Constitutie niet tegenspreken, verzwakken of negeren.
+2. **Hiërarchie**: De normatieve orde binnen het ecosysteem is als volgt:
+   - **Constitutie** — De bindende grondslag voor het gehele ecosysteem;
+   - **Beleid** — Per workspace vastgelegd; kan binnen de grenzen van de constitutie doctrines overrulen of aanvullen;
+   - **Doctrines** — Ecosysteem-brede principes en werkwijzen, tenzij expliciet aangepast door workspace-beleid;
+   - **Agent-normering en Charters** — Specificaties die vallen onder doctrine en beleid.
+   
+   Bij conflict tussen deze lagen prevaleert altijd de hogere laag. Workspace-beleid mag doctrines overrulen, maar nooit de constitutie tegenspreken, verzwakken of negeren.
 3. **Doel**: De Constitutie waarborgt voorspelbaarheid, kwaliteit, veiligheid en traceerbaarheid.
 4. **Taalgebruik en communicatie**: Communicatie binnen het ecosysteem is formeel, duidelijk, eenvoudig en minimaal op taalniveau B1; discriminerend, beledigend of vijandig taalgebruik is verboden.
 
@@ -188,7 +198,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
     De standaardtaal binnen het ecosysteem, en binnen alle canonieke en normatieve artefacten die rechtstreeks uit de Constitutie voortvloeien, is **Nederlands**.
 
     Dit geldt in ieder geval voor:
-    - principes, doctrines en gedragscodes;
+    - principes, doctrines en beleidsdocumenten;
     - rolbenamingen en verantwoordelijkheden;
     - architecturale beschrijvingen en verklarende teksten.
 
@@ -292,6 +302,7 @@ Geen enkele geautomatiseerde rol mag conflicten zelfstandig oplossen door normse
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-02-14 | 2.1.0  | Hiërarchie verduidelijkt: constitutie → beleid → doctrines. Workspace-beleid kan doctrines overrulen. Gedragscode volledig verwijderd uit normatieve structuur. | Constitutioneel Auteur |
 | 2026-02-08 | 1.4.0  | Artikel 7 toegevoegd: Canon, Grondslagen en Toepassingsbereik. Gelaagdheid van canon geformaliseerd, value-stream-specifieke grondslagen geïntroduceerd, contextbeperking als governance-eis vastgelegd. Artikel 7 (Slotbepaling) hernummerd naar Artikel 8 | Constitutioneel Auteur |
 | 2026-02-06 | 1.3.0  | Versiebeheer van canon en Mandarin-artefacten geconcretiseerd: versie en historie lopen via git, bestanden hoeven geen intern versieveld te bevatten | Constitutioneel Auteur |
 | 2026-01-08 | 1.1.0  | Eerste publieke versie                                               | Constitutioneel Auteur |
