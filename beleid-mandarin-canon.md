@@ -19,7 +19,7 @@ Kern van het domein of product waar deze workspace over gaat.
 **Doctrine**  
 Welke doctrine(s) zijn leidend voor het werk in deze workspace?
 
-- Doctrine(s): `workspace-doctrine`, `doctrine-it-development`, `doctrine/value-streams`
+- Doctrine(s): `workspace-doctrine`, `doctrine-it-development`, `doctrine/value-streams`, `doctrine-agent-charter-normering`, `doctrine-intent-naming`
 
 **Taal**  
 Taalafspraak voor deze workspace.

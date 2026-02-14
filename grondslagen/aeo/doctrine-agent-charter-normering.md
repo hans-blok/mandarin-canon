@@ -213,6 +213,15 @@ Charters die deze doctrine incorporeren, dragen bij aan de **architectonische co
 
 ---
 
+## Gerelateerde Doctrines
+
+Deze doctrine wordt aangevuld door:
+
+- **[doctrine-intent-naming.md](doctrine-intent-naming.md)**  
+  Normeert de naming van agent-intents door canonieke werkwoorden te koppelen aan agent-classificaties. Agents met charters definiëren intents volgens deze naming-conventie.
+
+---
+
 ## 7. Change Log
 
 | Datum       | Versie | Wijziging                                                                 | Auteur |

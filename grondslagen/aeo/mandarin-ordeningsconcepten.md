@@ -94,6 +94,9 @@ mandarin-agent-classificatie is het expliciet positioneren van een **mandarin-ag
 ### Toelichting 💬
 mandarin-agent-classificatie vervangt het concept "**mandarin-agent**-soort" door een meer genuanceerd stelsel van orthogonale assen. Dit maakt het mogelijk om **mandarin-agents** preciezer te positioneren en te begrijpen. Elke **mandarin-agent** heeft op elke as een expliciete positie, en deze posities bepalen samen het gedrag, de bevoegdheden en de beperkingen van de **mandarin-agent**.
 
+### Gerelateerde Doctrines 📚
+- **Intent-naming**: [doctrine-intent-naming.md](doctrine-intent-naming.md) koppelt canonieke werkwoorden aan elke classificatie-positie op de werkingsas en inhoudelijke as
+
 
 ---
 ## Inhoudelijke as
