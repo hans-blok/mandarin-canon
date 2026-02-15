@@ -1,8 +1,8 @@
 # Mandarin Value Streams en Fasen
 
-**Versie**: 1.5.0  
+**Versie**: 1.6.0  
 **Status**: Actief  
-**Datum**: 2026-02-05  
+**Datum**: 2026-02-15  
 **Auteur**: Constitutioneel Auteur  
 
 ---
@@ -107,14 +107,14 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 **Fasen**:
 
-01. **Vraagverkenning**  
-   Het verkennen en expliciteren van architectuurvraagstukken, drivers en randvoorwaarden.
+01. **Strategie en Motivatie**  
+   Het definiëren van strategische richting en motivatie voor architectuurbeslissingen. Dit is architectuur-normering: het vaststellen van waarom bepaalde architectuurkeuzes worden overwogen en welke strategische doelen zij dienen.
 
-02. **Architectuurkadering**  
-   Het vaststellen van architectuurprincipes, standaarden en kaders waarbinnen oplossingen moeten worden ontworpen.
+02. **Structureren**  
+   Het structureren van de architectuur met behulp van het core-framework van ArchiMate. Het brengen van coherentie in architectuurelementen, hun relaties en de ordening over lagen en aspecten.
 
 03. **Oplossingsontwerp**  
-   Het uitwerken van concrete oplossingsrichtingen, inclusief afwegingen, varianten en aanbevelingen.
+   Het uitwerken van concrete oplossingsrichtingen. Dit kan met ArchiMate, maar vooral met C4-modellen voor technische architectuur en componentstructuur. Inclusief afwegingen, varianten en aanbevelingen.
 
 04. **Besluitvorming en Borging**  
    Het formaliseren van architectuurbeslissingen en het borgen van naleving en traceerbaarheid.
@@ -173,6 +173,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 | Datum | Versie | Wijziging | Auteur |
 |-------|--------|-----------|--------|
+| 2026-02-15 | 1.6.0 | Herziening value stream AOD: fase 01 hernoemd naar "Strategie en Motivatie" (architectuur-normering), fase 02 "Structureren" (ArchiMate core-framework), fase 03 "Oplossingsontwerp" (ArchiMate en C4) | Constitutioneel Auteur |
 | 2026-02-05 | 1.5.0 | Aanpassing: value stream Ondernemingsvorming (ONV) vervangen door Markt- en Investeringsvorming (MIV) met herziene, op onzekerheidsreductie gerichte fasering | Constitutioneel Auteur |
 | 2026-02-02 | 1.4.0 | Toegevoegd: value stream Ondernemingsvorming (ONV) met genormeerde fasering van kansverkenning tot ondernemingsinrichting | Constitutioneel Auteur |
 | 2026-02-02 | 1.3.0 | Toegevoegd: drie-letterige codes per value stream en genormeerde fasevolgnummers (01, 02, …) per value stream fase | Constitutioneel Auteur |
