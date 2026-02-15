@@ -1,7 +1,7 @@
 # Agent Doctrine — Intent Naming
 
 **Doctrine-ID**: `AEO.DOC.002`  
-**Versie**: 1.2.0  
+**Versie**: 1.3.0  
 **Value Stream**: Agent Ecosysteem ontwikkeling  
 
 ---
@@ -149,6 +149,11 @@ Bepaalde werkwoorden lijken op elkaar maar hebben fundamenteel verschillende wer
 - **constitueer** (constituerend): Schept het normatieve kader zelf (doctrine, constitutie, beleid)
 - **definieer** (structuur-normerend): Bepaalt wat binnen een bestaand kader valt
 
+#### `structureer` vs `definieer` vs `orden`
+- **structureer** (structurerend): Brengt structuur aan in bestaande elementen (kan inhoud wijzigen)
+- **definieer** (structuur-normerend): Bepaalt wat binnen scope bestaat (normering)
+- **orden** (conditioneel): Rangschikt alleen (geen inhoudelijke wijziging)
+
 #### `beschrijf` vs `documenteer`
 - **beschrijf** (beschrijvend): Momentopname, observatie
 - **documenteer** (documenterend): Duurzame kennisregistratie
@@ -182,7 +187,10 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 | Classificatie | Canoniek Werkwoord |
 |---------------|-----------------|
 | Beschrijvend | `beschrijf` |
-| Structuur-normerend | `definieer` || Constituerend | `constitueer` || Structuurrealiserend | `realiseer` |
+| Structuur-normerend | `definieer` |
+| Constituerend | `constitueer` |
+| Structurerend | `structureer` |
+| Structuurrealiserend | `realiseer` |
 | Curator | `beoordeel` |
 | Ecosysteem-normerend | `stel vast` |
 | Representatie-omvormend (omzettend) | `zet om` |
@@ -241,6 +249,24 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 **Verschil met definieer**: `constitueer` schept het kader, `definieer` bepaalt wat binnen het kader valt
 
 **Niet toegestaan**: `creëer` (te algemeen), `ontwerp` (te breed), `schrijf` (zie realiserend)
+
+---
+
+#### `structureer` (Structurerend)
+**Werking**: Brengt structuur aan in bestaande elementen of content  
+**Effect**: Ongestructureerde elementen → gestructureerd geheel
+
+| Intent-patroon | Voorbeeld |
+|----------------|-----------||
+| `structureer-{object}` | `structureer-artefacten` |
+| `structureer-{content}` | `structureer-documenten` |
+| `structureer-{verzameling}` | `structureer-workspace` |
+
+**Verschil met orden**: `structureer` brengt structuur aan (kan inhoud wijzigen), `orden` rangschikt alleen (geen inhoudelijke wijziging)
+
+**Verschil met definieer**: `definieer` bepaalt wat binnen scope valt, `structureer` organiseert wat al bestaat
+
+**Niet toegestaan**: `organiseer` (te algemeen), `orden` (zie conditioneel)
 
 ---
 
@@ -399,6 +425,7 @@ Agents die deze doctrine incorporeren, dragen bij aan **voorspelbaarheid en herk
 
 | Datum       | Versie | Wijziging                                                                 | Auteur |
 |------------|--------|---------------------------------------------------------------------------|--------|
+| 2026-02-15 | 1.3.0  | Werkwoord 'structureer' toegevoegd voor classificatie Structurerend | —      |
 | 2026-02-14 | 1.2.0  | Werkwoord 'constitueer' toegevoegd voor scheppen van normatieve kaders | —      |
 | 2026-02-14 | 1.1.0  | Synoniemen verwijderd: alleen canonieke werkwoorden toegestaan | —      |
 | 2026-02-14 | 1.0.0  | Initiële doctrine: canonieke werkwoorden per agent-classificatie vastgesteld | —      |
