@@ -3,9 +3,9 @@
 **Type**: Concepten en Definities 
 **Repository**: mandarin-canon 
 **Identifier**: mandarin-canon.concepten.actieve-structuren 
-**Version**: 2.3.0 
+**Version**: 2.4.0 
 **Status**: Active 
-**Last Updated**: 2026-02-01 
+**Last Updated**: 2026-02-21 
 **Owner**: Hans Blok
 
 ---
@@ -19,7 +19,7 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 
 **Opsteller**: Hans Blok 
 **Datum**: 2026-01-31 
-**Laatste wijziging**: 2026-02-01 (Constitutioneel Auteur) 
+**Laatste wijziging**: 2026-02-21 (Constitutioneel Auteur) 
 **Doel**: Expliciete definitie van operationele concepten (actieve structuren) binnen het Mandarin-ecosysteem
 
 **Ontwerpkeuze**: De bewuste scheiding tussen operationele concepten (actieve structuren en hun werking) en meta-concepten (classificatie en artefactstructuur) maakt **mandarin-agents** voorspelbaarder, toetsbaarder en consistenter. Meta-concepten zijn verplaatst naar mandarin-meta-concepten.md. Concepten over gedrag, werking en sturing worden vastgelegd in een afzonderlijk document.
@@ -174,6 +174,7 @@ Het **Mandarin-ecosysteem** is de overkoepelende, samenhangende verzameling van 
 
 ### Toelichting 💬
 Het **Mandarin-ecosysteem** vormt de overkoepelende context waarbinnen alle Mandarin-concepten samenkomen en waarde leveren. Het is ontworpen om adaptief, expliciet en samenhangend te zijn. Het ecosysteem is zelfbeschrijvend: de concepten die het ecosysteem beschrijven (zoals **Mandarin-concept** en **Mandarin-architectuurprincipe**) maken zelf deel uit van het ecosysteem.
+
 
 ---
 ## Mandarin-capability
@@ -574,6 +575,7 @@ In de eerste fase van ontwikkeling worden **mandarin-agents** gefetched uit de M
 
 | Datum   | Versie | Wijziging                              | Auteur   |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-02-21 | 2.4.0 | Verwijderd: concept Interventieniveau (is verplaatst naar mandarin-ordeningsconcepten.md) | Constitutioneel Auteur |
 | 2026-02-01 | 2.3.0 | Toegevoegd: domeinconcept Template als herbruikbare structuur voor artefacten en prompts, met nadruk op gebruik door value-stream-specifieke mandarin-agents | Constitutioneel Auteur |
 | 2026-02-01 | 2.2.0 | Verduidelijking: `.github/{agent-naam}.prompt`-bestanden zijn tooling-specifieke representaties voor VS Code Copilot en geen canonieke prompts binnen Mandarin | Constitutioneel Auteur |
 | 2026-02-01 | 2.1.0 | Toegevoegd: concept Prompt als concrete, niet-canonieke representatie van een aanroep naar een mandarin-agent | Constitutioneel Auteur |
