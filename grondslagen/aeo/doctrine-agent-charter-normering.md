@@ -1,14 +1,14 @@
 # Agent Doctrine — Agent Charter Normering
 
 **Doctrine-ID**: `AEO.DOC.001`  
-**Versie**: 2.1.0  
+**Versie**: 2.2.0  
 **Value Stream**: Agent Ecosysteem ontwikkeling 
 
 ---
 
 ## Classificatie
 
-**Agent-classificatie**: Ecosysteem-normerend, Value-stream-overstijgend, Vormvast, Conditioneel
+**Agent-classificatie**: Normerend (Betekeniseffect), Ecosysteem (Interventieniveau), Inhoudelijk (Werking), Canon-gebonden (Bronhouding)
 
 *Voor uitleg van classificatie-assen zie [mandarin-ordeningsconcepten](../aeo/mandarin-ordeningsconcepten.md#mandarin-agent-classificatie)*
 
@@ -160,9 +160,9 @@ Maar alleen binnen de kaders van:
 
 ### Principe 9 — Output-formaat Normering voor Inhoudelijke Agents
 
-Agents die op de **werkingsas de positie "Inhoudelijk"** hebben, leveren altijd een bestand als primair artefact.
+Agents die op de as **Werking de positie "Inhoudelijk"** hebben, leveren altijd een bestand als primair artefact.
 
-Wanneer een agent op de **vorm-as "Vormvast"** is gepositioneerd:
+Omdat deze agents betekenis begrijpen en vastleggen:
 
 - Het **default formaat is Markdown**, tenzij expliciet anders gevraagd in de prompt;
 - Alternatieve formaten (zoals YAML) worden alleen toegepast wanneer expliciet aangevraagd;
@@ -226,6 +226,7 @@ Deze doctrine wordt aangevuld door:
 
 | Datum       | Versie | Wijziging                                                                 | Auteur |
 |------------|--------|---------------------------------------------------------------------------|--------|
+| 2026-02-21 | 2.2.0  | Classificatie en Principe 9 herschreven conform de 4 nieuwe orthogonale assen uit mandarin-ordeningsconcepten.md | Constitutioneel Auteur |
 | 2026-02-13 | 2.1.0  | Principe 9 toegevoegd: output-formaat normering voor inhoudelijke agents | —      |
 | 2026-02-12 | 2.0.0  | Fundamentele herziening: focus op ecosysteem-architectuur en -integriteit | —      |
 | YYYY-MM-DD | 1.1.0  | Transparantie- en logplicht expliciet toegevoegd als kernprincipe        | —      |

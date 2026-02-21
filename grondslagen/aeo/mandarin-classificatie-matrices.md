@@ -7,26 +7,42 @@ De matrices tonen welke combinaties van as-posities architectonisch mogelijk en 
 - 🟢 **Mogelijk**: Deze combinatie is logisch, toegestaan en komt voor in het ecosysteem.
 - 🔴 **Niet mogelijk / Incompatibel**: Deze combinatie is architectonisch tegenstrijdig of betekenisloos.
 
+> **Let op inzake Bronhouding:** De matrices tonen de architectonische positionering op de as *Bronhouding*. Deze positie wordt in de praktijk altijd geoperationaliseerd door een expliciet **Bronregime**, dat de concrete regels voor toegestane bronnen, interpretatie en herleidbaarheid vastlegt.
+
 ---
 
 ## 1. Betekeniseffect vs. Werking
 
 | Betekeniseffect \ Werking | Inhoudelijk | Representatie-omvormend | Conditioneel |
 | :--- | :---: | :---: | :---: |
-| **Beschrijvend** | 🟢 | 🟢 | 🟢 |
+| **Beschrijvend** | 🟢 | 🔴 | 🔴 |
 | **Realiserend** | 🟢 | 🔴 | 🔴 |
-| **Evaluerend** | 🟢 | 🔴 | 🟢 |
-| **Normerend** | 🟢 | 🔴 | 🟢 |
+| **Evaluerend** | 🟢 | 🔴 | 🔴 |
+| **Normerend** | 🟢 | 🔴 | 🔴 |
 
 *Toelichting incompatibiliteiten:*
-- **Representatie-omvormend** is betekenis-blind. Het kan alleen een vorm transformeren (beschrijvend), maar geen nieuwe betekenis realiseren, evalueren of normeren.
-- **Conditioneel + Realiserend**: Conditionele agents bewaken randvoorwaarden en hygiëne, maar realiseren geen inhoudelijke domein-artefacten.
+- **Representatie-omvormend** is betekenis-blind. Het transformeert vorm, maar heeft geen betekeniseffect.
+- **Conditioneel** werkt op voorwaarden en hygiëne, en heeft geen betekeniseffect op inhoudelijke artefacten.
+*(Opmerking: Agents die niet Inhoudelijk zijn, scoren in de praktijk 'N.v.t.' op de as Betekeniseffect, wat hier als 🔴 is weergegeven voor de reguliere categorieën).*
 
 ---
 
-## 2. Betekeniseffect vs. Epistemische houding
+## 2. Betekeniseffect vs. Interventieniveau
 
-| Betekeniseffect \ Epistemische houding | Deterministisch | Canon-gebonden | Retrieval-gebonden | Generatief |
+| Betekeniseffect \ Interventieniveau | Werk | Ontwerp | Architectuur | Ecosysteem |
+| :--- | :---: | :---: | :---: | :---: |
+| **Beschrijvend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Realiserend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Evaluerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Normerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+
+*Alle combinaties zijn hier mogelijk. Een agent kan op elk niveau beschrijven, realiseren, evalueren of normeren.*
+
+---
+
+## 3. Betekeniseffect vs. Bronhouding
+
+| Betekeniseffect \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Vrij |
 | :--- | :---: | :---: | :---: | :---: |
 | **Beschrijvend** | 🟢 | 🟢 | 🟢 | 🟢 |
 | **Realiserend** | 🟢 | 🟢 | 🟢 | 🟢 |
@@ -34,22 +50,8 @@ De matrices tonen welke combinaties van as-posities architectonisch mogelijk en 
 | **Normerend** | 🔴 | 🟢 | 🔴 | 🟢 |
 
 *Toelichting incompatibiliteiten:*
-- **Evaluerend/Normerend + Deterministisch**: Evalueren en normeren vereisen oordeelsvorming, interpretatie of autoriteit. Dit kan niet puur deterministisch (input=output) zonder externe kennis of regels.
-- **Normerend + Retrieval-gebonden**: Het puur ophalen van bestaande informatie (retrieval) kan geen nieuwe normen stellen; normeren vereist generatieve synthese of canon-gebonden afleiding.
-
----
-
-## 3. Werking vs. Epistemische houding
-
-| Werking \ Epistemische houding | Deterministisch | Canon-gebonden | Retrieval-gebonden | Generatief |
-| :--- | :---: | :---: | :---: | :---: |
-| **Inhoudelijk** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Representatie-omvormend** | 🟢 | 🔴 | 🔴 | 🔴 |
-| **Conditioneel** | 🟢 | 🟢 | 🔴 | 🔴 |
-
-*Toelichting incompatibiliteiten:*
-- **Representatie-omvormend + Niet-deterministisch**: Een pure vormtransformatie (bijv. Markdown naar XML) is per definitie deterministisch en heeft geen canon, retrieval of generatieve AI nodig (en mag dit ook niet gebruiken om hallucinaties te voorkomen).
-- **Conditioneel + Retrieval/Generatief**: Hygiëne en voorwaarden (zoals linting, workspace checks) zijn deterministisch of hooguit canon-gebonden (regels toepassen), maar vereisen geen generatieve AI of open retrieval.
+- **Evaluerend/Normerend + Input-gebonden**: Evalueren en normeren vereisen oordeelsvorming, interpretatie of autoriteit. Dit kan niet puur input-gebonden (input=output) zonder externe kennis of regels.
+- **Normerend + Externe-bron gebonden**: Het puur ophalen van bestaande informatie (retrieval) kan geen nieuwe normen stellen; normeren vereist vrije synthese of canon-gebonden afleiding.
 
 ---
 
@@ -66,26 +68,27 @@ De matrices tonen welke combinaties van as-posities architectonisch mogelijk en 
 
 ---
 
-## 5. Betekeniseffect vs. Interventieniveau
+## 5. Werking vs. Bronhouding
 
-| Betekeniseffect \ Interventieniveau | Werk | Ontwerp | Architectuur | Ecosysteem |
+| Werking \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Vrij |
 | :--- | :---: | :---: | :---: | :---: |
-| **Beschrijvend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Realiserend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Evaluerend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Normerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Inhoudelijk** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Representatie-omvormend** | 🟢 | 🔴 | 🔴 | 🔴 |
+| **Conditioneel** | 🟢 | 🟢 | 🔴 | 🔴 |
 
-*Alle combinaties zijn hier mogelijk. Een agent kan op elk niveau beschrijven, realiseren, evalueren of normeren.*
+*Toelichting incompatibiliteiten:*
+- **Representatie-omvormend + Niet-input-gebonden**: Een pure vormtransformatie (bijv. Markdown naar XML) is per definitie input-gebonden en heeft geen canon, externe bronnen of vrije generatieve AI nodig (en mag dit ook niet gebruiken om hallucinaties te voorkomen).
+- **Conditioneel + Externe-bron/Vrij**: Hygiëne en voorwaarden (zoals linting, workspace checks) zijn input-gebonden of hooguit canon-gebonden (regels toepassen), maar vereisen geen vrije generatieve AI of open retrieval.
 
 ---
 
-## 6. Interventieniveau vs. Epistemische houding
+## 6. Interventieniveau vs. Bronhouding
 
-| Interventieniveau \ Epistemische houding | Deterministisch | Canon-gebonden | Retrieval-gebonden | Generatief |
+| Interventieniveau \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Vrij |
 | :--- | :---: | :---: | :---: | :---: |
 | **Werk** | 🟢 | 🟢 | 🟢 | 🟢 |
 | **Ontwerp** | 🟢 | 🟢 | 🟢 | 🟢 |
 | **Architectuur** | 🟢 | 🟢 | 🟢 | 🟢 |
 | **Ecosysteem** | 🟢 | 🟢 | 🟢 | 🟢 |
 
-*Alle combinaties zijn hier mogelijk. Op elk interventieniveau kan elke epistemische houding worden aangenomen, afhankelijk van de specifieke taak van de agent.*
+*Alle combinaties zijn hier mogelijk. Op elk interventieniveau kan elke bronhouding worden aangenomen, afhankelijk van de specifieke taak van de agent.*

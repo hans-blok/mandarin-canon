@@ -3,7 +3,7 @@
 **Type**: Concepten en Definities 
 **Repository**: mandarin-canon 
 **Identifier**: mandarin-canon.concepten.actieve-structuren 
-**Version**: 2.4.0 
+**Version**: 2.5.0 
 **Status**: Active 
 **Last Updated**: 2026-02-21 
 **Owner**: Hans Blok
@@ -45,6 +45,7 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 - [agent-capability](#agent-capability) — Aanroepbare functie van een **mandarin-agent**
 - [agent-contract](#agent-contract) — Specificatie van intentie, input, output en beleid
  - [Prompt](#prompt) — Concreet aanroep- of instructiepatroon richting een **mandarin-agent**
+- [Bronregime](#bronregime) — Expliciet vastgelegd stelsel van toegestane kennisbronnen en afleidingsregels
 
 ### Artefacten en Value Streams
 - [Mandarin-artefact](#mandarin-artefact) — Duurzame, overdraagbare vastlegging van resultaat
@@ -398,6 +399,39 @@ Binnen Mandarin is **prompt** nadrukkelijk géén canoniek alternatief voor **ag
 Bestanden in de `.github`-map met namen van de vorm `{agent-naam}.prompt` worden uitsluitend gebruikt om VS Code Copilot te voeden; ondanks deze naamgeving worden zij in de Mandarin-concepten niet als **prompt** beschouwd, maar als tooling-specifieke representaties van concrete aanroepen.
 
 ---
+
+## Bronregime
+
+### Definitie 📝
+Een **bronregime** is het expliciet vastgelegde stelsel van toegestane kennisbronnen en afleidingsregels waarbinnen een **mandarin-agent** betekenis mag vormen, oordelen mag vellen of artefacten mag produceren.
+
+### Kenmerken ⭐
+- Bepaalt welke bronnen geldig zijn
+- Bepaalt welke bronnen uitgesloten zijn
+- Bepaalt of interpretatie is toegestaan
+- Bepaalt of synthese is toegestaan
+- Bepaalt of nieuwe betekenis mag ontstaan
+- Bepaalt hoe herleidbaarheid aantoonbaar wordt gemaakt
+
+### Wat het niet is ❌
+- Geen classificatie-as (dat is de Bronhouding)
+- Geen impliciete aanname over brongebruik
+
+### Voorbeelden 💡
+- Een strikt bronregime waarbij alleen de input-prompt als bron mag dienen (passend bij input-gebonden)
+- Een bronregime waarbij de gehele Mandarin-canon geraadpleegd mag worden (passend bij canon-gebonden)
+
+### Synoniemen 🏷️
+- Kennisregime, Bronkader
+
+### Analogieën 🔄
+- Vergelijkbaar met bewijsregels in de rechtspraak
+- In de wetenschap: methodologische verantwoording van brongebruik
+
+### Toelichting 💬
+De **Bronhouding** positioneert een **mandarin-agent** op de classificatie-as. Het **bronregime** operationaliseert die positie in concrete regels. Het zorgt ervoor dat de grenzen van wat een agent mag "weten" en "vinden" expliciet en toetsbaar zijn.
+
+---
 ## Mandarin-artefact
 
 ### Definitie 📝
@@ -575,6 +609,7 @@ In de eerste fase van ontwikkeling worden **mandarin-agents** gefetched uit de M
 
 | Datum   | Versie | Wijziging                              | Auteur   |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-02-21 | 2.5.0 | Toegevoegd: concept Bronregime als operationalisering van de Bronhouding-as | Constitutioneel Auteur |
 | 2026-02-21 | 2.4.0 | Verwijderd: concept Interventieniveau (is verplaatst naar mandarin-ordeningsconcepten.md) | Constitutioneel Auteur |
 | 2026-02-01 | 2.3.0 | Toegevoegd: domeinconcept Template als herbruikbare structuur voor artefacten en prompts, met nadruk op gebruik door value-stream-specifieke mandarin-agents | Constitutioneel Auteur |
 | 2026-02-01 | 2.2.0 | Verduidelijking: `.github/{agent-naam}.prompt`-bestanden zijn tooling-specifieke representaties voor VS Code Copilot en geen canonieke prompts binnen Mandarin | Constitutioneel Auteur |

@@ -39,7 +39,7 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 - [Betekeniseffect](#betekeniseffect) — Effect op betekenis
 - [Werking](#werking) — Inhoud, representatie of voorwaarden
 - [Interventieniveau](#interventieniveau) — Systeemniveau van ingreep
-- [Epistemische houding](#epistemische-houding) — Kennisbronnen en herleidbaarheid
+- [Bronhouding](#bronhouding) — Kennisbronnen en herleidbaarheid
 
 ### Artefacten
 - [Mandarin-artefact](#mandarin-artefact) — Expliciet vastgelegd, overdraagbaar resultaat
@@ -73,7 +73,7 @@ mandarin-agent-classificatie is het expliciet positioneren van een **mandarin-ag
   1. **Betekeniseffect** — effect op betekenis
   2. **Interventieniveau** — systeemniveau van ingreep
   3. **Werking** — inhoud, representatie of voorwaarden
-  4. **Epistemische houding** — kennisbronnen en herleidbaarheid
+  4. **Bronhouding** — kennisbronnen en herleidbaarheid
 
 ### Wat het niet is
 - Geen enkelvoudig label (zoals "adviserende **mandarin-agent**" of "uitvoerende **mandarin-agent**")
@@ -115,7 +115,7 @@ Het **betekeniseffect** is een classificatie-as binnen mandarin-agent-classifica
 - Is één van vier orthogonale assen voor mandarin-agent-classificatie
 - Onderscheidt **mandarin-agents** op basis van hun effect op betekenis
 - Vier categorieën: Beschrijvend, Realiserend, Evaluerend, Normerend
-- Onafhankelijk van andere assen (Interventieniveau, Werking, Epistemische houding)
+- Onafhankelijk van andere assen (Interventieniveau, Werking, Bronhouding)
 - Bepaalt fundamentele rol en impact van de **mandarin-agent**
 
 ### Wat het niet is
@@ -172,7 +172,7 @@ De **werking** is een classificatie-as binnen mandarin-agent-classificatie die b
 - Is één van vier orthogonale assen voor mandarin-agent-classificatie
 - Onderscheidt **mandarin-agents** op basis van interventiegebied
 - Drie categorieën: Inhoudelijk, Representatie-omvormend, Conditioneel
-- Onafhankelijk van andere assen (Betekeniseffect, Interventieniveau, Epistemische houding)
+- Onafhankelijk van andere assen (Betekeniseffect, Interventieniveau, Bronhouding)
 - Bepaalt of **mandarin-agent** op inhoud of op voorwaarden werkt
 
 ### Wat het niet is 
@@ -279,17 +279,17 @@ Interventieniveau moet altijd gecombineerd worden met het betekeniseffect.
 | Curator                | Ecosysteem         | Beoordelen van canon-consistentie      |
 
 ---
-## Epistemische houding
+## Bronhouding
 
 ### Definitie
-De **epistemische houding** is een classificatie-as binnen mandarin-agent-classificatie die beschrijft op welke kennisbronnen een **mandarin-agent** zich baseert en in welke mate de output herleidbaar is tot expliciete bronnen.
+De **bronhouding** is een classificatie-as binnen mandarin-agent-classificatie die beschrijft op welke kennisbronnen een **mandarin-agent** zich baseert en in welke mate de output herleidbaar is tot expliciete bronnen.
 
 **Leidende vraag:** *Op welke kennisbronnen baseert deze **mandarin-agent** zich, en hoe herleidbaar is de output?*
 
 ### Kenmerken
 - Is één van vier orthogonale assen voor mandarin-agent-classificatie
 - Onderscheidt **mandarin-agents** op basis van kennisbrongebruik en herleidbaarheid
-- Vier categorieën: Deterministisch, Canon-gebonden, Retrieval-gebonden, Generatief
+- Vier categorieën: Input-gebonden, Canon-gebonden, Externe-bron gebonden, Vrij
 - Onafhankelijk van andere assen (Betekeniseffect, Interventieniveau, Werking)
 - Bepaalt de epistemische verantwoordelijkheid en controleerbaarheid van de **mandarin-agent**
 
@@ -300,7 +300,7 @@ De **epistemische houding** is een classificatie-as binnen mandarin-agent-classi
 
 ### Categorieën
 
-** 1. Deterministisch (Input-only)**
+** 1. Input-gebonden**
 - Output is 100% herleidbaar tot de input
 - Geen externe kennisbronnen
 - Volledig voorspelbaar en reproduceerbaar
@@ -314,14 +314,14 @@ De **epistemische houding** is een classificatie-as binnen mandarin-agent-classi
 - Output is traceerbaar naar specifieke canon-artefacten
 - Voorbeelden: Doctrine-interpreterende **mandarin-agents**, Charter-validerende **mandarin-agents**
 
-** 3. Retrieval-gebonden**
-- Haalt kennis op uit specifieke, geïdentificeerde bronnen
+** 3. Externe-bron gebonden**
+- Haalt kennis op uit specifieke, geïdentificeerde bronnen buiten de canon
 - Bronvermelding is verplicht
 - Gebruikt RAG (Retrieval-Augmented Generation) of vergelijkbare technieken
 - Output is herleidbaar naar concrete brondocumenten
 - Voorbeelden: Documentatie-samenvattende **mandarin-agents**, Context-verzamelende **mandarin-agents**
 
-** 4. Generatief**
+** 4. Vrij**
 - Genereert output op basis van trained knowledge en redenering
 - Maakt aannames en afleidingen
 - Aannames moeten expliciet worden gemaakt (maximaal 3)
@@ -332,12 +332,13 @@ De **epistemische houding** is een classificatie-as binnen mandarin-agent-classi
 
 | Categorie | Verplichte checks |
 |-----------|-------------------|
-| Deterministisch | 100% herleidbaar |
+| Input-gebonden | 100% herleidbaar |
 | Canon-gebonden | Canon-verwijzing verplicht |
-| Retrieval-gebonden | Bronvermelding verplicht |
-| Generatief | Aannames expliciet (max 3) |
+| Externe-bron gebonden | Bronvermelding verplicht |
+| Vrij | Aannames expliciet (max 3) |
 
 ### Synoniemen
+- Epistemische houding
 - Kennisbron-as
 - Herleidbaarheidsdimensie
 - Epistemologische as
@@ -348,7 +349,7 @@ De **epistemische houding** is een classificatie-as binnen mandarin-agent-classi
 - In softwareontwikkeling: pure functions vs database-driven vs AI-augmented
 
 ### Toelichting  
-De **epistemische houding** maakt expliciet hoe een **mandarin-agent** tot zijn kennis komt en in welke mate de output controleerbaar en herleidbaar is. Dit is cruciaal voor vertrouwen, governance en kwaliteitsborging. Hoe verder naar rechts op de as (van deterministisch naar generatief), hoe meer epistemische verantwoordelijkheid de **mandarin-agent** draagt om zijn bronnen en aannames expliciet te maken.
+De **bronhouding** maakt expliciet hoe een **mandarin-agent** tot zijn kennis komt en in welke mate de output controleerbaar en herleidbaar is. Dit is cruciaal voor vertrouwen, governance en kwaliteitsborging. Hoe verder naar rechts op de as (van input-gebonden naar vrij), hoe meer epistemische verantwoordelijkheid de **mandarin-agent** draagt om zijn bronnen en aannames expliciet te maken.
 
 Deze as stelt het ecosysteem in staat om:
 - Bewust te kiezen voor het juiste niveau van herleidbaarheid per use case
@@ -858,9 +859,9 @@ Een representatie toont betekenis, maar definieert haar niet.
 
 Canoniek onderscheid:
 
-- **Betekenis** â€“ datgene wat inhoudelijk geldt of bedoeld is
-- **Representatie** â€“ de concrete uitdrukking van die betekenis
-- **Representatievorm** â€“ de manier waarop die representatie is vastgelegd
+- **Betekenis**  datgene wat inhoudelijk geldt of bedoeld is
+- **Representatie**  de concrete uitdrukking van die betekenis
+- **Representatievorm**  de manier waarop die representatie is vastgelegd
 
 In relatie:
 
@@ -947,7 +948,8 @@ Deze prompt verankert de relatie tussen de canon-curator en het bijbehorende cha
 
 | Datum      | Versie | Wijziging                                                           | Auteur     |
 |------------|--------|---------------------------------------------------------------------|------------|
-| 2026-02-21 | 1.10.0 | Toegevoegd: Epistemische as als vijfde orthogonale as voor mandarin-agent-classificatie, met vier categorieën (Deterministisch, Canon-gebonden, Retrieval-gebonden, Generatief) en verplichte checks per categorie | Constitutioneel Auteur  |
+| 2026-02-21 | 1.11.0 | Posities op as Bronhouding hernoemd naar: Input-gebonden, Canon-gebonden, Externe-bron gebonden, Vrij | Constitutioneel Auteur  |
+| 2026-02-21 | 1.10.0 | Toegevoegd: Bronhouding (voorheen Epistemische as) als vierde orthogonale as voor mandarin-agent-classificatie, met vier categorieën (Deterministisch, Canon-gebonden, Retrieval-gebonden, Generatief) en verplichte checks per categorie | Constitutioneel Auteur  |
 | 2026-02-15 | 1.9.0  | Toegevoegd: Architectuur-structurerend als positie op betekenis-as voor mandarin-agents | Constitutioneel Auteur  |
 | 2026-02-15 | 1.8.0  | Toegevoegd: Structurerend artefact als positie op artefact-functie-as | Constitutioneel Auteur  |
 | 2026-02-02 | 1.7.0  | Toegevoegd: Artefact-functie-as als expliciete ordenings-as voor Mandarin-artefacten, gekoppeld aan Artefactclassificatie | Constitutioneel Auteur  |
