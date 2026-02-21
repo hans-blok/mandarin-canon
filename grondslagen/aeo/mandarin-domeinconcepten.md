@@ -431,6 +431,10 @@ Een **bronregime** is het expliciet vastgelegde stelsel van toegestane kennisbro
 ### Toelichting 💬
 De **Bronhouding** positioneert een **mandarin-agent** op de classificatie-as. Het **bronregime** operationaliseert die positie in concrete regels. Het zorgt ervoor dat de grenzen van wat een agent mag "weten" en "vinden" expliciet en toetsbaar zijn.
 
+Daarnaast reguleert het bronregime de balans tussen **determinisme** en **probabilisme** in het gedrag van de agent. Een strikt bronregime (zoals bij input-gebonden) dwingt deterministisch gedrag af: dezelfde input leidt gegarandeerd tot dezelfde output, zonder probabilistische interpretatie. Een vrijer bronregime (zoals bij canon-gebonden of vrij) staat probabilistisch gedrag toe, waarbij de agent (vaak een LLM) ruimte krijgt voor synthese, interpretatie en het genereren van nieuwe betekenis op basis van waarschijnlijkheden, zolang dit binnen de gestelde kaders van het regime blijft.
+
+Bij een **vrij bronregime** is de mate van probabilisme het hoogst. Dit heeft als gevolg dat de output sterk generatief en creatief kan zijn, maar tegelijkertijd de minste voorspelbaarheid en herleidbaarheid kent. De verantwoordelijkheid verschuift hierdoor: de agent moet gemaakte aannames expliciet maken, en de validatie van de output (bijvoorbeeld op hallucinaties of ongewenste afwijkingen) vereist vaak menselijke controle (human-in-the-loop) of een navolgende evaluerende agent.
+
 ---
 ## Mandarin-artefact
 
