@@ -99,22 +99,6 @@ Zie voor de volledige matrix en toelichting de secties *Betekeniseffect* en *Wer
 - `genereer-index-artefacten`
 - `zet-om-yaml-naar-json`
 
-**Toelichting op de fout:**  
-De fout ontstaat doordat `orden-workspace` wordt gebruikt, terwijl volgens de doctrine het canonieke werkwoord voor rangschikkende werking `rangschik` is. `Orden` is te algemeen en niet toegestaan voor deze werking; alleen vastgestelde canonieke werkwoorden per werking/betekeniseffect mogen worden gebruikt.
-
-- `beschrijf-agent-contract`
-- `realiseer-database-schema`
-- `definieer-themas-werkvoorbereiding`
-- `constitueer-doctrine`
-- `beoordeel-consistentie-charter`
-- `stel-vast-doctrine-wijziging`
-- `valideer-tegen-doctrine`
-- `orden-workspace`
-- `realiseer-charter`
-- `structureer-documenten`
-- `documenteer-workflow`
-- `genereer-index-artefacten`
-- `zet-om-yaml-naar-json`
 
 **Niet-toegestane voorbeelden (fout):**
 
