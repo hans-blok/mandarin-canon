@@ -2,16 +2,63 @@
   "version": "2.0.0",
   "inputs": [
     {
+      "id": "branch",
+      "type": "pickString",
+      "description": "Branch om naar te pushen",
+      "options": [
+        "main",
+        "develop"
+      ]
+    },
+    {
       "id": "commitMessage",
       "type": "promptString",
       "description": "Commit message (verplicht)",
       "default": "[AEO] "
     },
     {
-      "id": "branch",
-      "type": "pickString",
-      "description": "Branch om naar te pushen",
-      "options": ["main", "develop"]
+      "id": "conceptArtefactBestand",
+      "type": "promptString",
+      "description": "Pad naar artefact voor coherentie-validatie"
+    },
+    {
+      "id": "conceptBestand",
+      "type": "promptString",
+      "description": "Pad naar conceptbestand (voor verweef-concepten)"
+    },
+    {
+      "id": "conceptDefinitie",
+      "type": "promptString",
+      "description": "Concept definitie (voor definieer-concept)"
+    },
+    {
+      "id": "conceptDomein",
+      "type": "promptString",
+      "description": "Concept domein (bijv. mandarin-domeinconcepten)",
+      "default": "mandarin-domeinconcepten"
+    },
+    {
+      "id": "conceptFormaat",
+      "type": "promptString",
+      "description": "Rapportageformaat (markdown|json)",
+      "default": "markdown"
+    },
+    {
+      "id": "conceptStatusFilter",
+      "type": "promptString",
+      "description": "Statusfilter (concept|stable|deprecated|all)",
+      "default": "all"
+    },
+    {
+      "id": "conceptStriktheid",
+      "type": "promptString",
+      "description": "Validatie striktheid (strict|normal|lenient)",
+      "default": "normal"
+    },
+    {
+      "id": "conceptTerm",
+      "type": "promptString",
+      "description": "Concept term (voor definieer-concept)"
     }
   ],
   "tasks": [
@@ -22,9 +69,70 @@
       "options": {
         "shell": {
           "executable": "powershell.exe",
-          "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-Command"]
+          "args": [
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-Command"
+          ]
         }
       },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "FND.02 - Concept Curator: Definieer Concept",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "$repoRoot = Join-Path $PWD '..\\mandarin-agents'; if (-not (Test-Path $repoRoot)) { git clone https://github.com/hans-blok/mandarin-agents.git $repoRoot | Out-Null }; git -C $repoRoot pull --ff-only | Out-Null; $generator = Join-Path $repoRoot 'scripts/generate_instructions.py'; $timestamp = Get-Date -Format 'yyyyMMddHHmmss'; $agent = 'concept-curator'; $intent = 'definieer-concept'; $term = '${input:conceptTerm}'; $definitie = '${input:conceptDefinitie}'; $domein = '${input:conceptDomein}'; $hashInput = $timestamp + $agent; $md5 = [System.Security.Cryptography.MD5]::Create(); $hashBytes = $md5.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($hashInput)); $hash = [System.BitConverter]::ToString($hashBytes).Replace('-','').Substring(0,4).ToLower(); $filename = \"agent-execution/$hash.$agent.$intent.md\"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $env:PYTHONIOENCODING='utf-8'; python $generator --agent $agent --intent $intent -p term=$term -p definitie=$definitie -p domein=$domein --execution-file $filename; if ($LASTEXITCODE -eq 0) { code $filename }"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "FND.02 - Concept Curator: Rapporteer Concept Status",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "$repoRoot = Join-Path $PWD '..\\mandarin-agents'; if (-not (Test-Path $repoRoot)) { git clone https://github.com/hans-blok/mandarin-agents.git $repoRoot | Out-Null }; git -C $repoRoot pull --ff-only | Out-Null; $generator = Join-Path $repoRoot 'scripts/generate_instructions.py'; $timestamp = Get-Date -Format 'yyyyMMddHHmmss'; $agent = 'concept-curator'; $intent = 'rapporteer-concept-status'; $domein = '${input:conceptDomein}'; $formaat = '${input:conceptFormaat}'; $statusFilter = '${input:conceptStatusFilter}'; $hashInput = $timestamp + $agent; $md5 = [System.Security.Cryptography.MD5]::Create(); $hashBytes = $md5.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($hashInput)); $hash = [System.BitConverter]::ToString($hashBytes).Replace('-','').Substring(0,4).ToLower(); $filename = \"agent-execution/$hash.$agent.$intent.md\"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $env:PYTHONIOENCODING='utf-8'; python $generator --agent $agent --intent $intent -p domein=$domein -p formaat=$formaat -p status_filter=$statusFilter --execution-file $filename; if ($LASTEXITCODE -eq 0) { code $filename }"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "FND.02 - Concept Curator: Valideer Concept Coherentie",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "$repoRoot = Join-Path $PWD '..\\mandarin-agents'; if (-not (Test-Path $repoRoot)) { git clone https://github.com/hans-blok/mandarin-agents.git $repoRoot | Out-Null }; git -C $repoRoot pull --ff-only | Out-Null; $generator = Join-Path $repoRoot 'scripts/generate_instructions.py'; $timestamp = Get-Date -Format 'yyyyMMddHHmmss'; $agent = 'concept-curator'; $intent = 'valideer-concept-coherentie'; $artefact = '${input:conceptArtefactBestand}'; $domein = '${input:conceptDomein}'; $striktheid = '${input:conceptStriktheid}'; $hashInput = $timestamp + $agent; $md5 = [System.Security.Cryptography.MD5]::Create(); $hashBytes = $md5.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($hashInput)); $hash = [System.BitConverter]::ToString($hashBytes).Replace('-','').Substring(0,4).ToLower(); $filename = \"agent-execution/$hash.$agent.$intent.md\"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $env:PYTHONIOENCODING='utf-8'; python $generator --agent $agent --intent $intent -p artefact_bestand=$artefact -p domein=$domein -p striktheid=$striktheid --execution-file $filename; if ($LASTEXITCODE -eq 0) { code $filename }"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "FND.02 - Concept Curator: Verweef Concepten",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-Command",
+        "$repoRoot = Join-Path $PWD '..\\mandarin-agents'; if (-not (Test-Path $repoRoot)) { git clone https://github.com/hans-blok/mandarin-agents.git $repoRoot | Out-Null }; git -C $repoRoot pull --ff-only | Out-Null; $generator = Join-Path $repoRoot 'scripts/generate_instructions.py'; $timestamp = Get-Date -Format 'yyyyMMddHHmmss'; $agent = 'concept-curator'; $intent = 'verweef-concepten'; $conceptBestand = '${input:conceptBestand}'; $hashInput = $timestamp + $agent; $md5 = [System.Security.Cryptography.MD5]::Create(); $hashBytes = $md5.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($hashInput)); $hash = [System.BitConverter]::ToString($hashBytes).Replace('-','').Substring(0,4).ToLower(); $filename = \"agent-execution/$hash.$agent.$intent.md\"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8; $env:PYTHONIOENCODING='utf-8'; python $generator --agent $agent --intent $intent -p concept_bestand=$conceptBestand --execution-file $filename; if ($LASTEXITCODE -eq 0) { code $filename }"
+      ],
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -38,7 +146,12 @@
       "options": {
         "shell": {
           "executable": "powershell.exe",
-          "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-Command"]
+          "args": [
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-Command"
+          ]
         }
       },
       "problemMatcher": [],

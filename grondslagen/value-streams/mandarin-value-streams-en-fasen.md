@@ -94,30 +94,43 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 07. **Vrijgave**  
    Het formeel vrijgeven en implementeren van de software in de productieomgeving.
-
-08. **Beheer en Evolutie**  
-   Het onderhouden, monitoren en doorontwikkelen van de software gedurende de operationele levenscyclus.
-
+   Het uitrollen (deployen) van de software naar de productieomgeving en het beschikbaar stellen voor gebruik.
+   
 ---
 
-### 3.2 Architectuur- en Oplossingsontwerp (AOD)
+### 3.2 Architectuur en oplossingsontwerp (TOGAF-fasering)
 
-**Type**: Waarde value stream  
-**Omschrijving**: Deze value stream richt zich op het ontwerpen en onderbouwen van oplossingsrichtingen, los van concrete implementatie. Het betreft strategische en tactische architectuurkeuzes die richting geven aan softwareontwikkeling. Agents in deze value stream produceren **bedrijfs-artefacten** (een specialisatie van normerende artefacten).
+**Type**: Architectuur value stream  
+**Omschrijving**: Voorbeeld van value stream fasering volgens TOGAF ADM, met Nederlandse termen.
 
 **Fasen**:
 
-01. **Strategie en Motivatie**  
-   Het definiëren van strategische richting en motivatie voor architectuurbeslissingen. Dit is architectuur-normering: het vaststellen van waarom bepaalde architectuurkeuzes worden overwogen en welke strategische doelen zij dienen.
+01. **Voorbereiding architectuurfunctie**  
+   Het voorbereiden van de architectuurfunctie, het vaststellen van uitgangspunten en principes.
 
-02. **Structureren**  
-   Het structureren van de architectuur met behulp van het core-framework van ArchiMate. Het brengen van coherentie in architectuurelementen, hun relaties en de ordening over lagen en aspecten.
+02. **Architectuurvisie**  
+   Het bepalen van de scope, stakeholders en de visie op de architectuur.
 
-03. **Oplossingsontwerp**  
-   Het uitwerken van concrete oplossingsrichtingen. Dit kan met ArchiMate, maar vooral met C4-modellen voor technische architectuur en componentstructuur. Inclusief afwegingen, varianten en aanbevelingen.
+03. **Bedrijfsarchitectuur**  
+   Het ontwerpen van de bedrijfsarchitectuur (processen, organisatie, bedrijfsfuncties).
 
-04. **Besluitvorming en Borging**  
-   Het formaliseren van architectuurbeslissingen en het borgen van naleving en traceerbaarheid.
+04. **Informatie- en applicatiearchitectuur**  
+   Het ontwerpen van de informatiearchitectuur en applicatiearchitectuur.
+
+05. **Technische architectuur**  
+   Het ontwerpen van de technische architectuur (infrastructuur, platforms, technologie).
+
+06. **Kansen en oplossingsrichtingen**  
+   Het bepalen van oplossingsrichtingen en opstellen van transitieplanning.
+
+07. **Migratieplanning**  
+   Het opstellen van een migratieplan voor de implementatie van de architectuur.
+
+08. **Implementatiebegeleiding**  
+   Het begeleiden en sturen van de implementatie van de architectuur.
+
+09. **Architectuurbeheer**  
+   Het beheren en aanpassen van de architectuur bij veranderingen.
 
 ---
 

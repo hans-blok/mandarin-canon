@@ -1,356 +1,292 @@
-#!/usr/bin/env python3
-"""
-Fetch and organize agents from mandarin-agents repository.
+"""Fetch agent files (prompts and contracts) for a value stream fase and copy them to a target workspace.
 
-This script fetches agent definitions from the mandarin-agents repository
-based on a value stream and fase filter (e.g., "miv.01"). After git pull,
-it scans all folders matching the filter pattern and copies files to the
-workspace according to their type.
+Bron: artefacten/<code>/<code>.<fase>.<agent>/
+  - prompts/mandarin.<agent>.*.prompt.md → target/.github/prompts/
+  - agent-contracten/<agent>.*.agent.md → target/.github/agents/
 
-Usage:
-    python fetch_mandarin_agents.py miv.01
-    python fetch_mandarin_agents.py aeo.02
-    python fetch_mandarin_agents.py fnd.01
+Typical usage (from another workspace):
+    python ..\\mandarin-agents\\scripts\\fetch_prompts.py sfw.03 --source ..\\mandarin-agents --target .
 
-The script performs:
-- Git clone/pull of mandarin-agents repository
-- Folder scanning based on value-stream.fase pattern
-- File organization by type:
-  * *.template.md → templates/
-  * *.charter.md → agent-charters/
-  * *.prompt.md → .github/prompts/
-  * *.agent.md → .github/agents/
-  * runners → scripts/runners/
-- *.boundary.md files are ignored
+Default source lookup: if this script lives in mandarin-canon, it auto-targets the
+peer repo mandarin-agents (../mandarin-agents). Otherwise it uses the repo root it
+is in. Override with --source as needed.
 
-Design decisions:
-- Direct folder scanning, no manifest parsing
-- mandarin-agents folder is kept for efficient git pull reuse
-- Boundary files are explicitly ignored
-- Type hints used throughout for maintainability
+Default target: the repo root where this script lives (so calling from scripts/ still
+copies into repo subfolders). Override with --target to point elsewhere.
+
+The script reads agents-publicatie.json, finds agents for the given value stream code
+and fase, collects their agent files from artefacten/, and copies them into
+appropriate folders in the target workspace. A log file is written to logs/ with details
+of the run. Use --dry-run to see what would happen.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import shutil
-import subprocess
 import sys
-from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import List
+from typing import Dict, Iterable, List, Tuple
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+SIBLING_AGENTS = REPO_ROOT.parent / "mandarin-agents"
+
+# Prefer sibling mandarin-agents when this script is placed in mandarin-canon; else use current repo.
+if REPO_ROOT.name != "mandarin-agents" and SIBLING_AGENTS.exists():
+    DEFAULT_SOURCE = SIBLING_AGENTS.resolve()
+else:
+    DEFAULT_SOURCE = REPO_ROOT
+
+# Default target is the repo root where this script lives so running from scripts/ keeps
+# .github/prompts under the repository, not under the current working directory.
+DEFAULT_TARGET = REPO_ROOT
 
 
-@dataclass
-class FileOperation:
-	"""Represents a file copy operation."""
-	
-	source: Path
-	destination: Path
-	file_type: str  # template, charter, prompt, agent, runner
+def parse_value_stream_fase(value: str) -> Tuple[str, str]:
+    if "." not in value:
+        raise ValueError("Gebruik formaat <code>.<fase>, bijvoorbeeld sfw.03")
+    code, fase = value.split(".", 1)
+    code = code.strip().lower()
+    fase = fase.strip().zfill(2)
+    if not code or not fase.isdigit():
+        raise ValueError("Ongeldige value stream of fase; verwacht zoiets als sfw.03")
+    return code, fase
 
 
-class RepositoryManager:
-	"""Manage Git operations for mandarin-agents repository."""
-	
-	def __init__(self, repo_url: str, target_dir: Path):
-		"""Initialize repository manager."""
-		self.repo_url = repo_url
-		self.target_dir = target_dir
-	
-	def fetch(self) -> Path:
-		"""Clone or pull repository."""
-		if self.target_dir.exists() and (self.target_dir / ".git").exists():
-			print(f"[INFO] Repository exists, pulling latest changes...")
-			self._run_git(["pull"], cwd=self.target_dir)
-		else:
-			print(f"[INFO] Cloning repository from {self.repo_url}...")
-			self.target_dir.mkdir(parents=True, exist_ok=True)
-			self._run_git(["clone", "--depth", "1", self.repo_url, str(self.target_dir)])
-		
-		return self.target_dir
-	
-	def _run_git(self, args: List[str], cwd: Path | None = None) -> str:
-		"""Run git command with error handling."""
-		cmd = ["git"] + args
-		result = subprocess.run(cmd, cwd=cwd, text=True, capture_output=True)
-		
-		if result.returncode != 0:
-			raise RuntimeError(
-				f"Git command failed: {' '.join(cmd)}\n"
-				f"Exit code: {result.returncode}\n"
-				f"Error: {result.stderr}"
-			)
-		
-		return result.stdout.strip()
+def load_publicatie(source_root: Path) -> Dict:
+    manifest_path = source_root / "agents-publicatie.json"
+    if not manifest_path.is_file():
+        hint = "Voer een git pull uit in de bron of geef --source naar mandarin-agents."
+        raise FileNotFoundError(f"Niet gevonden: {manifest_path}. {hint}")
+    with manifest_path.open("r", encoding="utf-8") as fh:
+        return json.load(fh)
 
 
-class AgentScanner:
-	"""Scanner for agent folders based on value-stream.fase pattern."""
-	
-	def __init__(self, repo_path: Path, workspace: Path):
-		"""Initialize scanner."""
-		self.repo_path = repo_path
-		self.workspace = workspace
-		
-		# Target directories in workspace
-		self.templates_dir = workspace / "templates"
-		self.charters_dir = workspace / "agent-charters"
-		self.prompts_dir = workspace / ".github" / "prompts"
-		self.agents_dir = workspace / ".github" / "agents"
-		self.runners_dir = workspace / "scripts" / "runners"
-		
-		# Create target directories
-		for target_dir in [
-			self.templates_dir,
-			self.charters_dir,
-			self.prompts_dir,
-			self.agents_dir,
-			self.runners_dir,
-		]:
-			target_dir.mkdir(parents=True, exist_ok=True)
-	
-	def scan_folders(self, pattern: str) -> List[FileOperation]:
-		"""
-		Scan artefacten/ for folders matching pattern.
-		
-		Pattern format: "miv.01" -> matches folders starting with "miv.01."
-		Scans both flat (artefacten/miv.01.*) and nested (artefacten/miv/miv.01.*)
-		
-		Args:
-			pattern: Value stream and fase code (e.g., "miv.01", "aeo.02", "fnd.01")
-		
-		Returns:
-			List of file operations to execute
-		"""
-		operations: List[FileOperation] = []
-		artefacten_dir = self.repo_path / "artefacten"
-		
-		if not artefacten_dir.exists():
-			raise RuntimeError(f"Artefacten directory not found: {artefacten_dir}")
-		
-		print(f"[INFO] Scanning for folders matching pattern: {pattern}.*")
-		
-		# Extract value stream code for nested folder check
-		vs_code = pattern.split(".")[0] if "." in pattern else pattern
-		
-		# Scan nested structure: artefacten/<vs-code>/<pattern>.*
-		nested_vs_dir = artefacten_dir / vs_code
-		if nested_vs_dir.exists() and nested_vs_dir.is_dir():
-			for folder in nested_vs_dir.iterdir():
-				if folder.is_dir() and folder.name.startswith(f"{pattern}."):
-					print(f"  [FOUND] {folder.relative_to(self.repo_path)}")
-					operations.extend(self._scan_agent_folder(folder))
-		
-		# Scan flat structure: artefacten/<pattern>.*
-		for folder in artefacten_dir.iterdir():
-			if folder.is_dir() and folder.name.startswith(f"{pattern}."):
-				print(f"  [FOUND] {folder.relative_to(self.repo_path)}")
-				operations.extend(self._scan_agent_folder(folder))
-		
-		if not operations:
-			print(f"[WARNING] No folders found matching pattern: {pattern}.*")
-		
-		return operations
-	
-	def _scan_agent_folder(self, folder: Path) -> List[FileOperation]:
-		"""
-		Scan single agent folder and create file operations.
-		
-		Maps files by extension:
-		- *.template.md → templates/
-		- *.charter.md → agent-charters/
-		- *.prompt.md → .github/prompts/
-		- *.agent.md → .github/agents/
-		- <agent>-runner.py or <agent>-runner/ → scripts/runners/
-		
-		Ignores:
-		- *.boundary.md files
-		"""
-		operations: List[FileOperation] = []
-		
-		for file_path in folder.iterdir():
-			filename = file_path.name
-			
-			# Ignore boundary files
-			if filename.endswith(".boundary.md"):
-				continue
-			
-			# Templates
-			if "template" in filename.lower() and filename.endswith(".md"):
-				dest = self.templates_dir / filename
-				operations.append(FileOperation(
-					source=file_path,
-					destination=dest,
-					file_type="template"
-				))
-				continue
-			
-			# Charters
-			if filename.endswith(".charter.md"):
-				dest = self.charters_dir / filename
-				operations.append(FileOperation(
-					source=file_path,
-					destination=dest,
-					file_type="charter"
-				))
-				continue
-			
-			# Prompts
-			if filename.endswith(".prompt.md"):
-				dest = self.prompts_dir / filename
-				operations.append(FileOperation(
-					source=file_path,
-					destination=dest,
-					file_type="prompt"
-				))
-				continue
-			
-			# Agent contracts
-			if filename.endswith(".agent.md"):
-				dest = self.agents_dir / filename
-				operations.append(FileOperation(
-					source=file_path,
-					destination=dest,
-					file_type="agent"
-				))
-				continue
-			
-			# Runners (files or directories)
-			if "runner" in filename.lower():
-				if file_path.is_file() and filename.endswith(".py"):
-					dest = self.runners_dir / filename
-					operations.append(FileOperation(
-						source=file_path,
-						destination=dest,
-						file_type="runner"
-					))
-				elif file_path.is_dir():
-					dest = self.runners_dir / filename
-					operations.append(FileOperation(
-						source=file_path,
-						destination=dest,
-						file_type="runner"
-					))
-		
-		return operations
-	
-	def execute_operations(self, operations: List[FileOperation]) -> dict[str, int]:
-		"""Execute file copy operations."""
-		stats = {
-			"template": 0,
-			"charter": 0,
-			"prompt": 0,
-			"agent": 0,
-			"runner": 0,
-			"error": 0,
-		}
-		
-		if not operations:
-			print("[WARNING] No files to copy")
-			return stats
-		
-		print(f"\n[INFO] Executing {len(operations)} file operations...")
-		
-		for op in operations:
-			try:
-				# Handle directories (runner modules)
-				if op.source.is_dir():
-					if op.destination.exists():
-						shutil.rmtree(op.destination)
-						print(f"  [REMOVE] Existing module {op.destination.name}/")
-					shutil.copytree(op.source, op.destination)
-					print(f"  [{op.file_type.upper()}] {op.source.name}/ -> {op.destination.relative_to(self.workspace)}")
-				else:
-					# Regular file
-					shutil.copy2(op.source, op.destination)
-					print(f"  [{op.file_type.upper()}] {op.source.name} -> {op.destination.relative_to(self.workspace)}")
-				
-				stats[op.file_type] += 1
-				
-			except Exception as e:
-				stats["error"] += 1
-				print(f"  [ERROR] Failed to copy {op.source.name}: {e}")
-		
-		return stats
+def find_agents(manifest: Dict, code: str, fase: str) -> List[str]:
+    for vs in manifest.get("value_streams", []):
+        if vs.get("code", "").lower() != code:
+            continue
+        for fase_entry in vs.get("fasen", []):
+            if str(fase_entry.get("volgnummer", "")).zfill(2) == fase:
+                return [agent.get("naam", "").strip() for agent in fase_entry.get("agents", []) if agent.get("naam")]
+    raise ValueError(f"Geen agents gevonden voor {code}.{fase}")
 
 
-def main() -> int:
-	"""Main entry point."""
-	parser = argparse.ArgumentParser(
-		description="Fetch agents from mandarin-agents repository by value-stream.fase pattern",
-		formatter_class=argparse.RawDescriptionHelpFormatter,
-		epilog="""
-Examples:
-  python fetch_mandarin_agents.py miv.01    # Fetch MIV fase 01 agents
-  python fetch_mandarin_agents.py aeo.02    # Fetch AEO fase 02 agents
-  python fetch_mandarin_agents.py fnd.01    # Fetch FND fase 01 agents
-		""",
-	)
-	parser.add_argument(
-		"pattern",
-		help="Value stream and fase pattern (e.g., 'miv.01', 'aeo.02', 'fnd.01')",
-	)
-	parser.add_argument(
-		"--repo-url",
-		default="https://github.com/hans-blok/mandarin-agents.git",
-		help="Repository URL (default: mandarin-agents)",
-	)
-	
-	args = parser.parse_args()
-	
-	workspace = Path.cwd()
-	repo_dir = workspace / "mandarin-agents"
-	
-	try:
-		# Fetch repository
-		print(f"[INFO] Fetching mandarin-agents repository...")
-		repo_mgr = RepositoryManager(args.repo_url, repo_dir)
-		repo_path = repo_mgr.fetch()
-		
-		# Scan for matching folders
-		scanner = AgentScanner(repo_path, workspace)
-		operations = scanner.scan_folders(args.pattern)
-		
-		if not operations:
-			print(f"[ERROR] No agent folders found matching pattern: {args.pattern}.*")
-			return 1
-		
-		# Execute operations
-		stats = scanner.execute_operations(operations)
-		
-		# Print summary
-		timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-		print(f"\n{'='*60}")
-		print(f"SUMMARY - {timestamp}")
-		print(f"{'='*60}")
-		print(f"Pattern: {args.pattern}")
-		print(f"\nFiles copied:")
-		print(f"  Templates:  {stats['template']}")
-		print(f"  Charters:   {stats['charter']}")
-		print(f"  Prompts:    {stats['prompt']}")
-		print(f"  Agents:     {stats['agent']}")
-		print(f"  Runners:    {stats['runner']}")
-		
-		if stats['error'] > 0:
-			print(f"  Errors:     {stats['error']}")
-		
-		total = sum(stats[k] for k in ['template', 'charter', 'prompt', 'agent', 'runner'])
-		print(f"\nTotal: {total} files/modules copied")
-		print(f"\n[SUCCESS] Agents fetched for pattern: {args.pattern}")
-		
-		return 0
-		
-	except RuntimeError as e:
-		print(f"[ERROR] {e}")
-		return 1
-	except Exception as e:
-		print(f"[ERROR] Unexpected error: {e}")
-		import traceback
-		traceback.print_exc()
-		return 1
+def collect_agent_files(artefacten_root: Path, code: str, fase: str, agents: Iterable[str]) -> Dict[str, Dict[str, List[Path]]]:
+    """Collect prompts and contracts for agents.
+    
+    Returns: {agent: {'prompts': [...], 'contracts': [...]}}
+    """
+    base = artefacten_root / code
+    if not base.is_dir():
+        raise FileNotFoundError(f"Artefacten map ontbreekt: {base}")
+
+    mapping: Dict[str, Dict[str, List[Path]]] = {}
+    fase_marker = f"{code}.{fase}"
+    fase_dirs = [p for p in base.iterdir() if p.is_dir() and p.name.startswith(fase_marker)]
+    
+    print(f"DEBUG: Looking in base directory: {base}")
+    print(f"DEBUG: Looking for fase_marker: {fase_marker}")
+    print(f"DEBUG: Found fase directories: {[fd.name for fd in fase_dirs]}")
+    
+    for agent in agents:
+        print(f"DEBUG: Processing agent: {agent}")
+        agent_files = {'prompts': [], 'contracts': []}
+        
+        for fase_dir in fase_dirs:
+            print(f"DEBUG: Checking fase_dir: {fase_dir}")
+            
+            # Prompts: prompts/mandarin.{agent}*.prompt.md
+            prompts_dir = fase_dir / 'prompts'
+            print(f"DEBUG: Looking for prompts in: {prompts_dir}")
+            if prompts_dir.is_dir():
+                print(f"DEBUG: All files in prompts directory: {[f.name for f in prompts_dir.iterdir() if f.is_file()]}")
+                prompt_pattern = f"mandarin.{agent}*.prompt.md"
+                print(f"DEBUG: Using prompt pattern: {prompt_pattern}")
+                prompt_files = list(prompts_dir.glob(prompt_pattern))
+                print(f"DEBUG: Found prompt files: {[pf.name for pf in prompt_files]}")
+                agent_files['prompts'].extend(prompt_files)
+            else:
+                print(f"DEBUG: Prompts directory does not exist: {prompts_dir}")
+            
+            # Contracts: agent-contracten/{agent}.*.agent.md
+            contracts_dir = fase_dir / 'agent-contracten'
+            print(f"DEBUG: Looking for contracts in: {contracts_dir}")
+            if contracts_dir.is_dir():
+                print(f"DEBUG: All files in agent-contracten directory: {[f.name for f in contracts_dir.iterdir() if f.is_file()]}")
+                contract_pattern = f"{agent}.*.agent.md"
+                print(f"DEBUG: Using contract pattern: {contract_pattern}")
+                contract_files = list(contracts_dir.glob(contract_pattern))
+                print(f"DEBUG: Found contract files: {[cf.name for cf in contract_files]}")
+                agent_files['contracts'].extend(contract_files)
+            else:
+                print(f"DEBUG: Contracts directory does not exist: {contracts_dir}")
+        
+        print(f"DEBUG: Final files for {agent}: {agent_files}")
+        
+        # Sort alle findings
+        for file_type in agent_files:
+            agent_files[file_type] = sorted(agent_files[file_type])
+            
+        mapping[agent] = agent_files
+    
+    return mapping
 
 
-if __name__ == "__main__":
-	sys.exit(main())
+def copy_agent_files(mapping: Dict[str, Dict[str, List[Path]]], target_root: Path, dry_run: bool) -> Dict[str, List[Path]]:
+    """Copy agent files to appropriate target directories.
+    
+    Returns: {'prompts': [...], 'contracts': [...]}
+    """
+    copied: Dict[str, List[Path]] = {'prompts': [], 'contracts': []}
+    
+    # Define target directories
+    target_dirs = {
+        'prompts': target_root / '.github' / 'prompts',
+        'contracts': target_root / '.github' / 'agents'
+    }
+    
+    # Create target directories if needed
+    for file_type, target_dir in target_dirs.items():
+        if not target_dir.exists() and not dry_run:
+            target_dir.mkdir(parents=True, exist_ok=True)
+            print(f"DEBUG: Created directory {target_dir}")  # Debug output
+        elif target_dir.exists():
+            print(f"DEBUG: Directory already exists {target_dir}")  # Debug output
+    
+    # Copy files
+    for agent_files in mapping.values():
+        for file_type, files in agent_files.items():
+            if file_type not in target_dirs:
+                continue  # Skip unknown file types
+            target_dir = target_dirs[file_type]
+            for src in files:
+                dest = target_dir / src.name
+                copied[file_type].append(dest)
+                if dry_run:
+                    continue
+                try:
+                    shutil.copy2(src, dest)
+                    print(f"DEBUG: Copied {src} -> {dest}")  # Debug output
+                except Exception as e:
+                    print(f"ERROR: Failed to copy {src} -> {dest}: {e}")  # Error output
+    
+    return copied
+
+
+def write_log(target_root: Path, code: str, fase: str, mapping: Dict[str, Dict[str, List[Path]]], copied: Dict[str, List[Path]], dry_run: bool, source_root: Path) -> Path:
+    logs_dir = target_root / "logs"
+    if not logs_dir.exists() and not dry_run:
+        logs_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+    log_path = logs_dir / f"fetch-agents-{code}-{fase}-{timestamp}.log"
+    lines = [
+        f"timestamp: {timestamp}",
+        f"value_stream: {code}",
+        f"fase: {fase}",
+        f"source: {source_root}",
+        f"target: {target_root}",
+        f"dry_run: {dry_run}",
+        "agents: " + ", ".join(sorted(mapping.keys())),
+    ]
+    
+    lines.append("files:")
+    for agent, file_types in sorted(mapping.items()):
+        total_files = sum(len(files) for files in file_types.values())
+        if total_files > 0:
+            lines.append(f"  {agent}:")
+            for file_type, files in file_types.items():
+                if files:
+                    for f in files:
+                        lines.append(f"    {file_type}: {f}")
+                else:
+                    lines.append(f"    {file_type}: GEEN BESTANDEN GEVONDEN")
+        else:
+            lines.append(f"  {agent}: GEEN BESTANDEN GEVONDEN")
+    
+    total_copied = sum(len(files) for files in copied.values())
+    if total_copied > 0:
+        lines.append("copied:")
+        for file_type, files in copied.items():
+            if files:
+                lines.append(f"  {file_type}:")
+                for dest in files:
+                    lines.append(f"    {dest}")
+    
+    if dry_run:
+        lines.append("actie: dry-run, niets gekopieerd")
+    
+    content = "\n".join(lines) + "\n"
+    if not dry_run:
+        log_path.write_text(content, encoding="utf-8")
+    return log_path
+
+
+def build_message(code: str, fase: str, copied: Dict[str, List[Path]], missing: List[str], dry_run: bool) -> str:
+    total_copied = sum(len(files) for files in copied.values())
+    
+    if dry_run:
+        base = f"Dry-run klaar voor {code}.{fase}." if total_copied > 0 or missing else f"Geen agent bestanden gevonden voor {code}.{fase}."
+    else:
+        base = f"Yes! Agent bestanden voor {code}.{fase} zijn klaargezet." if total_copied > 0 else f"Geen agent bestanden gekopieerd voor {code}.{fase}."
+    
+    parts = [base]
+    
+    if total_copied > 0:
+        details = []
+        for file_type, files in copied.items():
+            if files:
+                details.append(f"{len(files)} {file_type}")
+        if details:
+            parts.append(f"Gekopieerd: {', '.join(details)}.")
+    
+    if missing:
+        parts.append(f"Ontbrekend voor agents: {', '.join(sorted(missing))}.")
+    
+    if not dry_run and total_copied > 0:
+        parts.append("Succes met de volgende stap!")
+    
+    return " ".join(parts)
+
+
+def main(argv: List[str]) -> int:
+    parser = argparse.ArgumentParser(description="Fetch agent files (prompts and contracts) voor een value stream fase")
+    parser.add_argument("value_stream_fase", help="Formaat <code>.<fase> bijvoorbeeld sfw.03")
+    parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE, help="Pad naar mandarin-agents bron (met agents-publicatie.json)")
+    parser.add_argument("--target", type=Path, default=DEFAULT_TARGET, help="Doel workspace")
+    parser.add_argument("--dry-run", action="store_true", help="Toon wat er zou gebeuren zonder te kopiëren")
+    args = parser.parse_args(argv)
+
+    code, fase = parse_value_stream_fase(args.value_stream_fase)
+    source_root = args.source.expanduser().resolve()
+    target_root = args.target.expanduser().resolve()
+    manifest_path = source_root / "agents-publicatie.json"
+    artefacten_root = source_root / "artefacten"
+    if not manifest_path.is_file():
+        parser.error(f"agents-publicatie.json ontbreekt in {source_root}. Tip: git pull in mandarin-agents of geef --source.")
+    if not artefacten_root.is_dir():
+        parser.error(f"Artefacten map ontbreekt: {artefacten_root}. Tip: git pull in mandarin-agents of geef --source.")
+
+    manifest = load_publicatie(source_root)
+    agents = find_agents(manifest, code, fase)
+    mapping = collect_agent_files(artefacten_root, code, fase, agents)
+    copied = copy_agent_files(mapping, target_root, args.dry_run)
+    
+    # Check for agents with no files at all
+    missing = [agent for agent, file_types in mapping.items() 
+               if sum(len(files) for files in file_types.values()) == 0]
+    
+    log_path = write_log(target_root, code, fase, mapping, copied, args.dry_run, source_root)
+
+    message = build_message(code, fase, copied, missing, args.dry_run)
+    print(message)
+    if not args.dry_run:
+        print(f"Log: {log_path}")
+    return 0
+
+
+if __name__ == "__main__":  # pragma: no cover
+    sys.exit(main(sys.argv[1:]))

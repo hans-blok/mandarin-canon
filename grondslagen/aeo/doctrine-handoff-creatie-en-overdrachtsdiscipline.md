@@ -4,7 +4,7 @@
 **Status**: Actief  
 **Datum**: 2026-01-16  
 **Eigenaar**: Architecture & AI Enablement  
-**Type**: Normerend Doctrine-document
+**Type**: Vastleggend Doctrine-document
 
 ---
 
@@ -139,7 +139,7 @@ Deze sectie vastlegt de volledige provenance en status van het artefact:
 - Datum: <YYYY-MM-DD>
 - Handoff-referentie: <handoff-id indien van toepassing>
 - Status:
-  - ☐ Advies (aanbeveling, niet bindend)
+  - ☐ Advies (aanbeveling, niet vastleggend)
   - ☐ Concept (werk in uitvoering, onder review)
   - ☐ Vastgesteld (definitief goedgekeurd)
 - Menselijke validatie:

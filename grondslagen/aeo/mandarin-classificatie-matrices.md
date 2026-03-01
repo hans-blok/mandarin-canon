@@ -15,15 +15,17 @@ De matrices tonen welke combinaties van as-posities architectonisch mogelijk en 
 
 | Betekeniseffect \ Werking | Inhoudelijk | Representatie-omvormend | Conditioneel |
 | :--- | :---: | :---: | :---: |
-| **Beschrijvend** | 🟢 | 🔴 | 🔴 |
-| **Realiserend** | 🟢 | 🔴 | 🔴 |
-| **Evaluerend** | 🟢 | 🔴 | 🔴 |
-| **Normerend** | 🟢 | 🔴 | 🔴 |
+| **Geen betekenis (Nul-positie)** | 🔴 | 🟢 | 🟢 |
+| **Registrerend** | 🟢 | 🔴 | 🔴 |
+| **Structurerend** | 🟢 | 🔴 | 🔴 |
+| **Vastleggend** | 🟢 | 🔴 | 🔴 |
+| **Interpreterend** | 🟢 | 🔴 | 🔴 |
+| **Vastleggend** | 🟢 | 🔴 | 🔴 |
 
 *Toelichting incompatibiliteiten:*
-- **Representatie-omvormend** is betekenis-blind. Het transformeert vorm, maar heeft geen betekeniseffect.
-- **Conditioneel** werkt op voorwaarden en hygiëne, en heeft geen betekeniseffect op inhoudelijke artefacten.
-*(Opmerking: Agents die niet Inhoudelijk zijn, scoren in de praktijk 'N.v.t.' op de as Betekeniseffect, wat hier als 🔴 is weergegeven voor de reguliere categorieën).*
+- **Geen betekenis (Nul-positie)** is incompatibel met **Inhoudelijk**, omdat inhoudelijke werking per definitie een betekeniseffect heeft.
+- **Representatie-omvormend** is betekenis-blind. Het transformeert vorm, maar heeft geen betekeniseffect (Nul-positie).
+- **Conditioneel** werkt op voorwaarden en hygiëne, en heeft geen betekeniseffect op inhoudelijke artefacten (Nul-positie).
 
 ---
 
@@ -31,27 +33,32 @@ De matrices tonen welke combinaties van as-posities architectonisch mogelijk en 
 
 | Betekeniseffect \ Interventieniveau | Werk | Ontwerp | Architectuur | Ecosysteem |
 | :--- | :---: | :---: | :---: | :---: |
-| **Beschrijvend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Realiserend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Evaluerend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Normerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Geen betekenis (Nul-positie)** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Registrerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Structurerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Vastleggend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Interpreterend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Vastleggend** | 🟢 | 🟢 | 🟢 | 🟢 |
 
-*Alle combinaties zijn hier mogelijk. Een agent kan op elk niveau beschrijven, realiseren, evalueren of normeren.*
+*Alle combinaties zijn hier mogelijk. Een agent kan op elk niveau beschrijven, structureren, realiseren, evalueren, normeren, of voorwaarden bewaken zonder betekeniseffect.*
 
 ---
 
 ## 3. Betekeniseffect vs. Bronhouding
 
-| Betekeniseffect \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Vrij |
+| Betekeniseffect \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Exploratief |
 | :--- | :---: | :---: | :---: | :---: |
-| **Beschrijvend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Realiserend** | 🟢 | 🟢 | 🟢 | 🟢 |
-| **Evaluerend** | 🔴 | 🟢 | 🟢 | 🟢 |
-| **Normerend** | 🔴 | 🟢 | 🔴 | 🟢 |
+| **Geen betekenis (Nul-positie)** | 🟢 | 🟢 | 🔴 | 🔴 |
+| **Registrerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Structurerend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Vastleggend** | 🟢 | 🟢 | 🟢 | 🟢 |
+| **Interpreterend** | 🔴 | 🟢 | 🟢 | 🟢 |
+| **Vastleggend** | 🔴 | 🟢 | 🔴 | 🟢 |
 
 *Toelichting incompatibiliteiten:*
-- **Evaluerend/Normerend + Input-gebonden**: Evalueren en normeren vereisen oordeelsvorming, interpretatie of autoriteit. Dit kan niet puur input-gebonden (input=output) zonder externe kennis of regels.
-- **Normerend + Externe-bron gebonden**: Het puur ophalen van bestaande informatie (retrieval) kan geen nieuwe normen stellen; normeren vereist vrije synthese of canon-gebonden afleiding.
+- **Geen betekenis (Nul-positie) + Externe-bron/Exploratief**: Een agent zonder betekeniseffect (zoals een formatter of linter) mag geen externe bronnen raadplegen of exploratief genereren, omdat dit het risico op onbedoelde betekeniswijziging introduceert.
+- **Interpreterend/Vastleggend + Input-gebonden**: Evalueren en normeren vereisen oordeelsvorming, interpretatie of autoriteit. Dit kan niet puur input-gebonden (input=output) zonder externe kennis of regels.
+- **Vastleggend + Externe-bron gebonden**: Het puur ophalen van bestaande informatie (retrieval) kan geen nieuwe normen stellen; normeren vereist exploratieve synthese of canon-gebonden afleiding.
 
 ---
 
@@ -70,21 +77,21 @@ De matrices tonen welke combinaties van as-posities architectonisch mogelijk en 
 
 ## 5. Werking vs. Bronhouding
 
-| Werking \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Vrij |
+| Werking \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Exploratief |
 | :--- | :---: | :---: | :---: | :---: |
 | **Inhoudelijk** | 🟢 | 🟢 | 🟢 | 🟢 |
 | **Representatie-omvormend** | 🟢 | 🔴 | 🔴 | 🔴 |
 | **Conditioneel** | 🟢 | 🟢 | 🔴 | 🔴 |
 
 *Toelichting incompatibiliteiten:*
-- **Representatie-omvormend + Niet-input-gebonden**: Een pure vormtransformatie (bijv. Markdown naar XML) is per definitie input-gebonden en heeft geen canon, externe bronnen of vrije generatieve AI nodig (en mag dit ook niet gebruiken om hallucinaties te voorkomen).
-- **Conditioneel + Externe-bron/Vrij**: Hygiëne en voorwaarden (zoals linting, workspace checks) zijn input-gebonden of hooguit canon-gebonden (regels toepassen), maar vereisen geen vrije generatieve AI of open retrieval.
+- **Representatie-omvormend + Niet-input-gebonden**: Een pure vormtransformatie (bijv. Markdown naar XML) is per definitie input-gebonden en heeft geen canon, externe bronnen of exploratieve generatieve AI nodig (en mag dit ook niet gebruiken om hallucinaties te voorkomen).
+- **Conditioneel + Externe-bron/Exploratief**: Hygiëne en voorwaarden (zoals linting, workspace checks) zijn input-gebonden of hooguit canon-gebonden (regels toepassen), maar vereisen geen exploratieve generatieve AI of open retrieval.
 
 ---
 
 ## 6. Interventieniveau vs. Bronhouding
 
-| Interventieniveau \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Vrij |
+| Interventieniveau \ Bronhouding | Input-gebonden | Canon-gebonden | Externe-bron gebonden | Exploratief |
 | :--- | :---: | :---: | :---: | :---: |
 | **Werk** | 🟢 | 🟢 | 🟢 | 🟢 |
 | **Ontwerp** | 🟢 | 🟢 | 🟢 | 🟢 |

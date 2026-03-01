@@ -8,7 +8,7 @@
 
 ## Classificatie
 
-**Agent-classificatie**: Ecosysteem-normerend, Value-stream-overstijgend, Vormvast, Conditioneel
+**Agent-classificatie**: Ecosysteem-vastleggend, Value-stream-overstijgend, Vormvast, Conditioneel
 
 *Voor uitleg van classificatie-assen zie [mandarin-ordeningsconcepten](../aeo/mandarin-ordeningsconcepten.md#mandarin-agent-classificatie)*
 
@@ -61,12 +61,12 @@ Niet:
 
 Het canonieke werkwoord reflecteert de **architectonische transformatie** die de agent uitvoert:
 
-- **Beschrijvend**: `beschrijf` — Observatie → expliciete beschrijving
-- **Structuur-normerend**: `definieer` — Chaos → gedefinieerde scope
+- **Registrerend**: `beschrijf` — Observatie → expliciete beschrijving
+- **Structuur-vastleggend**: `definieer` — Chaos → gedefinieerde scope
 - **Constituerend**: `constitueer` — Intentie → normatief kader
-- **Structuurrealiserend**: `realiseer` — Ontwerp → werkende structuur
+- **Structuurvastleggend**: `realiseer` — Ontwerp → werkende structuur
 - **Curator**: `beoordeel` — Artefact → kwalitatief oordeel
-- **Ecosysteem-normerend**: `stel vast` — Bestaande norm → gewijzigde norm
+- **Ecosysteem-vastleggend**: `stel vast` — Bestaande norm → gewijzigde norm
 - **Conditioneel (validerend)**: `valideer` — Artefact + Norm → pass/fail
 - **Conditioneel (ordenend)**: `orden` — Chaos → geordende structuur
 
@@ -142,24 +142,24 @@ Bepaalde werkwoorden lijken op elkaar maar hebben fundamenteel verschillende wer
 - **valideer** (conditioneel): Binaire check ("voldoet", "voldoet niet")
 
 #### `definieer` vs `stel vast`
-- **definieer** (structuur-normerend): Bepaalt wat binnen scope bestaat
-- **stel vast** (ecosysteem-normerend): Wijzigt governance-spelregels
+- **definieer** (structuur-vastleggend): Bepaalt wat binnen scope bestaat
+- **stel vast** (ecosysteem-vastleggend): Wijzigt governance-spelregels
 
 #### `constitueer` vs `definieer`
 - **constitueer** (constituerend): Schept het normatieve kader zelf (doctrine, constitutie, beleid)
-- **definieer** (structuur-normerend): Bepaalt wat binnen een bestaand kader valt
+- **definieer** (structuur-vastleggend): Bepaalt wat binnen een bestaand kader valt
 
 #### `structureer` vs `definieer` vs `orden`
 - **structureer** (structurerend): Brengt structuur aan in bestaande elementen (kan inhoud wijzigen)
-- **definieer** (structuur-normerend): Bepaalt wat binnen scope bestaat (normering)
+- **definieer** (structuur-vastleggend): Bepaalt wat binnen scope bestaat (normering)
 - **orden** (conditioneel): Rangschikt alleen (geen inhoudelijke wijziging)
 
 #### `beschrijf` vs `documenteer`
-- **beschrijf** (beschrijvend): Momentopname, observatie
+- **beschrijf** (registrerend): Momentopname, observatie
 - **documenteer** (documenterend): Duurzame kennisregistratie
 
 #### `realiseer` vs `genereer`
-- **realiseer** (realiserend): Van specificatie naar concreet artefact
+- **realiseer** (vastleggend): Van specificatie naar concreet artefact
 - **genereer` (afgeleid): Volledig berekend/afgeleid uit andere artefacten
 
 Het ecosysteem handhaaft deze verschillen strikt.
@@ -186,17 +186,17 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 | Classificatie | Canoniek Werkwoord |
 |---------------|-----------------|
-| Beschrijvend | `beschrijf` |
-| Structuur-normerend | `definieer` |
+| Registrerend | `beschrijf` |
+| Structuur-vastleggend | `definieer` |
 | Constituerend | `constitueer` |
 | Structurerend | `structureer` |
-| Structuurrealiserend | `realiseer` |
+| Structuurvastleggend | `realiseer` |
 | Curator | `beoordeel` |
-| Ecosysteem-normerend | `stel vast` |
+| Ecosysteem-vastleggend | `stel vast` |
 | Representatie-omvormend (omzettend) | `zet om` |
 | Representatie-omvormend (verdichtend) | `vat samen` |
 | Representatie-omvormend (uitbreidend) | `licht toe` |
-| Realiserend | `realiseer` |
+| Vastleggend | `realiseer` |
 | Conditioneel (validerend) | `valideer` |
 | Conditioneel (ordenend) | `orden` |
 | Documenterend | `documenteer` |
@@ -208,7 +208,7 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 ### Inhoudelijke Agents (Werkings-as: Inhoudelijk)
 
-#### `beschrijf` (Beschrijvend)
+#### `beschrijf` (Registrerend)
 **Werking**: Legt vast wat is, zonder oordeel of transformatie  
 **Effect**: Observatie → expliciete beschrijving
 
@@ -222,7 +222,7 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 ---
 
-#### `definieer` (Structuur-normerend)
+#### `definieer` (Structuur-vastleggend)
 **Werking**: Bepaalt wat binnen scope bestaat, legt normering vast  
 **Effect**: Chaos → gedefinieerde scope
 
@@ -232,7 +232,7 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 | `definieer-{concept}` | `definieer-agent-contract` |
 | `definieer-{grens}` | `definieer-capability-boundary` |
 
-**Niet toegestaan**: `bepaal` (te zwak), `normeer` (zie ecosysteem-normerend)
+**Niet toegestaan**: `bepaal` (te zwak), `normeer` (zie ecosysteem-vastleggend)
 
 ---
 
@@ -248,7 +248,7 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 **Verschil met definieer**: `constitueer` schept het kader, `definieer` bepaalt wat binnen het kader valt
 
-**Niet toegestaan**: `creëer` (te algemeen), `ontwerp` (te breed), `schrijf` (zie realiserend)
+**Niet toegestaan**: `creëer` (te algemeen), `ontwerp` (te breed), `schrijf` (zie vastleggend)
 
 ---
 
@@ -270,7 +270,7 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 ---
 
-#### `realiseer` (Structuurrealiserend)
+#### `realiseer` (Structuurvastleggend)
 **Werking**: Realiseert active structure (applicatielaag) - databases, code, API's  
 **Effect**: Ontwerp/specificatie → werkende applicatie-structuur
 
@@ -300,7 +300,7 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 ---
 
-#### `stel vast` (Ecosysteem-normerend)
+#### `stel vast` (Ecosysteem-vastleggend)
 **Werking**: Wijzigt of stelt governance-spelregels vast  
 **Effect**: Bestaande norm → gewijzigde/nieuwe norm
 
@@ -327,7 +327,7 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 ---
 
-#### `realiseer` (Realiserend)
+#### `realiseer` (Vastleggend)
 **Werking**: Van specificatie naar concreet artefact  
 **Effect**: Specificatie → concreet artefact
 

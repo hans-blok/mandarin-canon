@@ -6,11 +6,29 @@
 
 ---
 
+
 ## Classificatie
 
-**Agent-classificatie**: Normerend (Betekeniseffect), Ecosysteem (Interventieniveau), Inhoudelijk (Werking), Canon-gebonden (Bronhouding)
+Deze doctrine volgt de uniforme classificatiestructuur uit [mandarin-ecosysteem-ordeningsconcepten.md](../aeo/mandarin-ecosysteem-ordeningsconcepten.md#mandarin-agent-classificatie) en positioneert zich als volgt op de vier orthogonale assen:
 
-*Voor uitleg van classificatie-assen zie [mandarin-ordeningsconcepten](../aeo/mandarin-ordeningsconcepten.md#mandarin-agent-classificatie)*
+- **Betekeniseffect**: *Normerend*  
+  (Normeert ontwerpprincipes en kaders voor agent-charters)
+- **Vormingsfase**: *Ordening / Vastlegging*  
+  (Structureert en formaliseert de architectonische principes voor het ecosysteem)
+- **Werking**: *Inhoudelijk*  
+  (Bepaalt inhoud en structuur van charters, niet alleen randvoorwaarden)
+- **Bronhouding**: *Canon-gebonden*  
+  (Baseert zich expliciet op de Mandarin-canon en is herleidbaar naar canonieke bronnen)
+
+Zie voor uitleg van deze assen en hun posities de secties *Betekeniseffect*, *Vormingsfase*, *Werking* en *Bronhouding* in [mandarin-ecosysteem-ordeningsconcepten.md](../aeo/mandarin-ecosysteem-ordeningsconcepten.md).
+
+**Voorbeeld van classificatie in matrixvorm:**
+
+| Betekeniseffect | Vormingsfase   | Werking    | Bronhouding    |
+|-----------------|---------------|------------|---------------|
+| normerend       | ordening/vastlegging | inhoudelijk | canon-gebonden |
+
+Deze doctrine is dus normerend van aard, structureert en formaliseert het ontwerpdenken (vormingsfase), werkt inhoudelijk (bepaalt inhoud en structuur van charters) en is canon-gebonden (herleidbaar naar de canon).
 
 ---
 
@@ -176,7 +194,20 @@ Deze normering waarborgt:
 
 ---
 
-## 4. Ontwerprichting
+
+---
+
+## Richtlijn: Eén agent = één bronhouding
+
+Een agent heeft altijd precies één bronhouding. Het is niet toegestaan dat een agent intents heeft met verschillende bronhoudingen.
+
+**Toelichting:**
+- De bronhouding bepaalt de epistemische discipline en herleidbaarheid van alle output van de agent.
+- Consistentie in bronhouding voorkomt verwarring, verhoogt traceerbaarheid en borgt de architectonische integriteit van het ecosysteem.
+- Agents met gemengde bronhoudingen zijn niet toegestaan, omdat dit de controleerbaarheid en governance ondermijnt.
+
+**Voorbeeld:**
+Een agent die canon-gebonden is, mag geen intent hebben die exploratief of input-gebonden is. Alle intents van een agent delen dezelfde bronhouding.
 
 De creatie van een agent-charter volgt een architectonische discipline:
 
@@ -226,6 +257,7 @@ Deze doctrine wordt aangevuld door:
 
 | Datum       | Versie | Wijziging                                                                 | Auteur |
 |------------|--------|---------------------------------------------------------------------------|--------|
+| 2026-03-01 | 2.3.0  | Classificatie volledig volgens vier assen uit canon, richtlijn één bronhouding per agent toegevoegd, consistentie en verwijzingen verbeterd, kritische reflectie en bronnen Agentic AI toegevoegd. | Constitutioneel Auteur |
 | 2026-02-21 | 2.2.0  | Classificatie en Principe 9 herschreven conform de 4 nieuwe orthogonale assen uit mandarin-ordeningsconcepten.md | Constitutioneel Auteur |
 | 2026-02-13 | 2.1.0  | Principe 9 toegevoegd: output-formaat normering voor inhoudelijke agents | —      |
 | 2026-02-12 | 2.0.0  | Fundamentele herziening: focus op ecosysteem-architectuur en -integriteit | —      |

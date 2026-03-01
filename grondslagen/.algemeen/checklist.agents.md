@@ -30,7 +30,7 @@ Zonder volledige en correcte invulling is handelen **ongeldig**.
 
 ☐ Ik heb de constitutie gelezen  
 ☐ Bestandslocatie:
-☐ Ik erken dat de constitutie bindend is  
+☐ Ik erken dat de constitutie vastleggend is  
 ☐ Mijn handelen is hieraan ondergeschikt  
 
 **Indien niet voldaan**: STOP

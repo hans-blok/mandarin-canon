@@ -61,7 +61,7 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 Dit document beschrijft de concepten die betrekking hebben op de **actieve structuren** van het **Mandarin-ecosysteem**. 
 Onder actieve structuren verstaan we de samenstellende en functionele elementen die het ecosysteem laten handelen, samenwerken en output produceren.
 
-Naast de actieve structuren bevat dit document ook de meta-concepten **Mandarin-concept** en **Mandarin-architectuurprincipe**. Deze hebben een beschrijvend en duidend karakter en ondersteunen menselijke leesbaarheid en begripsvorming van het ecosysteem zelf.
+Naast de actieve structuren bevat dit document ook de meta-concepten **Mandarin-concept** en **Mandarin-architectuurprincipe**. Deze hebben een registrerend en interpreterend karakter en ondersteunen menselijke leesbaarheid en begripsvorming van het ecosysteem zelf.
 
 De expliciete afbakening en structurering van deze concepten is een **bewuste ontwerpkeuze**. Door structurele en gedragsmatige aspecten strikt te scheiden, worden **mandarin-agents** voorspelbaarder in hun handelen, beter toetsbaar en consistenter in hun output. Dit vergroot de bestuurbaarheid van het ecosysteem en zorgt ervoor dat **mandarin-agents** aantoonbaar handelen binnen de bedoelde kaders.
 
@@ -115,12 +115,12 @@ Een **actieve structuur** in het **Mandarin-ecosysteem** is een expliciet gedefi
 ### Kenmerken ⭐
 - Heeft een expliciete, afgebakende rol of functie binnen het ecosysteem
 - Is in staat tot handelen, samenwerken en output genereren
-- Is structureel en functioneel onderscheiden van passieve of beschrijvende elementen
+- Is structureel en functioneel onderscheiden van passieve of registrerende elementen
 - Kan zelfstandig of in samenhang met andere actieve structuren opereren
 - Is toetsbaar op gedrag en output
 
 ### Wat het niet is ❌
-- Geen passief, beschrijvend of uitsluitend informatief element
+- Geen passief, registrerend of uitsluitend informatief element
 - Geen tijdelijke of impliciete structuur
 - Geen abstracte regel, principe of conventie
 - Geen gedrag
@@ -153,7 +153,7 @@ Het **Mandarin-ecosysteem** is de overkoepelende, samenhangende verzameling van 
 - Waarborgt expliciete contracten en governance
 - Biedt een coherent kader voor **mandarin-agents**, artefacten en value streams
 - Maakt automatisering, samenwerking en waardecreatie mogelijk
-- Is adaptief en zelfbeschrijvend (meta-concepten zijn onderdeel van het ecosysteem)
+- Is adaptief en zelfregistrerend (meta-concepten zijn onderdeel van het ecosysteem)
 
 ### Wat het niet is ❌
 - Geen statisch systeem of vaste architectuur
@@ -174,7 +174,7 @@ Het **Mandarin-ecosysteem** is de overkoepelende, samenhangende verzameling van 
 - In biologie: een ecosysteem met verschillende soorten en hun interacties
 
 ### Toelichting 💬
-Het **Mandarin-ecosysteem** vormt de overkoepelende context waarbinnen alle Mandarin-concepten samenkomen en waarde leveren. Het is ontworpen om adaptief, expliciet en samenhangend te zijn. Het ecosysteem is zelfbeschrijvend: de concepten die het ecosysteem beschrijven (zoals **Mandarin-concept** en **Mandarin-architectuurprincipe**) maken zelf deel uit van het ecosysteem.
+Het **Mandarin-ecosysteem** vormt de overkoepelende context waarbinnen alle Mandarin-concepten samenkomen en waarde leveren. Het is ontworpen om adaptief, expliciet en samenhangend te zijn. Het ecosysteem is zelfregistrerend: de concepten die het ecosysteem beschrijven (zoals **Mandarin-concept** en **Mandarin-architectuurprincipe**) maken zelf deel uit van het ecosysteem.
 
 
 ---
@@ -280,7 +280,7 @@ Een **agent-charter** is een formeel, expliciet document dat de missie, verantwo
 - Legt de missie en het bestaansrecht van de **mandarin-agent** vast
 - Bepaalt de grenzen (boundary) en verantwoordelijkheden
 - Beschrijft de governance, policies en randvoorwaarden
-- Is expliciet, versieerbaar en bindend
+- Is expliciet, versieerbaar en vastleggend
 - Is leidend voor ontwerp, implementatie en evaluatie van de **mandarin-agent**
 - Vormt de basis voor het **agent-contract**
 
@@ -313,10 +313,10 @@ Een **agent-capability** is een expliciet aanroepbare functie van een **mandarin
 ### Kenmerken ⭐
 - Eén capability = één intent / operation
 - Capability bestaat alleen in het **agent-contract**
-- Capability is aanroepbaar (uitvoerbaar), niet beschrijvend
+- Capability is aanroepbaar (uitvoerbaar), niet registrerend
 
 ### Wat het niet is ❌
-- Geen beschrijvende eigenschap
+- Geen registrerende eigenschap
 - Geen interne implementatie
 - Geen losstaande functie buiten contract
 
@@ -378,7 +378,7 @@ Een **prompt** is een concrete, tekstuele of gestructureerde uitdrukking van een
 - Geen **agent-capability** (die wordt formeel gedefinieerd in het **agent-contract**)
 - Geen **agent-contract** of formele interfacebeschrijving
 - Geen **agent-charter** of bron van legitimiteit
-- Geen normerend artefact of canoniek vastgelegde definitie
+- Geen vastleggend artefact of canoniek vastgelegde definitie
 
 ### Voorbeelden 💡
 - Een tekstblok in een editor waarin een gebruiker een opdracht voor een specifieke **mandarin-agent** formuleert
@@ -431,12 +431,11 @@ Een **bronregime** is het expliciet vastgelegde stelsel van toegestane kennisbro
 ### Toelichting 💬
 De **Bronhouding** positioneert een **mandarin-agent** op de classificatie-as. Het **bronregime** operationaliseert die positie in concrete regels. Het zorgt ervoor dat de grenzen van wat een agent mag "weten" en "vinden" expliciet en toetsbaar zijn.
 
-Daarnaast reguleert het bronregime de balans tussen **determinisme** en **probabilisme** in het gedrag van de agent. Een strikt bronregime (zoals bij input-gebonden) dwingt deterministisch gedrag af: dezelfde input leidt gegarandeerd tot dezelfde output, zonder probabilistische interpretatie. Een vrijer bronregime (zoals bij canon-gebonden of vrij) staat probabilistisch gedrag toe, waarbij de agent (vaak een LLM) ruimte krijgt voor synthese, interpretatie en het genereren van nieuwe betekenis op basis van waarschijnlijkheden, zolang dit binnen de gestelde kaders van het regime blijft.
+Daarnaast reguleert het bronregime de balans tussen **determinisme** en **probabilisme** in het gedrag van de agent. Een strikt bronregime (zoals bij input-gebonden) dwingt deterministisch gedrag af: dezelfde input leidt gegarandeerd tot dezelfde output, zonder probabilistische interpretatie. Een exploratiever bronregime (zoals bij canon-gebonden of exploratief) staat probabilistisch gedrag toe, waarbij de agent (vaak een LLM) ruimte krijgt voor synthese, interpretatie en het genereren van nieuwe betekenis op basis van waarschijnlijkheden, zolang dit binnen de gestelde kaders van het regime blijft.
 
-Bij een **vrij bronregime** is de mate van probabilisme het hoogst. Dit heeft als gevolg dat de output sterk generatief en creatief kan zijn, maar tegelijkertijd de minste voorspelbaarheid en herleidbaarheid kent. De verantwoordelijkheid verschuift hierdoor: de agent moet gemaakte aannames expliciet maken, en de validatie van de output (bijvoorbeeld op hallucinaties of ongewenste afwijkingen) vereist vaak menselijke controle (human-in-the-loop) of een navolgende evaluerende agent.
+Bij een **exploratief bronregime** is de mate van probabilisme het hoogst. Dit heeft als gevolg dat de output sterk generatief en creatief kan zijn, maar tegelijkertijd de minste voorspelbaarheid en herleidbaarheid kent. De verantwoordelijkheid verschuift hierdoor: de agent moet gemaakte aannames expliciet maken, en de validatie van de output (bijvoorbeeld op hallucinaties of ongewenste afwijkingen) vereist vaak menselijke controle (human-in-the-loop) of een navolgende interpreterende agent.
 
 ---
-## Mandarin-artefact
 
 ### Definitie 📝
 Een **Mandarin-artefact** is een duurzame, expliciete en overdraagbare vastlegging van resultaat of besluitvorming, die binnen een **value stream fase** waarde representeert en als input kan dienen voor vervolgwerk.
@@ -453,10 +452,10 @@ Een **Mandarin-artefact** is een duurzame, expliciete en overdraagbare vastleggi
 - Geen niet-overdraagbaar resultaat
 
 ### Voorbeelden 💡
-- Governance-artefacten (bijv. constitutie, doctrines, agent-charters)
-- Richtinggevende artefacten (bijv. requirements, oplossingsontwerpen)
-- Realiserende artefacten (bijv. code, DDL, infrastructuur-als-code)
-- Beschrijvende en documenterende artefacten (bijv. handleidingen, modellen)
+- Normerende artefacten van het agent ecosysteem (bijv. constitutie, doctrines, agent-charters)
+- Normerende artefacten van de de project workspace  (bijv. requirements, oplossingsontwerpen)
+- Realisererende artefacten (bijv. code, DDL, infrastructuur-als-code)
+- Beschrijvende artefacten (bijv. handleidingen, modellen)
 
 ### Synoniemen 🏷️
 - **Artefact**
@@ -482,7 +481,7 @@ Een **template** is een herbruikbare, gestructureerde opzet voor een **Mandarin-
 - Wordt gebruikt als startpunt voor concrete artefacten binnen een **value stream fase**
 - Ondersteunt vooral **mandarin-agents** die op de **inzet-as** als *value-stream-specifiek* zijn gepositioneerd
 - Verhoogt voorspelbaarheid, vergelijkbaarheid en herbruikbaarheid van resultaten
-- Is zelf geen normerend artefact, maar kan verwijzen naar normerende artefacten
+- Is zelf geen vastleggend artefact, maar kan verwijzen naar vastleggende artefacten
 - Wordt beheerd in de `templates/`-folder van een workspace
 
 ### Wat het niet is ❌
@@ -504,7 +503,7 @@ Een **template** is een herbruikbare, gestructureerde opzet voor een **Mandarin-
 - In enterprise architectuur: standaardformats voor architectuurdocumenten en besluiten
 
 ### Toelichting 💬
-**Templates** verbinden de ordeningslaag (structuur en classificatie) met de operationele laag waarin **mandarin-agents** daadwerkelijk artefacten produceren. Door templates expliciet te definiëren en centraal op te slaan, kunnen vooral **value-stream-specifieke** **mandarin-agents** binnen een bepaalde **value stream fase** snel, consistent en toetsbaar werken, zonder dat de normatieve waarheid verschuift van normerende artefacten naar de template zelf.
+**Templates** verbinden de ordeningslaag (structuur en classificatie) met de operationele laag waarin **mandarin-agents** daadwerkelijk artefacten produceren. Door templates expliciet te definiëren en centraal op te slaan, kunnen vooral **value-stream-specifieke** **mandarin-agents** binnen een bepaalde **value stream fase** snel, consistent en toetsbaar werken, zonder dat de normatieve waarheid verschuift van vastleggende artefacten naar de template zelf.
 
 ---
 
@@ -620,8 +619,8 @@ In de eerste fase van ontwikkeling worden **mandarin-agents** gefetched uit de M
 | 2026-02-01 | 2.1.0 | Toegevoegd: concept Prompt als concrete, niet-canonieke representatie van een aanroep naar een mandarin-agent | Constitutioneel Auteur |
 | 2026-02-01 | 2.0.0 | Scheiding meta-concepten: Mandarin-architectuurprincipe, **agent-boundary**, **mandarin-agent**classificatie (inclusief As en 4 assen), en Mandarin-artefact (inclusief alle specialisaties) verplaatst naar mandarin-meta-concepten.md; document bevat nu alleen operationele concepten (actieve structuren) | Constitutioneel Auteur |
 | 2026-02-01 | 1.6.0 | Herijking **mandarin-agent**-classificatie: vervanging **mandarin-agent**-soort door **mandarin-agent**classificatie met 4 orthogonale assen (Inhoudelijke as, Inzet-as, Vorm-as, Werkingsas); alle oude **mandarin-agent**-soorten verwijderd (Adviserende **mandarin-agent**, Uitvoerende **mandarin-agent**, Beheeragent, Ecosysteem uitvoerende **mandarin-agent**, Waarde uitvoerende **mandarin-agent**); **mandarin-agents** niet langer als "soort" maar als posities op assen | Constitutioneel Auteur |
-| 2026-02-01 | 1.5.0 | Herziening artefacten-hiërarchie: Governance-artefact en Bedrijfs-artefact zijn nu specialisaties van Normerend artefact; Governance-artefacten ontstaan alleen in value stream "Agent Ecosysteem Ontwikkeling"; Normerende artefacten operationeel in maximaal één value stream fase | Constitutioneel Auteur |
-| 2026-02-01 | 1.4.0 | Herijking artefacten-indeling: Mandarin-artefacten nu ingedeeld in 5 hoofdklassen (Normerend, Governance, Bedrijfs-, Beschrijvend, Documenterend) i.p.v. 2 (Governance, Waarde); scheidt betekenis van vorm, maakt tooling verwisselbaar | Constitutioneel Auteur |
+| 2026-02-01 | 1.5.0 | Herziening artefacten-hiërarchie: Governance-artefact en Bedrijfs-artefact zijn nu specialisaties van Vastleggend artefact; Governance-artefacten ontstaan alleen in value stream "Agent Ecosysteem Ontwikkeling"; Vastleggende artefacten operationeel in maximaal één value stream fase | Constitutioneel Auteur |
+| 2026-02-01 | 1.4.0 | Herijking artefacten-indeling: Mandarin-artefacten nu ingedeeld in 5 hoofdklassen (Vastleggend, Governance, Bedrijfs-, Registrerend, Documenterend) i.p.v. 2 (Governance, Waarde); scheidt betekenis van vorm, maakt tooling verwisselbaar | Constitutioneel Auteur |
 | 2026-01-31 | 1.3.0 | Toevoeging concepten Value stream **mandarin-agent** en value-stream-overstijgende **mandarin-agent**; verduidelijking fase-toekenning per **mandarin-agent**-soort: adviserende/uitvoerende **mandarin-agents** aan fasen, beheeragents in alle fasen, value-stream-overstijgende **mandarin-agents** orthogonaal | Constitutioneel Auteur |
 | 2026-01-31 | 1.2.1 | Aanscherping "Gebruik van Synoniemen" — Synoniemen VERBODEN binnen ecosysteem, uitsluitend toegestaan in menselijke spreektaal; voorbeelden toegevoegd | Canon Curator |
 | 2026-01-31 | 1.2.0 | Subsectie toegevoegd in Inleiding: "Gebruik van Synoniemen" — Verduidelijkt dat synoniemen spreektaal zijn en niet erkend binnen ecosysteem | Canon Curator |

@@ -31,7 +31,7 @@ Deze consitutie vindt zijn grondslag in het axioma van gezag.
 **Mandarin** vormt het **agent-ecosysteem**: het permanente korps van gezaghebbende agents dat de constitutie bewaakt en de samenhang van het ecosysteem onderhoudt.
 Wanneer wij spreken van 'Mandarin', 'het agent-ecosysteem' of 'het ecosysteem', dan bedoelen we hetzelfde.
 
-Deze constitutie legt de bindende afspraken vast over de positie, bevoegdheden en werking van het **Mandarin-korps**. Zij regelt hoe **Mandarin-agenten** handelen, niet waarom zij handelen.
+Deze constitutie legt de vastleggende afspraken vast over de positie, bevoegdheden en werking van het **Mandarin-korps**. Zij regelt hoe **Mandarin-agenten** handelen, niet waarom zij handelen.
 
 De geldigheid van Mandarin berust op:
 - expliciete afbakening van bevoegdheden;
@@ -111,9 +111,9 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 ## Artikel 1 — Werkingssfeer en hiërarchie
 
-1. **Bindend**: Deze constitutie geldt voor alle repositories, workflows en artefacten binnen het ecosysteem.
+1. **Vastleggend**: Deze constitutie geldt voor alle repositories, workflows en artefacten binnen het ecosysteem.
 2. **Hiërarchie**: De normatieve orde binnen het ecosysteem is als volgt:
-   - **Constitutie** — De bindende grondslag voor het gehele ecosysteem;
+   - **Constitutie** — De vastleggende grondslag voor het gehele ecosysteem;
    - **Beleid** — Per workspace vastgelegd; kan binnen de grenzen van de constitutie doctrines overrulen of aanvullen;
    - **Doctrines** — Ecosysteem-brede principes en werkwijzen, tenzij expliciet aangepast door workspace-beleid;
    - **Agent-normering en Charters** — Specificaties die vallen onder doctrine en beleid.
@@ -313,7 +313,7 @@ Geen enkele geautomatiseerde rol mag conflicten zelfstandig oplossen door normse
 
 ## Gerelateerde Doctrines en Normatieve Artefacten
 
-Deze Constitutie is de bindende grondslag voor het gehele normatieve stelsel. De volgende documenten in `grondslagen/globaal/` concretiseren en implementeren deze Constitutie:
+Deze Constitutie is de vastleggende grondslag voor het gehele normatieve stelsel. De volgende documenten in `grondslagen/globaal/` concretiseren en implementeren deze Constitutie:
 
 ### Workspace Governance
 
