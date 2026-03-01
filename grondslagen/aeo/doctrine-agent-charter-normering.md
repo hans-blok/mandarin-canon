@@ -194,10 +194,14 @@ Deze normering waarborgt:
 
 ---
 
+## Richtlijn template-gebruik
 
----
+Alle agents die artefacten genereren op basis van templates:
+- MOETEN het template-bestand expliciet lezen uit de workspace
+- MOGEN NIET vertrouwen op eerdere kennis van template-structuur
+- MOETEN template-pad en versie loggen in audit
 
-## Richtlijn: Eén agent = één bronhouding
+## Richtlijn bronhouding
 
 Een agent heeft altijd precies één bronhouding. Het is niet toegestaan dat een agent intents heeft met verschillende bronhoudingen.
 
