@@ -1,188 +1,168 @@
+
 # Agent Doctrine — Intent Naming
 
 **Doctrine-ID**: `AEO.DOC.002`  
-**Versie**: 1.3.0  
-**Value Stream**: Agent Ecosysteem ontwikkeling  
+**Versie**: 2.0.0  
+**Value Stream**: Agent Ecosysteem ontwikkeling
 
 ---
 
 ## Classificatie
 
-**Agent-classificatie**: Ecosysteem-vastleggend, Value-stream-overstijgend, Vormvast, Conditioneel
+Deze doctrine volgt de vier orthogonale assen uit [mandarin-ecosysteem-ordeningsconcepten.md](../aeo/mandarin-ecosysteem-ordeningsconcepten.md):
 
-*Voor uitleg van classificatie-assen zie [mandarin-ordeningsconcepten](../aeo/mandarin-ordeningsconcepten.md#mandarin-agent-classificatie)*
+- **Betekeniseffect**: bepaalt het type transformatie of effect van de intent
+- **Vormingsfase**: positioneert de intent in het proces van verkenning tot operationalisatie
+- **Werking**: bepaalt of de intent inhoudelijk, representatie-omvormend of conditioneel is
+- **Bronhouding**: bepaalt de herleidbaarheid en kennisbasis van de intent
 
----
-
-## 1. Doel en bestaansreden
-
-Deze doctrine normeert **intent-naming** voor agents binnen het Mandarin-ecosysteem door een canoniek werkwoord te koppelen aan elke agent-classificatie.
-
-Zij stelt kaders voor:
-
-- de relatie tussen agent-classificatie en werkwoord;
-- voorspelbaarheid in communicatie tussen agents;
-- architectonische helderheid over agent-werking;
-- ecosysteem-brede consistentie in naming.
-
-Deze doctrine waarborgt dat de **naam van een intent de architectonische werking** reflecteert, niet het artefact-type.
+Intent-naming is primair gekoppeld aan de werking en het betekeniseffect van de agent.
 
 ---
 
-## 2. Capability boundary
+## Doel en bestaansreden
 
-Deze doctrine normeert **intent-naming** door voor elke agent-classificatie exact één canoniek werkwoord vast te stellen, waarmee architectonische werking direct herkenbaar wordt in de naam van een intent.
+Deze doctrine normeert **intent-naming** voor agents binnen het Mandarin-ecosysteem. Elke intent-naam maakt via een canoniek werkwoord direct duidelijk:
+- het architectonisch effect (betekeniseffect)
+- de aard van de interventie (werking)
 
----
-
-## 3. Kernprincipes
-
-### Principe 1 — Één Classificatie, Één Werkwoord
-
-Elke **agent-classificatie** (op de werkingsas) heeft **exact één canoniek werkwoord** voor intent-naming.
-
-Het werkwoord manifesteert:
-
-- de architectonische werking van de agent;
-- niet het type artefact dat wordt geproduceerd;
-- niet het technische mechanisme.
-
-De ontwerprichting is:
-
-> classificatie → canoniek werkwoord → intent-naam
-
-Niet:
-
-> artefact-type → werkwoord
+Hiermee wordt voorspelbaarheid, consistentie en uitlegbaarheid in het ecosysteem geborgd.
 
 ---
 
-### Principe 2 — Werkwoord Volgt Werking
+## Kernprincipes
 
-Het canonieke werkwoord reflecteert de **architectonische transformatie** die de agent uitvoert:
+### 1. Eén werking, één canoniek werkwoord
+Elke werking (en bijbehorend betekeniseffect) kent exact één canoniek werkwoord voor intent-naming. Dit werkwoord is verplicht leidend in de intent-naam.
 
-- **Registrerend**: `beschrijf` — Observatie → expliciete beschrijving
-- **Structuur-vastleggend**: `definieer` — Chaos → gedefinieerde scope
-- **Constituerend**: `constitueer` — Intentie → normatief kader
-- **Structuurvastleggend**: `realiseer` — Ontwerp → werkende structuur
-- **Curator**: `beoordeel` — Artefact → kwalitatief oordeel
-- **Ecosysteem-vastleggend**: `stel vast` — Bestaande norm → gewijzigde norm
-- **Conditioneel (validerend)**: `valideer` — Artefact + Norm → pass/fail
-- **Conditioneel (ordenend)**: `orden` — Chaos → geordende structuur
+### 2. Intent-naming volgt architectonische werking
+Het canonieke werkwoord reflecteert de architectonische transformatie die de agent uitvoert. De intent-naam mag nooit het ware effect of de werking verhullen.
 
-Het werkwoord verbergt nooit de ware werking.
+### 3. Naamgevingsconventie
+Het formaat voor elke intent is:
 
----
+    {werkwoord}-{object}[-{context}]
 
-### Principe 3 — Naamgevingsconventie als Contract
+Regels:
+1. Werkwoord altijd in gebiedende wijs, kleine letters
+2. Object in kebab-case
+3. Context optioneel, voor specificatie
+4. Geen lidwoorden
+5. Altijd het canonieke werkwoord voor de werking gebruiken
 
-Alle intents volgen het formaat:
+### 4. Kritische verschillen expliciet
+Werkwoorden met verschillende architectonische werking mogen niet worden verward. Zie de toelichting en matrix in [mandarin-ecosysteem-ordeningsconcepten.md](../aeo/mandarin-ecosysteem-ordeningsconcepten.md).
 
-```
-{werkwoord}-{object}[-{context}]
-```
-
-Met de regels:
-
-1. Werkwoord altijd in gebiedende wijs, kleine letters;
-2. Object in kebab-case;
-3. Context optioneel, voor verdere specificatie;
-4. Geen lidwoorden ("de", "het");
-5. Gebruik altijd het canonieke werkwoord voor de agent-classificatie.
-
-Voorbeelden:
-- ✅ `beschrijf-agent-contract`
-- ✅ `realiseer-database-schema`
-- ✅ `definieer-themas-werkvoorbereiding`
-- ✅ `constitueer-doctrine`
-- ✅ `beoordeel-consistentie-charter`
-- ✅ `stel-vast-doctrine-wijziging`
-- ✅ `valideer-tegen-doctrine`
-- ✅ `orden-workspace`
-- ✅ `realiseer-charter`
+### 5. Validatie
+Een intent met een niet-canoniek werkwoord wordt geweigerd. Alleen de vastgestelde werkwoorden per werking/betekeniseffect zijn toegestaan.
 
 ---
 
-### Principe 4 — Representatie-omvorming Kent Drie Varianten
+## Canonieke werkwoorden per werking/betekeniseffect
 
-Agents met classificatie **Representatie-omvormend** hebben drie sub-varianten, elk met eigen werkwoord:
 
-#### 4.1 Omzettend (vorm zonder betekeniswijziging)
+Werking     | Bekeneniseffect                 | Canoniek werkwoord |
+----------- |---------------------------------|--------------------|
+Inhoudelijk | Beschrijvend                    | beschrijf          |
+Inhoudelijk | Beschrijvend                    | maak-overzicht     |
+Inhoudelijk | Structurerend                   | structureer        |
+Inhoudelijk | Normerend                       | definieer          |
+Inhoudelijk | Constituerend                   | constitueer        |
+Inhoudelijk | Normerend                       | leg-vast           |
+Inhoudelijk | Realiserend                     | realiseer          |
+Inhoudelijk | Evaluerend                      | beoordeel          |
+Conditioneel | Validerend                     | valideer           |
+Conditoneel |  Rangschikkend                  | rangschik          |
+representatie-omvormend | beschrijvend        | zet om / vat samen |
 
-**Canoniek werkwoord**: `zet om`
+### werking representatie-omvormend
 
-**Werking**: Vorm A → Vorm B (zelfde betekenis)
-
-Intent-patroon: `zet-om-naar-{formaat}` of `zet-om-{bron}-naar-{doel}`
-
-#### 4.2 Verdichtend (reductie, behoud kern)
-
-**Canoniek werkwoord**: `vat samen`
-
-**Werking**: Complex → beknopt (essentie behouden)
-
-Intent-patroon: `vat-samen-{object}` of `vat-samen-in-{aantal}`
-
-#### 4.3 Uitbreidend (explicitering)
-
-**Canoniek werkwoord**: `licht toe`
-
-**Werking**: Impliciet → expliciet (verheldering)
-
-Intent-patroon: `licht-toe-{aspect}` of `licht-toe-aannames-{object}`
+Zie voor de volledige matrix en toelichting de secties *Betekeniseffect* en *Werking* in [mandarin-ecosysteem-ordeningsconcepten.md](../aeo/mandarin-ecosysteem-ordeningsconcepten.md).
 
 ---
 
-### Principe 5 — Kritische Verschillen Zijn Expliciet
+## Voorbeelden
 
-Bepaalde werkwoorden lijken op elkaar maar hebben fundamenteel verschillende werking:
+**Correcte voorbeelden volgens doctrine:**
 
-#### `beoordeel` vs `valideer`
-- **beoordeel** (curator): Kwalitatief gradueel oordeel ("redelijk consistent")
-- **valideer** (conditioneel): Binaire check ("voldoet", "voldoet niet")
+- `beschrijf-agent-contract`
+- `realiseer-database-schema`
+- `definieer-themas-werkvoorbereiding`
+- `constitueer-doctrine`
+- `beoordeel-consistentie-charter`
+- `stel-vast-doctrine-wijziging`
+- `valideer-tegen-doctrine`
+- `rangschik-workspace`
+- `realiseer-charter`
+- `structureer-documenten`
+- `documenteer-workflow`
+- `genereer-index-artefacten`
+- `zet-om-yaml-naar-json`
 
-#### `definieer` vs `stel vast`
-- **definieer** (structuur-vastleggend): Bepaalt wat binnen scope bestaat
-- **stel vast** (ecosysteem-vastleggend): Wijzigt governance-spelregels
+**Toelichting op de fout:**  
+De fout ontstaat doordat `orden-workspace` wordt gebruikt, terwijl volgens de doctrine het canonieke werkwoord voor rangschikkende werking `rangschik` is. `Orden` is te algemeen en niet toegestaan voor deze werking; alleen vastgestelde canonieke werkwoorden per werking/betekeniseffect mogen worden gebruikt.
 
-#### `constitueer` vs `definieer`
-- **constitueer** (constituerend): Schept het normatieve kader zelf (doctrine, constitutie, beleid)
-- **definieer** (structuur-vastleggend): Bepaalt wat binnen een bestaand kader valt
+- `beschrijf-agent-contract`
+- `realiseer-database-schema`
+- `definieer-themas-werkvoorbereiding`
+- `constitueer-doctrine`
+- `beoordeel-consistentie-charter`
+- `stel-vast-doctrine-wijziging`
+- `valideer-tegen-doctrine`
+- `orden-workspace`
+- `realiseer-charter`
+- `structureer-documenten`
+- `documenteer-workflow`
+- `genereer-index-artefacten`
+- `zet-om-yaml-naar-json`
 
-#### `structureer` vs `definieer` vs `orden`
-- **structureer** (structurerend): Brengt structuur aan in bestaande elementen (kan inhoud wijzigen)
-- **definieer** (structuur-vastleggend): Bepaalt wat binnen scope bestaat (normering)
-- **orden** (conditioneel): Rangschikt alleen (geen inhoudelijke wijziging)
+**Niet-toegestane voorbeelden (fout):**
 
-#### `beschrijf` vs `documenteer`
-- **beschrijf** (registrerend): Momentopname, observatie
-- **documenteer** (documenterend): Duurzame kennisregistratie
+- `analyseer-agent` (gebruik `beschrijf-agent`)
+- `controleer-contract` (gebruik `valideer-contract`)
+- `bouw-database` (gebruik `realiseer-database`)
+- `maak-overzicht` (gebruik `genereer-overzicht` of `beschrijf-overzicht`)
+- `organiseer-documenten` (gebruik `structureer-documenten`)
+- `transformeer-bestand` (gebruik `zet-om-bestand`)
+- `reviewe-charter` (gebruik `beoordeel-charter`)
 
-#### `realiseer` vs `genereer`
-- **realiseer** (vastleggend): Van specificatie naar concreet artefact
-- **genereer` (afgeleid): Volledig berekend/afgeleid uit andere artefacten
-
-Het ecosysteem handhaaft deze verschillen strikt.
+- `beschrijf-agent-contract`
+- `realiseer-database-schema`
+- `definieer-themas-werkvoorbereiding`
+- `constitueer-doctrine`
+- `beoordeel-consistentie-charter`
+- `stel-vast-doctrine-wijziging`
+- `valideer-tegen-doctrine`
+- `orden-workspace`
+- `realiseer-charter`
 
 ---
 
-### Principe 6 — Niet-Canonieke Werkwoorden Worden Geweigerd
+## Reikwijdte en grenzen
 
-Een intent met een niet-canoniek werkwoord wordt geweigerd tijdens contract-beschrijving.
-
-Validatieregel:
-```
-IF intent_werkwoord NOT IN canonieke_werkwoorden_voor(agent_classificatie):
-    STOP met foutmelding
-    SUGGEREER: Canoniek werkwoord voor deze classificatie
-    ESCALEER: Naar canon-curator bij onduidelijkheid
-```
-
-Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classificatie zijn.
+Deze doctrine:
+- Normeert intent-naming voor alle agents binnen het Mandarin-ecosysteem
+- Koppelt canonieke werkwoorden aan werking en betekeniseffect
+- Handhaaft consistentie door niet-canonieke werkwoorden te weigeren
+- Faciliteert uitlegbaarheid en voorspelbaarheid van intent-werking
 
 ---
 
-## 4. Canonieke Werkwoorden per Classificatie
+## Change Log
+
+| Datum       | Versie | Wijziging                                                                 | Auteur |
+|------------|--------|---------------------------------------------------------------------------|--------|
+| 2026-03-01 | 2.0.0  | Volledig herschreven: structuur, assen en terminologie uit canon, koppeling intent-naming aan werking en betekeniseffect, validatie en matrix expliciet. | Constitutioneel Auteur |
+| 2026-02-15 | 1.3.0  | Werkwoord 'structureer' toegevoegd voor classificatie Structurerend | —      |
+| 2026-02-14 | 1.2.0  | Werkwoord 'constitueer' toegevoegd voor scheppen van normatieve kaders | —      |
+| 2026-02-14 | 1.1.0  | Synoniemen verwijderd: alleen canonieke werkwoorden toegestaan | —      |
+| 2026-02-14 | 1.0.0  | Initiële doctrine: canonieke werkwoorden per agent-classificatie vastgesteld | —      |
+
+---
+
+### Canonieke essentie
+
+> De naam van een intent is een architectonisch contract: het canonieke werkwoord maakt de werking direct herkenbaar, zonder verberging of ambiguïteit.
 
 | Classificatie | Canoniek Werkwoord |
 |---------------|-----------------|
@@ -208,7 +188,8 @@ Geen uitzonderingen: elk werkwoord moet het canonieke werkwoord voor de classifi
 
 ### Inhoudelijke Agents (Werkings-as: Inhoudelijk)
 
-#### `beschrijf` (Registrerend)
+
+#### `beschrijf` (Beschrijvend)
 **Werking**: Legt vast wat is, zonder oordeel of transformatie  
 **Effect**: Observatie → expliciete beschrijving
 
