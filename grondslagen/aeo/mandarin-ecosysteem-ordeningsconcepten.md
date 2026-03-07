@@ -31,6 +31,7 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 - [Mandarin-architectuurprincipe](#mandarin-architectuurprincipe) — Richtinggevende regel voor ontwerp
 - [**mandarin-agent**-boundary](#**mandarin-agent**-boundary) — Expliciete afbakening van verantwoordelijkheid
 - [mandarin-agent-classificatie](#mandarin-agent-classificatie) — Positionering langs orthogonale assen
+- [Curator agents](#curator-agents) — Agents die de curator-rol oppakken
 - [As](#as) — Ordeningsdimensie voor positionering
 - [Artefact-functie-as](#artefact-functie-as) — Functierol van Mandarin-artefacten
 - [Artefactclassificatie](#artefactclassificatie) — Indeling van Mandarin-artefacten
@@ -101,6 +102,63 @@ Deze classificatie vervangt het concept "agent-soort" door een genuanceerd stels
 - **Intent-naming**: [doctrine-intent-naming.md](doctrine-intent-naming.md) koppelt canonieke werkwoorden aan elke classificatie-positie op de werking en het betekeniseffect
 - **Combinatiematrices**: [mandarin-classificatie-matrices.md](mandarin-classificatie-matrices.md) toont welke combinaties van as-posities architectonisch mogelijk en logisch zijn.
 
+
+---
+
+## Curator agents
+
+### Definitie
+**Curator agents** zijn **mandarin-agents** die de rol van curator oppakken binnen het Mandarin-ecosysteem. Zij beoordelen, bewaken en waarborgen de kwaliteit, coherentie en integriteit van artefacten en structuren binnen de canon.
+
+### Kenmerken
+- **Betekeniseffect**: Evaluerend — Leggen oordeel of duiding vast, beoordelen kwaliteit
+- **Bronhouding**: Canon-gebonden — Baseert zich expliciet op de Mandarin-canon
+- **Werking**: Inhoudelijk — Werkt direct op betekenisvolle artefacten
+- Bewaken canonieke normen en principes
+- Toetsen van coherentie en consistentie
+- Signaleren van afwijkingen of verbeterpunten
+- Waarborgen van traceerbaarheid naar governance-artefacten
+
+### Wat het niet is
+- Geen vastleggende agents (die normen definiëren)
+- Geen realerende agents (die structuren implementeren)
+- Geen exploratieve agents (die nieuwe oplossingen ontwikkelen)
+- Geen conditionele agents (die hygiëne bewaken)
+
+### Voorbeelden
+- **Canon-curator**: Beoordeelt normatieve wijzigingen in de canon op coherentie en consistentie
+- **Concept-curator**: Bewaakt de kwaliteit en samenhang van conceptdefinities
+- **Artefact-curator**: Controleert of artefacten voldoen aan canonieke structuureisen
+
+### Classificatieprofiel
+
+| As                | Positie          |
+|-------------------|------------------|
+| Betekeniseffect   | Evaluerend       |
+| Bronhouding       | Canon-gebonden   |
+| Werking           | Inhoudelijk      |
+| Vormingsfase      | Toetsing         |
+
+### Synoniemen
+- Bewakende agents
+- Kwaliteitsbewakende agents
+- Toetsende agents
+
+### Analogieën
+- Code reviewers in softwareontwikkeling
+- Curators in musea (bewaken kwaliteit en coherentie van collectie)
+- Quality assurance in productieprocessen
+- Compliance officers in organisaties
+
+### Toelichting
+Curator agents onderscheiden zich door hun sterke canon-gebondenheid. Zij nemen de canon als uitgangspunt voor hun beoordeling en waarborgen dat artefacten en wijzigingen coherent zijn met de vastgelegde normen en principes. Hun evaluerend betekeniseffect betekent dat zij niet zelf normen vaststellen of structuren realiseren, maar de kwaliteit daarvan beoordelen.
+
+De canon-gebondenheid vereist dat curator agents expliciet verwijzen naar canonieke bronnen in hun output, waardoor hun oordeel transparant en traceerbaar is. Dit maakt curator agents essentieel voor de governance en kwaliteitsborging van het ecosysteem.
+
+### Gerelateerde Concepten
+- [Betekeniseffect](#betekeniseffect) — Evaluerend effect
+- [Bronhouding](#bronhouding) — Canon-gebonden kennis
+- [Governance-artefact](#governance-artefact) — Canon als referentie
 
 ---
 
