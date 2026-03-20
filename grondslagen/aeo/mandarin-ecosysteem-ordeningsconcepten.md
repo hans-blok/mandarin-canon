@@ -52,6 +52,9 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 - [Registrerend artefact](#registrerend-artefact) — Artefact dat inzicht en uitleg biedt
 - [Representatie](#representatie) — Concrete uitdrukking van betekenis
 - [Afleidingspositie](#afleidingspositie) — Leidend of afgeleid in de keten
+- [Herkomstpositie](#herkomstpositie) — Initiërend of voortbouwend in de creatie-keten
+  - [Initiërend](#initiërend) — Bron-artefact dat unieke code genereert
+  - [Voortbouwend](#voortbouwend) — Artefact dat voortbouwt op initiërend artefact
   
 ### Prompts
 - [Prompt canon-curator: publiceer normatieve wijziging](#prompt-canon-curator-publiceer-normatieve-wijziging)
@@ -498,7 +501,7 @@ De subfasen van **Operationalisatie** (Besluiten, Activering, Begeleiding, Beste
 - Geen creatieve of exploratieve interpreatie; zuiver procedureel
 
 ### 3. Begeleiding
-**Bronhouding: Exploratief**
+**Bronhouding: Open**
 - Omgaat met onzekerheden in overgangsprocessen
 - Maakt context-afhankelijke aanpassingen
 - Expliciteert aannames over migratie, stabilisatie en risico's
@@ -519,7 +522,7 @@ Vormingsfase moet altijd gecombineerd worden met het betekeniseffect.
 
 | Betekeniseffect     | Vormingsfase      | Werking           | Bronhouding        |
 |---------------------|-------------------|-------------------|--------------------|
-| seschrijvend        | Verkenning		  | Inhoudelijk       | open (exploratief) |
+| beschrijvend        | Verkenning		  | Inhoudelijk       | | open (exploratief) |
 | structurerend       | Ordening          | Inhoudelijk       | workspace-gebonden |
 | normerend           | Vastlegging       | Inhoudelijk       | canon-gebonden     |
 | realiserend         | Realisatie        | Inhoudelijk       | gesloten (input-gebonden)    |
@@ -1002,6 +1005,102 @@ Een afgeleide representatie:
 - ontleent haar geldigheid volledig aan de leidende representatie
 - mag worden overschreven of opnieuw gegenereerd zonder verlies van betekenis
 - dient vaak een specifiek doel (bijv. leesbaarheid, machine-verwerking)
+
+---
+
+## Herkomstpositie
+
+### Definitie
+**Herkomstpositie** is een ordeningsconcept (as) dat de positie van een **mandarin-artefact** vastlegt in de keten van creatie: of het artefact initiërend is (de bron die een unieke identificatiecode genereert) of voortbouwend (een artefact dat voortbouwt op een eerder geïnitieerd artefact).
+
+### Kenmerken
+- Classificeert artefacten op basis van hun rol in de creatie-keten
+- Is orthogonaal aan andere artefact-assen zoals artefact-functie, representatie en afleidingspositie
+- Waarborgt traceerbaarheid door initiërende artefacten te koppelen aan unieke codes
+- Kent precies twee posities: initiërend en voortbouwend
+- Is essentieel voor het borgen van herkomst en audit-trail binnen het **Mandarin-ecosysteem**
+
+### Wat het niet is
+- Geen vervanging van afleidingspositie (die gaat over leidend/afgeleid qua betekenis)
+- Geen temporeel concept (niet "eerder" of "later", maar "oorsprong" of "voortzetting")
+- Geen kwaliteitsoordeel over het artefact
+- Geen technische implementatie-eigenschap
+
+### Voorbeelden
+- Een eerste **agent-charter** dat een **mandarin-agent** definieert is initiërend — het genereert een unieke identificatiecode
+- Een bug-fix op een bestaand charter is voortbouwend — het refereert aan de code van het initiërende artefact
+- Een nieuw concept-bestand in de canon is initiërend bij eerste creatie
+
+### Synoniemen
+- Creatiepositie-as
+- Herkomst-as
+
+### Analogieën
+- In versiebeheer: de initial commit vs. follow-up commits
+- In administratie: een origineel document vs. een bijlage of wijziging
+- In wetgeving: een wet (initiërend) vs. een amendement (voortbouwend)
+
+### Toelichting
+Binnen het **Mandarin-ecosysteem** wordt herkomstpositie gebruikt om de audit-trail en traceerbaarheid van artefacten te borgen. Initiërende artefacten genereren een unieke code die in alle voortbouwende artefacten wordt overgenomen, zodat altijd herleidbaar is waar een artefact vandaan komt en welke artefacten onderling samenhangen.
+
+### Posities op deze as
+
+| Positie | Beschrijving | Codegeneratie |
+|---------|--------------|---------------|
+| **Initiërend** | Bron-artefact dat een nieuw onderdeel realiseert | Genereert unieke code |
+| **Voortbouwend** | Artefact dat voortbouwt op een initiërend artefact | Refereert aan bestaande code |
+
+---
+
+### Initiërend
+
+#### Definitie
+**Initiërend** is een positie op de as herkomstpositie die aangeeft dat een **mandarin-artefact** de primaire bron is van een nieuw onderdeel binnen het **Mandarin-ecosysteem**. Een initiërend artefact genereert een unieke identificatiecode die traceerbaarheid borgt voor alle voortbouwende artefacten die daarop volgen.
+
+#### Kenmerken
+Een initiërend artefact:
+- Markeert het artefact als oorsprong in een keten van gerelateerde artefacten
+- Genereert een unieke identificatiecode (bijv. hash, UUID of canoniek ID)
+- Fungeert als referentiepunt voor alle voortbouwende artefacten
+- Is per definitie onafhankelijk van eerdere artefacten binnen dezelfde keten
+- Waarborgt traceerbaarheid door de code te laten doorwerken in de keten
+
+#### Wat het niet is
+- Geen "leidend" in de zin van afleidingspositie (dat gaat over betekenis, niet over herkomst)
+- Geen temporeel "eerste" (een artefact kan later in de tijd worden gemaakt maar toch initiërend zijn voor een nieuwe keten)
+- Geen kwaliteitsaanduiding (initiërend is niet "beter" dan voortbouwend)
+- Geen versienummer of revisie-aanduiding
+
+#### Voorbeelden
+- Het eerste **agent-charter** voor een nieuwe **mandarin-agent** is initiërend en krijgt een unieke code
+- Een nieuw concept-definiebestand dat voor het eerst een term vastlegt is initiërend
+- Een fresh execution-file dat een agent-taak start is initiërend met een gegenereerde hash
+
+---
+
+### Voortbouwend
+
+#### Definitie
+**Voortbouwend** is een positie op de as herkomstpositie die aangeeft dat een **mandarin-artefact** expliciet voortzet, uitbreidt of wijzigt wat een eerder initiërend artefact heeft vastgelegd. Een voortbouwend artefact refereert aan de unieke identificatiecode van het initiërende artefact en genereert zelf geen nieuwe herkomstcode.
+
+#### Kenmerken
+Een voortbouwend artefact:
+- Bouwt expliciet voort op een initiërend artefact in dezelfde keten
+- Erft of refereert aan de unieke identificatiecode van het initiërende artefact
+- Genereert geen eigen herkomstcode (wel eventueel een versie- of wijzigings-ID)
+- Maakt deel uit van een traceerbare keten naar de oorsprong
+- Kan meerdere keren voorkomen in een keten (meerdere opeenvolgende voortbouwende artefacten)
+
+#### Wat het niet is
+- Geen "afgeleid" in de zin van afleidingspositie (dat gaat over betekenis, niet over herkomst)
+- Geen vervanging van het initiërende artefact
+- Geen duplicaat of kopie
+- Geen onafhankelijk artefact (altijd verbonden met een initiërend artefact)
+
+#### Voorbeelden
+- Een wijziging of update van een bestaand **agent-charter** is voortbouwend
+- Een bug-fix op een eerder gedefinieerd concept-bestand is voortbouwend
+- Een vervolguitvoering van een agent-taak die refereert aan een eerdere execution is voortbouwend
 
 ---
 
