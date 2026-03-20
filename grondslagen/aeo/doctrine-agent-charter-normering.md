@@ -1,7 +1,7 @@
 # Agent Doctrine — Agent Charter Normering
 
 **Doctrine-ID**: `AEO.DOC.001`  
-**Versie**: 2.2.0  
+**Versie**: 2.4.0  
 **Value Stream**: Agent Ecosysteem ontwikkeling 
 
 ---
@@ -213,6 +213,59 @@ Een agent heeft altijd precies één bronhouding. Het is niet toegestaan dat een
 **Voorbeeld:**
 Een agent die canon-gebonden is, mag geen intent hebben die exploratief of input-gebonden is. Alle intents van een agent delen dezelfde bronhouding.
 
+---
+
+## Richtlijn herkomstpositie in agent-contracten
+
+Elk agent-contract specificeert voor elke output de **herkomstpositie** als verplichte eigenschap. Dit bepaalt of het geproduceerde artefact een nieuwe keten initieert of voortbouwt op een bestaand artefact.
+
+**Contract-structuur:**
+
+```yaml
+intent: <intent-naam>
+output:
+  - type: <artefact-type>
+    herkomstpositie: initiërend | voortbouwend
+    template: <template-pad>
+```
+
+**Geldige waarden:**
+
+| Waarde | Betekenis | Runner-gedrag |
+|--------|-----------|---------------|
+| `initiërend` | Output start een nieuwe artefact-keten | Runner genereert nieuwe herkomstcode |
+| `voortbouwend` | Output bouwt voort op bestaand artefact | Runner erft herkomstcode van input-artefact |
+
+**Toelichting:**
+- De herkomstpositie is een eigenschap van het contract, niet van een apart register.
+- Dit houdt de definitie bij de bron (het contract) en voorkomt synchronisatieproblemen.
+- De runner leest deze eigenschap en handelt dienovereenkomstig.
+- De agent-curator valideert of contracten een geldige herkomstpositie bevatten, maar voegt zelf geen inhoud toe.
+
+**Voorbeelden:**
+
+```yaml
+# Initiërend: nieuw concept definiëren
+intent: definieer-concept
+output:
+  - type: concept-definitie
+    herkomstpositie: initiërend
+    template: concept.template.md
+
+# Voortbouwend: bestaand concept wijzigen
+intent: wijzig-concept
+output:
+  - type: concept-wijziging
+    herkomstpositie: voortbouwend
+    template: concept.template.md
+```
+
+**Verwijzing:** Zie [doctrine-traceability.md](doctrine-traceability.md) voor de volledige normering van herkomstcodes en traceerbaarheid.
+
+---
+
+## 4. Architectonische discipline
+
 De creatie van een agent-charter volgt een architectonische discipline:
 
 1. **Identiteit articuleren** — Wat is de unieke verantwoordelijkheid?  
@@ -261,6 +314,7 @@ Deze doctrine wordt aangevuld door:
 
 | Datum       | Versie | Wijziging                                                                 | Auteur |
 |------------|--------|---------------------------------------------------------------------------|--------|
+| 2026-03-20 | 2.4.0  | Richtlijn herkomstpositie in agent-contracten toegevoegd; verwijzing naar doctrine-traceability.md | Constitutioneel Auteur |
 | 2026-03-01 | 2.3.0  | Classificatie volledig volgens vier assen uit canon, richtlijn één bronhouding per agent toegevoegd, consistentie en verwijzingen verbeterd, kritische reflectie en bronnen Agentic AI toegevoegd. | Constitutioneel Auteur |
 | 2026-02-21 | 2.2.0  | Classificatie en Principe 9 herschreven conform de 4 nieuwe orthogonale assen uit mandarin-ordeningsconcepten.md | Constitutioneel Auteur |
 | 2026-02-13 | 2.1.0  | Principe 9 toegevoegd: output-formaat normering voor inhoudelijke agents | —      |

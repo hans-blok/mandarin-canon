@@ -1048,7 +1048,7 @@ Binnen het **Mandarin-ecosysteem** wordt herkomstpositie gebruikt om de audit-tr
 | Positie | Beschrijving | Codegeneratie |
 |---------|--------------|---------------|
 | **Initiërend** | Bron-artefact dat een nieuw onderdeel realiseert | Genereert unieke code |
-| **Voortbouwend** | Artefact dat voortbouwt op een initiërend artefact | Refereert aan bestaande code |
+| **Voortbouwend** | Artefact dat voortbouwt op ander artefact | Refereert aan bestaande code |
 
 ---
 
