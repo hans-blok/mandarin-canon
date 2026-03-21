@@ -3,9 +3,9 @@
 **Type**: Concepten en Definities  
 **Repository**: mandarin-canon  
 **Identifier**: mandarin-canon.concepten.meta  
-**Version**: 1.2.01  
+**Version**: 1.7.0  
 **Status**: Active  
-**Last Updated**: 2026-02-28  
+**Last Updated**: 2026-03-21  
 **Owner**: Hans Blok
 
 ---
@@ -17,8 +17,9 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 **Geraadpleegde bronnen**:
 - concepten-en-architectonische-grondslagen.md (versie 1.6.0, gelezen op 2026-02-01)
 - herijking 2.md (gelezen op 2026-02-01)
+- doctrine-traceability.md (versie 1.1.0, gelezen op 2026-03-21) — voor concepten herkomstpositie, initiërend, voortbouwend
 
-**Datum**: 2026-02-01  
+**Datum**: 2026-02-01 (initieel), 2026-03-21 (laatste wijziging)  
 **Doel**: Expliciete scheiding tussen **ordenings-concepten** (die structuur en classificatie beschrijven) en **domein-concepten** (actieve structuren en hun werking)
 
 **Ontwerpkeuze**: **ordenings-concepten** beschrijven hoe het ecosysteem zichzelf structureert en classificeert. Door deze in een apart document te plaatsen, wordt de architectonische lagenstructuur expliciet: **ordenings-concepten** definiëren het classificatiestelsel en de artefactstructuur, terwijl operationele concepten de actieve elementen beschrijven die binnen dat stelsel werken.
@@ -522,20 +523,28 @@ Vormingsfase moet altijd gecombineerd worden met het betekeniseffect.
 
 | Betekeniseffect     | Vormingsfase      | Werking           | Bronhouding        |
 |---------------------|-------------------|-------------------|--------------------|
-| beschrijvend        | Verkenning		  | Inhoudelijk       | | open (exploratief) |
+| beschrijvend        | Verkenning		  | Inhoudelijk       | | exploratief |
 | structurerend       | Ordening          | Inhoudelijk       | workspace-gebonden |
 | normerend           | Vastlegging       | Inhoudelijk       | canon-gebonden     |
-| realiserend         | Realisatie        | Inhoudelijk       | gesloten (input-gebonden)    |
-| evaluerend          | Toetsing          | Inhoudelijk       | gesloten (input-gebonden) / beschrijvend |
+| realiserend         | Realisatie        | Inhoudelijk       | input-gebonden    |
+| evaluerend          | Toetsing          | Inhoudelijk       | input-gebonden / canon-gebonden |
 | beschrijvend        | verantwoording    | Inhoudelijk       | canon-gebonden     |
-| operationalisatie   | Operationalisatie | Inhoudelijk       | canon-gebonden / open (exploratief) / gesloten (input-gebonden) |
+| operationalisatie   | Operationalisatie | Inhoudelijk       | canon-gebonden / exploratief / input-gebonden |
 
 ---
+
+## Bronruimte
+De bronruimte is de expliciet afgebakende verzameling van toegestane bronnen waaruit een agent tijdens een run mag afleiden.
 
 ## Bronhouding
 
 ### Definitie
-**Bronhouding** is een classificatie-as die beschrijft op welke kennisbronnen een agent zich baseert en in welke mate de output herleidbaar is tot expliciete bronnen.
+
+**Bronhouding** is een classificatie-as die bepaalt welke bronruimte een agent mag gebruiken tijdens een run.
+Toelichting: Het gaat dus niet alleen om welke bronnen worden gebruikt, maar vooral om:
+waar komt “het recht om te spreken” vandaan? 
+_de bronhouding bepaalt hoe streng de afleiding is begrensd_
+_de bronruimte bepaalt waaruit feitelijk wordt afgeleid_
 
 **Leidende vraag:** Op welke kennisbronnen baseert deze agent zich, en hoe herleidbaar is de output?
 
@@ -543,7 +552,7 @@ Vormingsfase moet altijd gecombineerd worden met het betekeniseffect.
 - Eén van vier orthogonale assen
 - Onderscheidt agents op basis van kennisbrongebruik en herleidbaarheid
 - Onafhankelijk van andere assen
-- Bepaalt de epistemische verantwoordelijkheid en controleerbaarheid van de agent
+- Bepaalt de epistemische verantwoordelijkheid en controleerbaarheid van de agent, het is een regime
 
 ### Wat het niet is
 - Geen kwaliteitsmaatstaf van de output
@@ -552,21 +561,28 @@ Vormingsfase moet altijd gecombineerd worden met het betekeniseffect.
 
 ### Categorieën
 1. **Input-gebonden**
-  - Output is 100% herleidbaar tot de input
-  - Geen externe kennisbronnen
+    Alleen de expliciet aangeleverde input vormt de toegestane bronruimte.  
+    Geen canonische artefacten, geen workspace-bronnen, geen externe bronnen.  
+    Voor gelijke input geldt gelijke output (deterministisch karakter).
   - Voorbeeld: sorteerders, parsers
+
 2. **Canon-gebonden**
-  - Baseert zich expliciet op de Mandarin-canon
-  - Canon-verwijzing verplicht in de output
-  - Voorbeeld: doctrine-interpreterende agent
+   Alleen expliciet vastgelegde canonieke artefacten mogen als bron worden gebruikt om kennis op te baseren.  
+   Interpretatie binnen de canon is toegestaan.  
+   Geen workspace-bronnen of externe bronnen.
+
+ **Workspace-gebonden** 
+   Baseert zich expliciet op de workspace. Output is herleidbaar tot workspace-specifieke bronnen, configuraties of policies. Kan verwijzen naar workspace-documentatie, lokale afspraken of project-specifieke artefacten
+   Voorbeelden: Workspace-specifieke validatieagents, configuratie-checkers, agents die lokale policies afdwingen.
+
 3. **Externe-bron gebonden**
-  - Haalt kennis uit specifieke bronnen buiten de canon
-  - Bronvermelding verplicht
-  - Voorbeeld: documentatie-samenvattende agent
+    Specifiek benoemde externe bronnen (bijv. wetgeving, standaarden, marktinformatie) mogen worden geraadpleegd. De gebruikte bronnen moeten expliciet traceerbaar zijn.
+    Bronvermelding is verplicht
+  
 4. **Exploratief**
-  - Genereert output op basis van trained knowledge en redenering
-  - Maakt aannames en afleidingen (max 3 expliciet)
-  - Voorbeeld: architectuur-ontwerpende agent
+   De bronruimte is niet vooraf beperkt.  
+   Nieuwe bronnen mogen worden geïdentificeerd en gecombineerd.  
+   Resultaten hebben geen normatieve status zonder expliciete vastlegging of selectie.
 
 ### Verplichte checks per categorie
 | Categorie           | Verplichte checks                |
@@ -866,6 +882,7 @@ Het artefact blijft beschrijvend; de modus bepaalt de epistemische positie ervan
   - Artefactfunctie
   - Representatie
   - Afleidingspositie
+  - Herkomstpositie
 - Heeft implicaties voor bronhouding en verantwoordingsdiscipline.
 - Kan normatieve gevolgen hebben indien governance dat expliciet vastlegt.
 
@@ -1048,7 +1065,7 @@ Binnen het **Mandarin-ecosysteem** wordt herkomstpositie gebruikt om de audit-tr
 | Positie | Beschrijving | Codegeneratie |
 |---------|--------------|---------------|
 | **Initiërend** | Bron-artefact dat een nieuw onderdeel realiseert | Genereert unieke code |
-| **Voortbouwend** | Artefact dat voortbouwt op ander artefact | Refereert aan bestaande code |
+| **Voortbouwend** | Artefact dat voortbouwt op initiërend artefact | Refereert aan bestaande code |
 
 ---
 
@@ -1124,6 +1141,7 @@ Deze prompt verankert de relatie tussen de canon-curator en het bijbehorende cha
 
 | Datum      | Versie | Wijziging                                                           | Auteur     |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-03-21 | 1.7.0  | Toegevoegd: Herkomstpositie als artefact-as met posities Initiërend en Voortbouwend; verwijzing naar doctrine-traceability.md | Constitutioneel Auteur  |
 | 2026-03-01 | 1.6.1  | Terminologie geharmoniseerd (interventieniveau → vormingsfase), alle concepten uniform beschreven, matrix en toelichtingen aangepast, richtlijn bronhouding toegevoegd, bronnen Agentic AI toegevoegd, structuur en opmaak verbeterd. | Constitutioneel Auteur  |
 | 2026-02-22 | 1.13.0 | Betekeniseffect-as voor agents gemapt op artefactfuncties: Structurerend toegevoegd als categorie. | Constitutioneel Auteur  |
 | 2026-02-22 | 1.12.0 | Artefactclassificatie herzien naar 3 concepten: Functie (vastleggend, structurerend, vastleggend, registrerend), Representatie (tekst, diagram, programma code, machine taal) en Afleidingspositie (leidend, afgeleid). Documenterend en Afgeleid artefact verwijderd als functies. | Constitutioneel Auteur  |
@@ -1179,6 +1197,7 @@ Introduceer een orthogonaal classificatiemodel voor artefacten, bijvoorbeeld lan
 - Interventieniveau (ecosysteem / architectuur / werk)
 - Temporaliteit (tijdloos / fasegebonden / contextueel)
 - Afleidingspositie (leidend / afgeleid)
+- Herkomstpositie (initiërend / voortbouwend)
 
 Maak expliciet:
 - Dat artefacten posities innemen op meerdere assen.
