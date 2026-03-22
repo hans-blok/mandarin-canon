@@ -39,6 +39,7 @@ Dit document is opgesteld door Constitutioneel Auteur op 1 februari 2026 om de c
 - [Concept — Term](#concept--term)
 - [Concept — Kenmerk](#concept--kenmerk)
 - [Concept — As](#concept--as)
+- [Concept — Agent-ecosysteem-ontwikkelsysteem](#concept--agent-ecosysteem-ontwikkelsysteem)
 
 ---
 
@@ -243,7 +244,6 @@ Een **term** is de gekozen taalvorm (woord of uitdrukking) waarmee binnen het Ma
 ### Context en gebruik  
 Bij het invoeren van nieuwe termen wordt altijd eerst gecontroleerd of er al een passend concept bestaat. Zo niet, dan wordt eerst het concept en de definitie vastgesteld en pas daarna de term.
 
-
 ---
 
 ## Concept — Kenmerk
@@ -277,7 +277,6 @@ Een **kenmerk** is een expliciete, onderscheidende eigenschap van een concept, g
 ### Context en gebruik  
 Kenmerken worden in de canon gebruikt om definities te verdiepen zonder ze langer of diffuser te maken. Zij zijn leidend bij het beoordelen of een concreet geval onder een bepaald concept valt.
 
-
 ---
 
 ## Concept — As
@@ -304,15 +303,11 @@ Een **as** is een expliciete ordeningsdimensie waarmee een **mandarin-agent** (o
 - Geen afhankelijke dimensie (orthogonaliteit is essentieel)
 
 ### Voorbeelden 
-**As: Betekeniseffect**
-- Registrerend
-- Interpreterend
-- Structurerend
-- Vastleggend
 
 **As: Bronhouding**
 - Input-gebonden
 - Canon-gebonden
+- Workspace-gebonden
 - Externe-bron gebonden
 - Exploratief
 
@@ -332,6 +327,53 @@ Een **as** is fundamenteel voor mandarin-agent-classificatie omdat het één spe
 
 Elke as binnen mandarin-agent-classificatie (Betekeniseffect, Interventieniveau, Werking, Bronhouding) volgt deze principes en maakt daarmee een volledige, consistente en overdraagbare positionering van alle **mandarin-agents** mogelijk.
 
+---
+
+## Concept — Agent-ecosysteem-ontwikkelsysteem
+
+### Definitie 
+Het **agent-ecosysteem-ontwikkelsysteem** is het centrale systeem binnen het Mandarin-ecosysteem dat verantwoordelijk is voor het vormen, inrichten en laten evolueren van het agent-ecosysteem zelf, en dat agentontwerp en governance levert aan alle waarde-leverende systemen.
+
+### Kenmerken 
+- Produceert uitsluitend **governance-artefacten** (een specialisatie van normerende artefacten)
+- Levert agentontwerp en governance aan het **softwareontwikkelsysteem**, het **kennisvastleggings- en publicatiesysteem** en het **architectuur- en oplossingsontwerpsysteem**
+- Is de enige plek waar governance-artefacten worden aangemaakt
+- Opereert via de value stream **Agent Ecosysteem Ontwikkeling (AEO)** met de fasen: grondslagvorming, ecosysteeminrichting, ecosysteemworkflow en -automatisering
+- Is ecosysteem-normerend: bepaalt de kaders waarbinnen alle andere systemen opereren
+
+### Wat het niet is 
+- Geen waarde-leverend systeem dat bedrijfs-artefacten produceert
+- Geen uitvoerend systeem voor software, kennis of architectuur
+- Geen losse verzameling agents zonder onderlinge governance
+
+### Voorbeelden 
+- Het vaststellen van agent-charters, doctrines en constitutie (grondslagvorming)
+- Het inrichten van workspace-structuren en beleid voor nieuwe agents (ecosysteeminrichting)
+- Het ontwerpen van geautomatiseerde agent-workflows en pipelines (ecosysteemworkflow)
+
+### Synoniemen 
+- AEO-systeem
+- Agent-ecosysteem
+
+### Analogieën 
+- In enterprise architectuur: het enterprise architecture management office dat kaders levert aan alle projecten
+- In wetgeving: het wetgevend systeem dat de regels produceert waarbinnen uitvoerende organen opereren
+- In software: een platform-team dat tooling, governance en standaarden levert aan feature-teams
+
+### Context en gebruik 
+Het agent-ecosysteem-ontwikkelsysteem neemt een unieke positie in: het is het enige systeem dat governance-artefacten produceert en deze doorlevert aan de drie waarde-systemen. Zonder dit systeem ontbreekt het normatieve fundament waarop agents in software, kennis en architectuur opereren. Het contextdiagram hieronder toont deze relatie:
+
+```mermaid
+flowchart LR
+    aeo["Agent-ecosysteem-ontwikkelsysteem"]
+    sw["Softwareontwikkelsysteem"]
+    knv["Kennisvastleggings- en publicatiesysteem"]
+    aod["Architectuur- en oplossingsontwerpsysteem"]
+
+    aeo -->|levert agentontwerp en governance| sw
+    aeo -->|levert agentontwerp en governance| knv
+    aeo -->|levert agentontwerp en governance| aod
+```
 
 ---
 
