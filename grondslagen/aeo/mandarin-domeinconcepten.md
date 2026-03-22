@@ -605,6 +605,121 @@ Een **workspace** is een afgebakende werkomgeving die wordt ingericht om één o
 ### Toelichting 💬
 In de eerste fase van ontwikkeling worden **mandarin-agents** gefetched uit de Mandarin workspace. De workspaces bevatten dus wel **mandarin-agents**, maar deze worden hier niet aangepast. In die zin 'bevatten' deze workspaces geen **mandarin-agents**.
 
+# Concept — bronrol
+
+---
+
+## Definitie 📝
+Een **bronrol** is de relatie die een artefact heeft tot een specifieke agent-executie. Bronrol beschrijft niet wat een artefact *is* (dat is **artefactfunctie**), maar hoe het artefact *wordt gebruikt* binnen een concrete uitvoering door een **mandarin-agent**.
+
+## Kenmerken ⭐
+- Is relationeel: een eigenschap van het gebruik, niet van het artefact zelf
+- Ontstaat pas in de context van een agent-executie
+- Hetzelfde artefact kan in verschillende executies verschillende bronrollen vervullen
+- Kent twee posities: **kaderbron** en **werkbron**
+- Is orthogonaal aan **artefactfunctie** (semantische positie van het artefact zelf)
+- Is traceerbaar via de execution-file en canon-referentie
+
+## Wat het niet is ❌
+- Geen intrinsieke eigenschap van het artefact (dat is **artefactfunctie**)
+- Geen classificatie-as voor artefact-taxonomie
+- Geen output-rol — betreft uitsluitend inputgebruik tijdens een executie
+- Geen vaste toekenning: een artefact "is" geen werkbron, het "wordt gebruikt als" werkbron
+
+## Posities op deze as
+
+| Positie | Beschrijving |
+|---------|--------------|
+| **Kaderbron** | Artefact dat kader, mandaat en kennis levert waarop de agent zijn handelen legitimeert |
+| **Werkbron** | Artefact dat wordt ingelezen om te bewerken, analyseren of verwerken |
+
+## Voorbeelden 💡
+- Een agent-charter wordt gebruikt als **kaderbron** in een definieer-concept-executie
+- De mandarin-canon wordt gebruikt als **kaderbron** voor ecosysteem-brede definities
+- Een bestaand concept-bestand wordt gebruikt als **werkbron** bij een validatie-executie
+- Hetzelfde artefact kan kaderbron zijn in de ene executie en werkbron in een andere
+
+## Synoniemen 🏷️
+- Gebruiksrol (alleen in spreektaal)
+
+## Analogieën 🔄
+- In rechtspraak: de wet (kaderbron) versus het dossier (werkbron) — de wet verandert niet van aard, maar de *rol* in het proces verschilt
+- In onderwijs: het curriculum (kaderbron) versus het werkstuk dat wordt nagekeken (werkbron)
+
+## Context en gebruik 💬
+Binnen het mandarin-ecosysteem beschrijft bronrol hoe artefacten worden ingezet bij een agent-executie. Het onderscheid met **artefactfunctie** is essentieel: artefactfunctie beschrijft de semantische positie van het artefact zelf, bronrol beschrijft de relatie tot een uitvoering. Een doctrine-document heeft als artefactfunctie "normerend", maar wordt in een specifieke executie *gebruikt als* kaderbron. Dit maakt expliciet op welke gronden een agent handelt, zonder het artefact zelf te herdefiniëren.
+
+**Taalconventie**: Zeg niet "dit artefact *is* een werkbron", maar "dit artefact *wordt gebruikt als* werkbron in deze uitvoering".
+
+---
+
+# Concept — kaderbron
+
+---
+
+## Definitie 📝
+Een **kaderbron** is een positie op de as **bronrol** die aangeeft dat een artefact binnen een agent-executie wordt gebruikt als bron van kader, mandaat en kennis waarop de **mandarin-agent** zijn handelen legitimeert.
+
+## Kenmerken ⭐
+- Levert de normatieve en kennisbasis voor de agent-executie
+- Wordt niet bewerkt of gewijzigd door de agent tijdens de executie
+- Bepaalt wat de agent mag, weet en moet naleven
+- Typische artefacten in deze rol: charters, canon, doctrines, beleidsdocumenten
+
+## Wat het niet is ❌
+- Geen vaste eigenschap van het artefact — het is een rol *in* een executie
+- Geen werkmateriaal dat wordt geanalyseerd of getransformeerd
+- Geen output van de executie
+
+## Voorbeelden 💡
+- Het agent-charter (`concept-curator.charter.md`) als kaderbron bij een definieer-concept-executie
+- De mandarin-canon als kaderbron voor ecosysteem-brede verificatie
+- Een doctrine-document als kaderbron bij een validatie-executie
+
+## Relatie tot andere concepten
+- **Bronrol**: kaderbron is één van de twee posities op deze as
+- **Werkbron**: de complementaire positie op dezelfde as
+- **Bronregime**: bepaalt welke kaderbronnen een agent mag raadplegen
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-03-22
+- Bron(nen): gebruikersinvoer, concept-curator.charter.md
+
+---
+
+# Concept — werkbron
+
+---
+
+## Definitie 📝
+Een **werkbron** is een positie op de as **bronrol** die aangeeft dat een artefact binnen een agent-executie wordt ingelezen om te bewerken, analyseren of verwerken als het materiaal waarop de agent zijn intent toepast.
+
+## Kenmerken ⭐
+- Is het materiaal waarop de agent actief handelt
+- Kan worden gelezen, geanalyseerd, gevalideerd of getransformeerd
+- Bepaalt de inhoudelijke scope van de executie
+- Typische artefacten in deze rol: bestaande concepten, artefact-bestanden, inputlijsten
+
+## Wat het niet is ❌
+- Geen vaste eigenschap van het artefact — het is een rol *in* een executie
+- Geen kaderbron die mandaat of kennis levert
+- Geen output van de executie (al kan de bewerking van een werkbron tot output leiden)
+
+## Voorbeelden 💡
+- Een bestaand concept-bestand als werkbron bij een valideer-concept-coherentie-executie
+- Een lijst van domeinconcepten als werkbron bij een rapporteer-concept-status-executie
+- Een artefact dat moet worden verrijkt als werkbron bij een verweef-concepten-executie
+
+## Relatie tot andere concepten
+- **Bronrol**: werkbron is één van de twee posities op deze as
+- **Kaderbron**: de complementaire positie op dezelfde as
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-03-22
+- Bron(nen): gebruikersinvoer, concept-curator.charter.md
+
 ---
 
 
@@ -612,6 +727,7 @@ In de eerste fase van ontwikkeling worden **mandarin-agents** gefetched uit de M
 
 | Datum   | Versie | Wijziging                              | Auteur   |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-03-22 | 2.6.0 | Concept agent-bronbestanden vervangen door bronrol (relationeel, niet intrinsiek); posities kaderbron en werkbron toegevoegd; taalconventie vastgelegd | Concept-Curator |
 | 2026-02-21 | 2.5.0 | Toegevoegd: concept Bronregime als operationalisering van de Bronhouding-as | Constitutioneel Auteur |
 | 2026-02-21 | 2.4.0 | Verwijderd: concept Interventieniveau (is verplaatst naar mandarin-ordeningsconcepten.md) | Constitutioneel Auteur |
 | 2026-02-01 | 2.3.0 | Toegevoegd: domeinconcept Template als herbruikbare structuur voor artefacten en prompts, met nadruk op gebruik door value-stream-specifieke mandarin-agents | Constitutioneel Auteur |
