@@ -120,13 +120,7 @@ Agents:
 
 De runner is de enige bron van tijdreferentie tijdens uitvoering.
 
-Elke runner:
-- levert exact één expliciete tijdreferentie;
-- draagt deze ongewijzigd over aan de agent;
-- voorkomt dat agents tijd afleiden of invullen.
-
-Uitvoering zonder expliciete tijdreferentie
-is canoniek ongeldig.
+Voor de volledige regels rond tijdreferenties, zie **doctrine-bronhouding-en-exploratie.md**. Uitvoering zonder expliciete tijdreferentie is canoniek ongeldig.
 
 ---
 

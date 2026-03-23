@@ -45,7 +45,6 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 - [agent-capability](#agent-capability) — Aanroepbare functie van een **mandarin-agent**
 - [agent-contract](#agent-contract) — Specificatie van intentie, input, output en beleid
  - [Prompt](#prompt) — Concreet aanroep- of instructiepatroon richting een **mandarin-agent**
-- [Bronregime](#bronregime) — Expliciet vastgelegd stelsel van toegestane kennisbronnen en afleidingsregels
 
 ### Artefacten en Value Streams
 - [Mandarin-artefact](#mandarin-artefact) — Duurzame, overdraagbare vastlegging van resultaat
@@ -53,6 +52,11 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 - [Value stream](#value-stream) — Waarde-creërende keten van stappen
 - [Value stream fase](#value-stream-fase) — Waardemoment binnen een value stream
 - [Workspace](#workspace) — Afgebakende werkomgeving voor value stream fasen
+
+### Bronnen en Kennisbasis
+- [Bronregime](#bronregime) — Expliciet vastgelegd stelsel van toegestane kennisbronnen en afleidingsregels
+- [Externe grondslagen](#externe-grondslagen) — Ruwe externe denkkaders als potentiële grondslag voor het ecosysteem
+- [Kaderdefinitie](#kaderdefinitie) — Geïnternaliseerde, gecontroleerde versie van een externe grondslag
 
 ---
 
@@ -722,11 +726,109 @@ Een **werkbron** is een positie op de as **bronrol** die aangeeft dat een artefa
 
 ---
 
+# Externe grondslagen
+
+---
+
+## Definitie 📝
+Een **externe grondslag** is een bron van buiten het **Mandarin-ecosysteem** die een bruikbaar denkkader biedt. Externe grondslagen zijn ruwe, nog niet-gecontroleerde kennis die pas na expliciete selectie en kadering binnen het ecosysteem normatieve status kan krijgen.
+
+## Kenmerken ⭐
+- Is afkomstig van buiten het **Mandarin-ecosysteem**
+- Biedt een bruikbaar denkkader, model of theorie
+- Is in oorsprong ruwe, niet-gecontroleerde kennis
+- Heeft geen normatieve status totdat selectie en kadering hebben plaatsgevonden
+- Is traceerbaar naar de oorspronkelijke externe bron
+- Kan meerdere domeinen binnen het ecosysteem raken
+
+## Wat het niet is ❌
+- Geen automatisch geldige of normatieve bron binnen het ecosysteem
+- Geen gecurateerde of gevalideerde kennis — dat ontstaat pas na kadering
+- Geen vervanging van interne Mandarin-concepten of -doctrines
+- Geen "alles wat bestaat" — alleen bronnen die een bruikbaar denkkader bieden
+
+## Voorbeelden 💡
+- TOGAF (architectuurframework)
+- Business Model Canvas (BMC)
+- Psychologische modellen (bijv. cognitieve belastingstheorie, motivatiemodellen)
+- Economische theorieën (bijv. transactiekostentheorie, speltheorie)
+
+## Synoniemen 🏷️
+- External Foundations (alleen in Engelstalige context)
+
+## Analogieën 🔄
+- In rechtspraak: buitenlandse jurisprudentie die pas geldig wordt nadat een rechter deze expliciet overneemt en kadert
+- In wetenschap: een literatuurbron die pas meetelt na opname in de methodologische verantwoording
+- In enterprise architectuur: een referentiemodel dat pas geldt na formele adoptie en afbakening
+
+## Context en gebruik 💬
+Externe grondslagen zijn de **ruwe grondstof** waaruit het ecosysteem kan putten. Zij bieden denkkaders, modellen en theorieën die potentieel waardevol zijn, maar zij zijn in hun oorspronkelijke vorm nog niet gecontroleerd of gekaderd voor gebruik binnen Mandarin. Het ecosysteem behandelt externe grondslagen daarom als input die eerst moet worden geselecteerd en gekaderd voordat zij invloed mogen uitoefenen op governance, ontwerp of agent-gedrag.
+
+**Strikte regel**: Een **mandarin-agent** mag een externe grondslag **nooit** rechtstreeks raadplegen als basis voor handelen. Toegang tot externe kennis verloopt **uitsluitend** via een **kaderdefinitie**. Dit voorkomt dat ongefilterde externe modellen stilzwijgend invloed uitoefenen op het ecosysteem.
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-03-23
+- Bron(nen): gebruikersinvoer
+
+---
+
+# Kaderdefinitie
+
+---
+
+## Definitie 📝
+Een **kaderdefinitie** is de geïnternaliseerde, gecontroleerde versie van een **externe grondslag** binnen het **Mandarin-ecosysteem**. Zij legt vast welk deel van de externe bron wordt overgenomen, met welke interpretatie, scope en beperkingen, en vormt daarmee de enige toegestane basis waarop **mandarin-agents** de externe kennis mogen gebruiken.
+
+## Kenmerken ⭐
+- Is altijd afgeleid van één specifieke **externe grondslag**
+- Legt expliciet de Mandarin-interpretatie, scope en beperkingen vast
+- Is de gecontroleerde, normatieve representatie van externe kennis binnen het ecosysteem
+- Is het enige wat **mandarin-agents** mogen raadplegen — niet de externe grondslag zelf
+- Is versieerbaar, toetsbaar en traceerbaar
+- Wordt beheerd als grondslag-artefact binnen het ecosysteem
+
+## Wat het niet is ❌
+- Geen ongewijzigde kopie van de externe bron
+- Geen **externe grondslag** — die is ruw en potentieel; een kaderdefinitie is gecontroleerd en toegestaan
+- Geen vrije interpretatie — scope en beperkingen zijn expliciet vastgelegd
+- Geen tijdelijk werkdocument
+
+## Voorbeelden 💡
+- `TOGAF.kaderdefinitie.md` — legt vast welke TOGAF-concepten worden overgenomen, hoe ze zich verhouden tot Mandarin-**value streams**, en welke delen buiten scope vallen
+- `BMC.kaderdefinitie.md` — kadert het Business Model Canvas voor gebruik binnen waardepropositieanalyse, inclusief Mandarin-specifieke scope en beperkingen
+- Een kaderdefinitie van cognitieve belastingstheorie die vastlegt welke principes gelden voor agent-interactieontwerp en welke niet
+
+## Synoniemen 🏷️
+- Gekaderde grondslag (alleen in spreektaal)
+
+## Analogieën 🔄
+- In rechtspraak: een rechterlijke uitspraak die buitenlandse jurisprudentie expliciet overneemt en afbakent voor nationaal gebruik
+- In wetenschap: de operationalisering van een theorie in een concreet onderzoeksprotocol
+- In enterprise architectuur: een adoptiedocument dat vastlegt welke delen van een referentiemodel (bijv. TOGAF) gelden en welke niet
+
+## Context en gebruik 💬
+De kaderdefinitie vormt de brug tussen **externe grondslagen** en het operationele gebruik binnen het ecosysteem. Waar een externe grondslag potentieel bruikbare kennis biedt, maakt de kaderdefinitie die kennis **daadwerkelijk toegestaan**. Zonder kaderdefinitie mag een **mandarin-agent** een externe grondslag niet als basis voor handelen gebruiken.
+
+De transformatie van externe grondslag naar kaderdefinitie omvat: (1) interpretatie — wat betekent dit binnen Mandarin, (2) scope — welke delen worden overgenomen, (3) beperkingen — wat wordt expliciet uitgesloten. Dit voorkomt dat externe modellen ongefilterd invloed uitoefenen op governance, ontwerp of agent-gedrag.
+
+**Bronrol en aeo.01**: Een kaderdefinitie heeft geen vaste **bronrol**. In de value stream fase **aeo.01 (Grondslagvorming)** wordt een kaderdefinitie doorgaans als **werkbron** gebruikt — het is het materiaal waaraan gewerkt wordt. In alle overige fasen wordt dezelfde kaderdefinitie als **kaderbron** gebruikt — het levert het kader waarop agents hun handelen legitimeren. De bronrol wordt dus bepaald door de executie, niet door het artefact zelf.
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-03-23
+- Bron(nen): gebruikersinvoer
+
+---
+
 
 ## Change Log
 
 | Datum   | Versie | Wijziging                              | Auteur   |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-03-23 | 2.9.0 | Aangescherpt: Externe grondslagen mogen NOOIT direct door agents geraadpleegd worden; Kaderdefinitie bronrol varieert per executie (werkbron in aeo.01, kaderbron elders) | Concept-Curator |
+| 2026-03-23 | 2.8.0 | Toegevoegd: concept Kaderdefinitie — geïnternaliseerde, gecontroleerde versie van een externe grondslag; de enige toegestane basis voor agent-gebruik | Concept-Curator |
+| 2026-03-23 | 2.7.0 | Toegevoegd: concept Externe grondslagen — ruwe externe denkkaders als potentiële grondslag voor het ecosysteem | Concept-Curator |
 | 2026-03-22 | 2.6.0 | Concept agent-bronbestanden vervangen door bronrol (relationeel, niet intrinsiek); posities kaderbron en werkbron toegevoegd; taalconventie vastgelegd | Concept-Curator |
 | 2026-02-21 | 2.5.0 | Toegevoegd: concept Bronregime als operationalisering van de Bronhouding-as | Constitutioneel Auteur |
 | 2026-02-21 | 2.4.0 | Verwijderd: concept Interventieniveau (is verplaatst naar mandarin-ordeningsconcepten.md) | Constitutioneel Auteur |

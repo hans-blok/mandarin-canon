@@ -1,8 +1,8 @@
 # Constitutie Mandarin
 
-**Versie**: 2.1.0
+**Versie**: 2.3.0
 **Status**: Actief
-**Datum**: 2026-02-14
+**Datum**: 2026-03-23
 
 ---
 
@@ -26,7 +26,7 @@ Dit normatief artefact is bijgewerkt op basis van de hieronder geraadpleegde bro
 
 ## Inleiding
 
-Deze consitutie vindt zijn grondslag in het axioma van gezag.
+Deze constitutie vindt zijn grondslag in het axioma van gezag.
 
 **Mandarin** vormt het **agent-ecosysteem**: het permanente korps van gezaghebbende agents dat de constitutie bewaakt en de samenhang van het ecosysteem onderhoudt.
 Wanneer wij spreken van 'Mandarin', 'het agent-ecosysteem' of 'het ecosysteem', dan bedoelen we hetzelfde.
@@ -38,7 +38,7 @@ De geldigheid van Mandarin berust op:
 - consistente toepassing van regels;
 - voortdurende consistentie in interpretatie en precedenten.
 
-Deze constitutie staat boven alle doctrines, beleidsdocumenten en charters binnen het agent-ecosysteem. Bij strijdigheid prevaleert deze constitutie altijd.
+Deze constitutie staat boven alle doctrines, beleidsdocumenten en charters binnen het agent-ecosysteem (zie Artikel 1.2 voor de normatieve hiërarchie).
 
 ### Terminologie: Mandarin en agents
 
@@ -53,7 +53,8 @@ Een informele verkorting van “Mandarin-agent”, gebruikt in spreektaal en nie
 
 **Verbod**  
 De term “Mandarin” wordt nooit gebruikt om een individuele agent of actor aan te duiden.
-
+**Workspace-steward**  
+De mens die eigenaar is van een workspace en verantwoordelijk voor het opstellen en onderhouden van het workspace-beleid.
 
 # Waar Mandarin-agenten geen gezag hebben
 
@@ -78,6 +79,8 @@ Daarom geldt:
 ---
 
 ## De enige geldige bronnen van gezag
+
+> **Toelichting**: Deze sectie biedt context en uitleg. De normatieve hiërarchie is vastgelegd in Artikel 1.2.
 
 Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslagen** vormen.
 
@@ -153,12 +156,11 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 ## Artikel 4 — Wijzigingsbeheer
 
-1. **Menselijke controle**: Inhoudelijke wijzigingen aan de Constitutie (nieuwe regels, gewijzigde principes) mogen door een mens en door de agent constitutioneel-auteur worden gedaan.
-2. **Verbod voor automatisering**: Geautomatiseerde tooling of processen mogen de Constitutie op geen enkele wijze wijzigen.
-3. **Versiebeheer**: Canon en alle Mandarin-artefacten zijn versieerbaar en traceerbaar via **git-versiebeheer**. Bestanden hoeven geen intern versieveld te bevatten; de actuele staat is de HEAD-versie in git. Nieuwe versies overschrijven de vorige inhoud op hetzelfde bestandspad; oudere versies blijven raadpleegbaar via git-historie en eventuele publicatie-artefacten.
-4. **Herkomstverantwoording**: Alle wijzigingen in de canon kennen een herkomstverantwoording. Dit is verder uitgewerkt in doctrine-handoff-creatie-en-overdrachtsdiscipline.md.
-5. **Verantwoording agents**: Agents leggen verantwoording af.
-6. **Transparante ontstaansgeschiedenis**: Artefacten leggen hun ontstaansgeschiedenis bloot.
+1. **Verbod voor automatisering**: Geautomatiseerde tooling of processen mogen de Constitutie op geen enkele wijze wijzigen.
+2. **Versiebeheer**: Canon en alle Mandarin-artefacten zijn versieerbaar en traceerbaar via **git-versiebeheer**. Bestanden hoeven geen intern versieveld te bevatten; de actuele staat is de HEAD-versie in git. Grondslagen (constitutie, doctrines) mogen een versieveld bevatten ten behoeve van governance en leesbaarheid. Nieuwe versies overschrijven de vorige inhoud op hetzelfde bestandspad; oudere versies blijven raadpleegbaar via git-historie en eventuele publicatie-artefacten.
+3. **Herkomstverantwoording**: Alle wijzigingen in de canon kennen een herkomstverantwoording. Dit is verder uitgewerkt in doctrine-handoff-creatie-en-overdrachtsdiscipline.md.
+4. **Verantwoording agents**: Agents leggen verantwoording af.
+5. **Transparante ontstaansgeschiedenis**: Artefacten leggen hun ontstaansgeschiedenis bloot.
 
 ---
 
@@ -290,6 +292,40 @@ Geen enkele geautomatiseerde rol mag conflicten zelfstandig oplossen door normse
 
 ---
 
+## Gebruik van bronnen
+
+Agents werken op basis van expliciete bronhoudingen.
+
+De standaard bronhouding is niet-exploratief, waarbij uitsluitend gebruik wordt gemaakt van gedefinieerde bronnen.
+
+Afwijking hiervan is alleen toegestaan in expliciet exploratieve contexten, conform de doctrine brongebruik en exploratie.
+
+---
+
+## Gebruik van externe grondslagen
+
+Binnen het Mandarin-ecosysteem kunnen externe theorieën, modellen en frameworks worden ingezet ter ondersteuning van analyse en ontwerp.
+
+### Norm
+
+- Externe grondslagen worden nooit direct gebruikt door agents.
+- Gebruik van externe grondslagen is uitsluitend toegestaan via vastgelegde kaderdefinities.
+- Kaderdefinities vormen de enige toegestane representatie van externe kennis binnen het ecosysteem.
+
+### Doel
+
+Deze norm borgt dat:
+
+- externe kennis gecontroleerd wordt geïnternaliseerd;
+- interpretaties expliciet en consistent zijn;
+- gebruik van externe theorie reproduceerbaar en herleidbaar blijft.
+
+### Relatie tot verdere uitwerking
+
+De toepassing van externe grondslagen en het gebruik van kaderdefinities wordt verder uitgewerkt in de doctrine *Bronhouding en exploratie*.
+
+---
+
 ## Artikel 8 — Slotbepaling
 
 1.  **Onmiddellijke Werking**: Deze Constitutie geldt onmiddellijk voor alle bestaande en toekomstige repositories, workflows en processen.
@@ -302,6 +338,8 @@ Geen enkele geautomatiseerde rol mag conflicten zelfstandig oplossen door normse
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-03-23 | 2.3.0  | Dubbele vastlegging geconsolideerd: gezagsbronnen gemarkeerd als context (Artikel 1.2 is canoniek), prevalentie-regel vereenvoudigd, versiebeheer-norm verduidelijkt (grondslagen mogen versieveld bevatten). | Hans Blok |
+| 2026-03-23 | 2.2.0  | Spelfout gecorrigeerd. Artikel 4.1 (menselijke controle) verwijderd — iedereen mag de constitutie aanpassen. Workspace-steward gedefinieerd in terminologie. Verwijzingen naar geparkeerde doctrines verwijderd. | Hans Blok |
 | 2026-02-14 | 2.1.0  | Hiërarchie verduidelijkt: constitutie → beleid → doctrines. Workspace-beleid kan doctrines overrulen. Gedragscode volledig verwijderd uit normatieve structuur. | Constitutioneel Auteur |
 | 2026-02-08 | 1.4.0  | Artikel 7 toegevoegd: Canon, Grondslagen en Toepassingsbereik. Gelaagdheid van canon geformaliseerd, value-stream-specifieke grondslagen geïntroduceerd, contextbeperking als governance-eis vastgelegd. Artikel 7 (Slotbepaling) hernummerd naar Artikel 8 | Constitutioneel Auteur |
 | 2026-02-06 | 1.3.0  | Versiebeheer van canon en Mandarin-artefacten geconcretiseerd: versie en historie lopen via git, bestanden hoeven geen intern versieveld te bevatten | Constitutioneel Auteur |
@@ -313,30 +351,26 @@ Geen enkele geautomatiseerde rol mag conflicten zelfstandig oplossen door normse
 
 ## Gerelateerde Doctrines en Normatieve Artefacten
 
-Deze Constitutie is de vastleggende grondslag voor het gehele normatieve stelsel. De volgende documenten in `grondslagen/globaal/` concretiseren en implementeren deze Constitutie:
+Deze Constitutie is de vastleggende grondslag voor het gehele normatieve stelsel. De volgende documenten concretiseren en implementeren deze Constitutie:
 
-### Workspace Governance
+### Workspace Governance (grondslagen/.algemeen/)
 
 - **[workspace-doctrine.md](workspace-doctrine.md)**  
   Standaardisatie van mappenstructuur, naamgeving en organisatie voor alle workspaces. Verplicht voor alle document-repositories en borgt toepassing van deze constitutie binnen werkgebieden.
 
-- **[agent-charter-normering.md](agent-charter-normering.md)**  
+- **[doctrine-bronhouding-en-exploratie.md](doctrine-bronhouding-en-exploratie.md)**  
+  Regels voor brongebruik, exploratieve contexten en kaderdefinities. Implementeert de secties "Gebruik van bronnen" en "Gebruik van externe grondslagen".
+
+### Agent Ecosysteem (grondslagen/aeo/)
+
+- **[doctrine-agent-charter-normering.md](../aeo/doctrine-agent-charter-normering.md)**  
   Structuur en vereisten voor agent-charters. Waarborgt consistentie en kwaliteit van alle agent-definities binnen het normatieve stelsel.
 
-### Handoff & Uitvoering
+### Handoff & Uitvoering (grondslagen/aeo/)
 
-- **[doctrine-handoff-creatie-en-overdrachtsdiscipline.md](doctrine-handoff-creatie-en-overdrachtsdiscipline.md)**  
+- **[doctrine-handoff-creatie-en-overdrachtsdiscipline.md](../aeo/doctrine-handoff-creatie-en-overdrachtsdiscipline.md)**  
   Regels voor handoff-creatie en handoff-validatie tussen agents. Implementeert Artikel 2 (Automatisering en orkestratie) en het principe van duidelijke afhankelijkheden.
 
-- **[doctrine-runner-discipline-en-runner-kernel.md](doctrine-runner-discipline-en-runner-kernel.md)**  
+- **[doctrine-runner-discipline-en-runner-kernel.md](../aeo/doctrine-runner-discipline-en-runner-kernel.md)**  
   Gedragsregels voor agents en runners (orchestrators). Definieert hoe automatisering zich gedraagt conform Artikel 2 (governance lezen en conflictmelding).
 
-### Tijdstempel & Geldigheid
-
-- **[doctrine-tijdreferentie-en-contextuele-geldigheid.md](doctrine-tijdreferentie-en-contextuele-geldigheid.md)**  
-  Vastlegging van hoe tijdreferenties worden beheerd en hoe normatieve artefacten hun actualiteit behouden. Ondersteunt traceerbaarheid conform Artikel 1 (doel) en Artikel 3 (kwaliteit en compliance).
-
-### State & Audit
-
-- **[doctrine-workspace-state-en-legitimiteit.md](doctrine-workspace-state-en-legitimiteit.md)**  
-  State-logging en audit trail voor alle wijzigingen aan canonieke artefacten. Waarborgt integriteit conform Artikel 1 (traceerbaarheid) en Artikel 4 (wijzigingsbeheer).

@@ -212,6 +212,58 @@ Definities worden gebruikt om misverstanden te voorkomen en om consistentie tuss
 
 ---
 
+## Concept — Normatief artefact
+
+### Definitie
+Een **normatief artefact** is een document dat voorschrijft hoe iets moet zijn of gedaan moet worden binnen het Mandarin-ecosysteem.
+
+### Kenmerken
+- Bevat regels, principes of normen die bindend zijn
+- Schrijft gedrag, structuur of inhoud voor
+- Heeft directe invloed op hoe agents, mensen of processen handelen
+- Vereist een herkomstverantwoording
+
+### Wat het niet is
+- Geen beschrijvend of rapporterend document
+- Geen optionele richtlijn of suggestie
+- Geen implementatiedetail of technische specificatie
+
+### Voorbeelden
+- De Constitutie (hoogste normatief artefact)
+- Doctrines (voorschrijven hoe wordt gewerkt)
+- Agent-charters (voorschrijven wat een agent mag en moet)
+
+### Relatie tot canoniek artefact
+Elk normatief artefact is per definitie canoniek, maar niet elk canoniek artefact is normatief. Een canonieke lijst van value streams is bijvoorbeeld informatief, niet voorschrijvend.
+
+---
+
+## Concept — Canoniek artefact
+
+### Definitie
+Een **canoniek artefact** is een document dat officieel deel uitmaakt van de canon en daarmee gezaghebbend is binnen het Mandarin-ecosysteem.
+
+### Kenmerken
+- Is opgenomen in de officiële verzameling van het ecosysteem
+- Heeft een vastgestelde status en versie (via git)
+- Is herleidbaar en traceerbaar
+- Kan normatief of informatief zijn
+
+### Wat het niet is
+- Geen concept- of werkdocument in temp/
+- Geen externe bron of referentie
+- Geen ad-hoc notitie of communicatie
+
+### Voorbeelden
+- Normatieve artefacten: constitutie, doctrines, charters
+- Informatieve artefacten: concepten-documenten, lijsten van value streams
+
+### Context en gebruik
+De term "canoniek" duidt op officiële opname in de canon; de term "normatief" duidt op voorschrijvende werking. Gebruik "normatief artefact" wanneer het gaat om regels en voorschriften. Gebruik "canoniek artefact" wanneer het gaat om de officiële status binnen het ecosysteem.
+
+
+---
+
 ## Concept — Term
 
 ### Definitie 

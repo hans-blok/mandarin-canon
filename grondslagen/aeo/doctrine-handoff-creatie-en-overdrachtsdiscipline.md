@@ -91,15 +91,9 @@ Niet-naleving maakt de output ongeldig.
 
 ### 5. Relatie tot tijdreferentie
 
-Elke handoff bevat exact één geldige tijdreferentie.
+Elke handoff bevat exact één geldige tijdreferentie, aangeleverd door de runner.
 
-Deze tijdreferentie:
-- wordt aangeleverd door de runner
-- is leidend voor alle afleidingen
-- wordt ongewijzigd overgenomen door agents
-
-Agents mogen **geen eigen tijd afleiden**
-en geen tijdstip aanvullen dat niet expliciet is aangeleverd.
+Voor de volledige regels rond tijdreferenties, zie **doctrine-bronhouding-en-exploratie.md** (sectie over gesloten bronhouding) en de norm dat agents geen eigen tijd mogen afleiden.
 
 ---
 
