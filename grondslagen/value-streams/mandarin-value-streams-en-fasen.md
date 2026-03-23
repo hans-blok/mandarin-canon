@@ -1,8 +1,8 @@
 # Mandarin Value Streams en Fasen
 
-**Versie**: 1.6.0  
+**Versie**: 1.7.0  
 **Status**: Actief  
-**Datum**: 2026-02-15  
+**Datum**: 2026-03-23  
 **Auteur**: Constitutioneel Auteur  
 
 ---
@@ -12,8 +12,9 @@
 Dit normatief artefact is afgeleid op basis van de volgende geraadpleegde bronnen:
 
 **Geraadpleegde bronnen**:
-- constitutie.md (versie 1.2.1, als normatief kader voor value stream begrip)
+- constitutie.md (versie 2.3.0, als normatief kader voor value stream begrip)
 - concepten-en-architectonische-grondslagen.md (versie 1.5.0, voor definities van Value stream en Value stream fase)
+- togaf.kaderdefinitie.md (versie 2.0.0, als kaderbron voor AOD-fasering)
 
 **Toelichting**:
 Dit document legt vast welke value streams binnen het Mandarin-ecosysteem worden onderkend en welke fasen per value stream bestaan. Adviserende agents en uitvoerende agents worden toegekend aan één of meerdere value stream fasen. Beheeragents opereren in alle fasen. Daarnaast zijn er value-stream-overstijgende agents die orthogonaal op de value stream structuur staan en in willekeurige contexten kunnen worden ingezet.
@@ -98,39 +99,36 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
    
 ---
 
-### 3.2 Architectuur en oplossingsontwerp (TOGAF-fasering)
+### 3.2 Architectuur en Oplossingsontwerp (AOD)
 
-**Type**: Architectuur value stream  
-**Omschrijving**: Voorbeeld van value stream fasering volgens TOGAF ADM, met Nederlandse termen.
+**Type**: Waarde value stream  
+**Omschrijving**: Deze value stream richt zich op het gestructureerd ontwerpen, beschrijven en evolueren van architecturen. De fasering volgt de vereenvoudigde TOGAF ADM-interpretatie zoals vastgelegd in **togaf.kaderdefinitie.md**. Agents in deze value stream produceren **bedrijfs-artefacten**.
 
-**Fasen**:
+**Kaderbron**: [togaf.kaderdefinitie.md](../kaderdefinities/togaf.kaderdefinitie.md)
 
-01. **Voorbereiding architectuurfunctie**  
-   Het voorbereiden van de architectuurfunctie, het vaststellen van uitgangspunten en principes.
+**Fasen** (conform kaderdefinitie):
 
-02. **Architectuurvisie**  
-   Het bepalen van de scope, stakeholders en de visie op de architectuur.
+01. **Architectuurvisie**  
+   Het bepalen van scope, stakeholders, probleemdefinitie en richting.  
+   *TOGAF-equivalent: Phase A — Architecture Vision*
 
-03. **Bedrijfsarchitectuur**  
-   Het ontwerpen van de bedrijfsarchitectuur (processen, organisatie, bedrijfsfuncties).
+02. **Bedrijfsarchitectuur**  
+   Het ontwerpen van capabilities, processen, organisatie en bedrijfsfuncties.  
+   *TOGAF-equivalent: Phase B — Business Architecture*
 
-04. **Informatie- en applicatiearchitectuur**  
-   Het ontwerpen van de informatiearchitectuur en applicatiearchitectuur.
+03. **Informatie- en applicatiearchitectuur**  
+   Het ontwerpen van data-structuur, informatiemodellen en applicatielandschap.  
+   *TOGAF-equivalent: Phase C — Information Systems Architecture*
 
-05. **Technische architectuur**  
-   Het ontwerpen van de technische architectuur (infrastructuur, platforms, technologie).
+04. **Technische architectuur**  
+   Het ontwerpen van infrastructuur, platforms en technologiestack.  
+   *TOGAF-equivalent: Phase D — Technology Architecture*
 
-06. **Kansen en oplossingsrichtingen**  
-   Het bepalen van oplossingsrichtingen en opstellen van transitieplanning.
+05. **Roadmap en transitie**  
+   Het bepalen van oplossingsrichtingen, transitieplanning en migratiepad.  
+   *TOGAF-equivalent: Phases E/F — Opportunities & Migration Planning*
 
-07. **Migratieplanning**  
-   Het opstellen van een migratieplan voor de implementatie van de architectuur.
-
-08. **Implementatiebegeleiding**  
-   Het begeleiden en sturen van de implementatie van de architectuur.
-
-09. **Architectuurbeheer**  
-   Het beheren en aanpassen van de architectuur bij veranderingen.
+> **Toelichting**: TOGAF-fasen G (Implementation Governance) en H (Architecture Change Management) worden binnen Mandarin niet expliciet gemodelleerd als aparte fasen. Deze aspecten worden impliciet behandeld via curator-rollen en ecosysteem-governance (AEO).
 
 ---
 
@@ -186,6 +184,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 | Datum | Versie | Wijziging | Auteur |
 |-------|--------|-----------|--------|
+| 2026-03-23 | 1.7.0 | Herijking value stream AOD: fasen geconsolideerd van 9 naar 5 conform togaf.kaderdefinitie.md. Fasen G en H (governance, change management) verwijderd — worden impliciet behandeld via curator-rollen. Expliciete verwijzing naar kaderdefinitie toegevoegd. | Hans Blok |
 | 2026-02-15 | 1.6.0 | Herziening value stream AOD: fase 01 hernoemd naar "Strategie en Motivatie" (architectuur-normering), fase 02 "Structureren" (ArchiMate core-framework), fase 03 "Oplossingsontwerp" (ArchiMate en C4) | Constitutioneel Auteur |
 | 2026-02-05 | 1.5.0 | Aanpassing: value stream Ondernemingsvorming (ONV) vervangen door Markt- en Investeringsvorming (MIV) met herziene, op onzekerheidsreductie gerichte fasering | Constitutioneel Auteur |
 | 2026-02-02 | 1.4.0 | Toegevoegd: value stream Ondernemingsvorming (ONV) met genormeerde fasering van kansverkenning tot ondernemingsinrichting | Constitutioneel Auteur |
@@ -205,4 +204,5 @@ Dit document is normatief en dient als bron voor:
 
 Dit document verwijst naar:
 - **concepten-en-architectonische-grondslagen.md** (v1.5.0) voor de definitie van "Value stream" en "Value stream fase".
-- **constitutie.md** (v1.2.1) als hoogste normatieve bron.
+- **constitutie.md** (v2.3.0) als hoogste normatieve bron.
+- **togaf.kaderdefinitie.md** (v2.0.0) als kaderbron voor de AOD value stream fasering.
