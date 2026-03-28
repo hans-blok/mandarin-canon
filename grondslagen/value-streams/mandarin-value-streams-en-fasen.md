@@ -178,6 +178,9 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 06. **Keuzeruimte structureren (geen besluit)**  
    Het structureren van het beslislandschap: welke keuzes nu minimaal nodig zijn (bijvoorbeeld basis-hosting), welke keuzes bewust later kunnen worden genomen, en welke keuzes elkaar blokkeren. De uitkomst is een beslislandschap met expliciete uitstel- en keuzepunten, geen definitief besluit.
 
+ 07. **Leveranciersselectie (hosting)**  
+      Het evalueren en selecteren van hosting-providers op basis van criteria zoals kosten, performance, security, vendor lock-in risico's en alignment met de gekozen monetisatie-logica en positionering.
+
 ---
 
 ## 5. Wijzigingshistorie
