@@ -192,11 +192,41 @@ Daarbij geldt:
 
 ---
 
-## 11. Samenvattende principes
+## 11. Input-gebonden bronhouding en voorbeelden
+
+### 11.1 Kernregel
+
+Wanneer de bronhouding input-gebonden is, geldt een expliciete negatieve instructie:
+
+> **Illustraties en voorbeelden in beleidsdocumenten mogen nooit als declaratieve input worden geïnterpreteerd.**
+
+### 11.2 Toelichting
+
+Beleidsdocumenten bevatten regelmatig voorbeelden ter verduidelijking. Deze voorbeelden zijn **illustratief**, niet **normatief**. Het onderscheid is cruciaal:
+
+- een **voorbeeld** toont hoe iets *kan* worden toegepast;
+- een **declaratie** stelt vast wat *geldt*.
+
+Agents die dit onderscheid niet maken, lopen het risico illustraties te behandelen als feiten, definities of instructies. Dit is een **kernkwetsbaarheid** binnen input-gebonden verwerking.
+
+### 11.3 Norm
+
+Agents:
+
+- behandelen voorbeelden in bronnen uitsluitend als illustratie;
+- leiden geen definities, regels of constraints af uit voorbeelden;
+- baseren output uitsluitend op expliciete declaraties in de bron;
+- markeren elk gebruik van voorbeeldmateriaal als niet-normatief.
+
+---
+
+## 12. Samenvattende principes
 
 > De waarheid zit in expliciete bronnen, niet in het model.
 
 > Agents werken standaard binnen gesloten bronregime.
+
+> Voorbeelden zijn illustraties, geen declaraties.
 
 > Exploratie is toegestaan als gecontroleerde uitzondering voor innovatie.
 
