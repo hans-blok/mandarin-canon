@@ -2,9 +2,9 @@
 type: doctrine
 naam: Bronhouding en exploratie
 versie: 1.0.0
-status: concept
+status: vers
+digest: 2cf4
 ---
-
 # Doctrine — Bronhouding en exploratie
 
 ## 1. Doel

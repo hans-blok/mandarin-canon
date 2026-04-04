@@ -3,10 +3,10 @@ type: grondslag
 subtype: kaderdefinitie
 naam: TOGAF (The Open Group Architecture Framework)
 versie: 2.0.0
-status: actief
+status: vers
 externe-grondslag: TOGAF 9.2 (The Open Group)
+digest: a87a
 ---
-
 # Kaderdefinitie — TOGAF (The Open Group Architecture Framework)
 
 ## 0. Positie van dit document

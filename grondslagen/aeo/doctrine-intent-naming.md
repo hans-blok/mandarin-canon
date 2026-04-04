@@ -1,9 +1,13 @@
-
+---
+type: doctrine
+naam: Agent Doctrine — Intent Naming
+versie: 2.0.0
+value-stream: AEO
+digest: ee2c
+status: vers
+---
 # Agent Doctrine — Intent Naming
 
-**Doctrine-ID**: `AEO.DOC.002`  
-**Versie**: 2.0.0  
-**Value Stream**: Agent Ecosysteem ontwikkeling
 
 ---
 

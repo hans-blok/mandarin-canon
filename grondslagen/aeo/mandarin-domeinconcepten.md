@@ -1,12 +1,13 @@
+---
+type: concepten
+naam: De Mandarin concepten
+versie: 2.5.0
+value-stream: AEO
+digest: 798e
+status: vers
+---
 # De Mandarin concepten
 
-**Type**: Concepten en Definities 
-**Repository**: mandarin-canon 
-**Identifier**: mandarin-canon.concepten.actieve-structuren 
-**Version**: 2.5.0 
-**Status**: Active 
-**Last Updated**: 2026-02-21 
-**Owner**: Hans Blok
 
 ---
 

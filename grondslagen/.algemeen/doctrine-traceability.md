@@ -1,10 +1,12 @@
+---
+type: doctrine
+naam: Doctrine — Traceability en Herkomstcode
+versie: 1.1.0
+digest: 8d27
+status: vers
+---
 # Doctrine — Traceability en Herkomstcode
 
-**Versie**: 1.1.0  
-**Status**: Actief  
-**Datum**: 2026-03-20  
-**Eigenaar**: Architecture & AI Enablement  
-**Type**: Vastleggend Doctrine-document
 
 ---
 

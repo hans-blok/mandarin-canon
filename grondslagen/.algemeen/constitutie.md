@@ -1,8 +1,12 @@
+---
+type: constitutie
+naam: Constitutie Mandarin
+versie: 2.6.0
+digest: f787
+status: vers
+---
 # Constitutie Mandarin
 
-**Versie**: 2.5.1
-**Status**: Actief
-**Datum**: 2026-03-30
 
 ---
 
@@ -31,6 +35,11 @@ Dit normatief artefact is bijgewerkt op basis van de hieronder geraadpleegde bro
 
 **Wijzigingen in versie 2.5.1**:
 - Verduidelijkt dat doctrines per value stream en per value-stream-fase normatief toegepast worden, ook wanneer zij niet expliciet in prompt-instructies zijn opgenomen
+
+**Wijzigingen in versie 2.6.0**:
+- Toegevoegd: Artikel 4 — Conventie boven Configuratie, gebaseerd op het software design principe "Convention over Configuration" (bron: Wikipedia)
+- Hernummering Artikel 4-8 → Artikel 5-9
+- Hernummering subartikelen 7.1-7.7 → 8.1-8.7
 
 ---
 
@@ -170,7 +179,28 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 ---
 
-## Artikel 4 — Wijzigingsbeheer
+## Artikel 4 — Conventie boven Configuratie
+
+1. **Principe**: Het ecosysteem hanteert het principe *conventie boven configuratie*: wanneer een handeling, structuur of naamgeving een voorspelbaar patroon volgt, hoeft dit niet expliciet te worden geconfigureerd.
+
+2. **Werking**: Conventies definiëren voorspelbare defaults. Een agent volgt de conventie, tenzij een expliciete afwijking is vastgelegd in een normatief artefact (beleid, charter of doctrine).
+
+3. **Voorbeelden van conventies**:
+   - Mapstructuur en naamgeving (Artikel 8.5);
+   - Afleidingsketens tussen artefacttypen (boundary → charter → contract);
+   - Intent-naamgeving volgens doctrine-intent-naming.
+
+4. **Afwijking**: Afwijking van een conventie is uitsluitend toegestaan wanneer:
+   - de afwijking expliciet is gedocumenteerd in een normatief artefact;
+   - de motivatie voor afwijking is vastgelegd.
+   
+   Impliciete of stilzwijgende afwijking is verboden.
+
+5. **Relatie tot explicietheid**: Dit principe vervangt explicietheid niet. Het reduceert de noodzaak tot expliciete vastlegging waar voorspelbaarheid volstaat; het vereist expliciete vastlegging waar afwijking nodig is.
+
+---
+
+## Artikel 5 — Wijzigingsbeheer
 
 1. **Verbod voor automatisering**: Geautomatiseerde tooling of processen mogen de Constitutie op geen enkele wijze wijzigen.
 2. **Versiebeheer**: Canon en alle Mandarin-artefacten zijn versieerbaar en traceerbaar via **git-versiebeheer**. Bestanden hoeven geen intern versieveld te bevatten; de actuele staat is de HEAD-versie in git. Grondslagen (constitutie, doctrines) mogen een versieveld bevatten ten behoeve van governance en leesbaarheid. Nieuwe versies overschrijven de vorige inhoud op hetzelfde bestandspad; oudere versies blijven raadpleegbaar via git-historie en eventuele publicatie-artefacten.
@@ -180,7 +210,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 ---
 
-## Artikel 5 — Tegen generalisatie
+## Artikel 6 — Tegen generalisatie
 
 1. **Precisie**: Wij spreken precies, of wij spreken niet.
   - Wij zeggen niet "mensen" wanneer wij patronen bedoelen.
@@ -210,7 +240,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 ---
 
-## Artikel 6 — Taal en terminologie
+## Artikel 7 — Taal en terminologie
 
 1.  **Standaardtaal**  
     De standaardtaal binnen het ecosysteem, en binnen alle canonieke en normatieve artefacten die rechtstreeks uit de Constitutie voortvloeien, is **Nederlands**.
@@ -259,30 +289,30 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 ---
 
-## Artikel 7 — Canon, Grondslagen en Toepassingsbereik
+## Artikel 8 — Canon, Grondslagen en Toepassingsbereik
 
-### 7.1 Gelaagdheid van de canon
+### 8.1 Gelaagdheid van de canon
 De canon van dit ecosysteem bestaat uit:
 1. **Algemene grondslagen**, die altijd en voor iedereen van toepassing zijn;
 2. **Value-stream-specifieke grondslagen**, waaronder doctrines op value-stream-niveau en doctrines op value-stream-fase-niveau, die uitsluitend normatief zijn binnen de betreffende value stream en, waar gespecificeerd, binnen de betreffende fase.
 
 Geen enkel document buiten deze canonieke lagen heeft normatieve werking.
 
-### 7.2 Toepassingsbereik van grondslagen
+### 8.2 Toepassingsbereik van grondslagen
 Een actor (mens of geautomatiseerde rol) mag uitsluitend handelen op basis van:
 - de algemene grondslagen, en
 - de grondslagen van de value stream waarin hij expliciet opereert, inclusief doctrines die gelden voor de value stream als geheel en doctrines die gelden voor de fase waarin hij expliciet is gepositioneerd.
 
 Het raadplegen of toepassen van grondslagen uit andere value streams is niet toegestaan, tenzij dit expliciet en gemotiveerd is vastgelegd.
 
-### 7.3 Verplichte value-stream-positie
+### 8.3 Verplichte value-stream-positie
 Elke geautomatiseerde rol, agent, runner of orkestratiecomponent:
 - heeft exact één primaire value stream;
 - verklaart deze value stream expliciet als onderdeel van zijn definitie of charter.
 
 Zonder expliciete value-stream-positie is inzet niet toegestaan.
 
-### 7.4 Beperking van context en kennis
+### 8.4 Beperking van context en kennis
 Geautomatiseerde rollen:
 - lezen geen canonieke documenten buiten hun toepassingsbereik;
 - baseren beslissingen en uitvoering uitsluitend op relevante grondslagen;
@@ -290,7 +320,7 @@ Geautomatiseerde rollen:
 
 Contextbeperking is een kwaliteits- en governance-eis, geen optimalisatie.
 
-### 7.5 Fysieke organisatie en leesverplichting grondslagen
+### 8.5 Fysieke organisatie en leesverplichting grondslagen
 
 Grondslagen zijn fysiek georganiseerd in de `grondslagen/` map van de canon-workspace volgens de volgende structuur:
 
@@ -308,7 +338,7 @@ Grondslagen zijn fysiek georganiseerd in de `grondslagen/` map van de canon-work
 
 Deze leesverplichting is niet optioneel; een agent die zijn grondslagen niet leest of geldende doctrines niet toepast, heeft geen normatieve basis voor handelen. Afwezigheid van een doctrine in prompt-instructies of uitvoercontext verandert deze verplichting niet.
 
-### 7.6 Grondslagen boven implementatie
+### 8.6 Grondslagen boven implementatie
 Grondslagen beschrijven:
 - principes,
 - normen,
@@ -317,12 +347,20 @@ Grondslagen beschrijven:
 
 Implementatiedetails, toolingkeuzes en technische invulling maken geen deel uit van de constitutie en kunnen geen normatieve status verkrijgen.
 
-### 7.7 Conflict en escalatie
+### 8.7 Conflict en escalatie
 Bij conflict tussen:
 - algemene grondslagen en value-stream-grondslagen, prevaleren de algemene grondslagen;
 - value-stream-grondslagen onderling, is escalatie naar menselijk toezicht verplicht.
 
 Geen enkele geautomatiseerde rol mag conflicten zelfstandig oplossen door normselectie.
+
+---
+
+## Artikel 9 — Slotbepaling
+
+1.  **Onmiddellijke Werking**: Deze Constitutie geldt onmiddellijk voor alle bestaande en toekomstige repositories, workflows en processen.
+2.  **Prevalentie**: Bij conflict tussen deze Constitutie en lagere documenten, geldt altijd de Constitutie.
+3.  **Integriteit**: Automatisering mag deze Constitutie niet negeren, verzwakken of interpreteren op een manier die haar kracht vermindert.
 
 ---
 
@@ -360,18 +398,11 @@ De toepassing van externe grondslagen en het gebruik van kaderdefinities wordt v
 
 ---
 
-## Artikel 8 — Slotbepaling
-
-1.  **Onmiddellijke Werking**: Deze Constitutie geldt onmiddellijk voor alle bestaande en toekomstige repositories, workflows en processen.
-2.  **Prevalentie**: Bij conflict tussen deze Constitutie en lagere documenten, geldt altijd de Constitutie.
-3.  **Integriteit**: Automatisering mag deze Constitutie niet negeren, verzwakken of interpreteren op een manier die haar kracht vermindert.
-
----
-
 ## Wijzigingslog
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-04-03 | 2.6.0  | Toegevoegd: Artikel 4 — Conventie boven Configuratie (gebaseerd op "Convention over Configuration", Wikipedia). Hernummering Artikel 4-8 → 5-9. | Hans Blok |
 | 2026-03-30 | 2.5.1  | Verduidelijkt dat value-stream- en fase-doctrines normatief toegepast moeten worden, ook zonder expliciete opname in prompt-instructies. | Hans Blok |
 | 2026-03-23 | 2.3.0  | Dubbele vastlegging geconsolideerd: gezagsbronnen gemarkeerd als context (Artikel 1.2 is canoniek), prevalentie-regel vereenvoudigd, versiebeheer-norm verduidelijkt (grondslagen mogen versieveld bevatten). | Hans Blok |
 | 2026-03-23 | 2.2.0  | Spelfout gecorrigeerd. Artikel 4.1 (menselijke controle) verwijderd — iedereen mag de constitutie aanpassen. Workspace-steward gedefinieerd in terminologie. Verwijzingen naar geparkeerde doctrines verwijderd. | Hans Blok |

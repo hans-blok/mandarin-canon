@@ -1,11 +1,11 @@
 ---
 titel: Doctrine Agent Runner Architectuur
 versie: 1.0.0
-status: actief
+status: vers
 domein: realisatie
 beheerd_door: constitutioneel-auteur / capability-architect
+digest: c4fe
 ---
-
 # Doctrine Agent Runner Architectuur
 
 ## Achtergrond en Probleemstelling

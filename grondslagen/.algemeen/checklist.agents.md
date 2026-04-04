@@ -1,9 +1,12 @@
+---
+type: checklist
+naam: Verplichte Agent Start-Checklist (Constitutionele Verklaring)
+versie: 1.0.0
+digest: 8a98
+status: vers
+---
 # Verplichte Agent Start-Checklist (Constitutionele Verklaring)
 
-**Status**: Normatief  
-**Type**: Verplicht startartefact  
-**Van toepassing op**: alle agents, runners en orkestratiecomponenten  
-**Moment**: vóór elke inhoudelijke handeling
 
 ---
 

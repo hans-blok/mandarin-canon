@@ -1,12 +1,12 @@
-﻿# Mandarin **ordenings-concepten**
-
-**Type**: Concepten en Definities  
-**Repository**: mandarin-canon  
-**Identifier**: mandarin-canon.concepten.meta  
-**Version**: 1.7.0  
-**Status**: Active  
-**Last Updated**: 2026-03-21  
-**Owner**: Hans Blok
+---
+type: concepten
+naam: Mandarin ordenings-concepten
+versie: 1.8.0
+value-stream: AEO
+digest: 12e6
+status: vers
+---
+# Mandarin **ordenings-concepten**
 
 ---
 
@@ -18,8 +18,9 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 - concepten-en-architectonische-grondslagen.md (versie 1.6.0, gelezen op 2026-02-01)
 - herijking 2.md (gelezen op 2026-02-01)
 - doctrine-traceability.md (versie 1.1.0, gelezen op 2026-03-21) — voor concepten herkomstpositie, initiërend, voortbouwend
+- doctrine-traceability-digest.md (versie 0.1.0, gelezen op 2026-04-03) — voor concept artefacttoestand (vers/muf/rot)
 
-**Datum**: 2026-02-01 (initieel), 2026-03-21 (laatste wijziging)  
+**Datum**: 2026-02-01 (initieel), 2026-04-03 (laatste wijziging)  
 **Doel**: Expliciete scheiding tussen **ordenings-concepten** (die structuur en classificatie beschrijven) en **domein-concepten** (actieve structuren en hun werking)
 
 **Ontwerpkeuze**: **ordenings-concepten** beschrijven hoe het ecosysteem zichzelf structureert en classificeert. Door deze in een apart document te plaatsen, wordt de architectonische lagenstructuur expliciet: **ordenings-concepten** definiëren het classificatiestelsel en de artefactstructuur, terwijl operationele concepten de actieve elementen beschrijven die binnen dat stelsel werken.
@@ -56,6 +57,7 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 - [Herkomstpositie](#herkomstpositie) — Initiërend of voortbouwend in de creatie-keten
   - [Initiërend](#initiërend) — Bron-artefact dat unieke code genereert
   - [Voortbouwend](#voortbouwend) — Artefact dat voortbouwt op initiërend artefact
+- [Artefacttoestand](#artefacttoestand) — Operationele versheidsgraad (vers/muf/rot)
   
 ### Prompts
 - [Prompt canon-curator: publiceer normatieve wijziging](#prompt-canon-curator-publiceer-normatieve-wijziging)
@@ -1121,6 +1123,57 @@ Een voortbouwend artefact:
 
 ---
 
+## Artefacttoestand
+
+### Definitie
+**Artefacttoestand** (ook: versheidsgraad) is een operationele eigenschap die aangeeft of de vastgelegde inhoud van een artefact consistent is met zijn digest en of wijzigingen impact hebben op de afleidingsketen.
+
+### Kenmerken
+- Is geen classificatie-as maar een **dynamische toestand**
+- Verandert door inhoudelijke wijziging of regeneratie
+- Is gekoppeld aan de afleidingspositie (impact op afgeleiden)
+- Wordt bepaald door tooling (digest-verificatie) en menselijke beoordeling (muf vs rot)
+- Digest is een 4-karakter hexadecimale hash van de artefact-inhoud (exclusief frontmatter)
+
+### Posities
+
+| Toestand | Betekenis | Actie |
+|----------|-----------|-------|
+| **Vers** | Digest komt overeen met inhoud; artefact is actueel | Geen |
+| **Muf** | Digest wijkt af, maar geen impact op afgeleiden (bijv. redactionele correctie, opmaak) | Geen — digest bij gelegenheid bijwerken |
+| **Rot** | Digest wijkt af én afleidingsketen is geraakt (functionele wijziging) | Regeneratie van downstream artefacten vereist |
+
+### Relatie tot afleidingspositie
+- **Leidende** artefacten met status `rot` veroorzaken cascade-impact op **afgeleide** artefacten
+- **Afgeleide** artefacten erven vervuiling wanneer hun bron `rot` is
+- Het cascade-principe vereist controle van alle directe downstream artefacten bij `rot`-status
+
+### Bepaling muf vs rot
+De keuze tussen `muf` en `rot` is een **menselijke beoordeling** — geen automatisme:
+- **Muf**: semantische betekenis voor afgeleide artefacten is ongewijzigd (taalkundige correctie, opmaakwijziging, toelichting)
+- **Rot**: functionele specificatie is veranderd (nieuwe intent, gewijzigde parameters, aangepaste grenzen, verwijderde capabilities)
+
+### Wat het niet is
+- Geen classificatie-as (zoals betekeniseffect, werking, vormingsfase, bronhouding)
+- Geen kwaliteitsoordeel over inhoud
+- Geen vervanging van versiebeheer
+- Geen statische eigenschap — toestand kan veranderen
+
+### Synoniemen
+- Versheidsgraad
+- Digest-status
+- Artefact-actualiteit
+
+### Analogieën
+- Cache-invalidatie in softwaresystemen (stale/fresh)
+- Veroudering van voedsel (vers/muf/rot als metafoor)
+- Dirty flags in databases en editors
+
+### Toelichting
+Artefacttoestand is fundamenteel anders dan de ordeningsassen: het beschrijft niet *wat* een artefact *is*, maar *hoe actueel* het *momenteel* is. Deze operationele eigenschap ondersteunt het cascade-principe uit doctrine-traceerbaarheid en maakt zichtbaar waar regeneratie nodig is. De digest vormt het technisch mechanisme voor detectie; de status-beoordeling (muf vs rot) blijft menselijk.
+
+---
+
 ## Prompt canon-curator: publiceer normatieve wijziging
 
 Deze bijlage legt de canonieke prompt vast voor de **mandarin.canon-curator**-agent met intentie **publiceer-normatieve-wijziging**. Dit is een governance-artefact in de vorm van een promptdefinitie.
@@ -1141,6 +1194,7 @@ Deze prompt verankert de relatie tussen de canon-curator en het bijbehorende cha
 
 | Datum      | Versie | Wijziging                                                           | Auteur     |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-04-03 | 1.8.0  | Toegevoegd: Artefacttoestand als operationele eigenschap (vers/muf/rot) op basis van doctrine-traceability-digest.md; geen classificatie-as maar dynamische toestand | Constitutioneel Auteur  |
 | 2026-03-21 | 1.7.0  | Toegevoegd: Herkomstpositie als artefact-as met posities Initiërend en Voortbouwend; verwijzing naar doctrine-traceability.md | Constitutioneel Auteur  |
 | 2026-03-01 | 1.6.1  | Terminologie geharmoniseerd (interventieniveau → vormingsfase), alle concepten uniform beschreven, matrix en toelichtingen aangepast, richtlijn bronhouding toegevoegd, bronnen Agentic AI toegevoegd, structuur en opmaak verbeterd. | Constitutioneel Auteur  |
 | 2026-02-22 | 1.13.0 | Betekeniseffect-as voor agents gemapt op artefactfuncties: Structurerend toegevoegd als categorie. | Constitutioneel Auteur  |

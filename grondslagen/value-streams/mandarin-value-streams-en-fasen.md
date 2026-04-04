@@ -1,9 +1,12 @@
+---
+type: value-stream
+naam: Mandarin Value Streams en Fasen
+versie: 1.7.0
+digest: 2536
+status: vers
+---
 # Mandarin Value Streams en Fasen
 
-**Versie**: 1.7.0  
-**Status**: Actief  
-**Datum**: 2026-03-23  
-**Auteur**: Constitutioneel Auteur  
 
 ---
 

@@ -1,8 +1,13 @@
+---
+type: doctrine
+naam: Agent Doctrine — Agent Charter Normering
+versie: 2.4.0
+value-stream: AEO
+digest: bef0
+status: vers
+---
 # Agent Doctrine — Agent Charter Normering
 
-**Doctrine-ID**: `AEO.DOC.001`  
-**Versie**: 2.4.0  
-**Value Stream**: Agent Ecosysteem ontwikkeling 
 
 ---
 

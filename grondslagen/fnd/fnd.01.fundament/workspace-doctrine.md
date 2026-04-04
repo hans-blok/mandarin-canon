@@ -1,10 +1,13 @@
+---
+type: doctrine
+naam: Workspace Doctrine — Architectuur en Standaard voor Workspaces
+versie: 1.5.2
+value-stream: FND
+digest: 19f7
+status: vers
+---
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
 
-**Versie**: 1.5.2  
-**Status**: Actief  
-**Datum**: 2026-01-31  
-**Eigenaar**: Architecture & AI Enablement  
-**Type**: Normerend Doctrine-document
 
 ---
 

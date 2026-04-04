@@ -1,12 +1,12 @@
+---
+type: grondslag
+naam: Conceptuele Grondslagen van het Mandarin-ecosysteem
+versie: 1.1.0
+digest: edd1
+status: vers
+---
 # Conceptuele Grondslagen van het Mandarin-ecosysteem
 
-**Type**: Concepten en Definities  
-**Repository**: mandarin-canon  
-**Identifier**: mandarin-canon.concepten.conceptuele-grondslagen  
-**Version**: 1.1.0  
-**Status**: Active  
-**Last Updated**: 2026-02-21  
-**Owner**: Hans Blok
 
 ---
 
