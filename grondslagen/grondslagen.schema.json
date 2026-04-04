@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mandarin.canon/schemas/grondslagen.schema.json",
+  "title": "Mandarin Grondslagen Registry (Genormaliseerd)",
+  "description": "Schema voor de registratie van grondslagen binnen het Mandarin-ecosysteem, met genormaliseerde value stream en fase structuur.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Verwijzing naar dit schema"
+    },
+    "versie": {
+      "type": "string",
+      "description": "Versie van deze grondslagen-registratie",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "gegenereerd": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp van generatie"
+    },
+    "algemeen": {
+      "type": "array",
+      "description": "Grondslagen die ecosysteem-breed gelden (niet value-stream-specifiek)",
+      "items": {
+        "$ref": "#/$defs/grondslag"
+      }
+    },
+    "value_streams": {
+      "type": "object",
+      "description": "Value streams met hun grondslagen en fasen",
+      "additionalProperties": {
+        "$ref": "#/$defs/value_stream"
+      }
+    }
+  },
+  "required": ["versie", "algemeen", "value_streams"],
+  "$defs": {
+    "grondslag": {
+      "type": "object",
+      "description": "Een individuele grondslag (doctrine, constitutie, concepten, etc.)",
+      "properties": {
+        "naam": {
+          "type": "string",
+          "description": "Bestandsnaam van de grondslag (zonder pad)",
+          "pattern": "^[a-z0-9-]+\\.md$"
+        },
+        "pad": {
+          "type": "string",
+          "description": "Relatief pad vanaf grondslagen/ folder"
+        },
+        "type": {
+          "type": "string",
+          "description": "Type grondslag",
+          "enum": ["constitutie", "doctrine", "concepten", "kaderdefinitie", "checklist", "value-stream", "grondslag"]
+        },
+        "digest": {
+          "type": "string",
+          "description": "4-karakter MD5 hash van de body content",
+          "pattern": "^[0-9a-f]{4}$"
+        },
+        "status": {
+          "type": "string",
+          "description": "Artefacttoestand conform doctrine-traceability-digest",
+          "enum": ["vers", "muf", "rot"]
+        }
+      },
+      "required": ["naam", "pad", "digest", "status"]
+    },
+    "value_stream": {
+      "type": "object",
+      "description": "Een value stream met eigen grondslagen en fasen",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Drie-letterige code van de value stream",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "naam": {
+          "type": "string",
+          "description": "Volledige naam van de value stream"
+        },
+        "grondslagen": {
+          "type": "array",
+          "description": "Grondslagen die gelden voor de gehele value stream",
+          "items": {
+            "$ref": "#/$defs/grondslag"
+          }
+        },
+        "fasen": {
+          "type": "object",
+          "description": "Fasen binnen deze value stream, geïndexeerd op fasecode (01, 02, ...)",
+          "additionalProperties": {
+            "$ref": "#/$defs/fase"
+          }
+        }
+      },
+      "required": ["code", "grondslagen", "fasen"]
+    },
+    "fase": {
+      "type": "object",
+      "description": "Een fase binnen een value stream",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Fasecode (01, 02, ...)",
+          "pattern": "^\\d{2}$"
+        },
+        "naam": {
+          "type": "string",
+          "description": "Naam van de fase"
+        },
+        "grondslagen": {
+          "type": "array",
+          "description": "Grondslagen specifiek voor deze fase",
+          "items": {
+            "$ref": "#/$defs/grondslag"
+          }
+        }
+      },
+      "required": ["code", "grondslagen"]
+    }
+  }
+}

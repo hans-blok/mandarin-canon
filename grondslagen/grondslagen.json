@@ -1,0 +1,127 @@
+{
+  "$schema": "grondslagen.schema.json",
+  "versie": "1.0.0",
+  "gegenereerd": "2026-04-04T08:03:09Z",
+  "algemeen": [
+    {
+      "naam": "checklist.agents.md",
+      "pad": ".algemeen/checklist.agents.md",
+      "type": "checklist",
+      "digest": "8a98",
+      "status": "vers"
+    },
+    {
+      "naam": "conceptuele-grondslagen.md",
+      "pad": ".algemeen/conceptuele-grondslagen.md",
+      "type": "grondslag",
+      "digest": "edd1",
+      "status": "vers"
+    },
+    {
+      "naam": "constitutie.md",
+      "pad": ".algemeen/constitutie.md",
+      "type": "constitutie",
+      "digest": "f787",
+      "status": "vers"
+    },
+    {
+      "naam": "doctrine-bronhouding-en-exploratie.md",
+      "pad": ".algemeen/doctrine-bronhouding-en-exploratie.md",
+      "type": "doctrine",
+      "digest": "2cf4",
+      "status": "vers"
+    },
+    {
+      "naam": "doctrine-traceability.md",
+      "pad": ".algemeen/doctrine-traceability.md",
+      "type": "doctrine",
+      "digest": "8d27",
+      "status": "vers"
+    },
+    {
+      "naam": "mandarin-value-streams-en-fasen.md",
+      "pad": "value-streams/mandarin-value-streams-en-fasen.md",
+      "type": "value-stream",
+      "digest": "2536",
+      "status": "vers"
+    },
+    {
+      "naam": "togaf.kaderdefinitie.md",
+      "pad": "kaderdefinities/togaf.kaderdefinitie.md",
+      "type": "grondslag",
+      "digest": "a87a",
+      "status": "vers"
+    }
+  ],
+  "value_streams": {
+    "AEO": {
+      "code": "AEO",
+      "grondslagen": [
+        {
+          "naam": "doctrine-agent-charter-normering.md",
+          "pad": "aeo/doctrine-agent-charter-normering.md",
+          "type": "doctrine",
+          "digest": "bef0",
+          "status": "vers"
+        },
+        {
+          "naam": "doctrine-intent-naming.md",
+          "pad": "aeo/doctrine-intent-naming.md",
+          "type": "doctrine",
+          "digest": "ee2c",
+          "status": "vers"
+        },
+        {
+          "naam": "mandarin-domeinconcepten.md",
+          "pad": "aeo/mandarin-domeinconcepten.md",
+          "type": "concepten",
+          "digest": "798e",
+          "status": "vers"
+        },
+        {
+          "naam": "mandarin-ecosysteem-ordeningsconcepten.md",
+          "pad": "aeo/mandarin-ecosysteem-ordeningsconcepten.md",
+          "type": "concepten",
+          "digest": "12e6",
+          "status": "vers"
+        }
+      ],
+      "fasen": {
+        "03": {
+          "code": "03",
+          "grondslagen": [
+            {
+              "naam": "doctrine-agent-runner-architectuur.md",
+              "pad": "aeo/aeo.03.automatisering-en-pipeline/doctrine-agent-runner-architectuur.md",
+              "type": "grondslag",
+              "digest": "c4fe",
+              "status": "vers"
+            }
+          ],
+          "naam": "Ecosysteemworkflow"
+        }
+      },
+      "naam": "Agent Ecosysteem Ontwikkeling"
+    },
+    "FND": {
+      "code": "FND",
+      "grondslagen": [],
+      "fasen": {
+        "01": {
+          "code": "01",
+          "grondslagen": [
+            {
+              "naam": "workspace-doctrine.md",
+              "pad": "fnd/fnd.01.fundament/workspace-doctrine.md",
+              "type": "doctrine",
+              "digest": "19f7",
+              "status": "vers"
+            }
+          ],
+          "naam": "Fundament"
+        }
+      },
+      "naam": "Fundament"
+    }
+  }
+}

@@ -517,6 +517,178 @@ def cmd_update(grondslagen_root: Path, file_pattern: str, status: Optional[str] 
     return 0
 
 
+def infer_positie(file_path: Path, grondslagen_root: Path) -> Tuple[str, Optional[str], Optional[str]]:
+    """Bepaal positie, value_stream en value_stream_fase uit bestandspad.
+    
+    Returns:
+        (positie, value_stream, value_stream_fase)
+    """
+    try:
+        rel_path = file_path.relative_to(grondslagen_root)
+    except ValueError:
+        return "algemeen", None, None
+    
+    path_str = str(rel_path)
+    parts = rel_path.parts
+    
+    # .algemeen/, kaderdefinities/, value-streams/ → algemeen
+    if parts[0] in [".algemeen", "kaderdefinities", "value-streams"]:
+        return "algemeen", None, None
+    
+    # Check voor value stream fase: {vs_code}.{fase_nr}.{naam}/
+    # Bijvoorbeeld: aeo/aeo.03.automatisering-en-pipeline/
+    for part in parts:
+        match = re.match(r"^([a-z]+)\.(\d{2})\.", part, re.IGNORECASE)
+        if match:
+            vs_code = match.group(1).upper()
+            fase_code = match.group(2)
+            return "value-stream-fase", vs_code, fase_code
+    
+    # Check voor value stream: {vs_code}/ direct
+    vs_codes = ["aeo", "sfw", "aod", "knv", "miv", "fnd"]
+    if parts[0].lower() in vs_codes:
+        return "value-stream", parts[0].upper(), None
+    
+    return "algemeen", None, None
+
+
+def cmd_export(grondslagen_root: Path, output_path: Optional[Path] = None) -> int:
+    """Exporteer grondslagen naar JSON conform genormaliseerd schema."""
+    import json
+    from datetime import datetime, timezone
+    
+    # Value stream metadata (code -> naam)
+    VS_NAMES = {
+        "AEO": "Agent Ecosysteem Ontwikkeling",
+        "SFW": "Solution Framework",
+        "AOD": "Agent & Oplossing Deployment",
+        "KNV": "Kennisverwerving",
+        "MIV": "Mens in de Value Stream",
+        "FND": "Fundament"
+    }
+    
+    # Fase namen per value stream (voor bekende fasen)
+    FASE_NAMES = {
+        "AEO": {
+            "01": "Grondslag-vorming",
+            "02": "Ecosysteem-ontwikkeling", 
+            "03": "Ecosysteemworkflow"
+        },
+        "FND": {
+            "01": "Fundament"
+        }
+    }
+    
+    files = discover_grondslagen(grondslagen_root)
+    
+    # Verzamel grondslagen per categorie
+    algemeen_list = []
+    vs_data = {}  # vs_code -> {"grondslagen": [], "fasen": {fase_code: []}}
+    
+    for file_path in files:
+        try:
+            rel_path = file_path.relative_to(grondslagen_root)
+        except ValueError:
+            rel_path = Path(file_path.name)
+        
+        try:
+            content = file_path.read_text(encoding="utf-8")
+            fm_text, body = split_frontmatter(content)
+            
+            if fm_text is None:
+                print(f"  [SKIP] {rel_path}: geen frontmatter")
+                continue
+            
+            fields = parse_frontmatter_fields(fm_text)
+            positie, vs_code, fase_code = infer_positie(file_path, grondslagen_root)
+            
+            entry = {
+                "naam": file_path.name,
+                "pad": str(rel_path).replace("\\", "/"),
+                "type": fields.get("type", "grondslag"),
+                "digest": fields.get("digest", "????"),
+                "status": fields.get("status", "vers")
+            }
+            
+            if positie == "algemeen":
+                algemeen_list.append(entry)
+            elif positie == "value-stream":
+                if vs_code not in vs_data:
+                    vs_data[vs_code] = {"grondslagen": [], "fasen": {}}
+                vs_data[vs_code]["grondslagen"].append(entry)
+            elif positie == "value-stream-fase":
+                if vs_code not in vs_data:
+                    vs_data[vs_code] = {"grondslagen": [], "fasen": {}}
+                if fase_code not in vs_data[vs_code]["fasen"]:
+                    vs_data[vs_code]["fasen"][fase_code] = []
+                vs_data[vs_code]["fasen"][fase_code].append(entry)
+            
+        except Exception as e:
+            print(f"  [ERR] {rel_path}: {e}")
+    
+    # Sorteer algemeen op naam
+    algemeen_list.sort(key=lambda g: g["naam"])
+    
+    # Bouw genormaliseerde value_streams structuur
+    value_streams = {}
+    for vs_code in sorted(vs_data.keys()):
+        vs_info = vs_data[vs_code]
+        vs_info["grondslagen"].sort(key=lambda g: g["naam"])
+        
+        fasen_obj = {}
+        for fase_code in sorted(vs_info["fasen"].keys()):
+            fase_grondslagen = vs_info["fasen"][fase_code]
+            fase_grondslagen.sort(key=lambda g: g["naam"])
+            
+            fase_entry = {
+                "code": fase_code,
+                "grondslagen": fase_grondslagen
+            }
+            # Voeg fase naam toe indien bekend
+            if vs_code in FASE_NAMES and fase_code in FASE_NAMES[vs_code]:
+                fase_entry["naam"] = FASE_NAMES[vs_code][fase_code]
+            
+            fasen_obj[fase_code] = fase_entry
+        
+        vs_entry = {
+            "code": vs_code,
+            "grondslagen": vs_info["grondslagen"],
+            "fasen": fasen_obj
+        }
+        # Voeg value stream naam toe indien bekend
+        if vs_code in VS_NAMES:
+            vs_entry["naam"] = VS_NAMES[vs_code]
+        
+        value_streams[vs_code] = vs_entry
+    
+    # Tel totaal aantal grondslagen
+    total_count = len(algemeen_list)
+    for vs in value_streams.values():
+        total_count += len(vs["grondslagen"])
+        for fase in vs["fasen"].values():
+            total_count += len(fase["grondslagen"])
+    
+    output = {
+        "$schema": "grondslagen.schema.json",
+        "versie": "1.0.0",
+        "gegenereerd": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "algemeen": algemeen_list,
+        "value_streams": value_streams
+    }
+    
+    if output_path is None:
+        output_path = grondslagen_root / "grondslagen.json"
+    
+    output_path.write_text(
+        json.dumps(output, indent=2, ensure_ascii=False),
+        encoding="utf-8"
+    )
+    
+    print(f"Geëxporteerd: {total_count} grondslagen naar {output_path}")
+    
+    return 0
+
+
 # ==============================================================================
 # MAIN
 # ==============================================================================
@@ -540,6 +712,10 @@ def main():
     update_parser.add_argument("file", help="Bestandsnaam of patroon")
     update_parser.add_argument("--status", choices=["vers", "muf", "rot"], help="Markeer als status zonder digest update")
 
+    # export
+    export_parser = subparsers.add_parser("export", help="Exporteer grondslagen naar JSON")
+    export_parser.add_argument("--output", "-o", type=Path, help="Output bestand (default: grondslagen/grondslagen.json)")
+
     args = parser.parse_args()
     grondslagen_root = get_grondslagen_root()
 
@@ -549,6 +725,8 @@ def main():
         return cmd_verify(grondslagen_root, args.verbose)
     elif args.command == "update":
         return cmd_update(grondslagen_root, args.file, args.status)
+    elif args.command == "export":
+        return cmd_export(grondslagen_root, args.output)
 
 
 if __name__ == "__main__":
