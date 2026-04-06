@@ -1,7 +1,6 @@
----
 type: concepten
 naam: De Mandarin concepten
-versie: 2.5.0
+versie: 2.6.0
 value-stream: AEO
 digest: 798e
 status: vers
@@ -16,11 +15,12 @@ status: vers
 Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van concepten en architectonische grondslagen voor actieve structuren in het Mandarin-ecosysteem.
 
 **Geraadpleegde bronnen**:
+- broninjectie.md, bronassemblage.md, bronpakket.md (gelezen op 2026-04-06)
 
 
 **Opsteller**: Hans Blok 
 **Datum**: 2026-01-31 
-**Laatste wijziging**: 2026-02-21 (Constitutioneel Auteur) 
+**Laatste wijziging**: 2026-04-06 (Concept-curator) 
 **Doel**: Expliciete definitie van operationele concepten (actieve structuren) binnen het Mandarin-ecosysteem
 
 **Ontwerpkeuze**: De bewuste scheiding tussen operationele concepten (actieve structuren en hun werking) en meta-concepten (classificatie en artefactstructuur) maakt **mandarin-agents** voorspelbaarder, toetsbaarder en consistenter. Meta-concepten zijn verplaatst naar mandarin-meta-concepten.md. Concepten over gedrag, werking en sturing worden vastgelegd in een afzonderlijk document.
@@ -56,6 +56,9 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 
 ### Bronnen en Kennisbasis
 - [Bronregime](#bronregime) — Expliciet vastgelegd stelsel van toegestane kennisbronnen en afleidingsregels
+- [Broninjectie](#broninjectie) — Overkoepelend concept voor het beschikbaar maken van bronnen aan een LLM
+- [Bronassemblage](#bronassemblage) — Handeling van selectie, ordening en samenvoeging van bronnen
+- [Bronpakket](#bronpakket) — Samengesteld geheel van bronnen dat het LLM bereikt
 - [Externe grondslagen](#externe-grondslagen) — Ruwe externe denkkaders als potentiële grondslag voor het ecosysteem
 - [Kaderdefinitie](#kaderdefinitie) — Geïnternaliseerde, gecontroleerde versie van een externe grondslag
 
@@ -724,6 +727,125 @@ Een **werkbron** is een positie op de as **bronrol** die aangeeft dat een artefa
 - Vastgesteld door: concept-curator (fnd.02.concept-curator)
 - Laatst gewijzigd: 2026-03-22
 - Bron(nen): gebruikersinvoer, concept-curator.charter.md
+
+---
+
+# Concept — broninjectie
+
+---
+
+## Definitie 📝
+
+**Broninjectie** is het overkoepelende concept voor het beschikbaar maken van expliciete bronnen aan een LLM ten behoeve van een agent-executie. Het omvat twee deelconcepten:
+
+- **Bronassemblage**: de handeling waarin bronnen worden geselecteerd, geordend en samengevoegd
+- **Bronpakket**: het resultaat van die handeling, namelijk het samengestelde geheel van bronnen dat het LLM bereikt
+
+## Kenmerken ⭐
+- Overkoepelt proces en product binnen dezelfde executie
+- Wordt uitgevoerd door de runner onder het geldende **bronregime**
+- Omvat uitsluitend expliciete **kaderbronnen** en **werkbronnen**
+- Bepaalt mede de kwaliteit, reproduceerbaarheid en herleidbaarheid van de output
+- Is tijdgebonden: elke executie kent precies één broninjectie
+
+## Wat het niet is ❌
+- Geen intern geheugen van het LLM
+- Geen synoniem voor alleen **bronassemblage** of alleen **bronpakket**
+- Geen **bronhouding** of **bronregime**
+- Geen losse **bronrol**
+
+## Voorbeelden 💡
+- De runner assembleert constitutie, beleid, doctrines, charter, contract en parameters tot een bronpakket en levert dit aan het LLM
+- Bij een definieer-concept-executie omvat broninjectie zowel de samenstelling van parameters en grondslagen als het resulterende pakket dat het LLM ontvangt
+
+## Relatie tot andere concepten
+- **Bronassemblage**: de handeling binnen broninjectie
+- **Bronpakket**: het resultaat binnen broninjectie
+- **Bronrol**: labelt individuele artefacten die via broninjectie worden gebundeld
+- **Kaderbron** en **Werkbron**: typen bronnen die via broninjectie beschikbaar worden gemaakt
+- **Bronregime**: bepaalt welke bronnen binnen broninjectie zijn toegestaan
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): broninjectie.md, bronassemblage.md, bronpakket.md
+
+---
+
+# Concept — bronassemblage
+
+---
+
+## Definitie 📝
+
+**Bronassemblage** is de handeling waarmee de runner de voor een agent-executie relevante **kaderbronnen** en **werkbronnen** selecteert, ordent en samenvoegt tot één geheel dat aan het LLM wordt aangeboden.
+
+## Kenmerken ⭐
+- Is een proces, geen product
+- Wordt uitgevoerd door de runner tijdens de preflight-fase van een executie
+- Staat onder toezicht van het geldende **bronregime**
+- Omvat selectie, ordening en samenvoeging van bronnen
+- Leidt bij gelijke input tot dezelfde assemblage
+
+## Wat het niet is ❌
+- Geen **bronpakket**
+- Geen **bronhouding**
+- Geen **bronrol**
+- Geen activiteit van het LLM zelf
+
+## Voorbeelden 💡
+- De runner bepaalt op basis van contract en intent welke doctrines, charters en parameters moeten worden samengevoegd
+- Bij een verweef-concepten-executie voegt de runner een conceptbestand en relevante referentiebronnen samen tot één prompt-context
+
+## Relatie tot andere concepten
+- **Bronpakket**: resultaat van bronassemblage
+- **Broninjectie**: overkoepelend concept waar bronassemblage onderdeel van is
+- **Kaderbron** en **Werkbron**: typen bronnen die tijdens assemblage worden geselecteerd
+- **Bronregime**: normatief kader dat de assemblage stuurt
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): bronassemblage.md, broninjectie.md
+
+---
+
+# Concept — bronpakket
+
+---
+
+## Definitie 📝
+
+**Bronpakket** is het samengestelde geheel van expliciete bronnen zoals het het LLM bereikt op het moment van een agent-executie.
+
+## Kenmerken ⭐
+- Is een product, geen proces
+- Is het resultaat van **bronassemblage**
+- Bevat uitsluitend expliciete **kaderbronnen** en **werkbronnen**
+- Vormt de volledige context waarop het LLM tijdens de executie mag redeneren
+- Is herleidbaar: de inhoud begrenst welke claims de output mag bevatten
+
+## Wat het niet is ❌
+- Geen **bronassemblage**
+- Geen **bronhouding**
+- Geen intern geheugen van het LLM
+- Geen permanente cache
+
+## Voorbeelden 💡
+- Het door de runner samengestelde execution-file met constitutie, doctrines, charter, contract en parameters is het bronpakket voor die executie
+- Twee executies met verschillende werkbronnen hebben verschillende bronpakketten
+
+## Relatie tot andere concepten
+- **Bronassemblage**: handeling die het bronpakket produceert
+- **Broninjectie**: overkoepelend concept waar bronpakket onderdeel van is
+- **Kaderbron**: individueel artefact dat als kader-input in het pakket zit
+- **Werkbron**: individueel artefact dat als werkmateriaal in het pakket zit
+- **Bronregime**: bepaalt wat in het pakket mag worden opgenomen
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): bronpakket.md, broninjectie.md
 
 ---
 

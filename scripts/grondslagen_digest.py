@@ -601,13 +601,17 @@ def cmd_export(grondslagen_root: Path, output_path: Optional[Path] = None) -> in
             
             fields = parse_frontmatter_fields(fm_text)
             positie, vs_code, fase_code = infer_positie(file_path, grondslagen_root)
+
+            digest_header = fields.get("digest", "????")
+            digest_berekend = compute_digest(body)
             
             entry = {
                 "naam": file_path.name,
                 "pad": str(rel_path).replace("\\", "/"),
                 "type": fields.get("type", "grondslag"),
-                "digest": fields.get("digest", "????"),
-                "status": fields.get("status", "vers")
+                "digest_header": digest_header,
+                "digest_berekend": digest_berekend,
+                "status_header": fields.get("status", "vers")
             }
             
             if positie == "algemeen":

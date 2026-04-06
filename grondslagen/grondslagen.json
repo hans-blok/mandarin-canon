@@ -1,56 +1,69 @@
 {
-  "$schema": "grondslagen.schema.json",
   "versie": "1.0.0",
-  "gegenereerd": "2026-04-04T08:03:09Z",
+  "gegenereerd": "2026-04-04T09:52:15Z",
   "algemeen": [
     {
       "naam": "checklist.agents.md",
       "pad": ".algemeen/checklist.agents.md",
       "type": "checklist",
-      "digest": "8a98",
-      "status": "vers"
+      "titel": "Verplichte Agent Start-Checklist (Constitutionele Verklaring)",
+      "digest_header": "8a98",
+      "digest_berekend": "f396",
+      "status_header": "vers"
     },
     {
       "naam": "conceptuele-grondslagen.md",
       "pad": ".algemeen/conceptuele-grondslagen.md",
       "type": "grondslag",
-      "digest": "edd1",
-      "status": "vers"
+      "titel": "Conceptuele Grondslagen van het Mandarin-ecosysteem",
+      "digest_header": "edd1",
+      "digest_berekend": "2947",
+      "status_header": "vers"
     },
     {
       "naam": "constitutie.md",
       "pad": ".algemeen/constitutie.md",
       "type": "constitutie",
-      "digest": "f787",
-      "status": "vers"
+      "titel": "Constitutie Mandarin",
+      "digest_header": "f787",
+      "digest_berekend": "9ee9",
+      "status_header": "vers"
     },
     {
       "naam": "doctrine-bronhouding-en-exploratie.md",
       "pad": ".algemeen/doctrine-bronhouding-en-exploratie.md",
       "type": "doctrine",
-      "digest": "2cf4",
-      "status": "vers"
+      "titel": "Doctrine — Bronhouding en exploratie",
+      "digest_header": "2cf4",
+      "digest_berekend": "2cf4",
+      "status_header": "vers"
     },
     {
       "naam": "doctrine-traceability.md",
       "pad": ".algemeen/doctrine-traceability.md",
       "type": "doctrine",
-      "digest": "8d27",
-      "status": "vers"
+      "titel": "Doctrine — Traceability en Herkomstcode",
+      "digest_header": "8d27",
+      "digest_berekend": "5ac3",
+      "status_header": "vers"
+    },
+    {
+      "naam": "togaf.kaderdefinitie.md",
+      "pad": "kaderdefinities/togaf.kaderdefinitie.md",
+      "type": "kaderdefinitie",
+      "titel": "Kaderdefinitie — TOGAF (The Open Group Architecture Framework)",
+      "digest_header": "a87a",
+      "digest_berekend": "a87a",
+      "status_header": "vers"
     },
     {
       "naam": "mandarin-value-streams-en-fasen.md",
       "pad": "value-streams/mandarin-value-streams-en-fasen.md",
       "type": "value-stream",
-      "digest": "2536",
-      "status": "vers"
-    },
-    {
-      "naam": "togaf.kaderdefinitie.md",
-      "pad": "kaderdefinities/togaf.kaderdefinitie.md",
-      "type": "grondslag",
-      "digest": "a87a",
-      "status": "vers"
+      "titel": "Mandarin Value Streams en Fasen",
+      "digest_header": "2536",
+      "digest_berekend": "ce06",
+      "status_header": "vers"
     }
   ],
   "value_streams": {
@@ -61,29 +74,37 @@
           "naam": "doctrine-agent-charter-normering.md",
           "pad": "aeo/doctrine-agent-charter-normering.md",
           "type": "doctrine",
-          "digest": "bef0",
-          "status": "vers"
+          "titel": "Agent Doctrine — Agent Charter Normering",
+          "digest_header": "bef0",
+          "digest_berekend": "3454",
+          "status_header": "vers"
         },
         {
           "naam": "doctrine-intent-naming.md",
           "pad": "aeo/doctrine-intent-naming.md",
           "type": "doctrine",
-          "digest": "ee2c",
-          "status": "vers"
+          "titel": "Agent Doctrine — Intent Naming",
+          "digest_header": "ee2c",
+          "digest_berekend": "045a",
+          "status_header": "vers"
         },
         {
           "naam": "mandarin-domeinconcepten.md",
           "pad": "aeo/mandarin-domeinconcepten.md",
           "type": "concepten",
-          "digest": "798e",
-          "status": "vers"
+          "titel": "De Mandarin concepten",
+          "digest_header": "798e",
+          "digest_berekend": "960c",
+          "status_header": "vers"
         },
         {
           "naam": "mandarin-ecosysteem-ordeningsconcepten.md",
           "pad": "aeo/mandarin-ecosysteem-ordeningsconcepten.md",
           "type": "concepten",
-          "digest": "12e6",
-          "status": "vers"
+          "titel": "Mandarin **ordenings-concepten**",
+          "digest_header": "12e6",
+          "digest_berekend": "92a7",
+          "status_header": "vers"
         }
       ],
       "fasen": {
@@ -93,12 +114,13 @@
             {
               "naam": "doctrine-agent-runner-architectuur.md",
               "pad": "aeo/aeo.03.automatisering-en-pipeline/doctrine-agent-runner-architectuur.md",
-              "type": "grondslag",
-              "digest": "c4fe",
-              "status": "vers"
+              "type": "doctrine",
+              "titel": "Doctrine Agent Runner Architectuur",
+              "digest_header": "c4fe",
+              "digest_berekend": "c4fe",
+              "status_header": "vers"
             }
-          ],
-          "naam": "Ecosysteemworkflow"
+          ]
         }
       },
       "naam": "Agent Ecosysteem Ontwikkeling"
@@ -114,11 +136,12 @@
               "naam": "workspace-doctrine.md",
               "pad": "fnd/fnd.01.fundament/workspace-doctrine.md",
               "type": "doctrine",
-              "digest": "19f7",
-              "status": "vers"
+              "titel": "Workspace Doctrine — Architectuur en Standaard voor Workspaces",
+              "digest_header": "19f7",
+              "digest_berekend": "a87f",
+              "status_header": "vers"
             }
-          ],
-          "naam": "Fundament"
+          ]
         }
       },
       "naam": "Fundament"
