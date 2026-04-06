@@ -204,7 +204,7 @@ Binnen het ecosysteem bestaan zes geldige gezagsbronnen die samen de **grondslag
 
 1. **Verbod voor automatisering**: Geautomatiseerde tooling of processen mogen de Constitutie op geen enkele wijze wijzigen.
 2. **Versiebeheer**: Canon en alle Mandarin-artefacten zijn versieerbaar en traceerbaar via **git-versiebeheer**. Bestanden hoeven geen intern versieveld te bevatten; de actuele staat is de HEAD-versie in git. Grondslagen (constitutie, doctrines) mogen een versieveld bevatten ten behoeve van governance en leesbaarheid. Nieuwe versies overschrijven de vorige inhoud op hetzelfde bestandspad; oudere versies blijven raadpleegbaar via git-historie en eventuele publicatie-artefacten.
-3. **Herkomstverantwoording**: Alle wijzigingen in de canon kennen een herkomstverantwoording. Dit is verder uitgewerkt in doctrine-handoff-creatie-en-overdrachtsdiscipline.md.
+3. **Herkomstverantwoording**: Alle wijzigingen in de canon kennen een herkomstverantwoording. Dit is verder uitgewerkt in doctrine-handoff.md.
 4. **Verantwoording agents**: Agents leggen verantwoording af.
 5. **Transparante ontstaansgeschiedenis**: Artefacten leggen hun ontstaansgeschiedenis bloot.
 

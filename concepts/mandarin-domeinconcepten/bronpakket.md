@@ -26,7 +26,7 @@
 
 ## Voorbeelden 💡
 
-* Het execution-file dat de runner genereert en dat constitutie, doctrines, charter, contract en parameters bevat — dat bestand *is* het bronpakket voor die executie
+* Het in een execution-bestand opgenomen bronnenblok met constitutie, doctrines, charter, contract en parameters vormt het bronpakket voor die executie
 * Bij een definieer-concept-executie bestaat het bronpakket uit: de parameters (term, definitie, domein) als werkmateriaal en de grondslagen (constitutie, beleid, doctrines) als kader-input
 * Twee executies met dezelfde agent maar verschillende werkbronnen hebben verschillende bronpakketten
 
@@ -36,6 +36,7 @@
 | ---------------------------- | -------------------------------------------------------------- |
 | **Bronassemblage**           | handeling die het bronpakket produceert                        |
 | **Broninjectie**             | overkoepelend concept dat zowel assemblage als pakket omvat    |
+| **Execution-bestand**        | technische drager waarin het bronpakket kan zijn opgenomen     |
 | **Kaderbron**                | individueel artefact dat als kader-input in het pakket zit     |
 | **Werkbron**                 | individueel artefact dat als werkmateriaal in het pakket zit   |
 | **Bronhouding / Bronregime** | normatief kader dat bepaalt wat in het pakket mag              |

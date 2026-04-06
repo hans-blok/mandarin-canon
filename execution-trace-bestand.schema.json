@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mandarin.canon/schemas/execution-trace-bestand.schema.json",
+  "title": "Mandarin Execution Trace Bestand",
+  "description": "Schema voor een execution-trace-bestand naast een execution-bestand. Het bestand is audit- en linkdrager en legt per opgenomen bron of segment herkomst en opnamevorm vast.",
+  "type": "object",
+  "properties": {
+    "execution_id": {
+      "type": "string",
+      "description": "Unieke identifier van het gekoppelde execution-bestand"
+    },
+    "execution_digest": {
+      "type": "string",
+      "description": "Stabiel digestanker van het gekoppelde execution-bestand"
+    },
+    "agent": {
+      "type": "string"
+    },
+    "intent": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bronnen": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/bronvermelding"
+      }
+    }
+  },
+  "required": ["execution_id", "execution_digest", "bronnen"],
+  "$defs": {
+    "bronvermelding": {
+      "type": "object",
+      "properties": {
+        "bronpad": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "digest": {
+          "type": "string"
+        },
+        "versie": {
+          "type": "string"
+        },
+        "reden_van_opname": {
+          "type": "string"
+        },
+        "opnamevorm": {
+          "type": "string",
+          "enum": ["volledig", "fragment", "samenvatting"]
+        },
+        "segment": {
+          "$ref": "#/$defs/segmentverwijzing"
+        }
+      },
+      "required": ["bronpad", "type", "reden_van_opname", "opnamevorm"],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "opnamevorm": {
+                "const": "fragment"
+              }
+            },
+            "required": ["opnamevorm"]
+          },
+          "then": {
+            "required": ["segment"]
+          }
+        },
+        {
+          "anyOf": [
+            {
+              "required": ["digest"]
+            },
+            {
+              "required": ["versie"]
+            }
+          ]
+        }
+      ]
+    },
+    "segmentverwijzing": {
+      "type": "object",
+      "properties": {
+        "heading": {
+          "type": "string",
+          "description": "Primaire heading-gebaseerde segment-identificatie"
+        },
+        "bereik": {
+          "type": "string",
+          "description": "Optioneel bereik of passage-aanduiding binnen het segment"
+        },
+        "sectie_id": {
+          "type": "string"
+        },
+        "canonieke_verwijzing": {
+          "type": "string"
+        }
+      },
+      "required": ["heading"]
+    }
+  }
+}

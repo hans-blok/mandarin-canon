@@ -19,6 +19,15 @@ __pycache__/
 *.egg-info/
 *.egg
 
+
+# Agent execution-bestanden (lokale runtime)
+executions/*.md
+!executions/README.md
+
+# Logs van fetch-bewerkingen en agent runs
+logs/
+log/
+
 # IDE files
 .idea/
 

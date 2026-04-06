@@ -1,7 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Traceability en Herkomstcode
-versie: 1.1.0
+versie: 1.3.0
 digest: 8d27
 status: vers
 ---
@@ -16,8 +16,10 @@ Dit normatief artefact is opgesteld op basis van de volgende bronnen:
 
 **Geraadpleegde bronnen**:
 - mandarin-ecosysteem-ordeningsconcepten.md — concepten herkomstpositie, initiërend, voortbouwend (gelezen op 2026-03-20)
-- doctrine-handoff-creatie-en-overdrachtsdiscipline.md (versie 1.1.0, gelezen op 2026-03-20)
+- doctrine-handoff.md (versie 1.0.0, gelezen op 2026-04-06)
 - doctrine-agent-charter-normering.md — richtlijn herkomstpositie in contracten (versie 2.4.0, gelezen op 2026-03-20)
+- mandarin-domeinconcepten.md — concepten bronpakket, execution-bestand (gelezen op 2026-04-06)
+- 2f0b.concept-curator.definieer-concept.md — voorbeeld van een execution-bestand (gelezen op 2026-04-06)
 - Gebruikersinvoer over herkomstcode-conventie (ontvangen op 2026-03-20)
 
 **Opsteller**: Constitutioneel Auteur  
@@ -203,7 +205,7 @@ De herkomstcode wordt opgenomen in de Herkomst-sectie zoals gedefinieerd in de h
 - Gegenereerd door: concept-curator
 - Agent charter: @main:agent-charters/concept-curator.charter.md
 - Datum: 2026-03-20
-- Handoff-referentie: handoff-2603-001
+- Handoff-referentie: hf-2603.0001
 ```
 
 ---
@@ -234,7 +236,7 @@ Beide zijn complementair en verplicht bij agent-geproduceerde artefacten.
 ┌────────────────────────────────────────────────────────────────┐
 │  Initiërend artefact                                          │
 │  herkomstcode: 2603.Tu9x (GEGENEREERD)                        │
-│  handoff-id: handoff-2603-001                                 │
+│  handoff-id: hf-2603.0001                                     │
 │  bestand: concept-curator.definieer-concept.md                │
 └────────────────────────────────────────────────────────────────┘
                               │
@@ -242,7 +244,7 @@ Beide zijn complementair en verplicht bij agent-geproduceerde artefacten.
 ┌────────────────────────────────────────────────────────────────┐
 │  Voortbouwend artefact                                        │
 │  herkomstcode: 2603.Tu9x (GEËRFD)                             │
-│  handoff-id: handoff-2603-002                                 │
+│  handoff-id: hf-2603.0002                                     │
 │  bestand: concept-definitie-agentic-ai.md                     │
 └────────────────────────────────────────────────────────────────┘
                               │
@@ -250,27 +252,149 @@ Beide zijn complementair en verplicht bij agent-geproduceerde artefacten.
 ┌────────────────────────────────────────────────────────────────┐
 │  Voortbouwend artefact                                        │
 │  herkomstcode: 2603.Tu9x (GEËRFD)                             │
-│  handoff-id: handoff-2603-003                                 │
+│  handoff-id: hf-2603.0003                                     │
 │  bestand: mandarin-domeinconcepten.md (update)                │
 └────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 6. Validatie en governance
+## 6. Execution-identiteit en koppelmechanisme
 
-### 6.1 Verplichtingen
+### 6.1 Verplichte execution-identiteit
+
+Een **execution-bestand** is identificeerbaar via minimaal de volgende velden:
+
+- `execution_id`
+- `execution_digest`
+- `agent`
+- `intent`
+- `timestamp`
+- `value_stream_fase`
+- `bronhouding`
+- `modus`
+
+Deze velden vormen samen de minimale execution-identiteit.
+
+### 6.2 Rol van execution_digest
+
+Het **execution_digest** is een stabiel traceerbaarheidsanker binnen de bredere herkomstidentiteit van de executie. Het wordt gebruikt voor:
+
+- koppeling tussen execution-bestand en execution-trace-bestand;
+- audit en kruisverwijzing;
+- verwijzing vanuit voortbouwende artefacten;
+- controle dat tracegegevens bij de juiste technische uitvoering horen.
+
+Het execution_digest vervangt de herkomstcode niet. De herkomstcode identificeert de plaats van de executie in de artefactketen; het execution_digest identificeert de technische uitvoering waarop die ketenverwijzing betrekking heeft.
+
+### 6.3 Modus
+
+Elke execution legt expliciet de modus vast:
+
+- `handmatig`
+- `tool-ondersteund`
+
+De modus beïnvloedt de eisen aan opnamevorm, compactheid en controleerbaarheid.
+
+---
+
+## 7. Execution-trace-bestand
+
+### 7.1 Norm
+
+Naast elk execution-bestand bestaat een apart **execution-trace-bestand**.
+
+Het execution-trace-bestand:
+- is een zelfstandig artefact;
+- bevat `execution_id` en `execution_digest`;
+- bevat per opgenomen bron of segment herkomstinformatie;
+- fungeert als audit- en linkdrager;
+- laat het execution-bestand de uitvoeringsdrager blijven.
+
+### 7.2 Minimale koppeling
+
+Een execution-trace-bestand is alleen geldig als `execution_id` en `execution_digest` exact verwijzen naar één bestaand execution-bestand.
+
+### 7.3 Per-bronmodel
+
+Elke opgenomen of samengevatte bron bevat minimaal:
+
+- `bronpad`
+- `type`
+- `digest` of `versie`
+- `reden_van_opname`
+- `opnamevorm`
+
+Toegestane waarden voor `opnamevorm` zijn:
+
+- `volledig`
+- `fragment`
+- `samenvatting`
+
+### 7.4 Segment-identificatie
+
+Wanneer `opnamevorm = fragment`, wordt minimaal een heading-gebaseerde segment-identificatie vastgelegd.
+
+Optioneel mogen aanvullend worden vastgelegd:
+
+- `bereik`
+- `sectie_id`
+- andere canonieke segmentverwijzing
+
+---
+
+## 8. Normering voor compacte opname
+
+### 8.1 Handmatige modus
+
+In `handmatig`e modus moet minimaal expliciet aanwezig zijn:
+
+- de volledige execution-identiteit;
+- de opdracht en parameters;
+- de bronhouding;
+- de expliciete lijst van opgenomen bronnen;
+- de normatieve kerninhoud waarop de uitvoering direct steunt.
+
+### 8.2 Segment-opname
+
+Grote bronnen mogen per segment worden opgenomen, mits:
+
+- het segment expliciet identificeerbaar is;
+- het segment inhoudelijk voldoende is voor de uitvoering;
+- de opnamevorm in het execution-trace-bestand wordt vastgelegd.
+
+### 8.3 Samenvatting
+
+Samenvatting is alleen toegestaan wanneer:
+
+- de oorspronkelijke bron expliciet wordt genoemd;
+- digest of versie van de bron wordt vastgelegd;
+- de reden van samenvatting expliciet wordt verantwoord;
+- de samenvatting de normatieve betekenis niet vervangt maar representeert.
+
+### 8.4 Verbod op stille weglating
+
+Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of compactie die relevant is voor legitimiteit, interpretatie of besluitvorming moet expliciet traceerbaar zijn.
+
+---
+
+## 9. Validatie en governance
+
+### 9.1 Verplichtingen
 
 | Verplichting | Verantwoordelijke |
 |--------------|-------------------|
 | Vastleggen herkomstpositie in contract | Contract-auteur (agent-engineer) |
 | Generatie herkomstcode | Runner |
 | Overerving herkomstcode | Runner |
+| Vastleggen execution-identiteit | Runner |
+| Generatie execution-trace-bestand | Runner |
 | Validatie herkomstcode-formaat | Runner / Agent-curator |
+| Validatie opnamevorm en segment-traceability | Runner / Agent-curator |
 | Controle op aanwezigheid | Agent-curator |
 | Overzicht artefact-types | Ecosysteem-beschrijver |
 
-### 6.2 Validatieregels
+### 9.2 Validatieregels
 
 Een herkomstcode is **geldig** als:
 
@@ -278,8 +402,12 @@ Een herkomstcode is **geldig** als:
 2. JJMM een geldige jaar-maand combinatie is
 3. XXXX exact 4 alfanumerieke karakters bevat
 4. Bij voortbouwende artefacten: het initiërend artefact bestaat en dezelfde code bevat
+5. Elk execution-bestand de verplichte velden van de execution-identiteit bevat
+6. Elk execution-trace-bestand exact verwijst naar een bestaand execution-bestand via `execution_id` en `execution_digest`
+7. Elke bronvermelding in een execution-trace-bestand de verplichte trace-velden bevat
+8. Bij `opnamevorm = fragment` minimaal een heading-gebaseerde segment-identificatie aanwezig is
 
-### 6.3 Foutafhandeling
+### 9.3 Foutafhandeling
 
 | Situatie | Actie |
 |----------|-------|
@@ -287,19 +415,23 @@ Een herkomstcode is **geldig** als:
 | Ongeldig formaat | Runner corrigeert of weigert verwerking |
 | Initiërend artefact niet gevonden | Escalatie naar menselijke validatie |
 | Mismatch in keten | Audit-log entry; escalatie naar canon-curator |
+| Execution-trace-bestand ontbreekt | Executie is onvolledig en niet volledig auditbaar |
+| Ontbrekend execution_digest | Koppeling ongeldig; verwerking weigeren of corrigeren |
+| Samenvatting zonder bronverwijzing | Ongeldige compacte opname; escalatie naar menselijke validatie |
 
 ---
 
-## 7. Scope-afbakening
+## 10. Scope-afbakening
 
-### 7.1 Wat valt onder deze doctrine
+### 10.1 Wat valt onder deze doctrine
 
 - Alle agent-geproduceerde artefacten
 - Execution-files en hun output
+- Execution-trace-bestanden
 - Wijzigingen aan bestaande artefacten
 - Governance-artefacten (doctrines, charters, contracten)
 
-### 7.2 Wat valt buiten deze doctrine
+### 10.2 Wat valt buiten deze doctrine
 
 - Handmatig door mensen gecreëerde artefacten zonder agent-betrokkenheid
 - Tijdelijke werk-artefacten (scratch files)
@@ -307,7 +439,7 @@ Een herkomstcode is **geldig** als:
 
 ---
 
-## 8. Slotbepaling
+## 11. Slotbepaling
 
 Traceability is geen administratieve last,
 maar een **architectonisch fundament**.
@@ -325,5 +457,6 @@ is een artefact zonder verleden.
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-04-06 | 1.2.0  | Toegevoegd: execution-identiteit, execution-trace-bestand, verplichte trace-velden en normering voor compacte opname | Concept-curator |
 | 2026-03-20 | 1.1.0  | Herkomstpositie als contract-eigenschap; runner-logica; rolverdeling uitgebreid | Constitutioneel Auteur |
 | 2026-03-20 | 1.0.0  | Eerste versie: traceability-discipline, herkomstcode-conventie en integratie met handoff-doctrine | Constitutioneel Auteur |

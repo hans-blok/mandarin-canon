@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://mandarin.canon/schemas/grondslagen.schema.json",
   "title": "Mandarin Grondslagen Registry (Genormaliseerd)",
-  "description": "Schema voor de registratie van grondslagen binnen het Mandarin-ecosysteem, met genormaliseerde value stream en fase structuur.",
+  "description": "Schema voor de registratie van grondslagen binnen het Mandarin-ecosysteem, met genormaliseerde value stream en fase structuur. Dit register is een selectie-index voor canonieke grondslagen en is nadrukkelijk geen runlog voor execution-bestanden of execution-trace-bestanden.",
   "type": "object",
   "properties": {
     "$schema": {
@@ -21,14 +21,14 @@
     },
     "algemeen": {
       "type": "array",
-      "description": "Grondslagen die ecosysteem-breed gelden (niet value-stream-specifiek)",
+      "description": "Grondslagen die ecosysteem-breed gelden (niet value-stream-specifiek) en als selectie-index beschikbaar zijn",
       "items": {
         "$ref": "#/$defs/grondslag"
       }
     },
     "value_streams": {
       "type": "object",
-      "description": "Value streams met hun grondslagen en fasen",
+      "description": "Value streams met hun grondslagen en fasen, bedoeld voor selectie van toepasselijke canonieke bronnen",
       "additionalProperties": {
         "$ref": "#/$defs/value_stream"
       }
@@ -38,7 +38,7 @@
   "$defs": {
     "grondslag": {
       "type": "object",
-      "description": "Een individuele grondslag (doctrine, constitutie, concepten, etc.)",
+      "description": "Een individuele grondslag (doctrine, constitutie, concepten, etc.) als indexeerbare canonieke bron",
       "properties": {
         "naam": {
           "type": "string",
@@ -68,6 +68,10 @@
           "type": "string",
           "description": "Status zoals opgeslagen in de YAML frontmatter van het bronbestand (hoeft niet overeen te komen met de werkelijke artefacttoestand)",
           "enum": ["vers", "muf", "rot"]
+        },
+        "versie_header": {
+          "type": "string",
+          "description": "Versie zoals opgeslagen in de YAML frontmatter van het bronbestand; ondersteunt selectie en latere opnamebeslissingen"
         }
       },
       "required": ["naam", "pad", "digest_header", "digest_berekend", "status_header"]

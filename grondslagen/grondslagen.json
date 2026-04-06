@@ -39,6 +39,15 @@
       "status_header": "vers"
     },
     {
+      "naam": "doctrine-handoff.md",
+      "pad": ".algemeen/doctrine-handoff.md",
+      "type": "doctrine",
+      "titel": "Doctrine — Handoff en Overdrachtsdiscipline",
+      "digest_header": "tbd0",
+      "digest_berekend": "tbd0",
+      "status_header": "vers"
+    },
+    {
       "naam": "doctrine-traceability.md",
       "pad": ".algemeen/doctrine-traceability.md",
       "type": "doctrine",

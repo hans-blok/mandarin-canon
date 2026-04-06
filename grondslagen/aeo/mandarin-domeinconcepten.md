@@ -1,6 +1,6 @@
 type: concepten
 naam: De Mandarin concepten
-versie: 2.6.0
+versie: 2.12.0
 value-stream: AEO
 digest: 798e
 status: vers
@@ -16,6 +16,9 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 
 **Geraadpleegde bronnen**:
 - broninjectie.md, bronassemblage.md, bronpakket.md (gelezen op 2026-04-06)
+- 2f0b.concept-curator.definieer-concept.md (gelezen op 2026-04-06)
+- doctrine-traceability.md (geraadpleegd op 2026-04-06)
+- doctrine-handoff.md (geraadpleegd op 2026-04-06)
 
 
 **Opsteller**: Hans Blok 
@@ -46,6 +49,9 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 - [agent-capability](#agent-capability) — Aanroepbare functie van een **mandarin-agent**
 - [agent-contract](#agent-contract) — Specificatie van intentie, input, output en beleid
  - [Prompt](#prompt) — Concreet aanroep- of instructiepatroon richting een **mandarin-agent**
+- [Handoff](#handoff) — Expliciete overdracht van taak en context tussen mandarin-agents
+- [Handoff-identificatie](#handoff-identificatie) — Unieke identifier van een specifieke handoff-gebeurtenis
+- [Handoff-bestand](#handoff-bestand) — Voorwaartsgericht overdrachtsartefact dat de ontvangende agent informeert
 
 ### Artefacten en Value Streams
 - [Mandarin-artefact](#mandarin-artefact) — Duurzame, overdraagbare vastlegging van resultaat
@@ -59,6 +65,10 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 - [Broninjectie](#broninjectie) — Overkoepelend concept voor het beschikbaar maken van bronnen aan een LLM
 - [Bronassemblage](#bronassemblage) — Handeling van selectie, ordening en samenvoeging van bronnen
 - [Bronpakket](#bronpakket) — Samengesteld geheel van bronnen dat het LLM bereikt
+- [Execution-bestand](#execution-bestand) — Technische runner-representatie van een concrete agent-executie
+- [Execution-trace-bestand](#execution-trace-bestand) — Apart audit- en linkartefact naast een execution-bestand
+- [Execution-digest](#execution-digest) — Inhoudsgebonden integriteitsanker van een execution-bestand
+- [Execution-identificatie](#execution-identificatie) — Stabiele verwijzingseenheid voor een specifieke agent-executie
 - [Externe grondslagen](#externe-grondslagen) — Ruwe externe denkkaders als potentiële grondslag voor het ecosysteem
 - [Kaderdefinitie](#kaderdefinitie) — Geïnternaliseerde, gecontroleerde versie van een externe grondslag
 
@@ -405,6 +415,152 @@ Een **prompt** is een concrete, tekstuele of gestructureerde uitdrukking van een
 Binnen Mandarin is **prompt** nadrukkelijk géén canoniek alternatief voor **agent-capability** of **agent-contract**. Een prompt is een *concrete uitdrukking* van een aanroep naar een bestaande capability, maar de formele waarheid ligt altijd in het **agent-contract**. Prompt-vormen kunnen veranderen met tooling of interface, terwijl capabilities en contracten stabiel en toetsbaar blijven.
 
 Bestanden in de `.github`-map met namen van de vorm `{agent-naam}.prompt` worden uitsluitend gebruikt om VS Code Copilot te voeden; ondanks deze naamgeving worden zij in de Mandarin-concepten niet als **prompt** beschouwd, maar als tooling-specifieke representaties van concrete aanroepen.
+
+---
+
+# Concept — handoff
+
+---
+
+## Definitie 📝
+
+Een **handoff** is de expliciete, traceerbare overdracht van taak, context en verantwoordelijkheid van de ene **mandarin-agent** naar de andere, als discrete gebeurtenis in een meervoudige agent-keten.
+
+De handoff markeert het moment waarop één agent ophoudt te handelen en een andere begint, met expliciete vastlegging van wat wordt overgedragen en op basis van welke gronden.
+
+> *Term geleend uit Agentic AI; conform Artikel 7 van de constitutie wordt de Engelse term gehandhaafd.*
+
+## Kenmerken ⭐
+- Is een expliciete overdrachtsgebeurtenis, geen impliciet doorgeven
+- Draagt taak, context én verantwoordelijkheid over
+- Is traceerbaar via een **handoff-identificatie**
+- Ontkoppelt producerende en ontvangende agent-executies
+- Is de horizontale koppeling in een multi-agent keten
+
+## Wat het niet is ❌
+- Geen interne stap binnen één agent-executie
+- Geen automatische synchronisatie zonder expliciete vastlegging
+- Geen synoniem voor artefact-overdracht (dat is een neveneffect, niet de kern)
+
+## Voorbeelden 💡
+- Een concept-curator levert een definitie op en draagt verdere canonisering over aan een canon-curator
+- Een runner rondt een execution-bestand af en initieert een handoff naar de verwerkende agent
+
+## Relatie tot andere concepten
+- **Handoff-identificatie**: unieke identifier van deze handoff-gebeurtenis
+- **Execution-identificatie**: verwijzingsattribuut dat de executie-context vastlegt
+- **Herkomstcode**: handoff is horizontaal (agent → agent); herkomstcode is verticaal (initiërend → voortbouwend)
+- **Mandarin-agent**: de actoren die een handoff initiëren of ontvangen
+
+## Synoniemen 🏷️
+- Overdracht (alleen in spreektaal)
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): doctrine-traceability.md §5, gebruikersinvoer
+
+---
+
+# Concept — handoff-identificatie
+
+---
+
+## Definitie 📝
+
+Een **handoff-identificatie** is de unieke identifier van een specifieke **handoff**-gebeurtenis. Zij maakt de handoff adresseerbaar en traceerbaar als zelfstandige overdrachtsgebeurtenis, los van de executies waarbinnen of waarna zij plaatsvindt.
+
+## Kenmerken ⭐
+- Stabiel en uniek per handoff-gebeurtenis
+- Gegenereerd door de runner op het moment van de handoff
+- Onafhankelijk van de **execution-identificatie** van de betrokken executies
+- Maakt traceerbaarheid van overdrachten in multi-agent ketens mogelijk
+
+## Wat het niet is ❌
+- Geen execution-identificatie — zij identificeert de overdracht, niet de productie-run
+- Geen samengestelde sleutel met execution-identificatie
+
+## Advies: execution-identificatie als sleutelcomponent
+
+De **execution-identificatie** is **geen onderdeel** van de logische sleutel van een handoff-identificatie.
+
+De execution-identificatie verschijnt als **verwijzingsattribuut** in de handoff-metadata: zij legt vast in welke executie-context de overdracht plaatsvond. Dit is een referentie (*foreign key*), geen samengestelde sleutel.
+
+**Motivering**:
+- Handoff en executie zijn conceptueel verschillende lagen: overdracht versus productie-run
+- Opname in de sleutel veronderstelt een vaste hiërarchie die niet altijd bestaat
+- Gescheiden sleutels bewaren onafhankelijke leesbaarheid en vervangbaarheid van beide concepten
+- Het traceerbare verband is volledig aantoonbaar via attribuut-verwijzing
+
+**Eigen oordeel**: De verwijzingen naar `handoff-id` in §5 van de traceability-doctrine zijn proportioneel en correct als kruisverwijzing. Nu de concepten hier formeel zijn vastgelegd, draagt dit document de definitieve last. De positionering — handoff als horizontale discipline, herkomstcode als verticale — is architectureel juist en hoeft niet te worden uitgebreid.
+
+## Relatie tot andere concepten
+- **Handoff**: de overdrachtsgebeurtenis die deze identifier identificeert
+- **Execution-identificatie**: verwijzingsattribuut in de handoff-metadata (geen sleutelcomponent)
+- **Herkomstcode**: identificeert de keten; handoff-identificatie identificeert één overdracht
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): doctrine-traceability.md §5, gebruikersinvoer
+
+---
+
+# Concept — handoff-bestand
+
+---
+
+## Definitie 📝
+
+Een **handoff-bestand** is een canoniek artefact dat de overdragende agent aanmaakt aan het einde van een executie, met als doel de ontvangende agent te voorzien van voldoende context, besluiten en openstaande punten om rechtmatig en informatiegedragen te kunnen handelen.
+
+Het handoff-bestand kijkt **vooruit**: het bereidt de volgende agent voor op wat er is beslist, wat onzeker bleef en wat nog gedaan moet worden. Het is daarmee het structurele tegendeel van het **execution-trace-bestand**, dat terugkijkt op de provenance van de afgeronde executie.
+
+## Kenmerken ⭐
+- Kijkt vooruit: informeert de ontvanger, niet de auditor
+- Bevat genomen beslissingen, gesignaleerde ambiguiteiten en openstaande taken
+- Is gekoppeld aan één specifieke **handoff-identificatie** (sleutel)
+- Verwijst via **execution-identificatie** naar de opleverende executie (*foreign key*)
+- Bevat een escalatie-indicatie wanneer menselijke tussenkomst vereist is
+- Is na uitgifte onveranderlijk
+
+## Wat het niet is ❌
+- Geen execution-trace-bestand — het substitueert geen provenance-registratie
+- Geen execution-bestand — het bevat geen uitvoeringsinhoud of bronhouding
+- Geen versieartefact — het beschrijft een overdrachtsmoment, geen iteratieve wijziging
+- Geen interne processtap — het is altijd een expliciete, canoniek vastgelegde grens
+
+## Minimale inhoud 📋
+
+Een geldig handoff-bestand bevat minimaal:
+
+```yaml
+handoff-identificatie: hf-JJMM.XXXX
+execution-identificatie: exec-JJMM.XXXX
+overdragende-agent: <agent-id>
+ontvangende-agent: <agent-id>
+overdracht-datum: JJJJ-MM-DD
+samenvatting-context: |
+  <wat de overdragende agent heeft uitgevoerd en opgeleverd>
+escalatie-indicatie: false
+```
+
+Aanvullende velden naar behoefte: `genomen-beslissingen`, `gesignaleerde-ambiguiteiten`, `openstaande-taken`, `escalatie-reden`, `escalatie-urgentie`, `overdrachtsnota`.
+
+## Relatie tot andere concepten
+- **Handoff**: de overdrachtsgebeurtenis die dit bestand documenteert
+- **Handoff-identificatie**: de sleutel van dit bestand — één-op-één relatie
+- **Execution-identificatie**: verwijzingsattribuut naar de opleverende executie (*foreign key*)
+- **Execution-trace-bestand**: het complementaire, achterwaartse provenance-artefact
+- **Escalatie**: bijzondere variant waarbij ontvanger een mens is in plaats van een agent
+
+## Synoniemen 🏷️
+- Overdrachtsbestand (alleen in spreektaal)
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Vastgesteld op: 2026-04-06
+- Bron(nen): doctrine-handoff.md §3, gebruikersinvoer
 
 ---
 
@@ -832,7 +988,7 @@ Een **werkbron** is een positie op de as **bronrol** die aangeeft dat een artefa
 - Geen permanente cache
 
 ## Voorbeelden 💡
-- Het door de runner samengestelde execution-file met constitutie, doctrines, charter, contract en parameters is het bronpakket voor die executie
+- Het in een execution-bestand opgenomen bronnenblok met constitutie, doctrines, charter, contract en parameters vormt het bronpakket voor die executie
 - Twee executies met verschillende werkbronnen hebben verschillende bronpakketten
 
 ## Relatie tot andere concepten
@@ -846,6 +1002,190 @@ Een **werkbron** is een positie op de as **bronrol** die aangeeft dat een artefa
 - Vastgesteld door: concept-curator (fnd.02.concept-curator)
 - Laatst gewijzigd: 2026-04-06
 - Bron(nen): bronpakket.md, broninjectie.md
+
+---
+
+# Concept — execution-bestand
+
+---
+
+## Definitie 📝
+
+Een **execution-bestand** is het technische artefact waarin de runner een concrete agent-executie vastlegt als één uitvoerbaar en traceerbaar geheel. Het bevat de execution-identiteit, de opdracht, de parameters, de geldende bronhouding, de uitvoeringsmodus en de samengestelde grondslagen waarmee de agent moet werken.
+
+Een execution-bestand is daarmee de runner-taal voor een executie: waar **bronpakket** in business-taal het samengestelde geheel van bronnen benoemt dat het LLM bereikt, benoemt **execution-bestand** de technische representatie waarin dat bronpakket samen met de uitvoeringscontext wordt verpakt.
+
+De minimale execution-identiteit bestaat uit:
+- `execution_id`
+- `execution_digest`
+- `agent`
+- `intent`
+- `timestamp`
+- `value_stream_fase`
+- `bronhouding`
+- `modus` (`handmatig` of `tool-ondersteund`)
+
+## Kenmerken ⭐
+- Is een technisch **Mandarin-artefact** dat door de runner wordt gegenereerd
+- Legt één concrete executie vast, inclusief een expliciete execution-identiteit
+- Bevat zowel de opdracht en parameters als de relevante grondslagen en context
+- Neemt het **bronpakket** op als semantisch bronnengeheel, maar is zelf breder dan dat pakket
+- Maakt de executie reproduceerbaar, controleerbaar en auditbaar
+- Functioneert als overdrachtsvorm tussen runner en agent/LLM
+- Wordt canoniek opgeslagen in `Executions/` als technische uitvoeringsdrager
+- Is een concrete instantiatie per uitvoering, niet een generiek sjabloon
+
+## Wat het niet is ❌
+- Geen synoniem voor **bronpakket** — het bronpakket is onderdeel van het execution-bestand, niet het geheel
+- Geen **execution-trace-bestand** — traceerbaarheid per bron of segment wordt in een apart artefact vastgelegd
+- Geen **agent-contract** — het contract beschrijft structureel wat een intent vereist; het execution-bestand legt één concrete uitvoering vast
+- Geen **agent-charter** — het charter geeft mandaat en grenzen, maar beschrijft niet één specifieke run
+- Geen louter technisch logbestand — het bevat ook normatieve en inhoudelijke uitvoeringscontext
+
+## Voorbeelden 💡
+- Het bestand `2f0b.concept-curator.definieer-concept.md` met frontmatter (`execution_id`, `timestamp`, `agent`, `intent`, `value_stream_fase`, `canon_ref`), parameters, bronhouding en opgenomen grondslagen is een execution-bestand
+- Een runner die voor een valideer-concept-coherentie-executie een bestand opbouwt met artefactpad, validatie-instructie, canon-consult en relevante doctrines produceert een execution-bestand
+
+## Relatie tot andere concepten
+- **Bronpakket**: het semantische pakket van bronnen dat binnen het execution-bestand technisch is opgenomen
+- **Broninjectie**: het execution-bestand is een technische drager waarin de uitkomst van broninjectie wordt vastgelegd
+- **Bronassemblage**: de handeling waarmee de inhoud voor het execution-bestand wordt samengesteld
+- **Execution-trace-bestand**: apart artefact dat de herkomst en opnamevorm per bron of segment naast het execution-bestand vastlegt
+- **Mandarin-artefact**: het execution-bestand is een specifiek artefacttype binnen het ecosysteem
+- **Runner**: de runner genereert en beheert het execution-bestand als technische uitvoeringsvorm
+- **Agent-contract**: het contract bepaalt mede welke onderdelen in een execution-bestand moeten worden opgenomen
+
+## Toelichting 💬
+Het onderscheid tussen **bronpakket** en **execution-bestand** voorkomt vermenging van semantisch en technisch niveau. Een bronpakket beschrijft in business-taal welke bronnen het LLM ontvangt. Een execution-bestand beschrijft in runner-taal hoe één concrete executie technisch is verpakt, geïdentificeerd en overgedragen. In veel gevallen bevat een execution-bestand dus een bronpakket, maar voegt het ook technische executiecontext toe die niet tot het bronpakket zelf behoort. Het bijbehorende **execution-trace-bestand** legt vervolgens vast waar de opgenomen bronnen of segmenten vandaan komen en in welke opnamevorm zij zijn meegenomen.
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): 2f0b.concept-curator.definieer-concept.md, broninjectie.md, bronpakket.md
+
+---
+
+# Concept — execution-trace-bestand
+
+---
+
+## Definitie 📝
+
+Een **execution-trace-bestand** is het aparte traceerbaarheidsartefact dat naast een **execution-bestand** bestaat en per opgenomen bron of segment vastlegt welke herkomst, opnamevorm en reden van opname voor die executie gelden.
+
+Het execution-trace-bestand is de audit- en linkdrager van een executie. Waar het execution-bestand de uitvoeringscontext bevat, bevat het execution-trace-bestand de verantwoording van de daarin opgenomen bronnen.
+
+## Kenmerken ⭐
+- Is een zelfstandig **Mandarin-artefact** naast het execution-bestand
+- Bevat minimaal `execution_id` en `execution_digest` als koppeling naar precies één execution-bestand
+- Legt per bron of segment de herkomst en opnamevorm vast
+- Ondersteunt traceerbaarheid bij volledige opname, fragment-opname en samenvatting
+- Maakt audit, kruisverwijzing en latere controle op opnamebeslissingen mogelijk
+
+## Wat het niet is ❌
+- Geen vervanging van het **execution-bestand**
+- Geen bronpakket zelf
+- Geen los auditlog zonder koppeling naar een concrete executie
+- Geen runlog van toolingstappen zonder bronverantwoording
+
+## Verplichte velden per bron of segment
+- `bronpad`
+- `type`
+- `digest` of `versie`
+- `reden_van_opname`
+- `opnamevorm` met waarden `volledig`, `fragment`, `samenvatting`
+
+Bij `opnamevorm = fragment` wordt minimaal een heading-gebaseerde segment-identificatie vastgelegd, met optioneel bereik of andere canonieke segmentverwijzing.
+
+## Relatie tot andere concepten
+- **Execution-bestand**: het execution-trace-bestand hoort bij precies één execution-bestand
+- **Bronpakket**: legt de herkomst vast van onderdelen die in het bronpakket zijn opgenomen
+- **Bronassemblage**: verantwoordt de keuzes die tijdens assemblage zijn gemaakt
+- **Traceerbaarheid**: concrete drager van traceability op bron- en segmentniveau
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): doctrine-traceability.md, 2f0b.concept-curator.definieer-concept.md
+
+---
+
+# Concept — execution-digest
+
+---
+
+## Definitie 📝
+
+Een **execution-digest** is een inhoudsgebonden hash van een **execution-bestand** die de integriteit van dat bestand aantoonbaar maakt op het moment van verwijzing.
+
+Het execution-digest dient uitsluitend **integriteitsverificatie**: het bewijst dat een verwijzing slaat op precies de ongewijzigde versie van het execution-bestand. Wanneer de inhoud van het bestand na aanmaak wijzigt, verandert het digest.
+
+## Kenmerken ⭐
+- Inhoudsgebonden: berekend over de volledige bestandsinhoud
+- Verandert wanneer de bestandsinhoud wijzigt
+- Dient integriteit, niet adressering
+- Fungeert als koppelingsanker in het **execution-trace-bestand**
+
+## Wat het niet is ❌
+- Geen stabiel adres voor een executie — dat is de **execution-identificatie**
+- Geen vervanging van een identiteitsveld
+- Geen herkomstcode
+- Geen versienummer
+
+## Onderscheid met execution-identificatie
+
+| | **execution-digest** | **execution-identificatie** |
+|---|---|---|
+| Doel | Integriteitsverificatie | Adressering en verwijzing |
+| Verandert bij inhoudswijziging? | Ja | Nee |
+| Toepassing | Koppeling trace ↔ bestand | Verwijzing in ketens en audit |
+
+## Relatie tot andere concepten
+- **Execution-bestand**: het bestand waarover het digest is berekend
+- **Execution-trace-bestand**: gebruikt execution-digest als koppelingsanker
+- **Execution-identificatie**: complementair — integriteit versus adres
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): doctrine-traceability.md, gebruikersinvoer
+
+---
+
+# Concept — execution-identificatie
+
+---
+
+## Definitie 📝
+
+Een **execution-identificatie** is het stabiele, persistente adres waarmee een specifieke agent-executie wordt aangewezen, ongeacht of de inhoud van het bijbehorende **execution-bestand** nadien verandert. De execution-identificatie wordt door de runner gegenereerd bij aanmaak van het execution-bestand en blijft daarna constant.
+
+De execution-identificatie is de **verwijzingseenheid** van een executie: zij maakt het mogelijk om vanuit handoffs, audit-bestanden, voortbouwende artefacten en herkomstketens eenduidig naar één specifieke executie te verwijzen.
+
+## Kenmerken ⭐
+- Stabiel: verandert niet wanneer de bestandsinhoud wijzigt
+- Gegenereerd door de runner bij aanmaak van het execution-bestand
+- Dient adressering en verwijzing, niet integriteitsverificatie
+- Is de primaire verwijzingseenheid vanuit andere artefacten en ketens
+
+## Wat het niet is ❌
+- Geen inhoudsgebonden hash — dat is het **execution-digest**
+- Geen herkomstcode (die identificeert de keten, niet de individuele executie)
+- Geen versie-aanduiding
+
+## Onderscheid met execution-digest
+Zie **execution-digest** — het onderscheidstabel staat daar centraal uitgewerkt.
+
+## Relatie tot andere concepten
+- **Execution-digest**: complementair — adres versus integriteit
+- **Execution-bestand**: drager waaraan de execution-identificatie is toegekend
+- **Handoff-identificatie**: execution-identificatie verschijnt hier als verwijzingsattribuut, niet als sleutelcomponent
+- **Herkomstcode**: herkomstcode identificeert de keten; execution-identificatie identificeert één uitvoering
+
+## Traceerbaarheid
+- Vastgesteld door: concept-curator (fnd.02.concept-curator)
+- Laatst gewijzigd: 2026-04-06
+- Bron(nen): doctrine-traceability.md, gebruikersinvoer
 
 ---
 
@@ -949,6 +1289,9 @@ De transformatie van externe grondslag naar kaderdefinitie omvat: (1) interpreta
 
 | Datum   | Versie | Wijziging                              | Auteur   |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-04-06 | 2.12.0 | Toegevoegd: concept `handoff-bestand`; minimale inhoud, relatie tot handoff-identificatie en execution-trace-bestand vastgelegd | Hans Blok |
+| 2026-04-06 | 2.11.0 | Toegevoegd: concepten `execution-digest`, `execution-identificatie`, `handoff`, `handoff-identificatie`; onderscheid integriteit versus adres vastgelegd; advies sleutelrelatie execution-identificatie ↔ handoff-identificatie | Concept-Curator |
+| 2026-04-06 | 2.10.0 | Toegevoegd: concept `execution-trace-bestand`; aangescherpt: `execution-bestand` met execution-identiteit, opslag in `Executions/` en expliciet onderscheid met `bronpakket` | Concept-Curator |
 | 2026-03-23 | 2.9.0 | Aangescherpt: Externe grondslagen mogen NOOIT direct door agents geraadpleegd worden; Kaderdefinitie bronrol varieert per executie (werkbron in aeo.01, kaderbron elders) | Concept-Curator |
 | 2026-03-23 | 2.8.0 | Toegevoegd: concept Kaderdefinitie — geïnternaliseerde, gecontroleerde versie van een externe grondslag; de enige toegestane basis voor agent-gebruik | Concept-Curator |
 | 2026-03-23 | 2.7.0 | Toegevoegd: concept Externe grondslagen — ruwe externe denkkaders als potentiële grondslag voor het ecosysteem | Concept-Curator |
