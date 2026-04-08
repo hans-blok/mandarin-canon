@@ -427,6 +427,9 @@ Deze Constitutie is de vastleggende grondslag voor het gehele normatieve stelsel
 - **[doctrine-bronhouding-en-exploratie.md](doctrine-bronhouding-en-exploratie.md)**  
   Regels voor brongebruik, exploratieve contexten en kaderdefinities. Implementeert de secties "Gebruik van bronnen" en "Gebruik van externe grondslagen".
 
+- **[doctrine-templategebruik.md](doctrine-templategebruik.md)**  
+  Normeert hoe templates structuur en leesbaarheid borgen, hoe templatekeuze contractueel wordt vastgelegd en hoe deze keuze gespiegeld wordt in prompt-YAML.
+
 ### Agent Ecosysteem (grondslagen/aeo/)
 
 - **[doctrine-agent-charter-normering.md](../aeo/doctrine-agent-charter-normering.md)**  

@@ -57,6 +57,15 @@
       "status_header": "vers"
     },
     {
+      "naam": "doctrine-templategebruik.md",
+      "pad": ".algemeen/doctrine-templategebruik.md",
+      "type": "doctrine",
+      "titel": "Doctrine — Templategebruik en Structuurborging",
+      "digest_header": "tbd0",
+      "digest_berekend": "tbd0",
+      "status_header": "vers"
+    },
+    {
       "naam": "togaf.kaderdefinitie.md",
       "pad": "kaderdefinities/togaf.kaderdefinitie.md",
       "type": "kaderdefinitie",
