@@ -230,7 +230,7 @@ Elk agent-contract specificeert voor elke output de **herkomstpositie** als verp
 intent: <intent-naam>
 output:
   - type: <artefact-type>
-    herkomstpositie: initiërend | voortbouwend
+    herkomstpositie: initierend | voortbouwend
     template: <template-pad>
 ```
 
@@ -238,7 +238,7 @@ output:
 
 | Waarde | Betekenis | Runner-gedrag |
 |--------|-----------|---------------|
-| `initiërend` | Output start een nieuwe artefact-keten | Runner genereert nieuwe herkomstcode |
+| `initierend` | Output start een nieuwe artefact-keten | Runner genereert nieuwe herkomstcode |
 | `voortbouwend` | Output bouwt voort op bestaand artefact | Runner erft herkomstcode van input-artefact |
 
 **Toelichting:**
@@ -254,7 +254,7 @@ output:
 intent: definieer-concept
 output:
   - type: concept-definitie
-    herkomstpositie: initiërend
+    herkomstpositie: initierend
     template: concept.template.md
 
 # Voortbouwend: bestaand concept wijzigen

@@ -1,0 +1,137 @@
+// ==========================================================
+// Source : tdm_mandarin.md
+// Versie : 1.1
+// Gegenereerd door: scripts/md_to_dbml.py
+// ==========================================================
+
+// ─── TABELLEN ───────────────────────────────────────────────
+
+Table VALUE_STREAM {
+  value_stream_code           varchar [pk]
+  value_stream_naam           varchar [not null]
+  inhoud_beschrijving         text [null]
+}
+
+Table VALUE_STREAM_FASE {
+  value_stream_fase_code      varchar [pk]
+  value_stream_fase_naam      varchar [not null]
+  inhoud_beschrijving         text [null]
+}
+
+Table AGENT {
+  agent_id                    varchar [pk]
+  agent_naam                  varchar [not null]
+  value_stream_fase_code      varchar [not null, ref: > VALUE_STREAM_FASE.value_stream_fase_code]
+  versie                      varchar [not null]
+  bronhouding                 varchar [not null]
+  inhoud_charter              text [null]
+}
+
+Table INTENT {
+  intent_id                   varchar [pk]
+  agent_id                    varchar [not null, ref: > AGENT.agent_id]
+  intent                      varchar [not null]
+  artefact_type_id            varchar [null, ref: > ARTEFACT_TYPE.artefact_type_id]
+  inhoud_contract             text [null]
+}
+
+Table INVOER_PARAMETER {
+  parameter_id                varchar [pk]
+  intent_id                   varchar [not null, ref: > INTENT.intent_id]
+  parameter_naam              varchar [not null]
+  optionaliteit               varchar [not null]
+  inhoud_beschrijving         text [null]
+}
+
+Table TEMPLATE {
+  template_id                 varchar [pk]
+  template_naam               varchar [not null]
+  inhoud_body                 text [null]
+}
+
+Table ARTEFACT_TYPE {
+  artefact_type_id            varchar [pk]
+  artefact_type_naam          varchar [not null]
+  artefact_functie            varchar [not null]
+  beschrijvings_modus         varchar [not null]
+  template_id                 varchar [not null, ref: > TEMPLATE.template_id]
+  inhoud_beschrijving         text [null]
+}
+
+Table ORCHESTRATIE_RUN {
+  orchestratie_run_id         varchar [pk]
+  start_timestamp             timestamp [not null]
+  status                      varchar [not null]
+  inhoud_doel                 text [null]
+}
+
+Table EXECUTION {
+  execution_id                varchar [pk]
+  execution_code              varchar [unique, not null]
+  execution_digest            varchar [not null]
+  agent_id                    varchar [not null, ref: > AGENT.agent_id]
+  intent_id                   varchar [not null, ref: > INTENT.intent_id]
+  bronhouding                 varchar [not null]
+  modus                       varchar [not null]
+  orchestratie_run_id         varchar [not null, ref: > ORCHESTRATIE_RUN.orchestratie_run_id]
+  timestamp                   timestamp [not null]
+  inhoud_prompt_instructions  text [null]
+}
+
+Table HERKOMST_KETEN {
+  herkomstcode                varchar [pk]
+  initierend_artefact         varchar [not null]
+  oorsprong_timestamp         timestamp [not null]
+}
+
+Table ARTEFACT {
+  artefact_id                 varchar [pk]
+  herkomstcode                varchar [not null]
+  artefact_type_id            varchar [not null, ref: > ARTEFACT_TYPE.artefact_type_id]
+  herkomstpositie             varchar [not null]
+  gegenereerd_door            varchar [not null, note: 'FK — target unresolved for gegenereerd_door']
+  timestamp                   timestamp [not null]
+  inhoud_tekst                text [null]
+}
+
+Table KADERBRON {
+  kaderbron_id                varchar [pk]
+  execution_id_geraadpleegd   varchar [not null, ref: > EXECUTION.execution_id]
+  artefact_id                 varchar [not null, ref: > ARTEFACT.artefact_id]
+  digest_id_header            varchar [null]
+  digest_werkelijk            varchar [null]
+}
+
+Table WERKBRON {
+  werkbron_id                 varchar [pk]
+  execution_id_geraadpleegd   varchar [not null, ref: > EXECUTION.execution_id]
+  execution_id_werkbron       varchar [not null, ref: > EXECUTION.execution_id]
+  artefact_id                 varchar [not null, ref: > ARTEFACT.artefact_id]
+  digest_id_header            varchar [null]
+  digest_werkelijk            varchar [null]
+}
+
+Table HANDOFF {
+  handoff_id                  varchar [pk]
+  van_execution               varchar [not null, ref: > EXECUTION.execution_id]
+  naar_agent                  varchar [not null, ref: > AGENT.agent_id]
+  human_in_the_loop           boolean [not null]
+  van_agent                   varchar [not null]
+  artefact_id                 varchar [not null]
+  value_stream_fase           varchar [not null]
+  timestamp                   timestamp [not null]
+  inhoud_boodschap            text [null]
+}
+
+// ─── CIRCULAIRE REFS (deferred) ─────────────────────────────
+
+Ref: ARTEFACT.herkomstcode > HERKOMST_KETEN.herkomstcode
+Ref: HERKOMST_KETEN.initierend_artefact > ARTEFACT.artefact_id
+
+// ─── IMPLICIETE RELATIES (geen FK-kolom in entiteitsdefinitie) ──────────
+
+Ref: VALUE_STREAM_FASE.value_stream_code > VALUE_STREAM.value_stream_code
+
+// ─── NIET-OPGELOSTE FKs (handmatig aanvullen) ──────────────
+
+//   ARTEFACT.gegenereerd_door

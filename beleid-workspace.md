@@ -1,7 +1,10 @@
+---
+value_stream-fasen: ["fnd.02", "aeo.01"]
+---
 # Beleid — mandarin-canon
 
 **Constitutie**  
-Bron van alle regels voor het eco-systeem.
+Bron van alle regels voor het agemt eco-systeem.
 
 - URL naar constitutie in standards:  
   `<url-naar-standards/governance/constitutie.md>`

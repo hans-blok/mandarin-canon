@@ -15,6 +15,7 @@ Een execution-bestand is de runner-taal voor een executie: waar **bronpakket** h
 ## Minimale execution-identiteit
 
 - `execution_id`
+- `execution_identificatie`
 - `execution_digest`
 - `agent`
 - `intent`
@@ -30,7 +31,9 @@ Een execution-bestand is de runner-taal voor een executie: waar **bronpakket** h
 - Neemt het **bronpakket** op, maar is breder dan dat pakket
 - Maakt de executie reproduceerbaar, controleerbaar en auditbaar
 - Functioneert als overdrachtsvorm tussen runner en agent of LLM
-- Wordt canoniek opgeslagen in `Executions/`
+- Gebruikt `timestamp` als expliciete ordenings- en auditsleutel
+- Gebruikt `agent` als execution-contextnaam voor de uitvoerende actor
+- Wordt canoniek opgeslagen in `executions/`
 
 ## Wat het niet is ❌
 
@@ -49,9 +52,10 @@ Een execution-bestand is de runner-taal voor een executie: waar **bronpakket** h
 | **Bronassemblage** | levert de inhoud die in het execution-bestand terechtkomt |
 | **Execution-trace-bestand** | apart artefact dat de herkomst en opnamevorm per bron of segment vastlegt |
 | **Runner** | genereert en beheert het execution-bestand |
+| **Artefact-type** | classificeert execution-bestand als zelfstandig soort artefact |
 
 ## Traceerbaarheid
 
 - Vastgesteld door: **concept-curator** (fnd.02.concept-curator)
-- Laatst gewijzigd: 2026-04-06
-- Bronnen: mandarin-domeinconcepten.md, doctrine-traceability.md, 2f0b.concept-curator.definieer-concept.md
+- Laatst gewijzigd: 2026-04-09
+- Bronnen: mandarin-domeinconcepten.md, doctrine-traceability.md, 2f0b.concept-curator.definieer-concept.md, memo-sleutels-identificaties-en-loose-coupling.md

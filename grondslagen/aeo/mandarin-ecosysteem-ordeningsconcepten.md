@@ -1,7 +1,7 @@
 ---
 type: concepten
 naam: Mandarin ordenings-concepten
-versie: 1.8.0
+versie: 1.9.0
 value-stream: AEO
 digest: 12e6
 status: vers
@@ -17,7 +17,7 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 **Geraadpleegde bronnen**:
 - concepten-en-architectonische-grondslagen.md (versie 1.6.0, gelezen op 2026-02-01)
 - herijking 2.md (gelezen op 2026-02-01)
-- doctrine-traceability.md (versie 1.1.0, gelezen op 2026-03-21) — voor concepten herkomstpositie, initiërend, voortbouwend
+- doctrine-traceability.md (versie 1.1.0, gelezen op 2026-03-21) — voor concepten herkomstpositie, initierend, voortbouwend
 - doctrine-traceability-digest.md (versie 0.1.0, gelezen op 2026-04-03) — voor concept artefacttoestand (vers/muf/rot)
 
 **Datum**: 2026-02-01 (initieel), 2026-04-03 (laatste wijziging)  
@@ -54,9 +54,9 @@ Dit document is afgeleid van "concepten-en-architectonische-grondslagen.md" (ver
 - [Registrerend artefact](#registrerend-artefact) — Artefact dat inzicht en uitleg biedt
 - [Representatie](#representatie) — Concrete uitdrukking van betekenis
 - [Afleidingspositie](#afleidingspositie) — Leidend of afgeleid in de keten
-- [Herkomstpositie](#herkomstpositie) — Initiërend of voortbouwend in de creatie-keten
-  - [Initiërend](#initiërend) — Bron-artefact dat unieke code genereert
-  - [Voortbouwend](#voortbouwend) — Artefact dat voortbouwt op initiërend artefact
+- [Herkomstpositie](#herkomstpositie) — Initierend of voortbouwend in de creatie-keten
+  - [Initierend](#initierend) — Bron-artefact dat unieke code genereert
+  - [Voortbouwend](#voortbouwend) — Artefact dat voortbouwt op initierend artefact
 - [Artefacttoestand](#artefacttoestand) — Operationele versheidsgraad (vers/muf/rot)
   
 ### Prompts
@@ -1030,13 +1030,13 @@ Een afgeleide representatie:
 ## Herkomstpositie
 
 ### Definitie
-**Herkomstpositie** is een ordeningsconcept (as) dat de positie van een **mandarin-artefact** vastlegt in de keten van creatie: of het artefact initiërend is (de bron die een unieke identificatiecode genereert) of voortbouwend (een artefact dat voortbouwt op een eerder geïnitieerd artefact).
+**Herkomstpositie** is een ordeningsconcept (as) dat de positie van een **mandarin-artefact** vastlegt in de keten van creatie: of het artefact initierend is (de bron die een unieke identificatiecode genereert) of voortbouwend (een artefact dat voortbouwt op een eerder geïnitieerd artefact).
 
 ### Kenmerken
 - Classificeert artefacten op basis van hun rol in de creatie-keten
 - Is orthogonaal aan andere artefact-assen zoals artefact-functie, representatie en afleidingspositie
-- Waarborgt traceerbaarheid door initiërende artefacten te koppelen aan unieke codes
-- Kent precies twee posities: initiërend en voortbouwend
+- Waarborgt traceerbaarheid door initierende artefacten te koppelen aan unieke codes
+- Kent precies twee posities: initierend en voortbouwend
 - Is essentieel voor het borgen van herkomst en audit-trail binnen het **Mandarin-ecosysteem**
 
 ### Wat het niet is
@@ -1046,9 +1046,9 @@ Een afgeleide representatie:
 - Geen technische implementatie-eigenschap
 
 ### Voorbeelden
-- Een eerste **agent-charter** dat een **mandarin-agent** definieert is initiërend — het genereert een unieke identificatiecode
-- Een bug-fix op een bestaand charter is voortbouwend — het refereert aan de code van het initiërende artefact
-- Een nieuw concept-bestand in de canon is initiërend bij eerste creatie
+- Een eerste **agent-charter** dat een **mandarin-agent** definieert is initierend — het genereert een unieke identificatiecode
+- Een bug-fix op een bestaand charter is voortbouwend — het refereert aan de code van het initierende artefact
+- Een nieuw concept-bestand in de canon is initierend bij eerste creatie
 
 ### Synoniemen
 - Creatiepositie-as
@@ -1057,27 +1057,27 @@ Een afgeleide representatie:
 ### Analogieën
 - In versiebeheer: de initial commit vs. follow-up commits
 - In administratie: een origineel document vs. een bijlage of wijziging
-- In wetgeving: een wet (initiërend) vs. een amendement (voortbouwend)
+- In wetgeving: een wet (initierend) vs. een amendement (voortbouwend)
 
 ### Toelichting
-Binnen het **Mandarin-ecosysteem** wordt herkomstpositie gebruikt om de audit-trail en traceerbaarheid van artefacten te borgen. Initiërende artefacten genereren een unieke code die in alle voortbouwende artefacten wordt overgenomen, zodat altijd herleidbaar is waar een artefact vandaan komt en welke artefacten onderling samenhangen.
+Binnen het **Mandarin-ecosysteem** wordt herkomstpositie gebruikt om de audit-trail en traceerbaarheid van artefacten te borgen. Initierende artefacten genereren een unieke code die in alle voortbouwende artefacten wordt overgenomen, zodat altijd herleidbaar is waar een artefact vandaan komt en welke artefacten onderling samenhangen.
 
 ### Posities op deze as
 
 | Positie | Beschrijving | Codegeneratie |
 |---------|--------------|---------------|
-| **Initiërend** | Bron-artefact dat een nieuw onderdeel realiseert | Genereert unieke code |
-| **Voortbouwend** | Artefact dat voortbouwt op initiërend artefact | Refereert aan bestaande code |
+| **Initierend** | Bron-artefact dat een nieuw onderdeel realiseert | Genereert unieke code |
+| **Voortbouwend** | Artefact dat voortbouwt op initierend artefact | Refereert aan bestaande code |
 
 ---
 
-### Initiërend
+### Initierend
 
 #### Definitie
-**Initiërend** is een positie op de as herkomstpositie die aangeeft dat een **mandarin-artefact** de primaire bron is van een nieuw onderdeel binnen het **Mandarin-ecosysteem**. Een initiërend artefact genereert een unieke identificatiecode die traceerbaarheid borgt voor alle voortbouwende artefacten die daarop volgen.
+**Initierend** is een positie op de as herkomstpositie die aangeeft dat een **mandarin-artefact** de primaire bron is van een nieuw onderdeel binnen het **Mandarin-ecosysteem**. Een initierend artefact genereert een unieke identificatiecode die traceerbaarheid borgt voor alle voortbouwende artefacten die daarop volgen.
 
 #### Kenmerken
-Een initiërend artefact:
+Een initierend artefact:
 - Markeert het artefact als oorsprong in een keten van gerelateerde artefacten
 - Genereert een unieke identificatiecode (bijv. hash, UUID of canoniek ID)
 - Fungeert als referentiepunt voor alle voortbouwende artefacten
@@ -1086,35 +1086,35 @@ Een initiërend artefact:
 
 #### Wat het niet is
 - Geen "leidend" in de zin van afleidingspositie (dat gaat over betekenis, niet over herkomst)
-- Geen temporeel "eerste" (een artefact kan later in de tijd worden gemaakt maar toch initiërend zijn voor een nieuwe keten)
-- Geen kwaliteitsaanduiding (initiërend is niet "beter" dan voortbouwend)
+- Geen temporeel "eerste" (een artefact kan later in de tijd worden gemaakt maar toch initierend zijn voor een nieuwe keten)
+- Geen kwaliteitsaanduiding (initierend is niet "beter" dan voortbouwend)
 - Geen versienummer of revisie-aanduiding
 
 #### Voorbeelden
-- Het eerste **agent-charter** voor een nieuwe **mandarin-agent** is initiërend en krijgt een unieke code
-- Een nieuw concept-definiebestand dat voor het eerst een term vastlegt is initiërend
-- Een fresh execution-file dat een agent-taak start is initiërend met een gegenereerde hash
+- Het eerste **agent-charter** voor een nieuwe **mandarin-agent** is initierend en krijgt een unieke code
+- Een nieuw concept-definiebestand dat voor het eerst een term vastlegt is initierend
+- Een fresh execution-file dat een agent-taak start is initierend met een gegenereerde hash
 
 ---
 
 ### Voortbouwend
 
 #### Definitie
-**Voortbouwend** is een positie op de as herkomstpositie die aangeeft dat een **mandarin-artefact** expliciet voortzet, uitbreidt of wijzigt wat een eerder initiërend artefact heeft vastgelegd. Een voortbouwend artefact refereert aan de unieke identificatiecode van het initiërende artefact en genereert zelf geen nieuwe herkomstcode.
+**Voortbouwend** is een positie op de as herkomstpositie die aangeeft dat een **mandarin-artefact** expliciet voortzet, uitbreidt of wijzigt wat een eerder initierend artefact heeft vastgelegd. Een voortbouwend artefact refereert aan de unieke identificatiecode van het initierende artefact en genereert zelf geen nieuwe herkomstcode.
 
 #### Kenmerken
 Een voortbouwend artefact:
-- Bouwt expliciet voort op een initiërend artefact in dezelfde keten
-- Erft of refereert aan de unieke identificatiecode van het initiërende artefact
+- Bouwt expliciet voort op een initierend artefact in dezelfde keten
+- Erft of refereert aan de unieke identificatiecode van het initierende artefact
 - Genereert geen eigen herkomstcode (wel eventueel een versie- of wijzigings-ID)
 - Maakt deel uit van een traceerbare keten naar de oorsprong
 - Kan meerdere keren voorkomen in een keten (meerdere opeenvolgende voortbouwende artefacten)
 
 #### Wat het niet is
 - Geen "afgeleid" in de zin van afleidingspositie (dat gaat over betekenis, niet over herkomst)
-- Geen vervanging van het initiërende artefact
+- Geen vervanging van het initierende artefact
 - Geen duplicaat of kopie
-- Geen onafhankelijk artefact (altijd verbonden met een initiërend artefact)
+- Geen onafhankelijk artefact (altijd verbonden met een initierend artefact)
 
 #### Voorbeelden
 - Een wijziging of update van een bestaand **agent-charter** is voortbouwend
@@ -1195,7 +1195,8 @@ Deze prompt verankert de relatie tussen de canon-curator en het bijbehorende cha
 | Datum      | Versie | Wijziging                                                           | Auteur     |
 |------------|--------|---------------------------------------------------------------------|------------|
 | 2026-04-03 | 1.8.0  | Toegevoegd: Artefacttoestand als operationele eigenschap (vers/muf/rot) op basis van doctrine-traceability-digest.md; geen classificatie-as maar dynamische toestand | Constitutioneel Auteur  |
-| 2026-03-21 | 1.7.0  | Toegevoegd: Herkomstpositie als artefact-as met posities Initiërend en Voortbouwend; verwijzing naar doctrine-traceability.md | Constitutioneel Auteur  |
+| 2026-04-12 | 1.9.0  | Hernoemd conform TDM: `initiërend` → `initierend` als canonieke veldwaarde | Hans Blok |
+| 2026-03-21 | 1.7.0  | Toegevoegd: Herkomstpositie als artefact-as met posities Initierend en Voortbouwend; verwijzing naar doctrine-traceability.md | Constitutioneel Auteur  |
 | 2026-03-01 | 1.6.1  | Terminologie geharmoniseerd (interventieniveau → vormingsfase), alle concepten uniform beschreven, matrix en toelichtingen aangepast, richtlijn bronhouding toegevoegd, bronnen Agentic AI toegevoegd, structuur en opmaak verbeterd. | Constitutioneel Auteur  |
 | 2026-02-22 | 1.13.0 | Betekeniseffect-as voor agents gemapt op artefactfuncties: Structurerend toegevoegd als categorie. | Constitutioneel Auteur  |
 | 2026-02-22 | 1.12.0 | Artefactclassificatie herzien naar 3 concepten: Functie (vastleggend, structurerend, vastleggend, registrerend), Representatie (tekst, diagram, programma code, machine taal) en Afleidingspositie (leidend, afgeleid). Documenterend en Afgeleid artefact verwijderd als functies. | Constitutioneel Auteur  |
@@ -1251,7 +1252,7 @@ Introduceer een orthogonaal classificatiemodel voor artefacten, bijvoorbeeld lan
 - Interventieniveau (ecosysteem / architectuur / werk)
 - Temporaliteit (tijdloos / fasegebonden / contextueel)
 - Afleidingspositie (leidend / afgeleid)
-- Herkomstpositie (initiërend / voortbouwend)
+- Herkomstpositie (initierend / voortbouwend)
 
 Maak expliciet:
 - Dat artefacten posities innemen op meerdere assen.

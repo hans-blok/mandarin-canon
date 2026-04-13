@@ -208,6 +208,26 @@
         "doctrine-traceability.md"
       ],
       "toelichting": "Terminologievalidatie: universele onderbouw."
+    },
+    "handoff-steward.realiseer-initiele-handoff": {
+      "verplicht": [
+        "doctrine-handoff.md",
+        "doctrine-traceability.md"
+      ],
+      "toelichting": "Handoff-aanmaak is primair gebonden aan de handoff-doctrine; traceability voor execution-id koppeling."
+    },
+    "handoff-steward.realiseer-handoff-sluiting": {
+      "verplicht": [
+        "doctrine-handoff.md",
+        "doctrine-traceability.md"
+      ],
+      "toelichting": "Handoff-sluiting volgt dezelfde normatieve basis als aanmaak."
+    },
+    "handoff-steward.realiseer-overzicht-inspectie-handoffs": {
+      "verplicht": [
+        "doctrine-handoff.md"
+      ],
+      "toelichting": "Inspectie-overzicht: handoff-doctrine als enige normatieve basis; puur mechanisch statusrapport."
     }
   }
 }

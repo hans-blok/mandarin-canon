@@ -1,7 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Handoff en Overdrachtsdiscipline
-versie: 1.0.0
+versie: 1.2.0
 digest: tbd0
 status: vers
 ---
@@ -34,7 +34,7 @@ Deze doctrine normeert de **handoff** als expliciete overdrachtsgebeurtenis in e
 3. **Escalatie** als bijzondere variant van handoff, waarbij expliciete menselijke tussenkomst wordt gevraagd
 4. De **relatie** tot de traceability-doctrine en de bronhouding-doctrine
 
-Een handoff is de **horizontale** tegenhanger van de herkomstcode: waar de herkomstcode de verticale keten (initiërend → voortbouwend) identificeert, identificeert de handoff één horizontale overdracht (agent → agent).
+Een handoff is de **horizontale** tegenhanger van de herkomstcode: waar de herkomstcode de verticale keten (initierend → voortbouwend) identificeert, identificeert de handoff één horizontale overdracht (agent → agent).
 
 **Buiten scope**:
 - Interne stappen binnen één agent-executie
@@ -47,7 +47,7 @@ Een handoff is de **horizontale** tegenhanger van de herkomstcode: waar de herko
 
 ### 2.1 Definitie
 
-Een **handoff-identificatie** is de unieke identifier van een specifieke handoff-gebeurtenis. Zij identificeert de overdracht als zelfstandige gebeurtenis, los van de execution-identificatie van de betrokken executies.
+Een **handoff-identificatie** is de unieke identifier van een specifieke handoff-gebeurtenis. Zij identificeert de overdracht als zelfstandige gebeurtenis, los van de `execution_code` van de betrokken executies.
 
 ### 2.2 Formaat-conventie
 
@@ -64,7 +64,7 @@ Format:  hf-JJMM.NNNN
 - `hf-2604.0002` — April 2026, tweede handoff
 - `hf-2603.0017` — Maart 2026, zeventiende handoff
 
-Het volgnummer wordt **per kalendermaand** opnieuw gestart bij `0001`. De `hf-` prefix onderscheidt de handoff-identificatie van de herkomstcode (`JJMM.XXXX`) en van de execution-identificatie. Beide mogen nooit verwisseld worden.
+Het volgnummer wordt **per kalendermaand** opnieuw gestart bij `0001`. De `hf-` prefix onderscheidt de handoff-identificatie van de herkomstcode (`JJMM.XXXX`) en van de `execution_code`. Beide mogen nooit verwisseld worden.
 
 ### 2.3 Generatie van het volgnummer
 
@@ -106,20 +106,28 @@ Beide artefacten zijn complementair en vervangen elkaar niet.
 ### 3.2 Bestandsnaam-conventie
 
 ```
-{handoff-identificatie}.handoff.md
+{handoff_id}.handoff.md
 ```
 
 **Voorbeeld**: `hf-2604.0001.handoff.md`
 
 Het bestand wordt opgeslagen in de map die is aangewezen door de workspace-doctrine van de uitvoerende workspace.
 
+Wanneer de workspace-doctrine met **execution-bundels** werkt, geldt als normatieve locatie:
+
+```text
+executions/{execution_code}.{overdragende-agent}.{intent}/handoffs/{handoff_id}.handoff.md
+```
+
+De handoff hoort dus bij de producerende execution-bundel en niet in een generieke, losstaande handoff-map op workspace-niveau.
+
 ### 3.3 Minimale inhoud
 
 Een geldig handoff-bestand bevat minimaal de volgende velden:
 
 ```yaml
-handoff-identificatie: hf-JJMM.NNNN
-execution-identificatie: exec-JJMM.XXXX   # verwijzing naar opleverende executie
+handoff_id: hf-JJMM.NNNN
+execution_code: exec-JJMM.XXXX   # verwijzing naar opleverende executie
 overdragende-agent: <agent-id>
 ontvangende-agent: <agent-id>
 overdracht-datum: JJJJ-MM-DD
@@ -133,14 +141,14 @@ gesignaleerde-ambiguiteiten:
 openstaande-taken:
   - <taak 1>
   - <taak 2>
-escalatie-indicatie: false        # true indien escalatie vereist (zie §4)
+human_in_the_loop: false        # true indien escalatie vereist (zie §4)
 overdrachtsnota: |
   <vrije tekst met instructie of context voor de ontvanger>
 ```
 
-**Verplichte velden**: `handoff-identificatie`, `execution-identificatie`, `overdragende-agent`, `ontvangende-agent`, `overdracht-datum`, `samenvatting-context`, `escalatie-indicatie`.
+**Verplichte velden**: `handoff_id`, `execution_code`, `overdragende-agent`, `ontvangende-agent`, `overdracht-datum`, `samenvatting-context`, `human_in_the_loop`.
 
-**Conditioneel verplicht**: `escalatie-reden` is verplicht wanneer `escalatie-indicatie: true`.
+**Conditioneel verplicht**: `escalatie-reden` is verplicht wanneer `human_in_the_loop: true`.
 
 ### 3.4 Onderscheid van execution-trace-bestand
 
@@ -149,7 +157,7 @@ overdrachtsnota: |
 | **Richting** | Vooruit (naar ontvanger) | Achteruit (provenance) |
 | **Doel** | Ontvanger informeren | Audit en traceerbaarheid |
 | **Aangemaakt door** | Runner namens overdragende agent | Runner namens afgeronde executie |
-| **Sleutel** | handoff-identificatie | execution-identificatie + execution-digest |
+| **Sleutel** | `handoff_id` | `execution_code` + `execution_digest` |
 | **Levensduur** | Geldig tot ontvanger heeft gehandeld | Permanent archiefrecord |
 | **Inhoud** | Besluiten, ambiguiteiten, taken, escalatie | Bronverwijzingen, opnamevorm, segment-id's |
 
@@ -165,10 +173,10 @@ Beide artefacten mogen naar elkaar verwijzen, maar zijn zelfstandige eenheden.
 
 ### 4.2 Escalatie-indicatie
 
-Een handoff-bestand met `escalatie-indicatie: true` bevat aanvullend:
+Een handoff-bestand met `human_in_the_loop: true` bevat aanvullend:
 
 ```yaml
-escalatie-indicatie: true
+human_in_the_loop: true
 escalatie-reden: |
   <beschrijving van de situatie die escalatie vereist>
 escalatie-urgentie: laag | normaal | hoog
@@ -197,7 +205,7 @@ De handoff-discipline is complementair aan de traceability-doctrine (zie ook doc
 |--------|-------------------|------------------------|
 | **ID-type** | handoff-identificatie | herkomstcode |
 | **Scope** | Eén overdrachtsgebeurtenis | Volledige artefact-keten |
-| **Richting** | Horizontaal (agent → agent) | Verticaal (initiërend → voortbouwend) |
+| **Richting** | Horizontaal (agent → agent) | Verticaal (initierend → voortbouwend) |
 | **Doel** | Legitimiteit van handeling | Herleidbaarheid van oorsprong |
 
 Een artefact kan en mag zowel een **handoff-identificatie** als een **herkomstcode** bevatten. Het zijn orthogonale identifiers.
@@ -215,7 +223,7 @@ De herkomstcode — gegenereerd of geërfd conform de traceability-doctrine — 
 
 - Herkomstcode: 2604.Ab3K
 - Herkomstpositie: voortbouwend
-- Initiërend artefact: <pad naar initiërend artefact>
+- Initierend artefact: <pad naar initierend artefact>
 - Gegenereerd door: <agent-id>
 - Datum: 2026-04-06
 - Handoff-referentie: hf-2604.0001
@@ -234,15 +242,16 @@ IF handoff is vereist:
     handoff_id = genereer_handoff_id(maand=JJMM, register=handoff-register)
     bestandsnaam = handoff_id + ".handoff.md"
     schrijf handoff-bestand(
-        handoff-identificatie = handoff_id,
-        execution-identificatie = execution_id,
+        handoff_id = handoff_id,
+        execution_code = execution_code,
         overdragende-agent = sender_agent,
         ontvangende-agent = receiving_agent,
         ...
     )
+    plaats bestand in execution-bundel/handoffs/
     registreer handoff_id in execution-trace-bestand
 
-IF escalatie-indicatie == true:
+IF human_in_the_loop == true:
     STOP verdere uitvoering op geëscaleerd onderdeel
     wacht op vrijgave van mens
 ```
@@ -257,10 +266,10 @@ De runner mag de handoff-id **nooit** overnemen van een eerdere executie. Elke h
 
 Een handoff-bestand is geldig wanneer:
 
-1. `handoff-identificatie` aanwezig is en voldoet aan het `hf-JJMM.NNNN` formaat
-2. `execution-identificatie` verwijst naar een aantoonbaar bestaand execution-bestand
+1. `handoff_id` aanwezig is en voldoet aan het `hf-JJMM.NNNN` formaat
+2. `execution_code` verwijst naar een aantoonbaar bestaand execution-bestand
 3. Alle verplichte velden zijn ingevuld
-4. Bij `escalatie-indicatie: true` is `escalatie-reden` aanwezig
+4. Bij `human_in_the_loop: true` is `escalatie-reden` aanwezig
 
 ### 7.2 Verbod op retroactieve creatie
 
@@ -280,4 +289,6 @@ Dit document volgt het versiebeheerschema van de Mandarin-canon. Wijzigingen wor
 
 | Datum | Versie | Wijziging | Uitvoer door |
 |-------|--------|-----------|--------------|
+| 2026-04-12 | 1.2.0 | Hernoemd conform TDM: `handoff-identificatie` → `handoff_id`, `execution-identificatie` → `execution_code`, `escalatie-indicatie` → `human_in_the_loop` | Hans Blok |
+| 2026-04-08 | 1.1.0 | Verduidelijkt: opslaglocatie van handoff-bestanden binnen `handoffs/` van de producerende execution-bundel | Hans Blok |
 | 2026-04-06 | 1.0.0 | Initiële versie: handoff-identificatie formaat, handoff-bestand minimale inhoud, escalatie als subsectie, relaties tot traceability en bronhouding | Hans Blok |

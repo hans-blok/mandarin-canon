@@ -1,8 +1,8 @@
 ---
 type: doctrine
 naam: Doctrine — Traceability en Herkomstcode
-versie: 1.3.0
-digest: 8d27
+versie: 1.5.0
+digest: tbd0
 status: vers
 ---
 # Doctrine — Traceability en Herkomstcode
@@ -15,7 +15,7 @@ status: vers
 Dit normatief artefact is opgesteld op basis van de volgende bronnen:
 
 **Geraadpleegde bronnen**:
-- mandarin-ecosysteem-ordeningsconcepten.md — concepten herkomstpositie, initiërend, voortbouwend (gelezen op 2026-03-20)
+- mandarin-ecosysteem-ordeningsconcepten.md — concepten herkomstpositie, initierend, voortbouwend (gelezen op 2026-03-20)
 - doctrine-handoff.md (versie 1.0.0, gelezen op 2026-04-06)
 - doctrine-agent-charter-normering.md — richtlijn herkomstpositie in contracten (versie 2.4.0, gelezen op 2026-03-20)
 - mandarin-domeinconcepten.md — concepten bronpakket, execution-bestand (gelezen op 2026-04-06)
@@ -32,7 +32,7 @@ Dit normatief artefact is opgesteld op basis van de volgende bronnen:
 Deze doctrine normeert de **traceerbaarheid** van artefacten binnen het Mandarin-ecosysteem door:
 
 1. Een **herkomstcode** te definiëren die uniek identificeert waar een artefact-keten begint
-2. Regels vast te leggen voor **generatie** (bij initiërende artefacten) en **overerving** (bij voortbouwende artefacten)
+2. Regels vast te leggen voor **generatie** (bij initierende artefacten) en **overerving** (bij voortbouwende artefacten)
 3. De relatie te expliciteren met de handoff-discipline
 
 Traceability waarborgt dat elk artefact herleidbaar is naar zijn oorsprong, ongeacht hoeveel voortbouwende artefacten in de keten zijn ontstaan.
@@ -46,7 +46,7 @@ Traceability waarborgt dat elk artefact herleidbaar is naar zijn oorsprong, onge
 Een **herkomstcode** is een unieke, door het systeem gegenereerde identificatiecode die de oorsprong van een artefact-keten markeert.
 
 De herkomstcode:
-- wordt uitsluitend gegenereerd door **initiërende** artefacten
+- wordt uitsluitend gegenereerd door **initierende** artefacten
 - wordt overgenomen door alle **voortbouwende** artefacten in dezelfde keten
 - is onveranderlijk na generatie
 - fungeert als permanente referentie voor audit en traceerbaarheid
@@ -86,7 +86,7 @@ De **runner** is verantwoordelijk voor het genereren van de herkomstcode.
 
 Dit sluit aan bij de handoff-doctrine:
 - De runner genereert de handoff-id
-- De runner genereert de herkomstcode (indien initiërend)
+- De runner genereert de herkomstcode (indien initierend)
 - Agents genereren **geen** herkomstcodes
 
 ---
@@ -98,11 +98,11 @@ Dit sluit aan bij de handoff-doctrine:
 De **herkomstpositie** wordt vastgelegd als eigenschap van de output-specificatie in het **agent-contract**:
 
 ```yaml
-# Voorbeeld: initiërend
+# Voorbeeld: initierend
 intent: definieer-concept
 output:
   - type: concept-definitie
-    herkomstpositie: initiërend    # ← vastgelegd in contract
+    herkomstpositie: initierend    # ← vastgelegd in contract
     template: concept.template.md
 ```
 
@@ -124,7 +124,7 @@ De **runner** leest de herkomstpositie uit het contract en handelt dienovereenko
 ```
 LEES contract.output.herkomstpositie
 
-IF herkomstpositie == "initiërend":
+IF herkomstpositie == "initierend":
     herkomstcode = genereer_nieuwe_code()
 ELSE IF herkomstpositie == "voortbouwend":
     herkomstcode = input_artefact.herkomstcode
@@ -133,9 +133,9 @@ ELSE:
     FOUT: ongeldige herkomstpositie
 ```
 
-### 3.3 Initiërend artefact
+### 3.3 Initierend artefact
 
-Een artefact met herkomstpositie **initiërend**:
+Een artefact met herkomstpositie **initierend**:
 
 | Actie | Beschrijving |
 |-------|--------------|
@@ -143,11 +143,11 @@ Een artefact met herkomstpositie **initiërend**:
 | **Vastleg** | Herkomstcode wordt opgenomen in artefact-header |
 | **Publiceer** | Herkomstcode is beschikbaar voor voortbouwende artefacten |
 
-**Wanneer is een artefact initiërend?**
+**Wanneer is een artefact initierend?**
 - Eerste definitie van een nieuw concept, charter, contract of doctrine
 - Start van een nieuwe taak-executie (execution-file)
 - Creatie van een nieuw governance-artefact
-- Elke situatie waarin geen eerder initiërend artefact in de keten bestaat
+- Elke situatie waarin geen eerder initierend artefact in de keten bestaat
 
 ### 3.4 Voortbouwend artefact
 
@@ -155,26 +155,26 @@ Een artefact met herkomstpositie **voortbouwend**:
 
 | Actie | Beschrijving |
 |-------|--------------|
-| **Erf** | Neem herkomstcode over van initiërend artefact |
-| **Verwijs** | Refereer expliciet naar het initiërende artefact |
+| **Erf** | Neem herkomstcode over van initierend artefact |
+| **Verwijs** | Refereer expliciet naar het initierende artefact |
 | **Propageer** | Verdere voortbouwende artefacten erven dezelfde code |
 
 **Wanneer is een artefact voortbouwend?**
 - Wijziging, update of correctie van een bestaand artefact
 - Afgeleide output van een eerder geproduceerd artefact
 - Vervolgstap in een lopende taak-executie
-- Elke situatie waarin een initiërend artefact in de keten bestaat
+- Elke situatie waarin een initierend artefact in de keten bestaat
 
 ---
 
 ## 4. Header-structuur
 
-### 4.1 Initiërend artefact
+### 4.1 Initierend artefact
 
 ```yaml
 ---
 herkomstcode: 2603.Tu9x
-herkomstpositie: initiërend
+herkomstpositie: initierend
 gegenereerd_door: <agent-id>
 datum: 2026-03-20
 ---
@@ -186,7 +186,7 @@ datum: 2026-03-20
 ---
 herkomstcode: 2603.Tu9x
 herkomstpositie: voortbouwend
-initierend_artefact: <pad naar initiërend artefact>
+initierend_artefact: <pad naar initierend artefact>
 gegenereerd_door: <agent-id>
 datum: 2026-03-20
 ---
@@ -201,7 +201,7 @@ De herkomstcode wordt opgenomen in de Herkomst-sectie zoals gedefinieerd in de h
 
 - Herkomstcode: 2603.Tu9x
 - Herkomstpositie: voortbouwend
-- Initiërend artefact: agent-execution/2603.Tu9x.concept-curator.definieer-concept.md
+- Initierend artefact: agent-execution/2603.Tu9x.concept-curator.definieer-concept.md
 - Gegenereerd door: concept-curator
 - Agent charter: @main:agent-charters/concept-curator.charter.md
 - Datum: 2026-03-20
@@ -218,7 +218,7 @@ De herkomstcode wordt opgenomen in de Herkomst-sectie zoals gedefinieerd in de h
 |--------|-------------------|------------------------|
 | **ID-type** | handoff-id | herkomstcode |
 | **Scope** | Eén overdracht | Volledige artefact-keten |
-| **Richting** | Horizontaal (agent → agent) | Verticaal (initiërend → voortbouwend) |
+| **Richting** | Horizontaal (agent → agent) | Verticaal (initierend → voortbouwend) |
 | **Doel** | Legitimiteit van handeling | Herleidbaarheid van oorsprong |
 
 ### 5.2 Samenwerking
@@ -234,7 +234,7 @@ Beide zijn complementair en verplicht bij agent-geproduceerde artefacten.
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│  Initiërend artefact                                          │
+│  Initierend artefact                                          │
 │  herkomstcode: 2603.Tu9x (GEGENEREERD)                        │
 │  handoff-id: hf-2603.0001                                     │
 │  bestand: concept-curator.definieer-concept.md                │
@@ -266,6 +266,7 @@ Beide zijn complementair en verplicht bij agent-geproduceerde artefacten.
 Een **execution-bestand** is identificeerbaar via minimaal de volgende velden:
 
 - `execution_id`
+- `execution_code`
 - `execution_digest`
 - `agent`
 - `intent`
@@ -276,7 +277,21 @@ Een **execution-bestand** is identificeerbaar via minimaal de volgende velden:
 
 Deze velden vormen samen de minimale execution-identiteit.
 
-### 6.2 Rol van execution_digest
+### 6.2 Onderscheid tussen `execution_id` en `execution_code`
+
+Binnen deze doctrine worden twee verwante maar niet identieke sleutels onderscheiden:
+
+| Veld | Betekenis | Formaat | Gebruik |
+|------|-----------|---------|---------|
+| `execution_id` | compacte technische kern-id | `JJMM.XXXX` | interne koppeling, sortering, afleiding |
+| `execution_code` | canonieke externe execution-identiteit | `exec-JJMM.XXXX` | bestandsverwijzing, bundelnaam, handoff-verwijzing |
+
+**Norm**:
+- `execution_code` wordt afgeleid uit `execution_id` via de vaste prefix `exec-`;
+- de execution-bundel gebruikt **niet** de kale `execution_id` als mapnaam;
+- externe verwijzingen tussen execution-bestand, handoff-bestand en trace-bestand gebruiken `execution_code`.
+
+### 6.3 Rol van execution_digest
 
 Het **execution_digest** is een stabiel traceerbaarheidsanker binnen de bredere herkomstidentiteit van de executie. Het wordt gebruikt voor:
 
@@ -287,7 +302,22 @@ Het **execution_digest** is een stabiel traceerbaarheidsanker binnen de bredere 
 
 Het execution_digest vervangt de herkomstcode niet. De herkomstcode identificeert de plaats van de executie in de artefactketen; het execution_digest identificeert de technische uitvoering waarop die ketenverwijzing betrekking heeft.
 
-### 6.3 Modus
+### 6.4 Locatieconventie voor execution-bundels
+
+De workspace-doctrine kan een **execution-bundel** voorschrijven als primaire runtime-opslagvorm.
+
+In dat geval geldt de volgende conventie:
+
+```text
+executions/
+└── {execution_code}.{agent}.{intent}/
+  ├── execution.md
+  └── trace/execution-trace.yaml
+```
+
+De mapnaam is de primaire filesystem-identiteit van de uitvoering. Het execution-bestand en het execution-trace-bestand blijven daarin zelfstandige artefacten met eigen rollen.
+
+### 6.5 Modus
 
 Elke execution legt expliciet de modus vast:
 
@@ -307,6 +337,7 @@ Naast elk execution-bestand bestaat een apart **execution-trace-bestand**.
 Het execution-trace-bestand:
 - is een zelfstandig artefact;
 - bevat `execution_id` en `execution_digest`;
+- bevat bij voorkeur ook `execution_code`;
 - bevat per opgenomen bron of segment herkomstinformatie;
 - fungeert als audit- en linkdrager;
 - laat het execution-bestand de uitvoeringsdrager blijven.
@@ -314,6 +345,11 @@ Het execution-trace-bestand:
 ### 7.2 Minimale koppeling
 
 Een execution-trace-bestand is alleen geldig als `execution_id` en `execution_digest` exact verwijzen naar één bestaand execution-bestand.
+
+Wanneer de workspace-doctrine een execution-bundel voorschrijft, geldt aanvullend:
+- het execution-trace-bestand verwijst naar exact één execution-bundel;
+- binnen die bundel verwijst het naar exact één primair execution-bestand;
+- de aanwezigheid van een gedeelde bundelmap verandert niets aan de zelfstandigheid van het execution-trace-bestand als artefact.
 
 ### 7.3 Per-bronmodel
 
@@ -401,7 +437,7 @@ Een herkomstcode is **geldig** als:
 1. Het formaat `JJMM.XXXX` correct is
 2. JJMM een geldige jaar-maand combinatie is
 3. XXXX exact 4 alfanumerieke karakters bevat
-4. Bij voortbouwende artefacten: het initiërend artefact bestaat en dezelfde code bevat
+4. Bij voortbouwende artefacten: het initierend artefact bestaat en dezelfde code bevat
 5. Elk execution-bestand de verplichte velden van de execution-identiteit bevat
 6. Elk execution-trace-bestand exact verwijst naar een bestaand execution-bestand via `execution_id` en `execution_digest`
 7. Elke bronvermelding in een execution-trace-bestand de verplichte trace-velden bevat
@@ -413,7 +449,7 @@ Een herkomstcode is **geldig** als:
 |----------|-------|
 | Herkomstcode ontbreekt | Artefact is ongeldig; runner moet code genereren of erven |
 | Ongeldig formaat | Runner corrigeert of weigert verwerking |
-| Initiërend artefact niet gevonden | Escalatie naar menselijke validatie |
+| Initierend artefact niet gevonden | Escalatie naar menselijke validatie |
 | Mismatch in keten | Audit-log entry; escalatie naar canon-curator |
 | Execution-trace-bestand ontbreekt | Executie is onvolledig en niet volledig auditbaar |
 | Ontbrekend execution_digest | Koppeling ongeldig; verwerking weigeren of corrigeren |
@@ -457,6 +493,8 @@ is een artefact zonder verleden.
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-04-12 | 1.5.0  | Hernoemd: `execution_identificatie` → `execution_code` conform TDM; `initierend` → `initierend` als canonieke veldwaarde conform TDM | Hans Blok |
+| 2026-04-08 | 1.4.0  | Verduidelijkt: onderscheid tussen `execution_id` en `execution_identificatie`; execution-bundel als runtime-locatieconventie; koppeling van trace-bestand aan bundel en primair execution-bestand | Constitutioneel Auteur |
 | 2026-04-06 | 1.2.0  | Toegevoegd: execution-identiteit, execution-trace-bestand, verplichte trace-velden en normering voor compacte opname | Concept-curator |
 | 2026-03-20 | 1.1.0  | Herkomstpositie als contract-eigenschap; runner-logica; rolverdeling uitgebreid | Constitutioneel Auteur |
 | 2026-03-20 | 1.0.0  | Eerste versie: traceability-discipline, herkomstcode-conventie en integratie met handoff-doctrine | Constitutioneel Auteur |

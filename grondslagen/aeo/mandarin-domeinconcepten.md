@@ -1,6 +1,6 @@
 type: concepten
 naam: De Mandarin concepten
-versie: 2.12.0
+versie: 2.13.0
 value-stream: AEO
 digest: 798e
 status: vers
@@ -68,7 +68,7 @@ Dit document is opgesteld door Hans Blok op 31 januari 2026 als definitie van co
 - [Execution-bestand](#execution-bestand) — Technische runner-representatie van een concrete agent-executie
 - [Execution-trace-bestand](#execution-trace-bestand) — Apart audit- en linkartefact naast een execution-bestand
 - [Execution-digest](#execution-digest) — Inhoudsgebonden integriteitsanker van een execution-bestand
-- [Execution-identificatie](#execution-identificatie) — Stabiele verwijzingseenheid voor een specifieke agent-executie
+- [Execution-code](#execution-code) — Stabiele verwijzingseenheid voor een specifieke agent-executie
 - [Externe grondslagen](#externe-grondslagen) — Ruwe externe denkkaders als potentiële grondslag voor het ecosysteem
 - [Kaderdefinitie](#kaderdefinitie) — Geïnternaliseerde, gecontroleerde versie van een externe grondslag
 
@@ -448,8 +448,8 @@ De handoff markeert het moment waarop één agent ophoudt te handelen en een and
 
 ## Relatie tot andere concepten
 - **Handoff-identificatie**: unieke identifier van deze handoff-gebeurtenis
-- **Execution-identificatie**: verwijzingsattribuut dat de executie-context vastlegt
-- **Herkomstcode**: handoff is horizontaal (agent → agent); herkomstcode is verticaal (initiërend → voortbouwend)
+- **Execution-code**: verwijzingsattribuut dat de executie-context vastlegt
+- **Herkomstcode**: handoff is horizontaal (agent → agent); herkomstcode is verticaal (initierend → voortbouwend)
 - **Mandarin-agent**: de actoren die een handoff initiëren of ontvangen
 
 ## Synoniemen 🏷️
@@ -473,18 +473,18 @@ Een **handoff-identificatie** is de unieke identifier van een specifieke **hando
 ## Kenmerken ⭐
 - Stabiel en uniek per handoff-gebeurtenis
 - Gegenereerd door de runner op het moment van de handoff
-- Onafhankelijk van de **execution-identificatie** van de betrokken executies
+- Onafhankelijk van de **execution-code** van de betrokken executies
 - Maakt traceerbaarheid van overdrachten in multi-agent ketens mogelijk
 
 ## Wat het niet is ❌
-- Geen execution-identificatie — zij identificeert de overdracht, niet de productie-run
-- Geen samengestelde sleutel met execution-identificatie
+- Geen execution-code — zij identificeert de overdracht, niet de productie-run
+- Geen samengestelde sleutel met execution-code
 
-## Advies: execution-identificatie als sleutelcomponent
+## Advies: execution-code als sleutelcomponent
 
-De **execution-identificatie** is **geen onderdeel** van de logische sleutel van een handoff-identificatie.
+De **execution-code** is **geen onderdeel** van de logische sleutel van een handoff-identificatie.
 
-De execution-identificatie verschijnt als **verwijzingsattribuut** in de handoff-metadata: zij legt vast in welke executie-context de overdracht plaatsvond. Dit is een referentie (*foreign key*), geen samengestelde sleutel.
+De execution-code verschijnt als **verwijzingsattribuut** in de handoff-metadata: zij legt vast in welke executie-context de overdracht plaatsvond. Dit is een referentie (*foreign key*), geen samengestelde sleutel.
 
 **Motivering**:
 - Handoff en executie zijn conceptueel verschillende lagen: overdracht versus productie-run
@@ -496,7 +496,7 @@ De execution-identificatie verschijnt als **verwijzingsattribuut** in de handoff
 
 ## Relatie tot andere concepten
 - **Handoff**: de overdrachtsgebeurtenis die deze identifier identificeert
-- **Execution-identificatie**: verwijzingsattribuut in de handoff-metadata (geen sleutelcomponent)
+- **Execution-code**: verwijzingsattribuut in de handoff-metadata (geen sleutelcomponent)
 - **Herkomstcode**: identificeert de keten; handoff-identificatie identificeert één overdracht
 
 ## Traceerbaarheid
@@ -520,8 +520,8 @@ Het handoff-bestand kijkt **vooruit**: het bereidt de volgende agent voor op wat
 - Kijkt vooruit: informeert de ontvanger, niet de auditor
 - Bevat genomen beslissingen, gesignaleerde ambiguiteiten en openstaande taken
 - Is gekoppeld aan één specifieke **handoff-identificatie** (sleutel)
-- Verwijst via **execution-identificatie** naar de opleverende executie (*foreign key*)
-- Bevat een escalatie-indicatie wanneer menselijke tussenkomst vereist is
+- Verwijst via **execution-code** naar de opleverende executie (*foreign key*)
+- Bevat `human_in_the_loop` wanneer menselijke tussenkomst vereist is
 - Is na uitgifte onveranderlijk
 
 ## Wat het niet is ❌
@@ -535,14 +535,14 @@ Het handoff-bestand kijkt **vooruit**: het bereidt de volgende agent voor op wat
 Een geldig handoff-bestand bevat minimaal:
 
 ```yaml
-handoff-identificatie: hf-JJMM.XXXX
-execution-identificatie: exec-JJMM.XXXX
+handoff_id: hf-JJMM.XXXX
+execution_code: exec-JJMM.XXXX
 overdragende-agent: <agent-id>
 ontvangende-agent: <agent-id>
 overdracht-datum: JJJJ-MM-DD
 samenvatting-context: |
   <wat de overdragende agent heeft uitgevoerd en opgeleverd>
-escalatie-indicatie: false
+human_in_the_loop: false
 ```
 
 Aanvullende velden naar behoefte: `genomen-beslissingen`, `gesignaleerde-ambiguiteiten`, `openstaande-taken`, `escalatie-reden`, `escalatie-urgentie`, `overdrachtsnota`.
@@ -550,7 +550,7 @@ Aanvullende velden naar behoefte: `genomen-beslissingen`, `gesignaleerde-ambigui
 ## Relatie tot andere concepten
 - **Handoff**: de overdrachtsgebeurtenis die dit bestand documenteert
 - **Handoff-identificatie**: de sleutel van dit bestand — één-op-één relatie
-- **Execution-identificatie**: verwijzingsattribuut naar de opleverende executie (*foreign key*)
+- **Execution-code**: verwijzingsattribuut naar de opleverende executie (*foreign key*)
 - **Execution-trace-bestand**: het complementaire, achterwaartse provenance-artefact
 - **Escalatie**: bijzondere variant waarbij ontvanger een mens is in plaats van een agent
 
@@ -1127,14 +1127,14 @@ Het execution-digest dient uitsluitend **integriteitsverificatie**: het bewijst 
 - Fungeert als koppelingsanker in het **execution-trace-bestand**
 
 ## Wat het niet is ❌
-- Geen stabiel adres voor een executie — dat is de **execution-identificatie**
+- Geen stabiel adres voor een executie — dat is de **execution-code**
 - Geen vervanging van een identiteitsveld
 - Geen herkomstcode
 - Geen versienummer
 
-## Onderscheid met execution-identificatie
+## Onderscheid met execution-code
 
-| | **execution-digest** | **execution-identificatie** |
+| | **execution-digest** | **execution-code** |
 |---|---|---|
 | Doel | Integriteitsverificatie | Adressering en verwijzing |
 | Verandert bij inhoudswijziging? | Ja | Nee |
@@ -1143,7 +1143,7 @@ Het execution-digest dient uitsluitend **integriteitsverificatie**: het bewijst 
 ## Relatie tot andere concepten
 - **Execution-bestand**: het bestand waarover het digest is berekend
 - **Execution-trace-bestand**: gebruikt execution-digest als koppelingsanker
-- **Execution-identificatie**: complementair — integriteit versus adres
+- **Execution-code**: complementair — integriteit versus adres
 
 ## Traceerbaarheid
 - Vastgesteld door: concept-curator (fnd.02.concept-curator)
@@ -1152,15 +1152,15 @@ Het execution-digest dient uitsluitend **integriteitsverificatie**: het bewijst 
 
 ---
 
-# Concept — execution-identificatie
+# Concept — execution-code
 
 ---
 
 ## Definitie 📝
 
-Een **execution-identificatie** is het stabiele, persistente adres waarmee een specifieke agent-executie wordt aangewezen, ongeacht of de inhoud van het bijbehorende **execution-bestand** nadien verandert. De execution-identificatie wordt door de runner gegenereerd bij aanmaak van het execution-bestand en blijft daarna constant.
+Een **execution-code** is het stabiele, persistente adres waarmee een specifieke agent-executie wordt aangewezen, ongeacht of de inhoud van het bijbehorende **execution-bestand** nadien verandert. De execution-code wordt door de runner gegenereerd bij aanmaak van het execution-bestand en blijft daarna constant.
 
-De execution-identificatie is de **verwijzingseenheid** van een executie: zij maakt het mogelijk om vanuit handoffs, audit-bestanden, voortbouwende artefacten en herkomstketens eenduidig naar één specifieke executie te verwijzen.
+De execution-code is de **verwijzingseenheid** van een executie: zij maakt het mogelijk om vanuit handoffs, audit-bestanden, voortbouwende artefacten en herkomstketens eenduidig naar één specifieke executie te verwijzen.
 
 ## Kenmerken ⭐
 - Stabiel: verandert niet wanneer de bestandsinhoud wijzigt
@@ -1178,9 +1178,9 @@ Zie **execution-digest** — het onderscheidstabel staat daar centraal uitgewerk
 
 ## Relatie tot andere concepten
 - **Execution-digest**: complementair — adres versus integriteit
-- **Execution-bestand**: drager waaraan de execution-identificatie is toegekend
-- **Handoff-identificatie**: execution-identificatie verschijnt hier als verwijzingsattribuut, niet als sleutelcomponent
-- **Herkomstcode**: herkomstcode identificeert de keten; execution-identificatie identificeert één uitvoering
+- **Execution-bestand**: drager waaraan de execution-code is toegekend
+- **Handoff-identificatie**: execution-code verschijnt hier als verwijzingsattribuut, niet als sleutelcomponent
+- **Herkomstcode**: herkomstcode identificeert de keten; execution-code identificeert één uitvoering
 
 ## Traceerbaarheid
 - Vastgesteld door: concept-curator (fnd.02.concept-curator)
@@ -1289,8 +1289,9 @@ De transformatie van externe grondslag naar kaderdefinitie omvat: (1) interpreta
 
 | Datum   | Versie | Wijziging                              | Auteur   |
 |------------|--------|---------------------------------------------------------------------|------------|
+| 2026-04-12 | 2.13.0 | Hernoemd conform TDM: concept `execution-identificatie` → `execution-code`; veldwaarden `initiërend` → `initierend` | Hans Blok |
 | 2026-04-06 | 2.12.0 | Toegevoegd: concept `handoff-bestand`; minimale inhoud, relatie tot handoff-identificatie en execution-trace-bestand vastgelegd | Hans Blok |
-| 2026-04-06 | 2.11.0 | Toegevoegd: concepten `execution-digest`, `execution-identificatie`, `handoff`, `handoff-identificatie`; onderscheid integriteit versus adres vastgelegd; advies sleutelrelatie execution-identificatie ↔ handoff-identificatie | Concept-Curator |
+| 2026-04-06 | 2.11.0 | Toegevoegd: concepten `execution-digest`, `execution-code`, `handoff`, `handoff-identificatie`; onderscheid integriteit versus adres vastgelegd; advies sleutelrelatie execution-code ↔ handoff-identificatie | Concept-Curator |
 | 2026-04-06 | 2.10.0 | Toegevoegd: concept `execution-trace-bestand`; aangescherpt: `execution-bestand` met execution-identiteit, opslag in `Executions/` en expliciet onderscheid met `bronpakket` | Concept-Curator |
 | 2026-03-23 | 2.9.0 | Aangescherpt: Externe grondslagen mogen NOOIT direct door agents geraadpleegd worden; Kaderdefinitie bronrol varieert per executie (werkbron in aeo.01, kaderbron elders) | Concept-Curator |
 | 2026-03-23 | 2.8.0 | Toegevoegd: concept Kaderdefinitie — geïnternaliseerde, gecontroleerde versie van een externe grondslag; de enige toegestane basis voor agent-gebruik | Concept-Curator |

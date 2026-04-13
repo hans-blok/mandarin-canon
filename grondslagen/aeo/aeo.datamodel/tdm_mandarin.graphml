@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/graphml" xmlns:y="http://www.yworks.com/xml/graphml">
+  <key id="d_label" for="node" attr.name="label" attr.type="string" />
+  <key id="d_columns" for="node" attr.name="columns" attr.type="string" />
+  <key id="d_pk" for="node" attr.name="primary_keys" attr.type="string" />
+  <key id="d_fk" for="node" attr.name="foreign_keys" attr.type="string" />
+  <key id="d_e_label" for="edge" attr.name="label" attr.type="string" />
+  <key id="d_cardinality" for="edge" attr.name="cardinality" attr.type="string" />
+  <key id="d_nodegraphics" for="node" yfiles.type="nodegraphics" />
+  <key id="d_edgegraphics" for="edge" yfiles.type="edgegraphics" />
+  <graph id="G" edgedefault="directed">
+    <node id="VALUE_STREAM">
+      <data key="d_label">VALUE_STREAM</data>
+      <data key="d_columns">value_stream_code: varchar  [PK]
+value_stream_naam: varchar  [NN]
+inhoud_beschrijving: text</data>
+      <data key="d_pk">value_stream_code</data>
+      <data key="d_fk" />
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="92" width="290" x="0" y="0" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">VALUE_STREAM
+──────────────────────────────────
+value_stream_code: varchar  [PK]
+value_stream_naam: varchar  [NN]
+inhoud_beschrijving: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="VALUE_STREAM_FASE">
+      <data key="d_label">VALUE_STREAM_FASE</data>
+      <data key="d_columns">value_stream_fase_code: varchar  [PK]
+value_stream_fase_naam: varchar  [NN]
+inhoud_beschrijving: text</data>
+      <data key="d_pk">value_stream_fase_code</data>
+      <data key="d_fk" />
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="92" width="290" x="360" y="0" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">VALUE_STREAM_FASE
+──────────────────────────────────
+value_stream_fase_code: varchar  [PK]
+value_stream_fase_naam: varchar  [NN]
+inhoud_beschrijving: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="AGENT">
+      <data key="d_label">AGENT</data>
+      <data key="d_columns">agent_id: varchar  [PK]
+agent_naam: varchar  [NN]
+value_stream_fase_code: varchar  [FK, NN]
+versie: varchar  [NN]
+bronhouding: varchar  [NN]
+inhoud_charter: text</data>
+      <data key="d_pk">agent_id</data>
+      <data key="d_fk">value_stream_fase_code</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="134" width="290" x="720" y="0" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">AGENT
+──────────────────────────────────
+agent_id: varchar  [PK]
+agent_naam: varchar  [NN]
+value_stream_fase_code: varchar  [FK, NN]
+versie: varchar  [NN]
+bronhouding: varchar  [NN]
+inhoud_charter: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="INTENT">
+      <data key="d_label">INTENT</data>
+      <data key="d_columns">intent_id: varchar  [PK]
+agent_id: varchar  [FK, NN]
+intent: varchar  [NN]
+artefact_type_id: varchar  [FK]
+inhoud_contract: text</data>
+      <data key="d_pk">intent_id</data>
+      <data key="d_fk">agent_id, artefact_type_id</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="120" width="290" x="1080" y="0" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">INTENT
+──────────────────────────────────
+intent_id: varchar  [PK]
+agent_id: varchar  [FK, NN]
+intent: varchar  [NN]
+artefact_type_id: varchar  [FK]
+inhoud_contract: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="INVOER_PARAMETER">
+      <data key="d_label">INVOER_PARAMETER</data>
+      <data key="d_columns">parameter_id: varchar  [PK]
+intent_id: varchar  [FK, NN]
+parameter_naam: varchar  [NN]
+optionaliteit: varchar  [NN]
+inhoud_beschrijving: text</data>
+      <data key="d_pk">parameter_id</data>
+      <data key="d_fk">intent_id</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="120" width="290" x="1440" y="0" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">INVOER_PARAMETER
+──────────────────────────────────
+parameter_id: varchar  [PK]
+intent_id: varchar  [FK, NN]
+parameter_naam: varchar  [NN]
+optionaliteit: varchar  [NN]
+inhoud_beschrijving: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="TEMPLATE">
+      <data key="d_label">TEMPLATE</data>
+      <data key="d_columns">template_id: varchar  [PK]
+template_naam: varchar  [NN]
+inhoud_body: text</data>
+      <data key="d_pk">template_id</data>
+      <data key="d_fk" />
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="92" width="290" x="0" y="320" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">TEMPLATE
+──────────────────────────────────
+template_id: varchar  [PK]
+template_naam: varchar  [NN]
+inhoud_body: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="ARTEFACT_TYPE">
+      <data key="d_label">ARTEFACT_TYPE</data>
+      <data key="d_columns">artefact_type_id: varchar  [PK]
+artefact_type_naam: varchar  [NN]
+artefact_functie: varchar  [NN]
+beschrijvings_modus: varchar  [NN]
+template_id: varchar  [FK, NN]
+inhoud_beschrijving: text</data>
+      <data key="d_pk">artefact_type_id</data>
+      <data key="d_fk">template_id</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="134" width="290" x="360" y="320" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">ARTEFACT_TYPE
+──────────────────────────────────
+artefact_type_id: varchar  [PK]
+artefact_type_naam: varchar  [NN]
+artefact_functie: varchar  [NN]
+beschrijvings_modus: varchar  [NN]
+template_id: varchar  [FK, NN]
+inhoud_beschrijving: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="ORCHESTRATIE_RUN">
+      <data key="d_label">ORCHESTRATIE_RUN</data>
+      <data key="d_columns">orchestratie_run_id: varchar  [PK]
+start_timestamp: timestamp  [NN]
+status: varchar  [NN]
+inhoud_doel: text</data>
+      <data key="d_pk">orchestratie_run_id</data>
+      <data key="d_fk" />
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="106" width="290" x="720" y="320" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">ORCHESTRATIE_RUN
+──────────────────────────────────
+orchestratie_run_id: varchar  [PK]
+start_timestamp: timestamp  [NN]
+status: varchar  [NN]
+inhoud_doel: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="EXECUTION">
+      <data key="d_label">EXECUTION</data>
+      <data key="d_columns">execution_id: varchar  [PK]
+execution_code: varchar  [UK, NN]
+execution_digest: varchar  [NN]
+agent_id: varchar  [FK, NN]
+intent_id: varchar  [FK, NN]
+bronhouding: varchar  [NN]
+modus: varchar  [NN]
+orchestratie_run_id: varchar  [FK, NN]
+timestamp: timestamp  [NN]
+inhoud_prompt_instructions: text</data>
+      <data key="d_pk">execution_id</data>
+      <data key="d_fk">agent_id, intent_id, orchestratie_run_id</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="190" width="290" x="1080" y="320" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">EXECUTION
+──────────────────────────────────
+execution_id: varchar  [PK]
+execution_code: varchar  [UK, NN]
+execution_digest: varchar  [NN]
+agent_id: varchar  [FK, NN]
+intent_id: varchar  [FK, NN]
+bronhouding: varchar  [NN]
+modus: varchar  [NN]
+orchestratie_run_id: varchar  [FK, NN]
+timestamp: timestamp  [NN]
+inhoud_prompt_instructions: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="HERKOMST_KETEN">
+      <data key="d_label">HERKOMST_KETEN</data>
+      <data key="d_columns">herkomstcode: varchar  [PK]
+initierend_artefact: varchar  [NN]
+oorsprong_timestamp: timestamp  [NN]</data>
+      <data key="d_pk">herkomstcode</data>
+      <data key="d_fk" />
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="92" width="290" x="1440" y="320" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">HERKOMST_KETEN
+──────────────────────────────────
+herkomstcode: varchar  [PK]
+initierend_artefact: varchar  [NN]
+oorsprong_timestamp: timestamp  [NN]</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="ARTEFACT">
+      <data key="d_label">ARTEFACT</data>
+      <data key="d_columns">artefact_id: varchar  [PK]
+herkomstcode: varchar  [NN]
+artefact_type_id: varchar  [FK, NN]
+herkomstpositie: varchar  [NN]
+gegenereerd_door: varchar  [NN]
+timestamp: timestamp  [NN]
+inhoud_tekst: text</data>
+      <data key="d_pk">artefact_id</data>
+      <data key="d_fk">artefact_type_id</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="148" width="290" x="0" y="640" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">ARTEFACT
+──────────────────────────────────
+artefact_id: varchar  [PK]
+herkomstcode: varchar  [NN]
+artefact_type_id: varchar  [FK, NN]
+herkomstpositie: varchar  [NN]
+gegenereerd_door: varchar  [NN]
+timestamp: timestamp  [NN]
+inhoud_tekst: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="KADERBRON">
+      <data key="d_label">KADERBRON</data>
+      <data key="d_columns">kaderbron_id: varchar  [PK]
+execution_id_geraadpleegd: varchar  [FK, NN]
+artefact_id: varchar  [FK, NN]
+digest_id_header: varchar
+digest_werkelijk: varchar</data>
+      <data key="d_pk">kaderbron_id</data>
+      <data key="d_fk">execution_id_geraadpleegd, artefact_id</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="120" width="290" x="360" y="640" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">KADERBRON
+──────────────────────────────────
+kaderbron_id: varchar  [PK]
+execution_id_geraadpleegd: varchar  [FK, NN]
+artefact_id: varchar  [FK, NN]
+digest_id_header: varchar
+digest_werkelijk: varchar</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="WERKBRON">
+      <data key="d_label">WERKBRON</data>
+      <data key="d_columns">werkbron_id: varchar  [PK]
+execution_id_geraadpleegd: varchar  [FK, NN]
+execution_id_werkbron: varchar  [FK, NN]
+artefact_id: varchar  [FK, NN]
+digest_id_header: varchar
+digest_werkelijk: varchar</data>
+      <data key="d_pk">werkbron_id</data>
+      <data key="d_fk">execution_id_geraadpleegd, execution_id_werkbron, artefact_id</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="134" width="290" x="720" y="640" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">WERKBRON
+──────────────────────────────────
+werkbron_id: varchar  [PK]
+execution_id_geraadpleegd: varchar  [FK, NN]
+execution_id_werkbron: varchar  [FK, NN]
+artefact_id: varchar  [FK, NN]
+digest_id_header: varchar
+digest_werkelijk: varchar</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <node id="HANDOFF">
+      <data key="d_label">HANDOFF</data>
+      <data key="d_columns">handoff_id: varchar  [PK]
+van_execution: varchar  [FK, NN]
+naar_agent: varchar  [FK, NN]
+human_in_the_loop: boolean  [NN]
+van_agent: varchar  [NN]
+artefact_id: varchar  [NN]
+value_stream_fase: varchar  [NN]
+timestamp: timestamp  [NN]
+inhoud_boodschap: text</data>
+      <data key="d_pk">handoff_id</data>
+      <data key="d_fk">van_execution, naar_agent</data>
+      <data key="d_nodegraphics">
+        <y:ShapeNode>
+          <y:Geometry height="176" width="290" x="1080" y="640" />
+          <y:Fill color="#DDEEFF" transparent="false" />
+          <y:BorderStyle color="#336699" type="line" width="1.5" />
+          <y:NodeLabel alignment="left" fontFamily="Courier New" fontSize="11" autoSizePolicy="content" xml:space="preserve">HANDOFF
+──────────────────────────────────
+handoff_id: varchar  [PK]
+van_execution: varchar  [FK, NN]
+naar_agent: varchar  [FK, NN]
+human_in_the_loop: boolean  [NN]
+van_agent: varchar  [NN]
+artefact_id: varchar  [NN]
+value_stream_fase: varchar  [NN]
+timestamp: timestamp  [NN]
+inhoud_boodschap: text</y:NodeLabel>
+          <y:Shape type="rectangle" />
+        </y:ShapeNode>
+      </data>
+    </node>
+    <edge id="e0" source="AGENT" target="VALUE_STREAM_FASE">
+      <data key="d_e_label">value_stream_fase_code → value_stream_fase_code</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">value_stream_fase_code → value_stream_fase_code</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e1" source="INTENT" target="AGENT">
+      <data key="d_e_label">agent_id → agent_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">agent_id → agent_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e2" source="INTENT" target="ARTEFACT_TYPE">
+      <data key="d_e_label">artefact_type_id → artefact_type_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">artefact_type_id → artefact_type_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e3" source="INVOER_PARAMETER" target="INTENT">
+      <data key="d_e_label">intent_id → intent_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">intent_id → intent_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e4" source="ARTEFACT_TYPE" target="TEMPLATE">
+      <data key="d_e_label">template_id → template_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">template_id → template_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e5" source="EXECUTION" target="AGENT">
+      <data key="d_e_label">agent_id → agent_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">agent_id → agent_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e6" source="EXECUTION" target="INTENT">
+      <data key="d_e_label">intent_id → intent_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">intent_id → intent_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e7" source="EXECUTION" target="ORCHESTRATIE_RUN">
+      <data key="d_e_label">orchestratie_run_id → orchestratie_run_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">orchestratie_run_id → orchestratie_run_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e8" source="ARTEFACT" target="ARTEFACT_TYPE">
+      <data key="d_e_label">artefact_type_id → artefact_type_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">artefact_type_id → artefact_type_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e9" source="KADERBRON" target="EXECUTION">
+      <data key="d_e_label">execution_id_geraadpleegd → execution_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">execution_id_geraadpleegd → execution_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e10" source="KADERBRON" target="ARTEFACT">
+      <data key="d_e_label">artefact_id → artefact_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">artefact_id → artefact_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e11" source="WERKBRON" target="EXECUTION">
+      <data key="d_e_label">execution_id_geraadpleegd → execution_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">execution_id_geraadpleegd → execution_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e12" source="WERKBRON" target="EXECUTION">
+      <data key="d_e_label">execution_id_werkbron → execution_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">execution_id_werkbron → execution_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e13" source="WERKBRON" target="ARTEFACT">
+      <data key="d_e_label">artefact_id → artefact_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">artefact_id → artefact_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e14" source="HANDOFF" target="EXECUTION">
+      <data key="d_e_label">van_execution → execution_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">van_execution → execution_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e15" source="HANDOFF" target="AGENT">
+      <data key="d_e_label">naar_agent → agent_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">naar_agent → agent_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e16" source="ARTEFACT" target="HERKOMST_KETEN">
+      <data key="d_e_label">herkomstcode → herkomstcode</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">herkomstcode → herkomstcode</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e17" source="HERKOMST_KETEN" target="ARTEFACT">
+      <data key="d_e_label">initierend_artefact → artefact_id</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">initierend_artefact → artefact_id</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e18" source="VALUE_STREAM_FASE" target="VALUE_STREAM">
+      <data key="d_e_label">value_stream_code → value_stream_code</data>
+      <data key="d_cardinality">many-to-one</data>
+      <data key="d_edgegraphics">
+        <y:PolyLineEdge>
+          <y:LineStyle color="#336699" type="line" width="1.0" />
+          <y:Arrows source="none" target="standard" />
+          <y:EdgeLabel alignment="center" fontSize="10">value_stream_code → value_stream_code</y:EdgeLabel>
+          <y:BendStyle smoothed="false" />
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+</graphml>

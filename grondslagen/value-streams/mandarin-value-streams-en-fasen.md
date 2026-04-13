@@ -1,7 +1,7 @@
 ---
 type: value-stream
 naam: Mandarin Value Streams en Fasen
-versie: 1.7.0
+versie: 1.8.0
 digest: 2536
 status: vers
 ---
@@ -43,6 +43,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 | # | Code | Value Stream | Type | Primaire Focus |
 |---|------|--------------|------|----------------|
+| — | FND  | Foundation | Fundament | Vastleggen van architectonische grondslagen en workspace-standaarden die ecosysteem-breed gelden |
 | 0 | AEO  | Agent Ecosysteem Ontwikkeling | Ecosysteem | Vorming en evolutie van het agent-ecosysteem |
 | 1 | SFW  | Softwareontwikkeling | Waarde | Realiseren, wijzigen en onderhouden van software |
 | 2 | AOD  | Architectuur- en Oplossingsontwerp | Waarde | Ontwerpen en onderbouwen van oplossingsrichtingen |
@@ -52,6 +53,18 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 ---
 
 ## 3. Value Stream Definities en Fasen
+
+### 3.— Foundation (FND)
+
+**Type**: Fundament value stream  
+**Omschrijving**: Deze value stream omvat de architectonische grondslagen die ecosysteem-breed en workspace-breed gelden — los van enige specifieke value stream. Agents en doctrines in FND definiëren de basisconventies voor workspace-structuur, naamgeving en standaarden waarop alle andere value streams steunen. FND is geen uitvoerende value stream; zij produceert geen bedrijfs-artefacten, maar normatieve fundament-artefacten.
+
+**Fasen**:
+
+01. **Fundament**  
+   Het vaststellen en onderhouden van workspace-architectuur, structuurstandaarden en basisconventies die voor alle workspaces en value streams gelden.
+
+---
 
 ### 3.0 Agent Ecosysteem Ontwikkeling (AEO)
 
@@ -190,6 +203,7 @@ Het Mandarin-ecosysteem onderkent de volgende value streams:
 
 | Datum | Versie | Wijziging | Auteur |
 |-------|--------|-----------|--------|
+| 2026-04-12 | 1.8.0 | Toegevoegd: FND (Foundation) als fundament value stream in overzichtstabel en §3; was impliciet aanwezig via mapstructuur en workspace-doctrine maar niet opgenomen in dit document | Hans Blok |
 | 2026-03-23 | 1.7.0 | Herijking value stream AOD: fasen geconsolideerd van 9 naar 5 conform togaf.kaderdefinitie.md. Fasen G en H (governance, change management) verwijderd — worden impliciet behandeld via curator-rollen. Expliciete verwijzing naar kaderdefinitie toegevoegd. | Hans Blok |
 | 2026-02-15 | 1.6.0 | Herziening value stream AOD: fase 01 hernoemd naar "Strategie en Motivatie" (architectuur-normering), fase 02 "Structureren" (ArchiMate core-framework), fase 03 "Oplossingsontwerp" (ArchiMate en C4) | Constitutioneel Auteur |
 | 2026-02-05 | 1.5.0 | Aanpassing: value stream Ondernemingsvorming (ONV) vervangen door Markt- en Investeringsvorming (MIV) met herziene, op onzekerheidsreductie gerichte fasering | Constitutioneel Auteur |

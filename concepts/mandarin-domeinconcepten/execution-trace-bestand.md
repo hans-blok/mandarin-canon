@@ -16,6 +16,7 @@ Het execution-trace-bestand is de audit- en linkdrager van een executie. Waar he
 
 - Is een zelfstandig **Mandarin-artefact** naast het execution-bestand
 - Bevat minimaal `execution_id` en `execution_digest`
+- Bevat bij voorkeur ook `execution_identificatie`
 - Legt per bron of segment de herkomst en opnamevorm vast
 - Ondersteunt volledige opname, fragment-opname en samenvatting
 - Maakt audit, kruisverwijzing en latere controle op opnamebeslissingen mogelijk
@@ -45,9 +46,10 @@ Bij `opnamevorm = fragment` wordt minimaal een heading-gebaseerde segment-identi
 | **Bronpakket** | legt de herkomst vast van onderdelen die in het bronpakket zijn opgenomen |
 | **Bronassemblage** | verantwoordt keuzes die tijdens assemblage zijn gemaakt |
 | **Traceerbaarheid** | concrete drager van traceability op bron- en segmentniveau |
+| **Artefact-type** | classificeert execution-trace-bestand als eigen artefactsoort naast execution-bestand |
 
 ## Traceerbaarheid
 
 - Vastgesteld door: **concept-curator** (fnd.02.concept-curator)
-- Laatst gewijzigd: 2026-04-06
-- Bronnen: mandarin-domeinconcepten.md, doctrine-traceability.md
+- Laatst gewijzigd: 2026-04-09
+- Bronnen: mandarin-domeinconcepten.md, doctrine-traceability.md, memo-sleutels-identificaties-en-loose-coupling.md

@@ -77,7 +77,7 @@ Elk **agent-contract** legt per output vast welk template van toepassing is.
 intent: <intent-naam>
 output:
   - type: <artefact-type>
-    herkomstpositie: initiërend | voortbouwend
+    herkomstpositie: initierend | voortbouwend
     template: <template-pad> | ~
 ```
 
@@ -103,7 +103,7 @@ De template-verwijzing in het contract is:
 intent: definieer-concept
 output:
   - type: concept-definitie
-    herkomstpositie: initiërend
+    herkomstpositie: initierend
     template: templates/concept.template.md
 ```
 
@@ -112,7 +112,7 @@ output:
 intent: aggregeer-tasks
 output:
   - type: tasks-configuratie
-    herkomstpositie: initiërend
+    herkomstpositie: initierend
     template: ~
 ```
 

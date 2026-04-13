@@ -1,9 +1,9 @@
 ---
 type: doctrine
 naam: Workspace Doctrine — Architectuur en Standaard voor Workspaces
-versie: 1.5.2
+versie: 1.6.0
 value-stream: FND
-digest: 19f7
+digest: tbd0
 status: vers
 ---
 # Workspace Doctrine — Architectuur en Standaard voor Workspaces
@@ -124,7 +124,7 @@ Elke workspace **moet** de volgende root-structuur hebben:
 - **<workspace>.ping**: Bijvoorbeeld `standard.ping`, `agent-capabilities.ping` - gebruikt voor normatief stelsel actualiteit
 - **state-<naam-workspace>.md**: Bijvoorbeeld `state-standard.md` - logt wijzigingen aan canonieke/normatieve artefacten conform doctrine-workspace-state-en-legitimiteit.md
 
-**Let op**: De folders artefacten/ en templates/ zijn optioneel en afhankelijk van workspace-type (zie onderdeel 1: workspace-architectuur voor details).
+**Let op**: De folders artefacten/ en templates/ zijn optioneel en afhankelijk van workspace-type (zie onderdeel 1: workspace-architectuur voor details). De folder `executions/` is conditioneel verplicht voor workspaces die execution-bestanden, execution-trace-bestanden of handoff-bestanden als runtime-artefacten genereren.
 
 ---
 
@@ -244,6 +244,71 @@ Deze norm is **niet** van toepassing op de workspaces **mandarin-agents** en **m
 
 ---
 
+## 5.2 Norm: Execution-bundels en runtime-opschoning
+
+**Kernprincipe**: Workspaces die execution-bestanden produceren, bundelen alle runtime-artefacten van één technische uitvoering in één samenhangende execution-bundel onder `executions/`. Deze bundeling is bedoeld om opschonen, archiveren, navigeren en auditabiliteit eenvoudiger te maken.
+
+**Toepassingsgebied**:
+- Deze norm geldt voor elke workspace die execution-bestanden, execution-trace-bestanden of handoff-bestanden produceert.
+- Deze norm kan ook gelden voor workspaces met een afwijkende root-architectuur, waaronder `mandarin-canon` en `mandarin-agents`, omdat het hier om runtime-ordening gaat en niet om de volledige root-structuur.
+
+**Norm**:
+
+```
+<workspace-root>/
+└── executions/
+    └── exec-JJMM.XXXX.agent.intent/
+        ├── execution.md
+        ├── contract.yaml
+        ├── prompt-instructions/
+        │   └── prompt.md
+        ├── trace/
+        │   └── execution-trace.yaml
+        ├── handoffs/
+        │   └── hf-JJMM.NNNN.handoff.md
+        └── artefacts/
+```
+
+### Naamgeving en prefixes
+
+1. **Execution-bundel-map** gebruikt als prefix altijd `exec-`.
+   - Formaat: `exec-JJMM.XXXX.agent.intent`
+   - Voorbeeld: `exec-2604.Cs7K.concept-curator.definieer-concept`
+
+2. **Gebruik nooit de kale `execution_id` als mapnaam**.
+   - `JJMM.XXXX` is onvoldoende onderscheidend als filesystem-identiteit.
+   - De kale `execution_id` ligt semantisch te dicht bij herkomstcodes en andere hash-achtige sleutels.
+
+3. **Handoff-bestanden** behouden de vaste `hf-` prefix.
+   - Formaat: `hf-JJMM.NNNN.handoff.md`
+
+4. **Herkomstcodes** blijven prefixloos.
+   - De herkomstcode identificeert een artefactketen.
+   - De herkomstcode is nadrukkelijk geen mapnaam van een execution-bundel.
+
+### Ontwerpkeuzes
+
+- `execution.md` is het primaire uitvoeringsbestand binnen de bundel.
+- `contract.yaml` is een execution-lokale contractweergave of contractsnapshot die hoort bij de uitvoering.
+- `prompt-instructions/` bevat de prompt-instructies die bij de uitvoering horen; een vaste bestandsnaam `prompt.md` heeft de voorkeur boven herhaling van identifiers in bestandsnamen.
+- `trace/execution-trace.yaml` blijft een zelfstandig artefact, maar ligt wel binnen dezelfde execution-bundel.
+- `handoffs/` bevat alleen handoff-bestanden die vanuit deze uitvoering zijn uitgegeven.
+- `artefacts/` bevat execution-lokale output, tussenresultaten en andere runtime-artefacten die bij deze uitvoering horen.
+
+### Afbakening
+
+- Canonieke, herbruikbare templates blijven in `templates/` op workspace-niveau en worden niet verplaatst naar de execution-bundel.
+- Alleen execution-lokale afgeleiden, snapshots of gegenereerde output horen in `artefacts/`.
+- De execution-bundel vervangt niet de canonieke opslaglocaties voor governance-artefacten, publicaties of generieke templates.
+
+### Legacy-status en overgang
+
+- De platte structuur `executions/{id}.{agent}.{intent}.md` geldt vanaf deze versie als **legacy**.
+- Nieuwe doctrine-conforme implementaties schrijven naar een execution-bundel.
+- Bestaande tooling mag tijdelijk de legacy-structuur blijven lezen totdat runners, validatie en cleanup zijn aangepast.
+
+---
+
 ## 6. Gebruik van de workspace-doctrine
 
 ### 6.1 Door Workspace-steward
@@ -285,6 +350,7 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-04-08 | 1.6.0  | Toegevoegd: execution-bundels onder `executions/` met expliciete `exec-` prefix, vaste submappen en legacy-status voor platte execution-structuur | Constitutioneel Auteur |
 | 2026-01-14 | 1.0.0  | Eerste versie, bundelt workspace-architectuur en workspace-standaard in één workspace-doctrine | Charter Schrijver |
 | 2026-01-14 | 1.1.0  | Root-structuur aangescherpt: verplichte folders (.github, beleid, docs, scripts, logs), verplichte root-bestanden (.gitignore, README.md, <workspace>.ping, state-<naam-workspace>.md), Herkomstverantwoording sectie toegevoegd | Constitutioneel Auteur |
 | 2026-01-16 | 1.1.1  | UITZONDERING toegevoegd: workspace-doctrine structuur niet van toepassing op workspaces agent-services en canon | Canon Curator |
