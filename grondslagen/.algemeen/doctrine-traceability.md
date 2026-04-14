@@ -1,7 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Traceability en Herkomstcode
-versie: 1.5.0
+versie: 1.6.0
 digest: tbd0
 status: vers
 ---
@@ -328,9 +328,46 @@ De modus beïnvloedt de eisen aan opnamevorm, compactheid en controleerbaarheid.
 
 ---
 
-## 7. Execution-trace-bestand
+## 7. YAML-documentheader als verplicht traceerbaarheidsmechanisme
 
 ### 7.1 Norm
+
+Elk canoniek Mandarin-bestand heeft een YAML-frontmatter die overeenkomt met de entiteitsklasse van het bestand. De header is de fysieke drager van de traceerbaarheidsmetadata: zonder header zijn `herkomstcode`, `artefact-id` en `execution-id` niet machine-leesbaar aanwezig en is traceerbaarheid niet afdwingbaar.
+
+De gezaghebbende headerstructuur per entiteitsklasse is vastgelegd in `templates/yaml-header.template.md`.
+
+### 7.2 Entiteitsklassen en verplichte traceability-velden
+
+| Bestandspatroon | Entiteitsklasse | Verplichte traceability-velden |
+|----------------|-----------------|-------------------------------|
+| `*.charter.md`, `*agent-boundary*.md` | AGENT | `agent-id` |
+| `*.agent.md` (contract) | INTENT | `intent-id`, `agent-id` |
+| concept, rapport, datamodel, Gherkin, SQL | ARTEFACT | `artefact-id`, `herkomstcode`, `herkomstpositie`, `execution-id` |
+| `*.template.md` | TEMPLATE | `template-id` |
+| `*.prompt.md` | EXECUTION | `execution-id`, `execution-code` |
+| `hf-*.md`, handoff-bestanden | HANDOFF | `handoff-id`, `van-execution` |
+
+### 7.3 Vrijgestelde bestanden
+
+De volgende categorieën zijn vrijgesteld van de YAML-header-verplichting:
+
+- Technische configuratiebestanden (`beleid-workspace.md` als workspace-config, `.github/`-configuratie)
+- Tijdelijke werkbestanden in `temp/`
+- `README.md` en overige documentatiebestanden zonder canonieke governance-status
+
+### 7.4 Verantwoordelijkheid
+
+| Actie | Verantwoordelijke |
+|-------|-------------------|
+| Vullen van traceability-velden (`herkomstcode`, `artefact-id`, `execution-id`) | Runner |
+| Vullen van overige velden (`versie`, `status`, `digest`) | Auteur / agent |
+| Controle op aanwezigheid en correctheid van de header | Runner / Agent-curator |
+
+---
+
+## 8. Execution-trace-bestand
+
+### 8.1 Norm
 
 Naast elk execution-bestand bestaat een apart **execution-trace-bestand**.
 
@@ -342,7 +379,7 @@ Het execution-trace-bestand:
 - fungeert als audit- en linkdrager;
 - laat het execution-bestand de uitvoeringsdrager blijven.
 
-### 7.2 Minimale koppeling
+### 8.2 Minimale koppeling
 
 Een execution-trace-bestand is alleen geldig als `execution_id` en `execution_digest` exact verwijzen naar één bestaand execution-bestand.
 
@@ -351,7 +388,7 @@ Wanneer de workspace-doctrine een execution-bundel voorschrijft, geldt aanvullen
 - binnen die bundel verwijst het naar exact één primair execution-bestand;
 - de aanwezigheid van een gedeelde bundelmap verandert niets aan de zelfstandigheid van het execution-trace-bestand als artefact.
 
-### 7.3 Per-bronmodel
+### 8.3 Per-bronmodel
 
 Elke opgenomen of samengevatte bron bevat minimaal:
 
@@ -367,7 +404,7 @@ Toegestane waarden voor `opnamevorm` zijn:
 - `fragment`
 - `samenvatting`
 
-### 7.4 Segment-identificatie
+### 8.4 Segment-identificatie
 
 Wanneer `opnamevorm = fragment`, wordt minimaal een heading-gebaseerde segment-identificatie vastgelegd.
 
@@ -379,9 +416,9 @@ Optioneel mogen aanvullend worden vastgelegd:
 
 ---
 
-## 8. Normering voor compacte opname
+## 9. Normering voor compacte opname
 
-### 8.1 Handmatige modus
+### 9.1 Handmatige modus
 
 In `handmatig`e modus moet minimaal expliciet aanwezig zijn:
 
@@ -391,7 +428,7 @@ In `handmatig`e modus moet minimaal expliciet aanwezig zijn:
 - de expliciete lijst van opgenomen bronnen;
 - de normatieve kerninhoud waarop de uitvoering direct steunt.
 
-### 8.2 Segment-opname
+### 9.2 Segment-opname
 
 Grote bronnen mogen per segment worden opgenomen, mits:
 
@@ -399,7 +436,7 @@ Grote bronnen mogen per segment worden opgenomen, mits:
 - het segment inhoudelijk voldoende is voor de uitvoering;
 - de opnamevorm in het execution-trace-bestand wordt vastgelegd.
 
-### 8.3 Samenvatting
+### 9.3 Samenvatting
 
 Samenvatting is alleen toegestaan wanneer:
 
@@ -408,15 +445,15 @@ Samenvatting is alleen toegestaan wanneer:
 - de reden van samenvatting expliciet wordt verantwoord;
 - de samenvatting de normatieve betekenis niet vervangt maar representeert.
 
-### 8.4 Verbod op stille weglating
+### 9.4 Verbod op stille weglating
 
 Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of compactie die relevant is voor legitimiteit, interpretatie of besluitvorming moet expliciet traceerbaar zijn.
 
 ---
 
-## 9. Validatie en governance
+## 10. Validatie en governance
 
-### 9.1 Verplichtingen
+### 10.1 Verplichtingen
 
 | Verplichting | Verantwoordelijke |
 |--------------|-------------------|
@@ -424,13 +461,14 @@ Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of
 | Generatie herkomstcode | Runner |
 | Overerving herkomstcode | Runner |
 | Vastleggen execution-identiteit | Runner |
+| Vullen YAML-traceability-velden in documentheader | Runner |
 | Generatie execution-trace-bestand | Runner |
 | Validatie herkomstcode-formaat | Runner / Agent-curator |
 | Validatie opnamevorm en segment-traceability | Runner / Agent-curator |
-| Controle op aanwezigheid | Agent-curator |
+| Controle op aanwezigheid YAML-header | Agent-curator |
 | Overzicht artefact-types | Ecosysteem-beschrijver |
 
-### 9.2 Validatieregels
+### 10.2 Validatieregels
 
 Een herkomstcode is **geldig** als:
 
@@ -439,11 +477,12 @@ Een herkomstcode is **geldig** als:
 3. XXXX exact 4 alfanumerieke karakters bevat
 4. Bij voortbouwende artefacten: het initierend artefact bestaat en dezelfde code bevat
 5. Elk execution-bestand de verplichte velden van de execution-identiteit bevat
-6. Elk execution-trace-bestand exact verwijst naar een bestaand execution-bestand via `execution_id` en `execution_digest`
-7. Elke bronvermelding in een execution-trace-bestand de verplichte trace-velden bevat
-8. Bij `opnamevorm = fragment` minimaal een heading-gebaseerde segment-identificatie aanwezig is
+6. Elk canoniek Mandarin-bestand een YAML-header heeft conform `templates/yaml-header.template.md`
+7. Elk execution-trace-bestand exact verwijst naar een bestaand execution-bestand via `execution_id` en `execution_digest`
+8. Elke bronvermelding in een execution-trace-bestand de verplichte trace-velden bevat
+9. Bij `opnamevorm = fragment` minimaal een heading-gebaseerde segment-identificatie aanwezig is
 
-### 9.3 Foutafhandeling
+### 10.3 Foutafhandeling
 
 | Situatie | Actie |
 |----------|-------|
@@ -451,15 +490,16 @@ Een herkomstcode is **geldig** als:
 | Ongeldig formaat | Runner corrigeert of weigert verwerking |
 | Initierend artefact niet gevonden | Escalatie naar menselijke validatie |
 | Mismatch in keten | Audit-log entry; escalatie naar canon-curator |
+| YAML-header ontbreekt | Bestand is onvolledig; header toevoegen vóór verdere verwerking |
 | Execution-trace-bestand ontbreekt | Executie is onvolledig en niet volledig auditbaar |
 | Ontbrekend execution_digest | Koppeling ongeldig; verwerking weigeren of corrigeren |
 | Samenvatting zonder bronverwijzing | Ongeldige compacte opname; escalatie naar menselijke validatie |
 
 ---
 
-## 10. Scope-afbakening
+## 11. Scope-afbakening
 
-### 10.1 Wat valt onder deze doctrine
+### 11.1 Wat valt onder deze doctrine
 
 - Alle agent-geproduceerde artefacten
 - Execution-files en hun output
@@ -467,7 +507,7 @@ Een herkomstcode is **geldig** als:
 - Wijzigingen aan bestaande artefacten
 - Governance-artefacten (doctrines, charters, contracten)
 
-### 10.2 Wat valt buiten deze doctrine
+### 11.2 Wat valt buiten deze doctrine
 
 - Handmatig door mensen gecreëerde artefacten zonder agent-betrokkenheid
 - Tijdelijke werk-artefacten (scratch files)
@@ -475,7 +515,7 @@ Een herkomstcode is **geldig** als:
 
 ---
 
-## 11. Slotbepaling
+## 12. Slotbepaling
 
 Traceability is geen administratieve last,
 maar een **architectonisch fundament**.
@@ -493,6 +533,7 @@ is een artefact zonder verleden.
 
 | Datum      | Versie | Wijziging                                                           | Auteur            |
 |------------|--------|---------------------------------------------------------------------|-------------------|
+| 2026-04-13 | 1.6.0  | §7 toegevoegd: YAML-documentheader als verplicht traceerbaarheidsmechanisme; `templates/yaml-header.template.md` gepromoveerd als gezaghebbende bron; validatieregels en verplichtingentabel uitgebreid | Hans Blok |
 | 2026-04-12 | 1.5.0  | Hernoemd: `execution_identificatie` → `execution_code` conform TDM; `initierend` → `initierend` als canonieke veldwaarde conform TDM | Hans Blok |
 | 2026-04-08 | 1.4.0  | Verduidelijkt: onderscheid tussen `execution_id` en `execution_identificatie`; execution-bundel als runtime-locatieconventie; koppeling van trace-bestand aan bundel en primair execution-bestand | Constitutioneel Auteur |
 | 2026-04-06 | 1.2.0  | Toegevoegd: execution-identiteit, execution-trace-bestand, verplichte trace-velden en normering voor compacte opname | Concept-curator |
