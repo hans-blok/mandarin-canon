@@ -1,7 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Traceability en Herkomstcode
-versie: 1.6.0
+versie: 1.7.0
 digest: tbd0
 status: vers
 ---
@@ -27,6 +27,21 @@ Dit normatief artefact is opgesteld op basis van de volgende bronnen:
 
 ---
 
+## Classificatie
+
+Deze doctrine positioneert zich als volgt op de vier orthogonale assen:
+
+| Betekeniseffect | Vormingsfase | Werking | Bronhouding |
+|---|---|---|---|
+| normerend | ordening / vastlegging | procedureel | canon-gebonden |
+
+- **Betekeniseffect** — *normerend*: stelt expliciete normen voor traceerbaarheid en herkomstcode-generatie
+- **Vormingsfase** — *ordening / vastlegging*: structureert en formaliseert de keten van herkomstcodes en execution-identiteiten
+- **Werking** — *procedureel*: schrijft procedures voor het genereren, erven en valideren van herkomstcodes en YAML-headers
+- **Bronhouding** — *canon-gebonden*: baseert zich uitsluitend op canonieke bronnen en templates
+
+---
+
 ## 1. Doel en scope
 
 Deze doctrine normeert de **traceerbaarheid** van artefacten binnen het Mandarin-ecosysteem door:
@@ -41,7 +56,7 @@ Traceability waarborgt dat elk artefact herleidbaar is naar zijn oorsprong, onge
 
 ## 2. Herkomstcode
 
-### 2.1 Definitie
+### 2.1 — Definitie
 
 Een **herkomstcode** is een unieke, door het systeem gegenereerde identificatiecode die de oorsprong van een artefact-keten markeert.
 
@@ -51,7 +66,7 @@ De herkomstcode:
 - is onveranderlijk na generatie
 - fungeert als permanente referentie voor audit en traceerbaarheid
 
-### 2.2 Conventie
+### 2.2 — Conventie
 
 ```
 Format:  JJMM.XXXX
@@ -65,7 +80,7 @@ Format:  JJMM.XXXX
 - `2601.Ab3K` — Januari 2026, hash Ab3K
 - `2512.9xQm` — December 2025, hash 9xQm
 
-### 2.3 Hash-generatie
+### 2.3 — Hash-generatie
 
 De 4-karakter hash wordt gegenereerd op basis van:
 
@@ -80,7 +95,7 @@ hash = truncate(base62(md5(hash_input)), 4)
 - **Deterministische afleiding**: Zelfde input levert zelfde hash
 - **Collision-resistent**: 62^4 = 14.776.336 mogelijke waarden per maand
 
-### 2.4 Verantwoordelijkheid voor generatie
+### 2.4 — Verantwoordelijkheid voor generatie
 
 De **runner** is verantwoordelijk voor het genereren van de herkomstcode.
 
@@ -93,7 +108,7 @@ Dit sluit aan bij de handoff-doctrine:
 
 ## 3. Herkomstpositie en gedrag
 
-### 3.1 Vastlegging in agent-contract
+### 3.1 — Vastlegging in agent-contract
 
 De **herkomstpositie** wordt vastgelegd als eigenschap van de output-specificatie in het **agent-contract**:
 
@@ -117,7 +132,7 @@ output:
 
 **Ontwerpkeuze**: De herkomstpositie is een eigenschap van het contract, niet van een apart register. Dit houdt de definitie bij de bron (het contract) en voorkomt synchronisatieproblemen.
 
-### 3.2 Runner-logica
+### 3.2 — Runner-logica
 
 De **runner** leest de herkomstpositie uit het contract en handelt dienovereenkomstig:
 
@@ -133,7 +148,7 @@ ELSE:
     FOUT: ongeldige herkomstpositie
 ```
 
-### 3.3 Initierend artefact
+### 3.3 — Initierend artefact
 
 Een artefact met herkomstpositie **initierend**:
 
@@ -149,7 +164,7 @@ Een artefact met herkomstpositie **initierend**:
 - Creatie van een nieuw governance-artefact
 - Elke situatie waarin geen eerder initierend artefact in de keten bestaat
 
-### 3.4 Voortbouwend artefact
+### 3.4 — Voortbouwend artefact
 
 Een artefact met herkomstpositie **voortbouwend**:
 
@@ -169,7 +184,7 @@ Een artefact met herkomstpositie **voortbouwend**:
 
 ## 4. Header-structuur
 
-### 4.1 Initierend artefact
+### 4.1 — Initierend artefact
 
 ```yaml
 ---
@@ -180,7 +195,7 @@ datum: 2026-03-20
 ---
 ```
 
-### 4.2 Voortbouwend artefact
+### 4.2 — Voortbouwend artefact
 
 ```yaml
 ---
@@ -192,7 +207,7 @@ datum: 2026-03-20
 ---
 ```
 
-### 4.3 Integratie met Herkomst-sectie
+### 4.3 — Integratie met Herkomst-sectie
 
 De herkomstcode wordt opgenomen in de Herkomst-sectie zoals gedefinieerd in de handoff-doctrine (sectie 7):
 
@@ -212,7 +227,7 @@ De herkomstcode wordt opgenomen in de Herkomst-sectie zoals gedefinieerd in de h
 
 ## 5. Relatie tot handoff-discipline
 
-### 5.1 Complementariteit
+### 5.1 — Complementariteit
 
 | Aspect | Handoff-discipline | Traceability-discipline |
 |--------|-------------------|------------------------|
@@ -221,7 +236,7 @@ De herkomstcode wordt opgenomen in de Herkomst-sectie zoals gedefinieerd in de h
 | **Richting** | Horizontaal (agent → agent) | Verticaal (initierend → voortbouwend) |
 | **Doel** | Legitimiteit van handeling | Herleidbaarheid van oorsprong |
 
-### 5.2 Samenwerking
+### 5.2 — Samenwerking
 
 Een artefact kan zowel een **handoff-id** als een **herkomstcode** bevatten:
 
@@ -230,7 +245,7 @@ Een artefact kan zowel een **handoff-id** als een **herkomstcode** bevatten:
 
 Beide zijn complementair en verplicht bij agent-geproduceerde artefacten.
 
-### 5.3 Voorbeeld keten
+### 5.3 — Voorbeeld keten
 
 ```
 ┌────────────────────────────────────────────────────────────────┐
@@ -261,7 +276,7 @@ Beide zijn complementair en verplicht bij agent-geproduceerde artefacten.
 
 ## 6. Execution-identiteit en koppelmechanisme
 
-### 6.1 Verplichte execution-identiteit
+### 6.1 — Verplichte execution-identiteit
 
 Een **execution-bestand** is identificeerbaar via minimaal de volgende velden:
 
@@ -277,7 +292,7 @@ Een **execution-bestand** is identificeerbaar via minimaal de volgende velden:
 
 Deze velden vormen samen de minimale execution-identiteit.
 
-### 6.2 Onderscheid tussen `execution_id` en `execution_code`
+### 6.2 — Onderscheid tussen `execution_id` en `execution_code`
 
 Binnen deze doctrine worden twee verwante maar niet identieke sleutels onderscheiden:
 
@@ -291,7 +306,7 @@ Binnen deze doctrine worden twee verwante maar niet identieke sleutels ondersche
 - de execution-bundel gebruikt **niet** de kale `execution_id` als mapnaam;
 - externe verwijzingen tussen execution-bestand, handoff-bestand en trace-bestand gebruiken `execution_code`.
 
-### 6.3 Rol van execution_digest
+### 6.3 — Rol van execution_digest
 
 Het **execution_digest** is een stabiel traceerbaarheidsanker binnen de bredere herkomstidentiteit van de executie. Het wordt gebruikt voor:
 
@@ -302,7 +317,7 @@ Het **execution_digest** is een stabiel traceerbaarheidsanker binnen de bredere 
 
 Het execution_digest vervangt de herkomstcode niet. De herkomstcode identificeert de plaats van de executie in de artefactketen; het execution_digest identificeert de technische uitvoering waarop die ketenverwijzing betrekking heeft.
 
-### 6.4 Locatieconventie voor execution-bundels
+### 6.4 — Locatieconventie voor execution-bundels
 
 De workspace-doctrine kan een **execution-bundel** voorschrijven als primaire runtime-opslagvorm.
 
@@ -317,7 +332,7 @@ executions/
 
 De mapnaam is de primaire filesystem-identiteit van de uitvoering. Het execution-bestand en het execution-trace-bestand blijven daarin zelfstandige artefacten met eigen rollen.
 
-### 6.5 Modus
+### 6.5 — Modus
 
 Elke execution legt expliciet de modus vast:
 
@@ -330,13 +345,13 @@ De modus beïnvloedt de eisen aan opnamevorm, compactheid en controleerbaarheid.
 
 ## 7. YAML-documentheader als verplicht traceerbaarheidsmechanisme
 
-### 7.1 Norm
+### 7.1 — Norm
 
 Elk canoniek Mandarin-bestand heeft een YAML-frontmatter die overeenkomt met de entiteitsklasse van het bestand. De header is de fysieke drager van de traceerbaarheidsmetadata: zonder header zijn `herkomstcode`, `artefact-id` en `execution-id` niet machine-leesbaar aanwezig en is traceerbaarheid niet afdwingbaar.
 
 De gezaghebbende headerstructuur per entiteitsklasse is vastgelegd in `templates/yaml-header.template.md`.
 
-### 7.2 Entiteitsklassen en verplichte traceability-velden
+### 7.2 — Entiteitsklassen en verplichte traceability-velden
 
 | Bestandspatroon | Entiteitsklasse | Verplichte traceability-velden |
 |----------------|-----------------|-------------------------------|
@@ -347,7 +362,7 @@ De gezaghebbende headerstructuur per entiteitsklasse is vastgelegd in `templates
 | `*.prompt.md` | EXECUTION | `execution-id`, `execution-code` |
 | `hf-*.md`, handoff-bestanden | HANDOFF | `handoff-id`, `van-execution` |
 
-### 7.3 Vrijgestelde bestanden
+### 7.3 — Vrijgestelde bestanden
 
 De volgende categorieën zijn vrijgesteld van de YAML-header-verplichting:
 
@@ -355,7 +370,7 @@ De volgende categorieën zijn vrijgesteld van de YAML-header-verplichting:
 - Tijdelijke werkbestanden in `temp/`
 - `README.md` en overige documentatiebestanden zonder canonieke governance-status
 
-### 7.4 Verantwoordelijkheid
+### 7.4 — Verantwoordelijkheid
 
 | Actie | Verantwoordelijke |
 |-------|-------------------|
@@ -367,7 +382,7 @@ De volgende categorieën zijn vrijgesteld van de YAML-header-verplichting:
 
 ## 8. Execution-trace-bestand
 
-### 8.1 Norm
+### 8.1 — Norm
 
 Naast elk execution-bestand bestaat een apart **execution-trace-bestand**.
 
@@ -379,7 +394,7 @@ Het execution-trace-bestand:
 - fungeert als audit- en linkdrager;
 - laat het execution-bestand de uitvoeringsdrager blijven.
 
-### 8.2 Minimale koppeling
+### 8.2 — Minimale koppeling
 
 Een execution-trace-bestand is alleen geldig als `execution_id` en `execution_digest` exact verwijzen naar één bestaand execution-bestand.
 
@@ -388,7 +403,7 @@ Wanneer de workspace-doctrine een execution-bundel voorschrijft, geldt aanvullen
 - binnen die bundel verwijst het naar exact één primair execution-bestand;
 - de aanwezigheid van een gedeelde bundelmap verandert niets aan de zelfstandigheid van het execution-trace-bestand als artefact.
 
-### 8.3 Per-bronmodel
+### 8.3 — Per-bronmodel
 
 Elke opgenomen of samengevatte bron bevat minimaal:
 
@@ -404,7 +419,7 @@ Toegestane waarden voor `opnamevorm` zijn:
 - `fragment`
 - `samenvatting`
 
-### 8.4 Segment-identificatie
+### 8.4 — Segment-identificatie
 
 Wanneer `opnamevorm = fragment`, wordt minimaal een heading-gebaseerde segment-identificatie vastgelegd.
 
@@ -418,7 +433,7 @@ Optioneel mogen aanvullend worden vastgelegd:
 
 ## 9. Normering voor compacte opname
 
-### 9.1 Handmatige modus
+### 9.1 — Handmatige modus
 
 In `handmatig`e modus moet minimaal expliciet aanwezig zijn:
 
@@ -428,7 +443,7 @@ In `handmatig`e modus moet minimaal expliciet aanwezig zijn:
 - de expliciete lijst van opgenomen bronnen;
 - de normatieve kerninhoud waarop de uitvoering direct steunt.
 
-### 9.2 Segment-opname
+### 9.2 — Segment-opname
 
 Grote bronnen mogen per segment worden opgenomen, mits:
 
@@ -436,7 +451,7 @@ Grote bronnen mogen per segment worden opgenomen, mits:
 - het segment inhoudelijk voldoende is voor de uitvoering;
 - de opnamevorm in het execution-trace-bestand wordt vastgelegd.
 
-### 9.3 Samenvatting
+### 9.3 — Samenvatting
 
 Samenvatting is alleen toegestaan wanneer:
 
@@ -445,7 +460,7 @@ Samenvatting is alleen toegestaan wanneer:
 - de reden van samenvatting expliciet wordt verantwoord;
 - de samenvatting de normatieve betekenis niet vervangt maar representeert.
 
-### 9.4 Verbod op stille weglating
+### 9.4 — Verbod op stille weglating
 
 Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of compactie die relevant is voor legitimiteit, interpretatie of besluitvorming moet expliciet traceerbaar zijn.
 
@@ -453,7 +468,7 @@ Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of
 
 ## 10. Validatie en governance
 
-### 10.1 Verplichtingen
+### 10.1 — Verplichtingen
 
 | Verplichting | Verantwoordelijke |
 |--------------|-------------------|
@@ -468,7 +483,7 @@ Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of
 | Controle op aanwezigheid YAML-header | Agent-curator |
 | Overzicht artefact-types | Ecosysteem-beschrijver |
 
-### 10.2 Validatieregels
+### 10.2 — Validatieregels
 
 Een herkomstcode is **geldig** als:
 
@@ -482,7 +497,7 @@ Een herkomstcode is **geldig** als:
 8. Elke bronvermelding in een execution-trace-bestand de verplichte trace-velden bevat
 9. Bij `opnamevorm = fragment` minimaal een heading-gebaseerde segment-identificatie aanwezig is
 
-### 10.3 Foutafhandeling
+### 10.3 — Foutafhandeling
 
 | Situatie | Actie |
 |----------|-------|
@@ -499,7 +514,7 @@ Een herkomstcode is **geldig** als:
 
 ## 11. Scope-afbakening
 
-### 11.1 Wat valt onder deze doctrine
+### 11.1 — Wat valt onder deze doctrine
 
 - Alle agent-geproduceerde artefacten
 - Execution-files en hun output
@@ -507,7 +522,7 @@ Een herkomstcode is **geldig** als:
 - Wijzigingen aan bestaande artefacten
 - Governance-artefacten (doctrines, charters, contracten)
 
-### 11.2 Wat valt buiten deze doctrine
+### 11.2 — Wat valt buiten deze doctrine
 
 - Handmatig door mensen gecreëerde artefacten zonder agent-betrokkenheid
 - Tijdelijke werk-artefacten (scratch files)
@@ -529,10 +544,11 @@ is een artefact zonder verleden.
 
 ---
 
-## Wijzigingslog
+## Changelog
 
-| Datum      | Versie | Wijziging                                                           | Auteur            |
-|------------|--------|---------------------------------------------------------------------|-------------------|
+| Datum | Versie | Wijziging | Uitvoer door |
+|---|---|---|---|
+| 2026-04-15 | 1.7.0 | Classificatie toegevoegd; subsectiekoppen voorzien van em-dash; Wijzigingslog hernoemd naar Changelog | Hans Blok |
 | 2026-04-13 | 1.6.0  | §7 toegevoegd: YAML-documentheader als verplicht traceerbaarheidsmechanisme; `templates/yaml-header.template.md` gepromoveerd als gezaghebbende bron; validatieregels en verplichtingentabel uitgebreid | Hans Blok |
 | 2026-04-12 | 1.5.0  | Hernoemd: `execution_identificatie` → `execution_code` conform TDM; `initierend` → `initierend` als canonieke veldwaarde conform TDM | Hans Blok |
 | 2026-04-08 | 1.4.0  | Verduidelijkt: onderscheid tussen `execution_id` en `execution_identificatie`; execution-bundel als runtime-locatieconventie; koppeling van trace-bestand aan bundel en primair execution-bestand | Constitutioneel Auteur |

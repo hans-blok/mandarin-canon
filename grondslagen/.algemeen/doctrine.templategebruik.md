@@ -1,7 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Templategebruik en Structuurborging
-versie: 1.0.0
+versie: 1.1.0
 digest: tbd0
 status: vers
 ---
@@ -25,6 +25,21 @@ Dit normatief artefact is opgesteld op basis van de volgende bronnen:
 
 ---
 
+## Classificatie
+
+Deze doctrine positioneert zich als volgt op de vier orthogonale assen:
+
+| Betekeniseffect | Vormingsfase | Werking | Bronhouding |
+|---|---|---|---|
+| normerend | ordening / vastlegging | procedureel | canon-gebonden |
+
+- **Betekeniseffect** — *normerend*: stelt expliciete normen voor het gebruik van templates in agent-contracten en prompt-YAML
+- **Vormingsfase** — *ordening / vastlegging*: formaliseert de templatekeuze als verplicht onderdeel van het contract en de promptassemblage
+- **Werking** — *procedureel*: schrijft voor hoe templates worden vastgelegd, gespiegeld en gevalideerd
+- **Bronhouding** — *canon-gebonden*: baseert zich uitsluitend op canonieke agent-contracten en prompt-YAML-conventies
+
+---
+
 ## 1. Doel en scope
 
 Deze doctrine normeert het gebruik van **templates** als middel om:
@@ -40,7 +55,7 @@ De doctrine geldt voor alle intents waarvoor een mandarin-agent een artefact, do
 
 ## 2. Normatieve uitgangspunten
 
-### 2.1 Template als structuurdrager
+### 2.1 — Template als structuurdrager
 
 Een **template** legt de vereiste secties, volgorde en minimale vorm van output vast.
 
@@ -50,13 +65,13 @@ Een template:
 - is geen vervanging van het **agent-contract**;
 - is geen bron van normatieve waarheid over intent of governance.
 
-### 2.2 Contract is bron van waarheid
+### 2.2 — Contract is bron van waarheid
 
 Het **agent-contract** is de normatieve bron die bepaalt welk template van toepassing is op de uitvoering van een intent.
 
 De prompt-YAML neemt deze informatie over voor uitvoerbaarheid, maar mag die niet zelfstandig herdefiniëren.
 
-### 2.3 Explicietheid boven implicatie
+### 2.3 — Explicietheid boven implicatie
 
 Templategebruik mag nooit impliciet blijven.
 
@@ -67,7 +82,7 @@ Indien geen template van toepassing is, wordt dat eveneens expliciet vastgelegd 
 
 ## 3. Normering in agent-contracten
 
-### 3.1 Verplichte vastlegging
+### 3.1 — Verplichte vastlegging
 
 Elk **agent-contract** legt per output vast welk template van toepassing is.
 
@@ -81,14 +96,14 @@ output:
     template: <template-pad> | ~
 ```
 
-### 3.2 Betekenis van de waarde
+### 3.2 — Betekenis van de waarde
 
 | Waarde | Betekenis |
 |--------|-----------|
 | `<template-pad>` | De output moet de structuur volgen van het aangewezen template |
 | `~` | Er geldt geen afzonderlijk template; vorm volgt direct uit contract en formaat-eisen |
 
-### 3.3 Ontwerpregel
+### 3.3 — Ontwerpregel
 
 De template-verwijzing in het contract is:
 - verplicht;
@@ -96,7 +111,7 @@ De template-verwijzing in het contract is:
 - relatief ten opzichte van de workspace waar het template wordt beheerd;
 - onderdeel van de contractuele toetsbaarheid van de intent.
 
-### 3.4 Voorbeelden
+### 3.4 — Voorbeelden
 
 ```yaml
 # Voorbeeld: document met expliciet template
@@ -120,7 +135,7 @@ output:
 
 ## 4. Normering in prompt-YAML
 
-### 4.1 Verplichte spiegeling
+### 4.1 — Verplichte spiegeling
 
 De prompt-YAML bevat eveneens een `template`-eigenschap.
 
@@ -139,7 +154,7 @@ value_stream_fase: <vs.fase>
 ---
 ```
 
-### 4.2 Afgeleide status
+### 4.2 — Afgeleide status
 
 De `template`-eigenschap in prompt-YAML is afgeleid van het **agent-contract**.
 
@@ -149,7 +164,7 @@ Daarom geldt:
 - bij mismatch heeft het contract voorrang;
 - een mismatch is een validatiefout.
 
-### 4.3 Doel van opname in prompt-YAML
+### 4.3 — Doel van opname in prompt-YAML
 
 Opname van het template in prompt-YAML dient om:
 - de agent direct te informeren over de beoogde structuur;
@@ -173,7 +188,7 @@ Een intent-definitie is alleen consistent als aan alle onderstaande voorwaarden 
 
 ## 6. Runner- en validatiegedrag
 
-### 6.1 Runner
+### 6.1 — Runner
 
 De runner of prompt-assembler:
 - leest het template primair uit het **agent-contract**;
@@ -181,7 +196,7 @@ De runner of prompt-assembler:
 - logt een afwijking expliciet;
 - mag geen alternatieve template afleiden uit documentinhoud of bestandsnaam alleen.
 
-### 6.2 Validator
+### 6.2 — Validator
 
 Een validator of curator controleert minimaal:
 - aanwezigheid van `template` in contract;
@@ -193,7 +208,7 @@ Een validator of curator controleert minimaal:
 
 ## 7. Grenzen en uitzonderingen
 
-### 7.1 Wanneer `template: ~` is toegestaan
+### 7.1 — Wanneer `template: ~` is toegestaan
 
 `template: ~` is toegestaan wanneer:
 - het resultaat primair machine-configuratie is;
@@ -201,7 +216,7 @@ Een validator of curator controleert minimaal:
 - er geen herbruikbare documentstructuur nodig is;
 - introductie van een apart template geen extra helderheid oplevert.
 
-### 7.2 Wat niet is toegestaan
+### 7.2 — Wat niet is toegestaan
 
 Niet toegestaan is:
 - een intent uitvoeren op basis van een impliciet template;
@@ -237,8 +252,9 @@ ontstaat variatie zonder legitimatie.
 
 ---
 
-## Wijzigingslog
+## Changelog
 
-| Datum | Versie | Wijziging | Auteur |
-|-------|--------|-----------|--------|
+| Datum | Versie | Wijziging | Uitvoer door |
+|---|---|---|---|
+| 2026-04-15 | 1.1.0 | Classificatie toegevoegd; subsectiekoppen voorzien van em-dash; Wijzigingslog hernoemd naar Changelog | Hans Blok |
 | 2026-04-08 | 1.0.0 | Eerste versie: templategebruik genormeerd in agent-contract en prompt-YAML | Constitutioneel Auteur |

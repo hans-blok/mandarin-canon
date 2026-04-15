@@ -2,6 +2,60 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "fnd.01 - documentatie-omvormer: genereer-publicatiestructuur",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.01.documentatie-omvormer/runner/documentatie-omvormer.runner.py",
+        "genereer-publicatiestructuur",
+        "--structuur-regels",
+        "${input:in_documentatie_omvormer_genereer_publicatiestructuur_structuur_regels}",
+        "--exclude-patterns",
+        "${input:in_documentatie_omvormer_genereer_publicatiestructuur_exclude_patterns}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "fnd.01 - documentatie-omvormer: genereer-navigatiebestand",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.01.documentatie-omvormer/runner/documentatie-omvormer.runner.py",
+        "genereer-navigatiebestand"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "fnd.01 - documentatie-omvormer: genereer-correcte-links",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.01.documentatie-omvormer/runner/documentatie-omvormer.runner.py",
+        "genereer-correcte-links",
+        "--docs-folder",
+        "${input:in_documentatie_omvormer_genereer_correcte_links_docs_folder}",
+        "--platform",
+        "${input:in_documentatie_omvormer_genereer_correcte_links_platform}",
+        "--base-url",
+        "${input:in_documentatie_omvormer_genereer_correcte_links_base_url}",
+        "--exclude-patterns",
+        "${input:in_documentatie_omvormer_genereer_correcte_links_exclude_patterns}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
       "label": "fnd.01 - ecosysteem-coordinator: aggregeer-tasks",
       "type": "process",
       "command": "python",
@@ -14,7 +68,351 @@
         "reveal": "always",
         "panel": "shared"
       }
+    },
+    {
+      "label": "fnd.02 - concept-curator: definieer-concept",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.02.concept-curator/runner/concept-curator.runner.py",
+        "definieer-concept",
+        "--term",
+        "${input:in_concept_curator_definieer_concept_term}",
+        "--definitie",
+        "${input:in_concept_curator_definieer_concept_definitie}",
+        "--domein",
+        "${input:in_concept_curator_definieer_concept_domein}",
+        "--synoniemen",
+        "${input:in_concept_curator_definieer_concept_synoniemen}",
+        "--relaties",
+        "${input:in_concept_curator_definieer_concept_relaties}",
+        "--bron",
+        "${input:in_concept_curator_definieer_concept_bron}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "fnd.02 - concept-curator: rapporteer-concept-status",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.02.concept-curator/runner/concept-curator.runner.py",
+        "rapporteer-concept-status",
+        "--domein",
+        "${input:in_concept_curator_rapporteer_concept_status_domein}",
+        "--formaat",
+        "${input:in_concept_curator_rapporteer_concept_status_formaat}",
+        "--status-filter",
+        "${input:in_concept_curator_rapporteer_concept_status_status_filter}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "fnd.02 - concept-curator: valideer-concept-coherentie",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.02.concept-curator/runner/concept-curator.runner.py",
+        "valideer-concept-coherentie",
+        "--artefact-bestand",
+        "${input:in_concept_curator_valideer_concept_coherentie_artefact_bestand}",
+        "--domein",
+        "${input:in_concept_curator_valideer_concept_coherentie_domein}",
+        "--striktheid",
+        "${input:in_concept_curator_valideer_concept_coherentie_striktheid}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "fnd.02 - concept-curator: verweef-concepten",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.02.concept-curator/runner/concept-curator.runner.py",
+        "verweef-concepten",
+        "--concept-bestand",
+        "${input:in_concept_curator_verweef_concepten_concept_bestand}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "fnd.02 - documentvertaler: zet-om-naar-docx",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/fnd/fnd.02.documentvertaler/runner/documentvertaler.runner.py",
+        "zet-om-naar-docx",
+        "--markdown-file",
+        "${input:in_documentvertaler_zet_om_naar_docx_markdown_file}",
+        "--output-path",
+        "${input:in_documentvertaler_zet_om_naar_docx_output_path}",
+        "--conversie-opties",
+        "${input:in_documentvertaler_zet_om_naar_docx_conversie_opties}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "aeo.01 - canon-curator: adviseer-grondslag-verbeteringen",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/aeo/aeo.01.canon-curator/runner/canon-curator.runner.py",
+        "adviseer-grondslag-verbeteringen",
+        "--scope",
+        "${input:in_canon_curator_adviseer_grondslag_verbeteringen_scope}",
+        "--focus",
+        "${input:in_canon_curator_adviseer_grondslag_verbeteringen_focus}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "aeo.01 - canon-curator: valideer-grondslag-consistentie",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/aeo/aeo.01.canon-curator/runner/canon-curator.runner.py",
+        "valideer-grondslag-consistentie",
+        "--scope",
+        "${input:in_canon_curator_valideer_grondslag_consistentie_scope}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "aeo.01 - canon-curator: valideer-terminologische-scherpte",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/aeo/aeo.01.canon-curator/runner/canon-curator.runner.py",
+        "valideer-terminologische-scherpte",
+        "--scope",
+        "${input:in_canon_curator_valideer_terminologische_scherpte_scope}",
+        "--termenlijst",
+        "${input:in_canon_curator_valideer_terminologische_scherpte_termenlijst}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "aeo.01 - canon-curator: publiceer-grondslagen",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/aeo/aeo.01.canon-curator/runner/canon-curator.runner.py",
+        "publiceer-grondslagen"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "aeo.01 - capability-architect: definieer-agent-boundary",
+      "type": "process",
+      "command": "python",
+      "args": [
+        "../mandarin-agents/artefacten/aeo/aeo.01.capability-architect/runner/capability-architect.runner.py",
+        "definieer-agent-boundary",
+        "--agent-naam",
+        "${input:in_capability_architect_definieer_agent_boundary_agent_naam}",
+        "--value-stream-fase",
+        "${input:in_capability_architect_definieer_agent_boundary_value_stream_fase}",
+        "--korte-beschrijving",
+        "${input:in_capability_architect_definieer_agent_boundary_korte_beschrijving}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
     }
   ],
-  "inputs": []
+  "inputs": [
+    {
+      "id": "in_documentatie_omvormer_genereer_publicatiestructuur_structuur_regels",
+      "type": "promptString",
+      "description": "Waarde voor 'structuur_regels' (genereer-publicatiestructuur) (Optioneel)"
+    },
+    {
+      "id": "in_documentatie_omvormer_genereer_publicatiestructuur_exclude_patterns",
+      "type": "promptString",
+      "description": "Waarde voor 'exclude_patterns' (genereer-publicatiestructuur) (Optioneel)"
+    },
+    {
+      "id": "in_documentatie_omvormer_genereer_correcte_links_docs_folder",
+      "type": "promptString",
+      "description": "Waarde voor 'docs_folder' (genereer-correcte-links)"
+    },
+    {
+      "id": "in_documentatie_omvormer_genereer_correcte_links_platform",
+      "type": "pickString",
+      "description": "Waarde voor 'platform' (genereer-correcte-links)",
+      "options": [
+        "github",
+        "gitlab",
+        "mkdocs"
+      ]
+    },
+    {
+      "id": "in_documentatie_omvormer_genereer_correcte_links_base_url",
+      "type": "promptString",
+      "description": "Waarde voor 'base_url' (genereer-correcte-links) (Optioneel)"
+    },
+    {
+      "id": "in_documentatie_omvormer_genereer_correcte_links_exclude_patterns",
+      "type": "promptString",
+      "description": "Waarde voor 'exclude_patterns' (genereer-correcte-links) (Optioneel)"
+    },
+    {
+      "id": "in_concept_curator_definieer_concept_term",
+      "type": "promptString",
+      "description": "De naam van het te definiëren concept"
+    },
+    {
+      "id": "in_concept_curator_definieer_concept_definitie",
+      "type": "promptString",
+      "description": "De voorgestelde definitie van het concept"
+    },
+    {
+      "id": "in_concept_curator_definieer_concept_domein",
+      "type": "promptString",
+      "description": "Het domein waarbinnen het concept wordt gedefinieerd"
+    },
+    {
+      "id": "in_concept_curator_definieer_concept_synoniemen",
+      "type": "promptString",
+      "description": "Lijst van alternatieve termen (Optioneel)"
+    },
+    {
+      "id": "in_concept_curator_definieer_concept_relaties",
+      "type": "promptString",
+      "description": "Lijst van gerelateerde concepten (Optioneel)"
+    },
+    {
+      "id": "in_concept_curator_definieer_concept_bron",
+      "type": "promptString",
+      "description": "Bronvermelding van de definitie (Optioneel)"
+    },
+    {
+      "id": "in_concept_curator_rapporteer_concept_status_domein",
+      "type": "promptString",
+      "description": "Het te inventariseren concepten-domein"
+    },
+    {
+      "id": "in_concept_curator_rapporteer_concept_status_formaat",
+      "type": "promptString",
+      "description": "Gewenst output-formaat ('markdown', 'json') (Optioneel)"
+    },
+    {
+      "id": "in_concept_curator_rapporteer_concept_status_status_filter",
+      "type": "promptString",
+      "description": "Filter op status ('concept', 'stable', 'deprecated', 'all') (Optioneel)"
+    },
+    {
+      "id": "in_concept_curator_valideer_concept_coherentie_artefact_bestand",
+      "type": "promptString",
+      "description": "Het te valideren document of bestand"
+    },
+    {
+      "id": "in_concept_curator_valideer_concept_coherentie_domein",
+      "type": "promptString",
+      "description": "Het referentiekader waartegen gevalideerd wordt"
+    },
+    {
+      "id": "in_concept_curator_valideer_concept_coherentie_striktheid",
+      "type": "promptString",
+      "description": "Niveau van validatie ('strict', 'normal', 'lenient') (Optioneel)"
+    },
+    {
+      "id": "in_concept_curator_verweef_concepten_concept_bestand",
+      "type": "promptString",
+      "description": "Pad naar het bestand waarin concepten verweven moeten worden"
+    },
+    {
+      "id": "in_documentvertaler_zet_om_naar_docx_markdown_file",
+      "type": "promptString",
+      "description": "Waarde voor 'markdown_file' (zet-om-naar-docx)"
+    },
+    {
+      "id": "in_documentvertaler_zet_om_naar_docx_output_path",
+      "type": "promptString",
+      "description": "Waarde voor 'output_path' (zet-om-naar-docx)"
+    },
+    {
+      "id": "in_documentvertaler_zet_om_naar_docx_conversie_opties",
+      "type": "promptString",
+      "description": "Waarde voor 'conversie_opties' (zet-om-naar-docx) (Optioneel)"
+    },
+    {
+      "id": "in_canon_curator_adviseer_grondslag_verbeteringen_scope",
+      "type": "promptString",
+      "description": "Pad of selectie van grondslag-artefacten waarvoor verbeteradvies wordt gevraagd"
+    },
+    {
+      "id": "in_canon_curator_adviseer_grondslag_verbeteringen_focus",
+      "type": "promptString",
+      "description": "Specifiek verbeterdomein om op te richten (Optioneel)"
+    },
+    {
+      "id": "in_canon_curator_valideer_grondslag_consistentie_scope",
+      "type": "promptString",
+      "description": "Pad of selectie van te toetsen grondslag-artefacten binnen de canon"
+    },
+    {
+      "id": "in_canon_curator_valideer_terminologische_scherpte_scope",
+      "type": "promptString",
+      "description": "Pad of selectie van te toetsen grondslag-artefacten binnen de canon"
+    },
+    {
+      "id": "in_canon_curator_valideer_terminologische_scherpte_termenlijst",
+      "type": "promptString",
+      "description": "Expliciete lijst van termen om specifiek te controleren (Optioneel)"
+    },
+    {
+      "id": "in_capability_architect_definieer_agent_boundary_agent_naam",
+      "type": "promptString",
+      "description": "Waarde voor 'agent_naam' (definieer-agent-boundary)"
+    },
+    {
+      "id": "in_capability_architect_definieer_agent_boundary_value_stream_fase",
+      "type": "promptString",
+      "description": "Waarde voor 'value_stream_fase' (definieer-agent-boundary)"
+    },
+    {
+      "id": "in_capability_architect_definieer_agent_boundary_korte_beschrijving",
+      "type": "promptString",
+      "description": "Waarde voor 'korte_beschrijving' (definieer-agent-boundary)"
+    }
+  ]
 }

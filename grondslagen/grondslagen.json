@@ -1,41 +1,14 @@
 {
   "versie": "1.0.0",
-  "gegenereerd": "2026-04-04T09:52:15Z",
+  "gegenereerd": "2026-04-15T18:04:13Z",
   "algemeen": [
-    {
-      "naam": "checklist.agents.md",
-      "pad": ".algemeen/checklist.agents.md",
-      "type": "checklist",
-      "titel": "Verplichte Agent Start-Checklist (Constitutionele Verklaring)",
-      "digest_header": "8a98",
-      "digest_berekend": "f396",
-      "status_header": "vers"
-    },
-    {
-      "naam": "conceptuele-grondslagen.md",
-      "pad": ".algemeen/conceptuele-grondslagen.md",
-      "type": "grondslag",
-      "titel": "Conceptuele Grondslagen van het Mandarin-ecosysteem",
-      "digest_header": "edd1",
-      "digest_berekend": "2947",
-      "status_header": "vers"
-    },
     {
       "naam": "constitutie.md",
       "pad": ".algemeen/constitutie.md",
       "type": "constitutie",
       "titel": "Constitutie Mandarin",
       "digest_header": "f787",
-      "digest_berekend": "9ee9",
-      "status_header": "vers"
-    },
-    {
-      "naam": "doctrine-bronhouding-en-exploratie.md",
-      "pad": ".algemeen/doctrine-bronhouding-en-exploratie.md",
-      "type": "doctrine",
-      "titel": "Doctrine — Bronhouding en exploratie",
-      "digest_header": "2cf4",
-      "digest_berekend": "2cf4",
+      "digest_berekend": "dee3",
       "status_header": "vers"
     },
     {
@@ -44,25 +17,61 @@
       "type": "doctrine",
       "titel": "Doctrine — Handoff en Overdrachtsdiscipline",
       "digest_header": "tbd0",
-      "digest_berekend": "tbd0",
+      "digest_berekend": "c69b",
       "status_header": "vers"
     },
     {
-      "naam": "doctrine-traceability.md",
-      "pad": ".algemeen/doctrine-traceability.md",
+      "naam": "doctrine-retrieval-en-contextselectie.md",
+      "pad": ".algemeen/doctrine-retrieval-en-contextselectie.md",
       "type": "doctrine",
-      "titel": "Doctrine — Traceability en Herkomstcode",
-      "digest_header": "8d27",
-      "digest_berekend": "5ac3",
+      "titel": "Doctrine — Retrieval en Contextselectie",
+      "digest_header": "tbd0",
+      "digest_berekend": "7c3b",
       "status_header": "vers"
     },
     {
-      "naam": "doctrine-templategebruik.md",
-      "pad": ".algemeen/doctrine-templategebruik.md",
+      "naam": "doctrine.bronhouding-en-exploratie.md",
+      "pad": ".algemeen/doctrine.bronhouding-en-exploratie.md",
+      "type": "doctrine",
+      "titel": "Doctrine — Bronhouding en exploratie",
+      "digest_header": "2cf4",
+      "digest_berekend": "2cf4",
+      "status_header": "vers"
+    },
+    {
+      "naam": "doctrine.templategebruik.md",
+      "pad": ".algemeen/doctrine.templategebruik.md",
       "type": "doctrine",
       "titel": "Doctrine — Templategebruik en Structuurborging",
       "digest_header": "tbd0",
-      "digest_berekend": "tbd0",
+      "digest_berekend": "1061",
+      "status_header": "vers"
+    },
+    {
+      "naam": "doctrine.traceability.md",
+      "pad": ".algemeen/doctrine.traceability.md",
+      "type": "doctrine",
+      "titel": "Doctrine — Traceability en Herkomstcode",
+      "digest_header": "tbd0",
+      "digest_berekend": "1a22",
+      "status_header": "vers"
+    },
+    {
+      "naam": "mandarin-model.md",
+      "pad": ".algemeen/graph/mandarin-model.md",
+      "type": "grondslag",
+      "titel": "Mandarin Ecosysteem — Neo4j Grafmodel",
+      "digest_header": "tbd0",
+      "digest_berekend": "7bbe",
+      "status_header": "vers"
+    },
+    {
+      "naam": "conceptuele-grondslagen.md",
+      "pad": "conceptuele-grondslagen.md",
+      "type": "grondslag",
+      "titel": "Conceptuele Grondslagen van het Mandarin-ecosysteem",
+      "digest_header": "edd1",
+      "digest_berekend": "2947",
       "status_header": "vers"
     },
     {
@@ -75,12 +84,30 @@
       "status_header": "vers"
     },
     {
+      "naam": "mandarin-domeinconcepten.md",
+      "pad": "mandarin-domeinconcepten.md",
+      "type": "concepten",
+      "titel": "De Mandarin concepten",
+      "digest_header": "0000",
+      "digest_berekend": "2fb7",
+      "status_header": "rot"
+    },
+    {
+      "naam": "mandarin-ecosysteem-ordeningsconcepten.md",
+      "pad": "mandarin-ecosysteem-ordeningsconcepten.md",
+      "type": "concepten",
+      "titel": "Mandarin **ordenings-concepten**",
+      "digest_header": "12e6",
+      "digest_berekend": "a637",
+      "status_header": "vers"
+    },
+    {
       "naam": "mandarin-value-streams-en-fasen.md",
       "pad": "value-streams/mandarin-value-streams-en-fasen.md",
       "type": "value-stream",
       "titel": "Mandarin Value Streams en Fasen",
       "digest_header": "2536",
-      "digest_berekend": "ce06",
+      "digest_berekend": "10a0",
       "status_header": "vers"
     }
   ],
@@ -89,49 +116,72 @@
       "code": "AEO",
       "grondslagen": [
         {
-          "naam": "doctrine-agent-charter-normering.md",
-          "pad": "aeo/doctrine-agent-charter-normering.md",
-          "type": "doctrine",
-          "titel": "Agent Doctrine — Agent Charter Normering",
-          "digest_header": "bef0",
-          "digest_berekend": "3454",
+          "naam": "ldm-mandarin.md",
+          "pad": "aeo/aeo.datamodel/ldm-mandarin.md",
+          "type": "grondslag",
+          "titel": "Logisch Data Model — Mandarin Sleutelset (3NF)",
+          "digest_header": "tbd0",
+          "digest_berekend": "6c84",
           "status_header": "vers"
         },
         {
-          "naam": "doctrine-intent-naming.md",
-          "pad": "aeo/doctrine-intent-naming.md",
-          "type": "doctrine",
-          "titel": "Agent Doctrine — Intent Naming",
-          "digest_header": "ee2c",
-          "digest_berekend": "045a",
+          "naam": "tdm-mandarin.md",
+          "pad": "aeo/aeo.datamodel/tdm-mandarin.md",
+          "type": "grondslag",
+          "titel": "Target Data Model — Mandarin Sleutelset (3NF)",
+          "digest_header": "0000",
+          "digest_berekend": "be8f",
+          "status_header": "gegenereerd"
+        },
+        {
+          "naam": "tdm_gegevensregels.md",
+          "pad": "aeo/aeo.datamodel/tdm_gegevensregels.md",
+          "type": "grondslag",
+          "titel": "TDM Gegevensregels — Mandarin Sleutelset",
+          "digest_header": "tbd0",
+          "digest_berekend": "2634",
           "status_header": "vers"
         },
         {
-          "naam": "mandarin-domeinconcepten.md",
-          "pad": "aeo/mandarin-domeinconcepten.md",
-          "type": "concepten",
-          "titel": "De Mandarin concepten",
-          "digest_header": "798e",
-          "digest_berekend": "960c",
-          "status_header": "vers"
-        },
-        {
-          "naam": "mandarin-ecosysteem-ordeningsconcepten.md",
-          "pad": "aeo/mandarin-ecosysteem-ordeningsconcepten.md",
-          "type": "concepten",
-          "titel": "Mandarin **ordenings-concepten**",
-          "digest_header": "12e6",
-          "digest_berekend": "92a7",
-          "status_header": "vers"
+          "naam": "tdm_mandarin.md",
+          "pad": "aeo/aeo.datamodel/tdm_mandarin.md",
+          "type": "grondslag",
+          "titel": "Target Data Model: Mandarin Sleutelset",
+          "digest_header": "0000",
+          "digest_berekend": "7fe9",
+          "status_header": "rot"
         }
       ],
       "fasen": {
+        "02": {
+          "code": "02",
+          "grondslagen": [
+            {
+              "naam": "doctrine.agent-charter-normering.md",
+              "pad": "aeo/aeo.02.ecosyteem-ontwkkeling/doctrine.agent-charter-normering.md",
+              "type": "doctrine",
+              "titel": "Agent Doctrine — Agent Charter Normering",
+              "digest_header": "bef0",
+              "digest_berekend": "2b7e",
+              "status_header": "vers"
+            },
+            {
+              "naam": "doctrine.intent-naming.md",
+              "pad": "aeo/aeo.02.ecosyteem-ontwkkeling/doctrine.intent-naming.md",
+              "type": "doctrine",
+              "titel": "Agent Doctrine — Intent Naming",
+              "digest_header": "ee2c",
+              "digest_berekend": "045a",
+              "status_header": "vers"
+            }
+          ]
+        },
         "03": {
           "code": "03",
           "grondslagen": [
             {
-              "naam": "doctrine-agent-runner-architectuur.md",
-              "pad": "aeo/aeo.03.automatisering-en-pipeline/doctrine-agent-runner-architectuur.md",
+              "naam": "doctrine.agent-runner-architectuur.md",
+              "pad": "aeo/aeo.03.automatisering-en-pipeline/doctrine.agent-runner-architectuur.md",
               "type": "doctrine",
               "titel": "Doctrine Agent Runner Architectuur",
               "digest_header": "c4fe",
@@ -155,8 +205,8 @@
               "pad": "fnd/fnd.01.fundament/workspace-doctrine.md",
               "type": "doctrine",
               "titel": "Workspace Doctrine — Architectuur en Standaard voor Workspaces",
-              "digest_header": "19f7",
-              "digest_berekend": "a87f",
+              "digest_header": "tbd0",
+              "digest_berekend": "7f04",
               "status_header": "vers"
             }
           ]

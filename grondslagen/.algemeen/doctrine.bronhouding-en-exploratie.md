@@ -1,21 +1,57 @@
 ---
 type: doctrine
-naam: Bronhouding en exploratie
-versie: 1.0.0
+naam: Doctrine — Bronhouding en Exploratie
+versie: 1.1.0
+digest: tbd0
 status: vers
-digest: 2cf4
 ---
-# Doctrine — Bronhouding en exploratie
+# Doctrine — Bronhouding en Exploratie
 
-## 1. Doel
+---
+
+## Herkomstverantwoording
+
+Dit normatief artefact is opgesteld op basis van de volgende bronnen:
+
+**Geraadpleegde bronnen**:
+- `mandarin-domeinconcepten.md` — concepten bronhouding, gesloten bronhouding, exploratieve bronhouding, werkbronnen, kaderbronnen (versie 2.13.0, gelezen op 2026-04-14)
+- `mandarin-ecosysteem-ordeningsconcepten.md` — as Bronhouding: canon-gebonden, input-gebonden, exploratief (versie 1.9.0, gelezen op 2026-04-14)
+- `constitutie.md` — normatief kader voor kennisgebruik en herleidbaarheid van output (versie 2.6.0, gelezen op 2026-04-14)
+
+**Opsteller**: Hans Blok  
+**Doel**: Normering van hoe agents omgaan met bronnen, kennis en onzekerheid, en onder welke condities exploratieve bronhouding is toegestaan
+
+---
+
+## Classificatie
+
+Deze doctrine positioneert zich als volgt op de vier orthogonale assen:
+
+| Betekeniseffect | Vormingsfase | Werking | Bronhouding |
+|---|---|---|---|
+| normerend | ordening / vastlegging | conditioneel | canon-gebonden |
+
+- **Betekeniseffect** — *normerend*: normeert hoe agents omgaan met bronnen en kennis
+- **Vormingsfase** — *ordening / vastlegging*: structureert en formaliseert de bronhouding als fundamentele epistemische discipline
+- **Werking** — *conditioneel*: bepaalt onder welke condities welke bronhouding geldt
+- **Bronhouding** — *canon-gebonden*: baseert zich uitsluitend op canonieke bronnen
+
+---
+
+## 1. Doel en scope
 
 Deze doctrine beschrijft hoe agents binnen het Mandarin-ecosysteem omgaan met bronnen, kennis en onzekerheid.
 
-De doctrine borgt:
+Zij borgt dat:
 
-- dat alle output herleidbaar is tot expliciete bronnen;
-- dat het gebruik van externe kennis gecontroleerd en reproduceerbaar blijft;
-- dat innovatie mogelijk is zonder verlies van canonische consistentie.
+- alle output herleidbaar is tot expliciete bronnen;
+- het gebruik van externe kennis gecontroleerd en reproduceerbaar blijft;
+- innovatie mogelijk is zonder verlies van canonische consistentie.
+
+**Buiten scope**:
+- Technische implementatie van bronnenopslag of retrieval
+- Validatie van afzonderlijke bronnen (dit is een runner-verantwoordelijkheid)
+- Versie- en conflictbeheer van bronnen
 
 ---
 
@@ -42,7 +78,7 @@ Binnen Mandarin worden twee bronhoudingen onderscheiden:
 
 ## 4. Gesloten bronhouding
 
-### 4.1 Definitie
+### 4.1 — Definitie
 
 De gesloten bronhouding is de standaard binnen het ecosysteem.
 
@@ -52,9 +88,7 @@ Agents baseren zich uitsluitend op:
 - **werkbronnen** (object van bewerking)
 - **referentiebronnen** (voor consistentie)
 
----
-
-### 4.2 Norm
+### 4.2 — Norm
 
 Agents:
 
@@ -63,9 +97,7 @@ Agents:
 - gebruiken het LLM uitsluitend als inferentie- en transformatie-mechanisme;
 - maken alle output herleidbaar tot gebruikte bronnen.
 
----
-
-### 4.3 Doel
+### 4.3 — Doel
 
 De gesloten bronhouding borgt:
 
@@ -93,15 +125,13 @@ Het LLM bepaalt niet wat waar is, maar hoe iets wordt verwoord.
 
 ## 6. Exploratieve bronhouding
 
-### 6.1 Definitie
+### 6.1 — Definitie
 
 De exploratieve bronhouding is een expliciete afwijking van de gesloten bronhouding.
 
 Deze wordt uitsluitend toegepast voor het **verkennen van nieuwe denkkaders en het stimuleren van innovatie**.
 
----
-
-### 6.2 Toepassing
+### 6.2 — Toepassing
 
 Exploratieve bronhouding is toegestaan wanneer:
 
@@ -110,9 +140,7 @@ Exploratieve bronhouding is toegestaan wanneer:
 - nieuwe kaders, theorieën of modellen moeten worden ontdekt;
 - expliciet wordt ingezet op innovatie of alternatieve benaderingen.
 
----
-
-### 6.3 Gedrag
+### 6.3 — Gedrag
 
 In exploratieve bronhouding mag een agent:
 
@@ -128,9 +156,7 @@ De agent maakt expliciet onderscheid tussen:
 - hypothesen;
 - externe invloeden.
 
----
-
-### 6.4 Beperkingen
+### 6.4 — Beperkingen
 
 Exploratieve output:
 
@@ -154,53 +180,15 @@ Pas daarna mogen agents deze gebruiken binnen gesloten bronhouding.
 
 ---
 
-## 8. Relatie tot kaderdefinities
+## 8. Input-gebonden bronhouding en voorbeelden
 
-Externe theorieën worden nooit direct gebruikt.
-
-Zij worden:
-
-- eerst geïdentificeerd (exploratie);
-- vervolgens geïnternaliseerd;
-- vastgelegd als kaderdefinitie.
-
-Agents gebruiken uitsluitend deze kaderdefinities als kaderbron.
-
----
-
-## 9. Relatie tot runner en uitvoering
-
-De runner:
-
-- bepaalt de bronset per uitvoering;
-- levert de context waarin de agent opereert;
-- borgt de gekozen bronhouding.
-
-Agents opereren uitsluitend binnen deze door de runner bepaalde grenzen.
-
----
-
-## 10. Relatie tot charters
-
-De bronhouding wordt per agent expliciet vastgelegd in het charter.
-
-Daarbij geldt:
-
-- standaard: gesloten bronhouding;
-- afwijking: alleen expliciet en tijdelijk exploratief;
-- de gekozen bronhouding is onderdeel van de intent en uitvoering.
-
----
-
-## 11. Input-gebonden bronhouding en voorbeelden
-
-### 11.1 Kernregel
+### 8.1 — Kernregel
 
 Wanneer de bronhouding input-gebonden is, geldt een expliciete negatieve instructie:
 
 > **Illustraties en voorbeelden in beleidsdocumenten mogen nooit als declaratieve input worden geïnterpreteerd.**
 
-### 11.2 Toelichting
+### 8.2 — Toelichting
 
 Beleidsdocumenten bevatten regelmatig voorbeelden ter verduidelijking. Deze voorbeelden zijn **illustratief**, niet **normatief**. Het onderscheid is cruciaal:
 
@@ -209,7 +197,7 @@ Beleidsdocumenten bevatten regelmatig voorbeelden ter verduidelijking. Deze voor
 
 Agents die dit onderscheid niet maken, lopen het risico illustraties te behandelen als feiten, definities of instructies. Dit is een **kernkwetsbaarheid** binnen input-gebonden verwerking.
 
-### 11.3 Norm
+### 8.3 — Norm
 
 Agents:
 
@@ -220,7 +208,7 @@ Agents:
 
 ---
 
-## 12. Samenvattende principes
+## 9. Samenvattende principes
 
 > De waarheid zit in expliciete bronnen, niet in het model.
 
@@ -233,3 +221,22 @@ Agents:
 > Nieuwe kennis wordt pas onderdeel van het ecosysteem na canonisering.
 
 > Het LLM ondersteunt formulering, maar bepaalt geen inhoudelijke waarheid.
+
+---
+
+## 10. Relatie tot andere doctrines
+
+| Doctrine | Relatie |
+|---|---|
+| `doctrine.retrieval-en-contextselectie.md` | Retrieval opereert onder de gesloten bronhouding; context is de werkbron |
+| `doctrine.agent-charter-normering.md` | Charters leggen de bronhouding per agent vast; één bronhouding per agent is verplicht |
+| `doctrine.traceability.md` | Herleidbaarheid vereist expliciete bronverwijzingen in execution-trace-bestanden |
+
+---
+
+## Changelog
+
+| Datum | Versie | Wijziging | Uitvoer door |
+|---|---|---|---|
+| 2026-04-15 | 1.1.0 | Herkomstverantwoording toegevoegd; Classificatie toegevoegd; naam gecorrigeerd naar `Doctrine — Bronhouding en Exploratie`; `---` dividers toegevoegd; subsectiekoppen voorzien van em-dash; §8 Input-gebonden bronhouding verplaatst; §10 Relatie tot andere doctrines en Changelog toegevoegd | Hans Blok |
+| onbekend | 1.0.0 | Initiële versie | onbekend |

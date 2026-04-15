@@ -1,12 +1,12 @@
 ---
 type: doctrine
-naam: Workspace Doctrine — Architectuur en Standaard voor Workspaces
-versie: 1.6.0
+naam: Doctrine — Workspace Architectuur en Standaard voor Workspaces
+versie: 1.7.0
 value-stream: FND
 digest: tbd0
 status: vers
 ---
-# Workspace Doctrine — Architectuur en Standaard voor Workspaces
+# Doctrine — Workspace Architectuur en Standaard voor Workspaces
 
 
 ---
@@ -16,7 +16,28 @@ status: vers
 Dit normatief artefact is afgeleid op basis van de volgende bronnen:
 
 **Geraadpleegde bronnen**:
-{ }
+- `artefacten/0-governance/workspace-architectuur.md` — verplichte structuur en conventies voor workspaces (gelezen op 2026-01-14)
+- `artefacten/0-governance/workspace-standaard.md` — workspace-standaard voor document-repositories (gelezen op 2026-01-14)
+- `constitutie.md` — gezagshiërarchie en grondslagen voor workspace-governance (versie 2.6.0, gelezen op 2026-01-14)
+- `doctrine.traceability.md` — execution-bundels, execution-identiteit en runtime-opslagconventies (versie 1.6.0, gelezen op 2026-04-08)
+
+**Opsteller**: Charter Schrijver / Constitutioneel Auteur  
+**Doel**: Normering van workspace-inrichting, folderstructuur en uitvoeringsconventies voor alle workspaces binnen het Mandarin-ecosysteem
+
+---
+
+## Classificatie
+
+Deze doctrine positioneert zich als volgt op de vier orthogonale assen:
+
+| Betekeniseffect | Vormingsfase | Werking | Bronhouding |
+|---|---|---|---|
+| normerend | ordening / vastlegging | conditioneel | canon-gebonden |
+
+- **Betekeniseffect** — *normerend*: stelt normen voor workspace-inrichting, folderstructuur en runtime-opslagconventies
+- **Vormingsfase** — *ordening / vastlegging*: structureert en formaliseert de workspace-architectuur als fundamentele basisvorm
+- **Werking** — *conditioneel*: bepaalt de condities waaronder een workspace als valide wordt beschouwd
+- **Bronhouding** — *canon-gebonden*: baseert zich uitsluitend op canonieke architectuur- en standaarddocumenten
 
 ---
 
@@ -320,7 +341,6 @@ Workspace-steward gebruikt deze doctrine als norm bij:
 - het beoordelen of voorstellen voor structuur passen binnen de afspraken;
 - het schrijven en valideren van governance/beleid.md.
 
-| 2026-01-18 | 1.2.0  | Norm toegevoegd voor locatie van agent-resultaten (sectie 5.1): value stream Kennispublicatie → docs/, templates → altijd templates/ | Constitutioneel Auteur |
 Waar in prompts en charters eerder letterlijk `governance/workspace-standaard.md` of alleen de workspace-architectuur werd genoemd, geldt nu deze workspace-doctrine als overkoepelend document.
 
 ### 6.2 Door beleidsmakers en architecten
@@ -346,10 +366,11 @@ De workspace-doctrine implementeert en concretiseert de vereisten uit de constit
 
 ---
 
-## 8. Wijzigingslog
+## Changelog
 
-| Datum      | Versie | Wijziging                                                           | Auteur            |
-|------------|--------|---------------------------------------------------------------------|-------------------|
+| Datum | Versie | Wijziging | Uitvoer door |
+|---|---|---|---|
+| 2026-04-15 | 1.7.0 | Naam gecorrigeerd naar `Doctrine —`; Herkomstverantwoording ingevuld; Classificatie toegevoegd; stray changelog-regel verwijderd uit §6.1 | Hans Blok |
 | 2026-04-08 | 1.6.0  | Toegevoegd: execution-bundels onder `executions/` met expliciete `exec-` prefix, vaste submappen en legacy-status voor platte execution-structuur | Constitutioneel Auteur |
 | 2026-01-14 | 1.0.0  | Eerste versie, bundelt workspace-architectuur en workspace-standaard in één workspace-doctrine | Charter Schrijver |
 | 2026-01-14 | 1.1.0  | Root-structuur aangescherpt: verplichte folders (.github, beleid, docs, scripts, logs), verplichte root-bestanden (.gitignore, README.md, <workspace>.ping, state-<naam-workspace>.md), Herkomstverantwoording sectie toegevoegd | Constitutioneel Auteur |
