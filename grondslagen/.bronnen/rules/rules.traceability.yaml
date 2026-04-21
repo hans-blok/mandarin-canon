@@ -1,0 +1,132 @@
+schema: mandarin-rulespeak/v1
+domein: traceability
+doctrine_bron: grondslagen/.normatief/doctrine.traceability.md
+doctrine_versie: "1.8.0"
+versie: "1.0.0"
+datum: "2026-04-21"
+
+regels:
+
+  - id: TRC-001
+    type: verplichting
+    entiteit: [runner]
+    actie: genereren-van-herkomstcode
+    tekst: >
+      Every runner MUST generate the provenance code for initiating artifacts;
+      agents do not generate provenance codes.
+    conditie:
+      veld: herkomstpositie
+      operator: eq
+      waarde: initierend
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§2.4"
+
+  - id: TRC-002
+    type: verplichting
+    entiteit: [runner]
+    actie: erven-van-herkomstcode
+    tekst: >
+      Every runner MUST, for continuing artifacts, inherit the provenance code from
+      the initiating artifact in the same chain.
+    conditie:
+      veld: herkomstpositie
+      operator: eq
+      waarde: voortbouwend
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§3.4"
+
+  - id: TRC-003
+    type: verplichting
+    entiteit: [runner]
+    actie: execution-trace-bestand-koppelen
+    tekst: >
+      Every runner MUST generate a standalone execution-trace file next to each execution file
+      that refers exactly to that execution file via execution_id and execution_digest.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§8.1"
+
+  - id: TRC-004
+    type: verplichting
+    entiteit: [runner]
+    actie: bronvermelding-minimaal-vastleggen
+    tekst: >
+      Every runner MUST record at minimum, for each included source in an execution-trace file,
+      the source path, type, digest or version, reden_van_opname, and opnamevorm.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§8.3"
+
+  - id: TRC-005
+    type: verplichting
+    entiteit: [runner]
+    actie: contextgebeurtenissen-registreren
+    tekst: >
+      Every runner MUST register known context-pressure, token-measurement, and compression events
+      in the execution-trace file with event_type, timestamp, meetwijze,
+      bron, and detail.
+    conditie:
+      veld: contextevent_beschikbaar
+      operator: eq
+      waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§8.5"
+
+  - id: TRC-006
+    type: verplichting
+    entiteit: [runner]
+    actie: meetwijze-labelen
+    tekst: >
+      Every runner MUST label each context measurement or token measurement as exact,
+      estimate, or unknown.
+    conditie:
+      veld: tokenmeting_aanwezig
+      operator: eq
+      waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§9.5"
+
+  - id: TRC-007
+    type: verbod
+    entiteit: [runner]
+    actie: contextverlies-als-exact-registreren-zonder-hard-signaal
+    tekst: >
+      No runner MAY register context loss as a known event when
+      the underlying platform or runner has not provided a hard signal for actual
+      context loss.
+    conditie:
+      veld: hard_signaal_contextverlies
+      operator: eq
+      waarde: false
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§8.5"
+
+  - id: TRC-008
+    type: verbod
+    entiteit: [runner]
+    actie: contextmeting-als-exact-registreren-zonder-exacte-meetbron
+    tekst: >
+      No runner MAY register a context measurement or token measurement as exact when
+      the measurement source used does not explicitly support that exactness.
+    conditie:
+      veld: exacte_meetbron_beschikbaar
+      operator: eq
+      waarde: false
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.traceability.md#§9.5"

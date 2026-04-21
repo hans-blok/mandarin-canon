@@ -1,0 +1,171 @@
+schema: mandarin-rulespeak/v1
+domein: retrieval
+doctrine_bron: grondslagen/.normatief/doctrine.retrieval-en-contextselectie.md
+doctrine_versie: "1.2.0"
+versie: "1.0.0"
+datum: "2026-04-21"
+
+regels:
+
+  - id: RTR-001
+    type: verplichting
+    entiteit: [runner]
+    actie: context-deterministisch-samenstellen
+    tekst: >
+      Every runner MUST assemble context deterministically and explainably on the basis
+      of explicit selection rules.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§1"
+
+  - id: RTR-002
+    type: verplichting
+    entiteit: [runner]
+    actie: retrieval-startpunt-uit-intent-afleiden
+    tekst: >
+      Every runner MUST determine the retrieval starting point on the basis of the intent:
+      the object determines the primary concept and the verb determines the selection type.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§4"
+
+  - id: RTR-003
+    type: verplichting
+    entiteit: [runner]
+    actie: graph-traversal-begrenzen
+    tekst: >
+      Every runner MUST limit graph traversal to at most 2 hops and follow only
+      canonically permitted relationship types.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§4"
+
+  - id: RTR-004
+    type: verplichting
+    entiteit: [runner]
+    actie: selectie-op-context-filteren
+    tekst: >
+      Every runner MUST filter the selection by value stream, value stream phase,
+      artifact type, and source regime.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§4"
+
+  - id: RTR-005
+    type: verplichting
+    entiteit: [runner]
+    actie: selectie-afkappen-bij-limiet
+    tekst: >
+      Every runner MUST cut off the selection and not extend it when retrieval limits
+      are exceeded.
+    conditie:
+      veld: retrieval_limiet_overschreden
+      operator: eq
+      waarde: true
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§4"
+
+  - id: RTR-006
+    type: verplichting
+    entiteit: [runner]
+    actie: gebruikte-context-vastleggen
+    tekst: >
+      Every runner MUST explicitly record used context and missing basis per execution.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§7"
+
+  - id: RTR-007
+    type: verplichting
+    entiteit: [runner]
+    actie: escaleren-bij-niet-eenduidige-selectie
+    tekst: >
+      Every runner MUST escalate when relevant context is missing,
+      conflicting artifacts are found, or the selection cannot be determined unambiguously.
+    conditie:
+      of:
+        - veld: relevante_context_ontbreekt
+          operator: eq
+          waarde: true
+        - veld: conflicterende_artefacten_gevonden
+          operator: eq
+          waarde: true
+        - veld: selectie_eenduidig
+          operator: eq
+          waarde: false
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§10"
+
+  - id: RTR-008
+    type: verbod
+    entiteit: [runner]
+    actie: volledige-graph-ongefilterd-gebruiken
+    tekst: >
+      No runner MAY use the full graph as context without filtering.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§8"
+
+  - id: RTR-009
+    type: verbod
+    entiteit: [runner, agent]
+    actie: selectie-impliciet-door-llm-laten-bepalen
+    tekst: >
+      No runner or agent MAY let the LLM determine selection implicitly.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§8"
+
+  - id: RTR-010
+    type: verbod
+    entiteit: [runner]
+    actie: semantische-zoekmethoden-zonder-expliciete-regels-gebruiken
+    tekst: >
+      No runner MAY use semantic search methods without explicit rules.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§8"
+
+  - id: RTR-011
+    type: verbod
+    entiteit: [runner]
+    actie: context-zonder-traceerbare-selectie-uitbreiden
+    tekst: >
+      No runner MAY extend context without traceable selection.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§8"
+
+  - id: RTR-012
+    type: verbod
+    entiteit: [runner]
+    actie: betekenis-of-inhoudelijke-selectiekeuzes-maken
+    tekst: >
+      No runner MAY interpret meaning or make substantive selection decisions.
+    conditie: null
+    value_stream: [aeo]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.retrieval-en-contextselectie.md#§9"

@@ -1,14 +1,14 @@
 // ============================================================
-// Mandarin Ecosysteem — Neo4j Schema
+// Mandarin Ecosystem - Neo4j Schema
 // ============================================================
-// Bron: ldm-mandarin.md v1.4.0 (3NF, Barker-methode)
-// Ontwerp-keuzes: zie mandarin-model.md
-// Gesloten bronhouding: alle bronnen aanwezig in de workspace
+// Source: ldm-mandarin.md v1.4.0 (3NF, Barker method)
+// Design choices: see mandarin-model.md
+// Closed source stance: all sources are present in the workspace
 // ============================================================
 
 
 // ============================================================
-// CONSTRAINTS — uniciteit op PK-velden
+// CONSTRAINTS - uniqueness on PK fields
 // ============================================================
 
 // MandarinAgent
@@ -35,14 +35,14 @@ CREATE CONSTRAINT invoer_parameter_id_unique IF NOT EXISTS
 CREATE CONSTRAINT orchestratie_run_id_unique IF NOT EXISTS
   FOR (n:OrchestratieRun) REQUIRE n.orchestratieRunId IS UNIQUE;
 
-// Execution — twee constraints: PK en UK
+// Execution - two constraints: PK and UK
 CREATE CONSTRAINT execution_id_unique IF NOT EXISTS
   FOR (n:Execution) REQUIRE n.executieId IS UNIQUE;
 
 CREATE CONSTRAINT execution_code_unique IF NOT EXISTS
   FOR (n:Execution) REQUIRE n.executieCode IS UNIQUE;
 
-// MandarinArtefact — twee constraints: PK en UK (executieId is FK+UK)
+// MandarinArtefact - two constraints: PK and UK (executieId is FK+UK)
 CREATE CONSTRAINT artefact_id_unique IF NOT EXISTS
   FOR (n:MandarinArtefact) REQUIRE n.artefactId IS UNIQUE;
 
@@ -73,27 +73,27 @@ CREATE CONSTRAINT werk_bron_id_unique IF NOT EXISTS
 CREATE CONSTRAINT handoff_id_unique IF NOT EXISTS
   FOR (n:Handoff) REQUIRE n.handoffId IS UNIQUE;
 
-// Bronregime (extensienode — K4 in mandarin-model.md)
+// Bronregime (extension node - K4 in mandarin-model.md)
 CREATE CONSTRAINT bronregime_id_unique IF NOT EXISTS
   FOR (n:Bronregime) REQUIRE n.regimeId IS UNIQUE;
 
-// Workspace (extensienode — K5 in mandarin-model.md)
+// Workspace (extension node - K5 in mandarin-model.md)
 CREATE CONSTRAINT workspace_id_unique IF NOT EXISTS
   FOR (n:Workspace) REQUIRE n.workspaceId IS UNIQUE;
 
 
 // ============================================================
-// INDEXES — frequent bevraagde velden
+// INDEXES - frequently queried fields
 // ============================================================
 
-// Agents op status en bronhouding
+// Agents by status and source stance
 CREATE INDEX agent_status_idx IF NOT EXISTS
   FOR (n:MandarinAgent) ON (n.status);
 
 CREATE INDEX agent_bronhouding_idx IF NOT EXISTS
   FOR (n:MandarinAgent) ON (n.bronhouding);
 
-// Executions op tijdstip, modus en bronhouding
+// Executions by timestamp, mode, and source stance
 CREATE INDEX execution_tijdstip_idx IF NOT EXISTS
   FOR (n:Execution) ON (n.tijdstip);
 
@@ -103,43 +103,43 @@ CREATE INDEX execution_modus_idx IF NOT EXISTS
 CREATE INDEX execution_bronhouding_idx IF NOT EXISTS
   FOR (n:Execution) ON (n.bronhouding);
 
-// Artefacten op herkomstpositie en tijdstip
+// Artifacts by provenance position and timestamp
 CREATE INDEX artefact_herkomstpositie_idx IF NOT EXISTS
   FOR (n:MandarinArtefact) ON (n.herkomstpositie);
 
 CREATE INDEX artefact_tijdstip_idx IF NOT EXISTS
   FOR (n:MandarinArtefact) ON (n.tijdstip);
 
-// Handoffs op tijdstip en menselijkeInterventie (escalatie-filter)
+// Handoffs by timestamp and menselijkeInterventie (escalation filter)
 CREATE INDEX handoff_tijdstip_idx IF NOT EXISTS
   FOR (n:Handoff) ON (n.tijdstip);
 
 CREATE INDEX handoff_menselijke_interventie_idx IF NOT EXISTS
   FOR (n:Handoff) ON (n.menselijkeInterventie);
 
-// ArtefactType op artefactFunctie
+// ArtefactType by artefactFunctie
 CREATE INDEX artefact_type_functie_idx IF NOT EXISTS
   FOR (n:ArtefactType) ON (n.artefactFunctie);
 
-// OrchestratieRun op status
+// OrchestratieRun by status
 CREATE INDEX orchestratie_run_status_idx IF NOT EXISTS
   FOR (n:OrchestratieRun) ON (n.status);
 
 
 // ============================================================
-// VERWACHTE LABELS, RELATIETYPES EN EIGENSCHAPPEN
-// (documentatie — geen DDL, voor validatie en tooling)
+// EXPECTED LABELS, RELATIONSHIP TYPES, AND PROPERTIES
+// (documentation - no DDL, for validation and tooling)
 // ============================================================
 
 // Labels:
 //   MandarinAgent, ValueStream, ValueStreamFase,
 //   Intent, InvoerParameter, OrchestratieRun,
 //   Execution, MandarinArtefact, ArtefactType,
-//   BeschrijvendArtefactType (multi-label op ArtefactType — K2),
+//   BeschrijvendArtefactType (multi-label on ArtefactType - K2),
 //   Template, HerkomstKeten, KaderBron, WerkBron,
 //   Handoff, Bronregime, Workspace
 
-// Relatietypes:
+// Relationship types:
 //   OMVAT, HUISVEST, HEEFT_SUBTYPE, GEBRUIKT,
 //   DEFINIEERT, VEREIST, PRODUCEERT_TYPE,
 //   ORKESTREERT, UITGEVOERD_DOOR, VOERT_UIT, PRODUCEERT,
@@ -148,6 +148,6 @@ CREATE INDEX orchestratie_run_status_idx IF NOT EXISTS
 //   GESTART_DOOR, VERWIJST_NAAR, ONTSTAAN_IN,
 //   VLOEIT_VOORT_UIT, ADRESSEERT, VALT_ONDER
 
-// Relatie-eigenschappen:
+// Relationship properties:
 //   GESTART_DOOR { deferred: Boolean }
-//     — zie N6 in ldm-mandarin.md en K6/K7 in mandarin-model.md
+//     - see N6 in ldm-mandarin.md and K6/K7 in mandarin-model.md

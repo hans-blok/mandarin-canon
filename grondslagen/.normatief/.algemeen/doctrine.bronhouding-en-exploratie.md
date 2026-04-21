@@ -1,6 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Bronhouding en Exploratie
+code: DBRH
 versie: 1.1.0
 digest: tbd0
 status: vers
@@ -121,6 +122,30 @@ Binnen alle bronhoudingen geldt:
 
 Het LLM bepaalt niet wat waar is, maar hoe iets wordt verwoord.
 
+### 5.1 — Tokenbewust communiceren
+
+Wanneer een agent werkt met een context-window of andere platformlimiet voor invoer en historie, moet de agent tokenbewust communiceren naar de gebruiker.
+
+Dit betekent dat de agent:
+
+- vooraf waarschuwt wanneer de aangeleverde invoer of samengestelde context waarschijnlijk te groot is voor het beschikbare context-window;
+- bij rapportage over tokengebruik expliciet onderscheid maakt tussen exact gemeten waarden en geschatte waarden;
+- geen exacte contextmeting claimt wanneer het platform of de runner deze meting niet hard beschikbaar maakt.
+
+De norm ziet niet alleen op technische correctheid, maar ook op epistemische discipline: de gebruiker moet weten welke context nog actief is, welke context mogelijk onder druk staat en welke uitspraken slechts benaderingen zijn.
+
+  ### 5.2 — Transparantie over contextverlies
+
+Wanneer context geheel of gedeeltelijk wegvalt door truncatie, samenvatting, compressie of andere compacte opname, geldt een expliciete transparantieplicht.
+
+Agents:
+
+- melden aantoonbaar contextverlies expliciet aan de gebruiker;
+- labelen vermoed contextverlies als waarschijnlijkheid en niet als zekerheid;
+- gebruiken geen schijnnauwkeurige taal over de volledigheid van de actieve context.
+
+  De traceability-doctrine bepaalt hoe zulke gebeurtenissen worden vastgelegd. Deze doctrine bepaalt dat de gebruiker daarover eerlijk en begrijpelijk wordt geïnformeerd.
+
 ---
 
 ## 6. Exploratieve bronhouding
@@ -216,6 +241,10 @@ Agents:
 
 > Voorbeelden zijn illustraties, geen declaraties.
 
+> Tokenmetingen zijn alleen exact wanneer de meetbron dat expliciet ondersteunt.
+
+> Bekend contextverlies wordt expliciet gemeld; vermoed contextverlies wordt als vermoeden gelabeld.
+
 > Exploratie is toegestaan als gecontroleerde uitzondering voor innovatie.
 
 > Nieuwe kennis wordt pas onderdeel van het ecosysteem na canonisering.
@@ -238,5 +267,6 @@ Agents:
 
 | Datum | Versie | Wijziging | Uitvoer door |
 |---|---|---|---|
+| 2026-04-21 | 1.2.0 | Toegevoegd: §5.1 Tokenbewust communiceren en §5.2 Transparantie over contextverlies; samenvattende principes uitgebreid met normen voor exacte versus geschatte tokenmeting en melding van contextverlies | GitHub Copilot |
 | 2026-04-15 | 1.1.0 | Herkomstverantwoording toegevoegd; Classificatie toegevoegd; naam gecorrigeerd naar `Doctrine — Bronhouding en Exploratie`; `---` dividers toegevoegd; subsectiekoppen voorzien van em-dash; §8 Input-gebonden bronhouding verplaatst; §10 Relatie tot andere doctrines en Changelog toegevoegd | Hans Blok |
 | onbekend | 1.0.0 | Initiële versie | onbekend |

@@ -1,233 +1,332 @@
 {
-  "versie": "1.1.0",
-  "gegenereerd": "2026-04-06",
-  "beschrijving": "Whitelist per agent.intent: bepaalt welke doctrines worden opgenomen in sectie 4 (Normatieve grondslagen) van het execution-bestand. Doctrine-bronhouding-en-exploratie.md valt buiten dit schema — die wordt altijd structureel geladen voor sectie 3 (Geldende bronhouding). Sleutelzoekvolgorde: agent.intent → *.intent → *.* → fallback (include-all).",
-  "fallback": "include-all",
+  "versie": "2.1.0",
+  "datum": "2026-04-19",
+  "agent": "ecosysteem-coordinator",
+  "beschrijving": "Bronselectiebeleid voor de ecosysteem-coordinator. Dit beleid bepaalt per intent welke bronrollen verplicht zijn, welke selectiecriteria gelden, hoe graph-selectie plaatsvindt, en wanneer hard moet worden gestopt. Dit schema vervangt de oude doctrine-whiteliststructuur volledig.",
+  "laagstructuur": {
+    "beschrijving": "De grondslagen zijn verdeeld over drie lagen. De runner kent uitsluitend Laag 3 als kennisbron.",
+    "laag1": {
+      "pad": "grondslagen/.normatief/",
+      "omschrijving": "Constitutioneel, mensleesbaar. Normatieve basis: constitutie, doctrines, bronafleiding.",
+      "runner_toegang": false
+    },
+    "laag2": {
+      "pad": "grondslagen/.formeel/",
+      "omschrijving": "Machine-readable. Formele ontologie (TTL) voor verificatie en controle.",
+      "runner_toegang": false
+    },
+    "laag3": {
+      "pad": "grondslagen/.bronnen/",
+      "omschrijving": "Broninjectie voor de runner: ontologie.compact.md, graph, rulespeak. Enige laag zichtbaar voor de runner.",
+      "runner_toegang": true,
+      "subpaden": {
+        "ontologie": "grondslagen/.bronnen/ontologie.compact.md",
+        "graph": "grondslagen/.bronnen/graph/",
+        "rules": "grondslagen/.bronnen/rules/"
+      }
+    }
+  },
+  "principes": [
+    "EC handelt input-gebonden en conditioneel.",
+    "EC selecteert alleen op expliciete regels; nooit op inferentie of waarschijnlijkheid.",
+    "EC wijzigt broninhoud niet; EC selecteert, reduceert, ordent en injecteert.",
+    "Elke opname of uitsluiting moet logbaar en herleidbaar zijn.",
+    "Geen selectieprofiel betekent: stop en escaleer."
+  ],
+  "globale_regels": {
+    "fallback": "stop",
+    "bronrollen": [
+      "werkbron",
+      "referentiebron",
+      "kaderbron"
+    ],
+    "bronstatus_toegestaan": [
+      "actief",
+      "vers"
+    ],
+    "conflictregels": [
+      "Bij conflict prevaleert kaderbron boven referentiebron.",
+      "Bij meerdere versies prevaleert de hoogste toegestane versie.",
+      "Bij ontbrekende expliciete regel wordt geen bron opgenomen."
+    ],
+    "stopregels": [
+      "bronselectieprofiel ontbreekt",
+      "vereiste werkbron ontbreekt",
+      "vereiste graph-kenmerken ontbreken",
+      "conflict tussen inclusie- en uitsluitingsregels",
+      "geen resultaat uit verplichte ankerselectie",
+      "bronidentiteit of versie niet eenduidig vast te stellen"
+    ],
+    "logverplicht": true,
+    "logvelden": [
+      "bron_id",
+      "bronrol",
+      "versie",
+      "status",
+      "opnamevorm",
+      "reden_van_opname",
+      "reden_van_uitsluiting",
+      "toegepaste_selectieregels"
+    ]
+  },
   "intents": {
-    "*.*": {
-      "verplicht": [
-        "doctrine-traceability.md"
-      ],
-      "toelichting": "Universele onderbouw: traceability is altijd normatief van toepassing als sectie 4-doctrine. Bronhouding wordt structureel geladen buiten dit schema."
-    },
-    "agent-ontwerper.definieer-agent-charter": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md"
-      ],
-      "toelichting": "Het charter zelf is onderhevig aan charter-normen; intent-naming minder relevant hier."
-    },
-    "agent-ontwerper.definieer-agent-contract": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md",
-        "doctrine-intent-naming.md"
-      ],
-      "toelichting": "Contract-definitie vereist ook intent-namingregels voor correcte parametervalidatie."
-    },
-    "agent-ontwerper.definieer-agent-template": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md",
-        "doctrine-intent-naming.md"
-      ],
-      "toelichting": "Template-definitie raakt charter-normering en intent-naamgeving."
-    },
-    "capability-architect.definieer-agent-boundary": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md"
-      ],
-      "toelichting": "Boundary-definitie baseert zich op charter-normering; geen intent-namingbetrokkenheid."
-    },
-    "agent-curator.rapporteer-ecosysteem-overzicht": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md"
-      ],
-      "toelichting": "Overzichtrapportage vereist begrip van charter-normering voor correcte classificatie."
-    },
-    "agent-curator.rapporteer-prompts-overzicht": {
-      "verplicht": [
-        "doctrine-traceability.md"
-      ],
-      "toelichting": "Prompts-overzicht: alleen traceability als basis."
-    },
-    "agent-curator.valideer-agent-consistentie": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md",
-        "doctrine-intent-naming.md"
-      ],
-      "toelichting": "Consistentievalidatie toetst op alle normatieve agentstandaarden."
-    },
-    "agent-curator.valideer-boundary-overlap": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md"
-      ],
-      "toelichting": "Boundary-overlap vereist charter-normering; intent-naming minder relevant."
-    },
-    "agent-curator.valideer-runner-contract-consistentie": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md",
-        "doctrine-agent-runner-architectuur.md"
-      ],
-      "toelichting": "Runner-contract-consistentie raakt runner-architectuur specifiek."
-    },
-    "*.valideer-agent-consistentie": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md",
-        "doctrine-intent-naming.md"
-      ],
-      "toelichting": "Elk valideer-agent-consistentie-intent vereist alle agent-normdoctrines."
-    },
-    "*.definieer-agent-charter": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md"
-      ],
-      "toelichting": "Elke charter-definitie baseert zich op charter-normering."
-    },
-    "*.definieer-agent-contract": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md",
-        "doctrine-intent-naming.md"
-      ],
-      "toelichting": "Elke contract-definitie vereist ook intent-naming."
-    },
-    "*.definieer-agent-boundary": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md"
-      ],
-      "toelichting": "Elke boundary-definitie vereist charter-normering."
-    },
-    "agent-engineer.realiseer-agent-prompts": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md",
-        "doctrine-intent-naming.md",
-        "doctrine-agent-runner-architectuur.md"
-      ],
-      "toelichting": "Prompt-realisatie raakt alle agent-engineeringdoctrines."
-    },
-    "agent-engineer.realiseer-agent-runner": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-runner-architectuur.md",
-        "doctrine-intent-naming.md"
-      ],
-      "toelichting": "Runner-realisatie is primair runner-architectuur-gebonden."
-    },
-    "agent-engineer.realiseer-agent-taskconfiguratie": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-runner-architectuur.md",
-        "doctrine-intent-naming.md"
-      ],
-      "toelichting": "Taskconfiguratie is runner-architectuur-gebonden."
-    },
-    "documentatie-omvormer.genereer-publicatiestructuur": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "workspace-doctrine.md"
-      ],
-      "toelichting": "Publicatiestructuur vereist workspace-doctrine voor naamgevingsconventies."
-    },
-    "documentatie-omvormer.genereer-navigatiebestand": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "workspace-doctrine.md"
-      ],
-      "toelichting": "Navigatiebestand: workspace-doctrine voor pad- en naamconventies."
-    },
-    "documentatie-omvormer.genereer-correcte-links": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "workspace-doctrine.md"
-      ],
-      "toelichting": "Linkgeneratie vereist workspace-doctrine voor structuurkennis."
-    },
     "ecosysteem-coordinator.genereer-instructies": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "workspace-doctrine.md"
-      ],
-      "toelichting": "De coordinator zelf: traceability + workspace-doctrine als fundament. Bronhouding wordt structureel geladen buiten dit schema."
+      "toelichting": "Stelt een execution-bestand samen als bronpakket voor een doelagent en intent. EC selecteert kaderbronnen, werkbronnen en optionele referentiebronnen volgens expliciete profielen.",
+      "bronrollen": {
+        "kaderbronnen": {
+          "verplicht": [
+            {"bestand": "constitutie.md", "pad": "grondslagen/.normatief/constitutie.md", "laag": 1},
+            {"bestand": "beleid-workspace.md", "laag": 1},
+            {"bestand": "doctrine.bronhouding-en-exploratie.md", "pad": "grondslagen/.normatief/doctrine.bronhouding-en-exploratie.md", "laag": 1},
+            {"bestand": "doctrine.traceability.md", "pad": "grondslagen/.normatief/doctrine.traceability.md", "laag": 1}
+          ],
+          "selectie": {
+            "status_toegestaan": [
+              "actief",
+              "vers"
+            ],
+            "opnamevorm": "volledig"
+          }
+        },
+        "referentiebronnen": {
+          "verplicht_profielen": [
+            "doctrine_selectie",
+            "ontologie_selectie"
+          ]
+        },
+        "werkbronnen": {
+          "verplicht_profielen": [
+            "parameters",
+            "doelartefact",
+            "graph_selectie"
+          ]
+        }
+      },
+      "doctrine_selectie": {
+        "bron_id": "doctrine-manifest",
+        "selectieregels": [
+          "Neem alleen doctrines op die expliciet in doctrine_profiel van de doelintent zijn genoemd.",
+          "Neem doctrine-bronhouding-en-exploratie.md altijd op als kaderbron.",
+          "Neem geen doctrine op zonder eenduidige bronidentiteit.",
+          "Neem geen doctrine op met status anders dan actief of vers."
+        ]
+      },
+      "ontologie_selectie": {
+        "bron_id": "ontologie",
+        "optioneel": true,
+        "selectieregels": [
+          "Neem alleen ontologie op als doelintent een graph_selectieprofiel of ontologie_mapping vereist.",
+          "Neem alleen de expliciet gevraagde concepten, relatietypen en mappings op.",
+          "Bij ontbreken van conceptlijst of mapping: geen ontologie opnemen."
+        ]
+      },
+      "parameters": {
+        "verplicht": [
+          "agent",
+          "intent",
+          "execution_file",
+          "method"
+        ]
+      },
+      "doelartefact": {
+        "selectieregels": [
+          "Neem alleen artefact op dat expliciet als werkbron voor de doelintent is opgegeven.",
+          "Neem geen afgeleide of gerelateerde artefacten op zonder expliciete regel."
+        ]
+      },
+      "graph_selectie": {
+        "vereist_als": [
+          "doelartefact_type == graph",
+          "doelartefact_type == graph-json",
+          "doelartefact_type == cypher-graph"
+        ],
+        "profiel_ref": "default_graph_selectie"
+      }
     },
     "ecosysteem-coordinator.aggregeer-tasks": {
-      "verplicht": [
-        "workspace-doctrine.md"
-      ],
-      "toelichting": "Task-aggregatie: workspace-structuur is normatief; traceability minder relevant."
-    },
-    "ecosysteem-beschrijver.beschrijf-agent-positionering": {
-      "verplicht": [
-        "doctrine-traceability.md",
+      "toelichting": "Aggregeert task-configuraties uitsluitend op basis van declaratieve value_stream-fasen in beleid-workspace.md.",
+      "bronrollen": {
+        "kaderbronnen": {
+          "verplicht": [
+            "beleid-workspace.md"
+          ],
+          "selectie": {
+            "opnamevorm": "frontmatter-only"
+          }
+        },
+        "werkbronnen": {
+          "verplicht": [
+            ".vscode/tasks/",
+            "artefacten/**/tasks/"
+          ]
+        }
+      },
+      "selectieregels": [
+        "Lees uitsluitend YAML frontmatter key value_stream-fasen uit beleid-workspace.md.",
+        "Gebruik geen voorbeelden, illustraties of toelichtende tekst als configuratie-input.",
+        "Scan alleen task-bestanden onder geconfigureerde value_stream-fasen.",
+        "Bij ontbreken van value_stream-fasen: stop."
+      ]
+    }
+  },
+  "doelintents": {
+    "structureer-architectuur": {
+      "doctrines": [
+        "doctrine.traceability.md",
         "doctrine-agent-charter-normering.md"
       ],
-      "toelichting": "Positionering baseert zich op charter-normering voor agentidentiteit."
+      "ontologie_mapping_verplicht": true,
+      "graph_selectieprofiel": "architectuur_structurering"
     },
-    "*.beschrijf-ecosysteem-artefacten": {
-      "verplicht": [
-        "doctrine-traceability.md"
+    "definieer-concept": {
+      "doctrines": [
+        "doctrine.traceability.md"
       ],
-      "toelichting": "Ecosysteem-beschrijving: universele onderbouw voldoende."
+      "ontologie_mapping_verplicht": false,
+      "graph_selectieprofiel": null
     },
-    "*.beschrijf-ecosysteem-contracten": {
-      "verplicht": [
-        "doctrine-traceability.md",
-        "doctrine-agent-charter-normering.md"
+    "valideer-agent-consistentie": {
+      "doctrines": [
+        "doctrine.traceability.md",
+        "doctrine-agent-charter-normering.md",
+        "doctrine-intent-naming.md"
       ],
-      "toelichting": "Contracten vereisen charter-normering."
+      "ontologie_mapping_verplicht": false,
+      "graph_selectieprofiel": null
+    }
+  },
+  "graph_selectieprofielen": {
+    "default_graph_selectie": {
+      "vereiste_node_velden": [
+        "id",
+        "type"
+      ],
+      "vereiste_edge_velden": [
+        "from",
+        "to",
+        "relatie"
+      ],
+      "regels": [
+        "Neem alleen nodes op die voldoen aan expliciete inclusieregels.",
+        "Neem alleen edges op waarvan beide eindnodes geselecteerd zijn.",
+        "Neem alleen edges op met toegestane relatietypen.",
+        "Neem geen metadata-velden op die niet expliciet zijn toegestaan."
+      ],
+      "toegestane_node_velden": [
+        "id",
+        "type",
+        "label",
+        "domein",
+        "status"
+      ],
+      "toegestane_edge_velden": [
+        "from",
+        "to",
+        "relatie",
+        "status"
+      ],
+      "verwijder_losse_nodes": true
     },
-    "*.beschrijf-ecosysteem-value-streams-agents": {
-      "verplicht": [
-        "doctrine-traceability.md"
+    "architectuur_structurering": {
+      "vereiste_node_velden": [
+        "id",
+        "type"
       ],
-      "toelichting": "Value-streams beschrijving: universele onderbouw."
-    },
-    "canon-curator.adviseer-grondslag-verbeteringen": {
-      "verplicht": [
-        "doctrine-traceability.md"
+      "vereiste_edge_velden": [
+        "from",
+        "to",
+        "relatie"
       ],
-      "toelichting": "Grondslagsadvies: metaniveau, brede onderbouw."
-    },
-    "canon-curator.valideer-grondslag-consistentie": {
-      "verplicht": [
-        "doctrine-traceability.md"
+      "ankers": {
+        "startnode_types": [
+          "proces",
+          "systeem",
+          "component"
+        ]
+      },
+      "inclusieregels": {
+        "toegestane_node_types": [
+          "systeem",
+          "proces",
+          "component",
+          "applicatie"
+        ],
+        "toegestane_edge_types": [
+          "gebruikt",
+          "stuurt",
+          "afhankelijk-van",
+          "realiseert"
+        ]
+      },
+      "uitsluitingsregels": {
+        "uitgesloten_node_types": [
+          "notitie",
+          "commentaar",
+          "voorbeeld"
+        ],
+        "uitgesloten_edge_types": [
+          "commentarieert",
+          "verwijst-losjes-naar"
+        ],
+        "uitgesloten_statussen": [
+          "vervallen",
+          "concept"
+        ]
+      },
+      "contextuitbreiding": {
+        "max_hops_vanaf_ankers": 1
+      },
+      "toegestane_node_velden": [
+        "id",
+        "type",
+        "label",
+        "domein"
       ],
-      "toelichting": "Consistentievalidatie grondslagen: metaniveau."
-    },
-    "canon-curator.valideer-terminologische-scherpte": {
-      "verplicht": [
-        "doctrine-traceability.md"
+      "toegestane_edge_velden": [
+        "from",
+        "to",
+        "relatie"
       ],
-      "toelichting": "Terminologievalidatie: universele onderbouw."
-    },
-    "handoff-steward.realiseer-initiele-handoff": {
-      "verplicht": [
-        "doctrine-handoff.md",
-        "doctrine-traceability.md"
-      ],
-      "toelichting": "Handoff-aanmaak is primair gebonden aan de handoff-doctrine; traceability voor execution-id koppeling."
-    },
-    "handoff-steward.realiseer-handoff-sluiting": {
-      "verplicht": [
-        "doctrine-handoff.md",
-        "doctrine-traceability.md"
-      ],
-      "toelichting": "Handoff-sluiting volgt dezelfde normatieve basis als aanmaak."
-    },
-    "handoff-steward.realiseer-overzicht-inspectie-handoffs": {
-      "verplicht": [
-        "doctrine-handoff.md"
-      ],
-      "toelichting": "Inspectie-overzicht: handoff-doctrine als enige normatieve basis; puur mechanisch statusrapport."
+      "verwijder_losse_nodes": true,
+      "log_extra": [
+        "originele_nodes",
+        "originele_edges",
+        "geselecteerde_nodes",
+        "geselecteerde_edges"
+      ]
+    }
+  },
+  "ontologie_mappings": {
+    "architectuur_structurering": {
+      "concept_naar_node_types": {
+        "Systeem": [
+          "systeem",
+          "applicatie"
+        ],
+        "Proces": [
+          "proces"
+        ],
+        "Component": [
+          "component"
+        ]
+      },
+      "concept_naar_edge_types": {
+        "Afhankelijkheid": [
+          "gebruikt",
+          "afhankelijk-van"
+        ],
+        "Aansturing": [
+          "stuurt"
+        ],
+        "Realisatie": [
+          "realiseert"
+        ]
+      },
+      "regels": [
+        "Gebruik ontologie uitsluitend als mappingbron.",
+        "Leid geen node-type af dat niet expliciet in concept_naar_node_types staat.",
+        "Leid geen edge-type af dat niet expliciet in concept_naar_edge_types staat."
+      ]
     }
   }
 }

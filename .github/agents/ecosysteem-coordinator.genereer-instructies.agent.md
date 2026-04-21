@@ -19,6 +19,11 @@ Het resultaat van de bronassemblage is het **bronpakket**: de execution file in 
 **VERPLICHT**: Raadpleeg de agent charter voor volledige context, grenzen en werkwijze.  
 **Conventie**: Charter bevindt zich in `ecosysteem-coordinator.charter.md` in de parent folder van dit contract.
 
+**Runner-bronnenbereik (norm)**:
+- De runner kent uitsluitend `grondslagen/.bronnen/` als kennisbron (Laag 3: ontologie.compact.md, graph/, rules/).
+- Governance-framing (constitutie, doctrines) komt uit `grondslagen/.normatief/` (Laag 1) maar is uitsluitend bedoeld als kader voor de EC, niet als directe kennis-injectie in de runner.
+- `grondslagen/.formeel/` (ontologie.ttl) is verboden als runner-bron; uitsluitend voor de curator.
+
 ## Contract
 
 ### Input (wat gaat erin)
@@ -152,11 +157,13 @@ De ecosysteem-coordinator:
 2. **Locate agent artefacten**: Zoek agent folder in artefacten/{vs}/{vs}.{fase}.{agent}/
 3. **Bronselectie**: Raadpleeg `bronselectiebeleid.json` in mandarin-canon en bepaal de doctrine-whitelist voor `{agent}.{intent}` vóór inhoudelijke opname; bronhouding-doctrine is altijd verplicht
 4. **Laad kaderbronnen** in volgorde:
-   - Constitutie (uit mandarin-canon)
-   - Workspace-beleid (`beleid-workspace.md`)
-   - Geselecteerde doctrines (gefilterd op basis van bronselectiebeleid + value_stream_fase)
+   - Constitutie (`grondslagen/.normatief/constitutie.md` — Laag 1)
+   - Workspace-beleid (`beleid-workspace.md` — Laag 1)
+   - Geselecteerde doctrines (`grondslagen/.normatief/doctrine.*.md` — Laag 1, gefilterd op basis van bronselectiebeleid + value_stream_fase)
    - Charter (`{agent}.charter.md`)
    - Contract (`{agent}.{intent}.agent.md`)
+   - Ontologie compact (`grondslagen/.bronnen/ontologie.compact.md` — Laag 3, indien vereist door doelintent)
+   - Rulespeak (`grondslagen/.bronnen/rules/rules.*.md` — Laag 3, indien vereist door doelintent)
 5. **Laad werkbronnen**: parameters en prompt-specifieke instructies (`mandarin.{agent}.{intent}.prompt.md`)
 6. **Voer placeholder-substitutie uit**: werkbronnen injecteren in templates
 7. **Stel het bronpakket samen** als 7-laagse inhoudsstructuur

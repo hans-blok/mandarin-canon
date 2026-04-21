@@ -1,6 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Handoff en Overdrachtsdiscipline
+code: DHND
 versie: 1.3.0
 digest: tbd0
 status: vers

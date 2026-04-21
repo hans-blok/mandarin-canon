@@ -1,0 +1,50 @@
+{
+  "schema": "mandarin-rules-manifest/v1",
+  "versie": "1.0.0",
+  "datum": "2026-04-19",
+  "beschrijving": "Index of all rulespeak files. The runner loads only files that match the active value_stream and phase. No semantic interpretation, only metadata matching.",
+  "laadinstructie": {
+    "stap1": "Filter files by value_streams: load only when value_streams contains active_value_stream OR value_streams contains 'all'.",
+    "stap2": "Filter rules in loaded files by phase: include only rules where fase contains actieve_fase OR fase contains 'all'.",
+    "stap3": "Filter rules by entity: include only rules where entiteit contains actieve_entiteit OR entiteit contains 'all'.",
+    "stap4": "Evaluate the condition per rule: when conditie != null, evaluate it against execution-context metadata. Exclude on false."
+  },
+  "bestanden": [
+    {
+      "bestand": "rules.common.yaml",
+      "domein": "common",
+      "value_streams": ["all"],
+      "omschrijving": "System-wide rules that are not bound to a single doctrine"
+    },
+    {
+      "bestand": "rules.bronhouding.yaml",
+      "domein": "bronhouding",
+      "value_streams": ["all"],
+      "omschrijving": "Rules for source stance and exploration (doctrine.bronhouding-en-exploratie.md)"
+    },
+    {
+      "bestand": "rules.traceability.yaml",
+      "domein": "traceability",
+      "value_streams": ["all"],
+      "omschrijving": "Rules for traceability, provenance codes, and execution identity (doctrine.traceability.md)"
+    },
+    {
+      "bestand": "rules.handoff.yaml",
+      "domein": "handoff",
+      "value_streams": ["all"],
+      "omschrijving": "Rules for handoff discipline and transfer documents (doctrine.handoff.md)"
+    },
+    {
+      "bestand": "rules.retrieval.yaml",
+      "domein": "retrieval",
+      "value_streams": ["aeo"],
+      "omschrijving": "Rules for retrieval and context selection from the Mandarin graph (doctrine.retrieval-en-contextselectie.md)"
+    },
+    {
+      "bestand": "rules.templategebruik.yaml",
+      "domein": "templategebruik",
+      "value_streams": ["all"],
+      "omschrijving": "Rules for template use and structure assurance in agent contracts and prompts (doctrine.templategebruik.md)"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+schema: mandarin-rulespeak/v1
+domein: bronhouding
+doctrine_bron: grondslagen/.normatief/doctrine.bronhouding-en-exploratie.md
+doctrine_versie: "1.2.0"
+versie: "1.1.0"
+datum: "2026-04-21"
+
+regels:
+
+  - id: BRH-001
+    type: verplichting
+    entiteit: [agent]
+    actie: werken-op-expliciete-bronnen
+    tekst: >
+      Every agent MUST work exclusively on the basis of explicitly supplied sources.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§4.2"
+
+  - id: BRH-002
+    type: verplichting
+    entiteit: [agent]
+    actie: herleiden-output-tot-bronnen
+    tekst: >
+      Every agent MUST make all output traceable to explicitly used sources.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§4.3"
+
+  - id: BRH-003
+    type: verplichting
+    entiteit: [agent]
+    actie: llm-uitsluitend-gebruiken-voor-formulering
+    tekst: >
+      Every agent MUST use the LLM only for rewriting, structuring,
+      combining, and formulating output.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§5"
+
+  - id: BRH-004
+    type: verplichting
+    entiteit: [agent]
+    actie: onderscheid-maken-bij-exploratie
+    tekst: >
+      Every agent MUST, under an exploratory source stance, explicitly distinguish between
+      foundations, interpretations, hypotheses, and external influences.
+    conditie:
+      veld: bronhouding
+      operator: eq
+      waarde: exploratief
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§6.3"
+
+  - id: BRH-005
+    type: verplichting
+    entiteit: [agent]
+    actie: exploratieve-output-als-verkenning-beschouwen
+    tekst: >
+      Every agent MUST treat exploratory output as a proposal or exploration,
+      not as a normative artifact.
+    conditie:
+      veld: bronhouding
+      operator: eq
+      waarde: exploratief
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§6.4"
+
+  - id: BRH-006
+    type: verplichting
+    entiteit: [agent, auteur]
+    actie: exploratie-canoniseren-via-procedure
+    tekst: >
+      Every agent and author MUST make results from exploration part of the
+      ecosystem only after selection, interpretation, recording as a frame definition,
+      and inclusion in the foundations.
+    conditie:
+      veld: bronhouding
+      operator: eq
+      waarde: exploratief
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§7"
+
+  - id: BRH-007
+    type: verplichting
+    entiteit: [agent]
+    actie: voorbeelden-als-illustratie-behandelen
+    tekst: >
+      Every agent MUST treat examples in sources only as illustration,
+      not as declaration.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§8.3"
+
+  - id: BRH-008
+    type: verbod
+    entiteit: [agent]
+    actie: impliciete-modelkennis-introduceren
+    tekst: >
+      No agent MAY introduce implicit model knowledge into the output.
+    conditie:
+      veld: bronhouding
+      operator: eq
+      waarde: gesloten
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§4.2"
+
+  - id: BRH-009
+    type: verbod
+    entiteit: [agent]
+    actie: llm-als-kennisbron-gebruiken
+    tekst: >
+      No agent MAY use the LLM as a source of knowledge or substantive truth.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§5"
+
+  - id: BRH-010
+    type: verbod
+    entiteit: [agent]
+    actie: definities-afleiden-uit-voorbeelden
+    tekst: >
+      No agent MAY derive definitions, rules, or constraints from examples in sources.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§8.3"
+
+  - id: BRH-011
+    type: verbod
+    entiteit: [agent]
+    actie: exploratieve-output-gebruiken-in-productie
+    tekst: >
+      No agent MAY use exploratory output directly in production.
+    conditie:
+      veld: bronhouding
+      operator: eq
+      waarde: exploratief
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§6.4"
+
+  - id: BRH-012
+    type: verbod
+    entiteit: [agent]
+    actie: exploratieve-output-gebruiken-voor-besluitvorming
+    tekst: >
+      No agent MAY use exploratory output directly for decision-making.
+    conditie:
+      veld: bronhouding
+      operator: eq
+      waarde: exploratief
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§6.4"
+
+  - id: BRH-013
+    type: permissie
+    entiteit: [agent]
+    actie: exploratieve-bronhouding-toepassen
+    tekst: >
+      An agent MAY apply an exploratory source stance when the domain is insufficiently
+      understood, existing foundations are inadequate, or innovation is explicitly required.
+    conditie:
+      of:
+        - veld: domein_onbekend
+          operator: eq
+          waarde: true
+        - veld: grondslagen_toereikend
+          operator: eq
+          waarde: false
+        - veld: innovatie_vereist
+          operator: eq
+          waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§6.2"
+
+  - id: BRH-014
+    type: verplichting
+    entiteit: [agent]
+    actie: waarschuwen-bij-waarschijnlijke-contextoverschrijding
+    tekst: >
+      Every agent MUST warn the user in advance when the supplied input
+      or assembled context is likely too large for the available context window.
+    conditie:
+      veld: contextdruk_niveau
+      operator: in
+      waarde: [hoog, kritiek]
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§5.1"
+
+  - id: BRH-015
+    type: verplichting
+    entiteit: [agent]
+    actie: tokenmeting-labelen-als-exact-of-schatting
+    tekst: >
+      Every agent MUST explicitly indicate, when reporting token usage, whether the
+      reported value is exactly measured, estimated, or unknown.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§5.1"
+
+  - id: BRH-016
+    type: verplichting
+    entiteit: [agent]
+    actie: aantoonbaar-contextverlies-melden
+    tekst: >
+      Every agent MUST explicitly report demonstrable context loss caused by truncation,
+      summarization, or compression to the user.
+    conditie:
+      veld: contextverlies_bekend
+      operator: eq
+      waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§5.2"
+
+  - id: BRH-017
+    type: verbod
+    entiteit: [agent]
+    actie: schijnnauwkeurige-contextclaims-doen
+    tekst: >
+      No agent MAY present a context measurement or context completeness as exact
+      when the measurement source does not explicitly support that exactness.
+    conditie:
+      veld: exacte_meetbron_beschikbaar
+      operator: eq
+      waarde: false
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.bronhouding-en-exploratie.md#§5.2"

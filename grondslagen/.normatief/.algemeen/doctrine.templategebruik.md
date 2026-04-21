@@ -1,6 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Templategebruik en Structuurborging
+code: DTPL
 versie: 1.1.0
 digest: tbd0
 status: vers

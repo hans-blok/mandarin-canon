@@ -1,0 +1,538 @@
+@prefix mnd:  <https://mandarin.canon/ontology#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+# ══════════════════════════════════════════════════════════════════════
+# Mandarin-ecosysteem Ontologie
+# Versie:  1.0.0
+# Status:  vers
+# Bron:    mandarin-domeinconcepten.md v2.13.0
+#          mandarin-ecosysteem-ordeningsconcepten.md v1.9.0
+#          conceptuele-grondslagen.md v1.1.0
+#          mandarin-model.md v1.0.0
+# Gebruik: Primaire machine-leesbare bron voor OWL-gebaseerde validatie
+#          en graph-mapping. Afgeleide LLM-bron: ontologie.compact.md
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:Ontologie a owl:Ontology ;
+    rdfs:label "Mandarin-ecosysteem Ontologie"@nl ;
+    owl:versionInfo "1.0.0" .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 1 — METACONCEPTEN
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:MandarinConcept a owl:Class ;
+    rdfs:label "Mandarin-concept"@nl ;
+    skos:definition "Expliciet gedefinieerd, samenhangend en herbruikbaar bouwblok binnen het Mandarin-ecosysteem dat een fundamenteel begrip, structuur of mechanisme beschrijft."@nl .
+
+mnd:ActieveStructuur a owl:Class ;
+    rdfs:label "Actieve structuur"@nl ;
+    skos:definition "Expliciet gedefinieerd, functioneel element dat zelfstandig of in samenwerking taken uitvoert, interactie aangaat en output produceert."@nl ;
+    rdfs:subClassOf mnd:MandarinConcept .
+
+mnd:MandarinEcosysteem a owl:Class ;
+    rdfs:label "Mandarin-ecosysteem"@nl ;
+    skos:definition "Overkoepelende, samenhangende verzameling van alle Mandarin-concepten, actieve structuren, artefacten, governance-mechanismen en hun onderlinge relaties."@nl .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 2 — AGENT EN GOVERNANCE
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:MandarinAgent a owl:Class ;
+    rdfs:label "Mandarin-agent"@nl ;
+    skos:definition "Expliciet gedefinieerde, autonome software-entiteit die op basis van een formeel agent-charter en agent-contract specifieke taken uitvoert en Mandarin-artefacten produceert."@nl ;
+    rdfs:subClassOf mnd:ActieveStructuur .
+
+mnd:AgentBoundary a owl:Class ;
+    rdfs:label "Agent-boundary"@nl ;
+    skos:definition "Expliciet vastgelegde servicegrens waarbinnen een Mandarin-agent zijn interne werking organiseert; buiten deze grens is interactie uitsluitend mogelijk via formele agent-contracten."@nl .
+
+mnd:AgentCharter a owl:Class ;
+    rdfs:label "Agent-charter"@nl ;
+    skos:definition "Formeel document dat de missie, verantwoordelijkheden, grenzen en governance van een specifieke Mandarin-agent vastlegt."@nl .
+
+mnd:AgentCapability a owl:Class ;
+    rdfs:label "Agent-capability"@nl ;
+    skos:definition "Expliciet aanroepbare functie van een Mandarin-agent, vastgelegd in een agent-contract. Één capability = één intent."@nl ;
+    skos:altLabel "Intent"@nl .
+
+mnd:AgentContract a owl:Class ;
+    rdfs:label "Agent-contract"@nl ;
+    skos:definition "Formele specificatie van de intent van een Mandarin-agent, de verwachte input, de te produceren output en de geldende beleidsregels."@nl .
+
+mnd:MandarinCapability a owl:Class ;
+    rdfs:label "Mandarin-capability"@nl ;
+    skos:definition "Duurzaam, herbruikbaar vermogen van het Mandarin-ecosysteem om een bepaald type waarde te realiseren, onafhankelijk van specifieke agents of tooling."@nl .
+
+mnd:Prompt a owl:Class ;
+    rdfs:label "Prompt"@nl ;
+    skos:definition "Concrete, tekstuele of gestructureerde uitdrukking van een aanroep of instructie aan een Mandarin-agent; geen canoniek onderdeel van het agent-contract."@nl .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 3 — HANDOFF EN OVERDRACHT
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:Handoff a owl:Class ;
+    rdfs:label "Handoff"@nl ;
+    skos:definition "Expliciete, traceerbare overdracht van taak, context en verantwoordelijkheid van de ene Mandarin-agent naar de andere, als discrete gebeurtenis in een meervoudige agent-keten."@nl .
+
+mnd:HandoffIdentificatie a owl:Class ;
+    rdfs:label "Handoff-identificatie"@nl ;
+    skos:definition "Unieke identifier van een specifieke handoff-gebeurtenis in het formaat hf-JJMM.NNNN, gegenereerd door de runner."@nl .
+
+mnd:HandoffBestand a owl:Class ;
+    rdfs:label "Handoff-bestand"@nl ;
+    skos:definition "Canoniek artefact dat de overdragende agent aanmaakt aan het einde van een executie, gericht op het informeren van de ontvangende agent (vooruitkijkend)."@nl .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 4 — ARTEFACTEN
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:MandarinArtefact a owl:Class ;
+    rdfs:label "Mandarin-artefact"@nl ;
+    skos:definition "Duurzame, expliciete en overdraagbare vastlegging van resultaat of besluitvorming die binnen een value stream fase waarde representeert."@nl .
+
+mnd:Template a owl:Class ;
+    rdfs:label "Template"@nl ;
+    skos:definition "Herbruikbare, gestructureerde opzet voor een Mandarin-artefact of prompt die minimale inhoud en secties voorschrijft."@nl .
+
+mnd:GovernanceArtefact a owl:Class ;
+    rdfs:label "Governance-artefact"@nl ;
+    skos:definition "Specialisatie van vastleggend artefact voor het ecosysteem als geheel; ontstaat uitsluitend in value stream 0 (AEO)."@nl ;
+    rdfs:subClassOf mnd:MandarinArtefact .
+
+mnd:RichtinggevendArtefact a owl:Class ;
+    rdfs:label "Richtinggevend artefact"@nl ;
+    skos:definition "Specialisatie van vastleggend artefact dat richting geeft aan een value stream fase in waarde value streams 1-n."@nl ;
+    rdfs:subClassOf mnd:MandarinArtefact .
+
+mnd:StructurerendArtefact a owl:Class ;
+    rdfs:label "Structurerend artefact"@nl ;
+    skos:definition "Mandarin-artefact dat een coherent geheel van architectuurelementen en hun onderlinge relaties representeert, geordend volgens een metamodel of kader."@nl ;
+    rdfs:subClassOf mnd:MandarinArtefact .
+
+mnd:RegisterendArtefact a owl:Class ;
+    rdfs:label "Registrerend artefact"@nl ;
+    skos:definition "Mandarin-artefact dat bestaande of voorgenomen werkelijkheid inzichtelijk maakt zonder zelf vastleggend of realiserend te zijn."@nl ;
+    rdfs:subClassOf mnd:MandarinArtefact .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 5 — VALUE STREAMS EN WORKSPACE
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:ValueStream a owl:Class ;
+    rdfs:label "Value stream"@nl ;
+    skos:definition "Expliciet gedefinieerde keten van waarde-creërende stappen die samen leiden tot een herkenbaar resultaat."@nl ;
+    skos:altLabel "Waardestroom"@nl .
+
+mnd:ValueStreamFase a owl:Class ;
+    rdfs:label "Value stream fase"@nl ;
+    skos:definition "Logisch afgebakende, waarde-creërende eenheid binnen een value stream, zichtbaar via expliciete artefacttypen en kwaliteitscriteria."@nl ;
+    skos:altLabel "Waardemoment"@nl .
+
+mnd:Workspace a owl:Class ;
+    rdfs:label "Workspace"@nl ;
+    skos:definition "Afgebakende werkomgeving ingericht om één of meer value stream fasen uit te werken, met bijbehorende artefacten, governance en ondersteunende agents."@nl .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 6 — BRONNEN EN EXECUTIE
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:Bronrol a owl:Class ;
+    rdfs:label "Bronrol"@nl ;
+    skos:definition "Relationele eigenschap die beschrijft hoe een artefact wordt gebruikt binnen een concrete agent-executie; niet intrinsiek maar context-gebonden."@nl .
+
+mnd:Kaderbron a owl:Class ;
+    rdfs:label "Kaderbron"@nl ;
+    skos:definition "Positie op de as bronrol: artefact dat kader, mandaat en kennis levert waarop de Mandarin-agent zijn handelen legitimeert. Wordt niet bewerkt tijdens de executie."@nl ;
+    rdfs:subClassOf mnd:Bronrol .
+
+mnd:Werkbron a owl:Class ;
+    rdfs:label "Werkbron"@nl ;
+    skos:definition "Positie op de as bronrol: artefact dat wordt ingelezen om te bewerken, analyseren of verwerken als het materiaal waarop de agent zijn intent toepast."@nl ;
+    rdfs:subClassOf mnd:Bronrol .
+
+mnd:Bronregime a owl:Class ;
+    rdfs:label "Bronregime"@nl ;
+    skos:definition "Expliciet vastgelegd stelsel van toegestane kennisbronnen en afleidingsregels waarbinnen een Mandarin-agent betekenis mag vormen of artefacten mag produceren."@nl .
+
+mnd:Broninjectie a owl:Class ;
+    rdfs:label "Broninjectie"@nl ;
+    skos:definition "Overkoepelend concept voor het beschikbaar maken van expliciete bronnen aan een LLM ten behoeve van een agent-executie; omvat bronassemblage en bronpakket."@nl .
+
+mnd:Bronassemblage a owl:Class ;
+    rdfs:label "Bronassemblage"@nl ;
+    skos:definition "Handeling waarmee de runner relevante kaderbronnen en werkbronnen selecteert, ordent en samenvoegt tot één geheel dat aan het LLM wordt aangeboden."@nl .
+
+mnd:Bronpakket a owl:Class ;
+    rdfs:label "Bronpakket"@nl ;
+    skos:definition "Samengesteld geheel van expliciete bronnen zoals het LLM dit bereikt op het moment van een agent-executie; resultaat van bronassemblage."@nl .
+
+mnd:ExecutionBestand a owl:Class ;
+    rdfs:label "Execution-bestand"@nl ;
+    skos:definition "Technisch artefact waarin de runner een concrete agent-executie vastlegt als één uitvoerbaar en traceerbaar geheel; bevat execution-identiteit, opdracht, parameters en bronpakket."@nl .
+
+mnd:ExecutionTraceBestand a owl:Class ;
+    rdfs:label "Execution-trace-bestand"@nl ;
+    skos:definition "Apart traceerbaarheidsartefact naast het execution-bestand dat per opgenomen bron of segment de herkomst, opnamevorm en reden van opname vastlegt."@nl .
+
+mnd:ExecutionDigest a owl:Class ;
+    rdfs:label "Execution-digest"@nl ;
+    skos:definition "Inhoudsgebonden hash (SHA-256) van een execution-bestand die de integriteit aantoonbaar maakt op het moment van verwijzing."@nl .
+
+mnd:ExecutionCode a owl:Class ;
+    rdfs:label "Execution-code"@nl ;
+    skos:definition "Stabiel, persistent adres waarmee een specifieke agent-executie wordt aangewezen, ongeacht latere wijzigingen in het execution-bestand. Formaat: exec-JJMM.XXXX."@nl .
+
+mnd:ExterneGrondslag a owl:Class ;
+    rdfs:label "Externe grondslag"@nl ;
+    skos:definition "Bron van buiten het Mandarin-ecosysteem die een bruikbaar denkkader biedt; heeft geen normatieve status totdat selectie en kadering hebben plaatsgevonden."@nl .
+
+mnd:Kaderdefinitie a owl:Class ;
+    rdfs:label "Kaderdefinitie"@nl ;
+    skos:definition "Geïnternaliseerde, gecontroleerde versie van een externe grondslag die de Mandarin-interpretatie, scope en beperkingen expliciet vastlegt; enige toegestane basis voor agent-gebruik van externe kennis."@nl .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 7 — ORDENINGSCONCEPTEN (CLASSIFICATIE-ASSEN)
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:MandarinAgentClassificatie a owl:Class ;
+    rdfs:label "Mandarin-agent-classificatie"@nl ;
+    skos:definition "Expliciet positioneren van een Mandarin-agent langs vier orthogonale assen: betekeniseffect, vormingsfase, werking en bronhouding."@nl .
+
+mnd:CuratorAgent a owl:Class ;
+    rdfs:label "Curator-agent"@nl ;
+    skos:definition "Mandarin-agent met classificatieprofiel: evaluerend (betekeniseffect), canon-gebonden (bronhouding), inhoudelijk (werking), toetsing (vormingsfase); beoordeelt en bewaakt kwaliteit van artefacten."@nl ;
+    rdfs:subClassOf mnd:MandarinAgent .
+
+mnd:Betekeniseffect a owl:Class ;
+    rdfs:label "Betekeniseffect"@nl ;
+    skos:definition "Classificatie-as die het effect van een agent op de betekenis van het werk beschrijft: vastleggend, normerend, beschrijvend, structurerend, realiserend of evaluerend."@nl .
+
+mnd:Werking a owl:Class ;
+    rdfs:label "Werking"@nl ;
+    skos:definition "Classificatie-as die beschrijft of een agent intervenieert in de inhoud (inhoudelijk), in de vorm (representatie-omvormend) of in de voorwaarden (conditioneel)."@nl .
+
+mnd:Vormingsfase a owl:Class ;
+    rdfs:label "Vormingsfase"@nl ;
+    skos:definition "Classificatie-as die beschrijft in welke fase een interventie plaatsvindt: verkenning, ordening, vastlegging, realisatie, toetsing of operationalisatie."@nl .
+
+mnd:Bronhouding a owl:Class ;
+    rdfs:label "Bronhouding"@nl ;
+    skos:definition "Classificatie-as die de toegestane bronruimte van een agent bepaalt: input-gebonden, canon-gebonden, workspace-gebonden, externe-bron-gebonden of exploratief."@nl .
+
+mnd:Herkomstpositie a owl:Class ;
+    rdfs:label "Herkomstpositie"@nl ;
+    skos:definition "Ordeningsconcept dat de positie van een Mandarin-artefact vastlegt in de creatie-keten: initierend (genereert unieke herkomstcode) of voortbouwend (erft de code)."@nl .
+
+mnd:Artefacttoestand a owl:Class ;
+    rdfs:label "Artefacttoestand"@nl ;
+    skos:definition "Dynamische operationele eigenschap die aangeeft of een artefact actueel is: vers (digest klopt), muf (kleine afwijking zonder cascade), rot (functionele wijziging, downstream regeneratie vereist)."@nl .
+
+mnd:Afleidingspositie a owl:Class ;
+    rdfs:label "Afleidingspositie"@nl ;
+    skos:definition "Metaconcept dat vastlegt of een representatie leidend (primair vastleggingspunt) of afgeleid (mechanisch gegenereerd) is ten opzichte van de onderliggende betekenis."@nl .
+
+mnd:Representatie a owl:Class ;
+    rdfs:label "Representatie"@nl ;
+    skos:definition "Specifieke vorm waarin een artefact of betekenis wordt vastgelegd, weergegeven of uitgewisseld; bepaalt hoe, niet wat."@nl .
+
+mnd:HerkomstKeten a owl:Class ;
+    rdfs:label "Herkomst-keten"@nl ;
+    skos:definition "Reeks van initierend en voortbouwende artefacten die aan dezelfde herkomstcode zijn verbonden; borgt traceerbaarheid naar de oorsprong."@nl .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 8 — OBJECT PROPERTIES
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:heeftCharter a owl:ObjectProperty ;
+    rdfs:label "heeft charter"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  mnd:AgentCharter .
+
+mnd:heeftBoundary a owl:ObjectProperty ;
+    rdfs:label "heeft boundary"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  mnd:AgentBoundary .
+
+mnd:heeftContract a owl:ObjectProperty ;
+    rdfs:label "heeft contract"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  mnd:AgentContract .
+
+mnd:definieertCapability a owl:ObjectProperty ;
+    rdfs:label "definieert capability"@nl ;
+    rdfs:domain mnd:AgentContract ;
+    rdfs:range  mnd:AgentCapability .
+
+mnd:voertUit a owl:ObjectProperty ;
+    rdfs:label "voert uit"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  mnd:AgentCapability .
+
+mnd:produceert a owl:ObjectProperty ;
+    rdfs:label "produceert"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  mnd:MandarinArtefact .
+
+mnd:heeftHandoffId a owl:ObjectProperty ;
+    rdfs:label "heeft handoff-id"@nl ;
+    rdfs:domain mnd:Handoff ;
+    rdfs:range  mnd:HandoffIdentificatie .
+
+mnd:heeftExecutionCode a owl:ObjectProperty ;
+    rdfs:label "heeft execution-code"@nl ;
+    rdfs:domain mnd:ExecutionBestand ;
+    rdfs:range  mnd:ExecutionCode .
+
+mnd:heeftExecutionDigest a owl:ObjectProperty ;
+    rdfs:label "heeft execution-digest"@nl ;
+    rdfs:domain mnd:ExecutionBestand ;
+    rdfs:range  mnd:ExecutionDigest .
+
+mnd:behoortTot a owl:ObjectProperty ;
+    rdfs:label "behoort tot"@nl ;
+    rdfs:domain mnd:MandarinArtefact ;
+    rdfs:range  mnd:HerkomstKeten .
+
+mnd:gestarddoor a owl:ObjectProperty ;
+    rdfs:label "gestart door"@nl ;
+    rdfs:domain mnd:HerkomstKeten ;
+    rdfs:range  mnd:MandarinArtefact .
+
+mnd:omvat a owl:ObjectProperty ;
+    rdfs:label "omvat"@nl ;
+    rdfs:domain mnd:ValueStream ;
+    rdfs:range  mnd:ValueStreamFase .
+
+mnd:huisvest a owl:ObjectProperty ;
+    rdfs:label "huisvest"@nl ;
+    rdfs:domain mnd:ValueStreamFase ;
+    rdfs:range  mnd:MandarinAgent .
+
+mnd:vloeitVoortUit a owl:ObjectProperty ;
+    rdfs:label "vloeit voort uit"@nl ;
+    rdfs:domain mnd:Handoff ;
+    rdfs:range  mnd:ExecutionBestand .
+
+mnd:adresseert a owl:ObjectProperty ;
+    rdfs:label "adresseert"@nl ;
+    rdfs:domain mnd:Handoff ;
+    rdfs:range  mnd:MandarinAgent .
+
+mnd:raadpleegdAlsKader a owl:ObjectProperty ;
+    rdfs:label "raadpleegd als kader"@nl ;
+    rdfs:domain mnd:ExecutionBestand ;
+    rdfs:range  mnd:Kaderbron .
+
+mnd:raadpleegdAlsWerk a owl:ObjectProperty ;
+    rdfs:label "raadpleegd als werk"@nl ;
+    rdfs:domain mnd:ExecutionBestand ;
+    rdfs:range  mnd:Werkbron .
+
+mnd:verwijstNaar a owl:ObjectProperty ;
+    rdfs:label "verwijst naar"@nl ;
+    rdfs:range  mnd:MandarinArtefact .
+
+mnd:valtOnder a owl:ObjectProperty ;
+    rdfs:label "valt onder"@nl ;
+    rdfs:range  mnd:Bronregime .
+
+mnd:omvatBronassemblage a owl:ObjectProperty ;
+    rdfs:label "omvat bronassemblage"@nl ;
+    rdfs:domain mnd:Broninjectie ;
+    rdfs:range  mnd:Bronassemblage .
+
+mnd:omvatBronpakket a owl:ObjectProperty ;
+    rdfs:label "omvat bronpakket"@nl ;
+    rdfs:domain mnd:Broninjectie ;
+    rdfs:range  mnd:Bronpakket .
+
+mnd:isAfgeleidVan a owl:ObjectProperty ;
+    rdfs:label "is afgeleid van"@nl ;
+    rdfs:domain mnd:Kaderdefinitie ;
+    rdfs:range  mnd:ExterneGrondslag .
+
+mnd:heeftTraceBestand a owl:ObjectProperty ;
+    rdfs:label "heeft trace-bestand"@nl ;
+    rdfs:domain mnd:ExecutionBestand ;
+    rdfs:range  mnd:ExecutionTraceBestand .
+
+mnd:gebruiktTemplate a owl:ObjectProperty ;
+    rdfs:label "gebruikt template"@nl ;
+    rdfs:range  mnd:Template .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 9 — DATA PROPERTIES
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:agentId a owl:DatatypeProperty ;
+    rdfs:label "agent-id"@nl ;
+    rdfs:comment "Formaat: vs.versie.naam (bijv. aeo.02.agent-ontwerper)"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  xsd:string .
+
+mnd:agentVersie a owl:DatatypeProperty ;
+    rdfs:label "versie"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  xsd:string .
+
+mnd:agentBronhouding a owl:DatatypeProperty ;
+    rdfs:label "bronhouding"@nl ;
+    rdfs:comment "Waarden: input-gebonden | canon-gebonden | workspace-gebonden | externe-bron-gebonden | exploratief"@nl ;
+    rdfs:domain mnd:MandarinAgent ;
+    rdfs:range  xsd:string .
+
+mnd:artefactId a owl:DatatypeProperty ;
+    rdfs:label "artefact-id"@nl ;
+    rdfs:comment "Formaat: art-JJMM.XXXX"@nl ;
+    rdfs:domain mnd:MandarinArtefact ;
+    rdfs:range  xsd:string .
+
+mnd:artefactHerkomstpositie a owl:DatatypeProperty ;
+    rdfs:label "herkomstpositie"@nl ;
+    rdfs:comment "Waarden: initierend | voortbouwend"@nl ;
+    rdfs:domain mnd:MandarinArtefact ;
+    rdfs:range  xsd:string .
+
+mnd:artefactDigest a owl:DatatypeProperty ;
+    rdfs:label "digest"@nl ;
+    rdfs:comment "4-karakter hexadecimale hash van de artefact-inhoud"@nl ;
+    rdfs:domain mnd:MandarinArtefact ;
+    rdfs:range  xsd:string .
+
+mnd:artefactStatus a owl:DatatypeProperty ;
+    rdfs:label "status"@nl ;
+    rdfs:comment "Waarden: vers | muf | rot"@nl ;
+    rdfs:domain mnd:MandarinArtefact ;
+    rdfs:range  xsd:string .
+
+mnd:handoffIdWaarde a owl:DatatypeProperty ;
+    rdfs:label "handoff-id waarde"@nl ;
+    rdfs:comment "Formaat: hf-JJMM.NNNN"@nl ;
+    rdfs:domain mnd:HandoffIdentificatie ;
+    rdfs:range  xsd:string .
+
+mnd:executionIdWaarde a owl:DatatypeProperty ;
+    rdfs:label "execution-id waarde"@nl ;
+    rdfs:comment "Formaat: JJMM.XXXX"@nl ;
+    rdfs:domain mnd:ExecutionBestand ;
+    rdfs:range  xsd:string .
+
+mnd:executionCodeWaarde a owl:DatatypeProperty ;
+    rdfs:label "execution-code waarde"@nl ;
+    rdfs:comment "Formaat: exec-JJMM.XXXX"@nl ;
+    rdfs:domain mnd:ExecutionCode ;
+    rdfs:range  xsd:string .
+
+mnd:executionModus a owl:DatatypeProperty ;
+    rdfs:label "modus"@nl ;
+    rdfs:comment "Waarden: handmatig | tool-ondersteund"@nl ;
+    rdfs:domain mnd:ExecutionBestand ;
+    rdfs:range  xsd:string .
+
+mnd:herkomstCodeWaarde a owl:DatatypeProperty ;
+    rdfs:label "herkomstcode"@nl ;
+    rdfs:comment "Formaat: JJMM.XXXX (bijv. 2603.Tu9x)"@nl ;
+    rdfs:domain mnd:HerkomstKeten ;
+    rdfs:range  xsd:string .
+
+mnd:humanInTheLoop a owl:DatatypeProperty ;
+    rdfs:label "human-in-the-loop"@nl ;
+    rdfs:comment "true = escalatie naar mens vereist"@nl ;
+    rdfs:domain mnd:Handoff ;
+    rdfs:range  xsd:boolean .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 10 — CARDINALITEITSRESTRICTIES
+# ══════════════════════════════════════════════════════════════════════
+
+mnd:MandarinAgent rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty mnd:agentId ;
+      owl:cardinality 1 ] ,
+    [ a owl:Restriction ;
+      owl:onProperty mnd:heeftCharter ;
+      owl:minCardinality 1 ] ,
+    [ a owl:Restriction ;
+      owl:onProperty mnd:heeftBoundary ;
+      owl:cardinality 1 ] .
+
+mnd:Handoff rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty mnd:heeftHandoffId ;
+      owl:cardinality 1 ] ,
+    [ a owl:Restriction ;
+      owl:onProperty mnd:humanInTheLoop ;
+      owl:cardinality 1 ] .
+
+mnd:ExecutionBestand rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty mnd:heeftExecutionCode ;
+      owl:cardinality 1 ] ,
+    [ a owl:Restriction ;
+      owl:onProperty mnd:heeftExecutionDigest ;
+      owl:cardinality 1 ] ,
+    [ a owl:Restriction ;
+      owl:onProperty mnd:heeftTraceBestand ;
+      owl:minCardinality 1 ] .
+
+mnd:HerkomstKeten rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty mnd:herkomstCodeWaarde ;
+      owl:cardinality 1 ] .
+
+mnd:MandarinArtefact rdfs:subClassOf
+    [ a owl:Restriction ;
+      owl:onProperty mnd:artefactHerkomstpositie ;
+      owl:cardinality 1 ] .
+
+
+# ══════════════════════════════════════════════════════════════════════
+# SECTIE 11 — MAPPING NAAR NEO4J (COMMENTAAR)
+# ══════════════════════════════════════════════════════════════════════
+#
+# OWL Class               → Neo4j Label
+# mnd:MandarinAgent       → :MandarinAgent
+# mnd:MandarinArtefact    → :MandarinArtefact
+# mnd:ValueStream         → :ValueStream
+# mnd:ValueStreamFase     → :ValueStreamFase
+# mnd:AgentCapability     → :Intent
+# mnd:ExecutionBestand    → :Execution
+# mnd:Handoff             → :Handoff
+# mnd:HerkomstKeten       → :HerkomstKeten
+# mnd:Kaderbron           → :KaderBron
+# mnd:Werkbron            → :WerkBron
+# mnd:Bronregime          → :Bronregime
+# mnd:Workspace           → :Workspace
+# mnd:Template            → :Template
+#
+# OWL ObjectProperty      → Neo4j RelationshipType
+# mnd:omvat               → -[:OMVAT]->
+# mnd:huisvest            → -[:HUISVEST]->
+# mnd:voertUit            → -[:VOERT_UIT]->
+# mnd:produceert          → -[:PRODUCEERT]->
+# mnd:vloeitVoortUit      → -[:VLOEIT_VOORT_UIT]->
+# mnd:adresseert          → -[:ADRESSEERT]->
+# mnd:raadpleegdAlsKader  → -[:RAADPLEEGT_ALS_KADER]->
+# mnd:raadpleegdAlsWerk   → -[:RAADPLEEGT_ALS_WERK]->
+# mnd:verwijstNaar        → -[:VERWIJST_NAAR]->
+# mnd:valtOnder           → -[:VALT_ONDER]->
+# mnd:behoortTot          → -[:BEHOORT_TOT]->
+#
+# owl:cardinality 1       → CREATE CONSTRAINT … REQUIRE … IS UNIQUE
+# rdfs:domain/range       → Start- en eindlabel van Neo4j-relatie
+# ══════════════════════════════════════════════════════════════════════

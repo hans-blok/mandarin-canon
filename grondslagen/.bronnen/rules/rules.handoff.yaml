@@ -1,0 +1,145 @@
+schema: mandarin-rulespeak/v1
+domein: handoff
+doctrine_bron: grondslagen/.normatief/doctrine.handoff.md
+doctrine_versie: "1.3.0"
+versie: "1.0.0"
+datum: "2026-04-21"
+
+regels:
+
+  - id: HND-001
+    type: verplichting
+    entiteit: [runner]
+    actie: handoff-id-genereren
+    tekst: >
+      Every runner MUST generate a unique handoff identifier for each handoff
+      in the format hf-JJMM.NNNN.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§2.2"
+
+  - id: HND-002
+    type: verplichting
+    entiteit: [runner]
+    actie: monotoon-volgnummer-per-maand-toekennen
+    tekst: >
+      Every runner MUST assign the handoff sequence number as a 4-digit, zero-padded,
+      monotonically increasing number per calendar month.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§2.3"
+
+  - id: HND-003
+    type: verplichting
+    entiteit: [runner]
+    actie: handoff-bestand-minimaal-vullen
+    tekst: >
+      Every runner MUST populate each handoff file at minimum with handoff_id,
+      execution_code, transferring-agent, receiving-agent, transfer-date,
+      context-summary, and human_in_the_loop.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§3.3"
+
+  - id: HND-004
+    type: verplichting
+    entiteit: [runner]
+    actie: escalatie-reden-verplicht-maken
+    tekst: >
+      Every runner MUST require and record an escalation reason when human_in_the_loop
+      is set to true.
+    conditie:
+      veld: human_in_the_loop
+      operator: eq
+      waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§4.2"
+
+  - id: HND-005
+    type: verplichting
+    entiteit: [runner]
+    actie: handoff-bestand-in-bundel-opslaan
+    tekst: >
+      Every runner MUST store handoff files in executions/{execution_code}.{agent}.{intent}/handoffs/.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§3.2"
+
+  - id: HND-006
+    type: verplichting
+    entiteit: [agent]
+    actie: uitvoering-stoppen-bij-escalatie
+    tekst: >
+      Every agent MUST stop further execution on the escalated
+      part when an escalation occurs.
+    conditie:
+      veld: human_in_the_loop
+      operator: eq
+      waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§4.3"
+
+  - id: HND-007
+    type: verbod
+    entiteit: [runner]
+    actie: handoff-id-overnemen-van-eerdere-executie
+    tekst: >
+      No runner MAY reuse a handoff identifier from an earlier execution.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§6"
+
+  - id: HND-008
+    type: verbod
+    entiteit: [runner, agent]
+    actie: retroactief-handoff-bestand-creeren
+    tekst: >
+      No runner or agent MAY create a handoff file retroactively for an
+      already executed transfer without explicit recording.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§7.2"
+
+  - id: HND-009
+    type: verbod
+    entiteit: [agent]
+    actie: doorgaan-na-escalatie-zonder-vrijgave
+    tekst: >
+      No agent MAY continue after escalation without explicit release by a human.
+    conditie:
+      veld: human_in_the_loop
+      operator: eq
+      waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§4.3"
+
+  - id: HND-010
+    type: verbod
+    entiteit: [runner, agent]
+    actie: handoff-en-trace-bestand-verwisselen
+    tekst: >
+      No runner or agent MAY let the handoff file and the execution-trace file
+      replace one another; both artifacts remain complementary and independent.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.handoff.md#§3.4"

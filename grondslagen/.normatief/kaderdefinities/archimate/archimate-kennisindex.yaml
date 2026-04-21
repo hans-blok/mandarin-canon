@@ -1,0 +1,291 @@
+metadata:
+  name: archimate-kennisindex
+  version: 0.1.0
+  status: concept
+  purpose: machineleesbare index voor ArchiMate-interpretatie in deze repository
+  language: nl
+  source_type: derived_summary
+  companion_markdown: artefacten/kaderstelling/archimate-samenvatting-voor-llm.md
+
+viewpoints:
+  - id: contextview
+    name: Contextview
+    purpose: Positioneert componenten, services en actoren in een landschap of domeincontext.
+    typical_elements:
+      - business-actor
+      - application-component
+      - application-service
+      - application-interface
+    repo_examples:
+      - artefacten/patroon-b/ara/ara-zgw-xxllnc-op-platform-dienstverlening.md
+  - id: informatieflowview
+    name: Informatieflowview
+    purpose: Toont de transformatie en uitwisseling van gegevens tussen bron, model en doel.
+    typical_elements:
+      - data-object
+      - application-component
+      - flow
+      - application-service
+    repo_examples:
+      - artefacten/patroon-b/ara/ara-zgw-xxllnc-op-platform-dienstverlening.md
+  - id: applicatieview
+    name: Applicatieview
+    purpose: Toont application components, services, interfaces en hun samenhang.
+    typical_elements:
+      - application-component
+      - application-service
+      - application-interface
+      - data-object
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md
+      - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - id: roadmapview
+    name: Roadmapview
+    purpose: Toont work packages, fasering, plateaus en mijlpalen in de tijd.
+    typical_elements:
+      - work-package
+      - plateau
+      - deliverable
+      - implementation-event
+    repo_examples:
+      - artefacten/patroon-b/ara/ara-zgw-xxllnc-op-platform-dienstverlening.md
+
+elements:
+  - id: business-actor
+    name: Business actor
+    layer: business
+    definition: Organisatorische partij of team dat verantwoordelijkheden draagt of gedrag uitvoert.
+    synonyms: [team, organisatie-eenheid]
+    heuristics:
+      - Gebruik voor teams of organisatorische eenheden, niet voor abstracte functies.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md#team-digitale-dienstverlening
+  - id: business-process
+    name: Business process
+    layer: business
+    definition: Geordende reeks activiteiten die bedrijfsmatig gedrag beschrijft.
+    synonyms: [proces]
+    heuristics:
+      - Gebruik als het gaat om werkstappen of organisatorische uitvoering.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md#publiceren-van-vraag-antwoordcombinaties
+  - id: application-service
+    name: Application service
+    layer: application
+    definition: Extern waarneembare applicatieve dienst die bruikbaarheid levert aan afnemers.
+    synonyms: [service]
+    heuristics:
+      - Gebruik als iets aangeboden of afgenomen wordt.
+      - Verwissel niet met interne implementatie of interface.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md#ontsluiten-van-kennis
+      - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - id: application-component
+    name: Application component
+    layer: application
+    definition: Logisch of deploybaar applicatie-onderdeel dat gedrag en services kan realiseren.
+    synonyms: [component]
+    heuristics:
+      - Realiseert vaak een application service.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md#strapi
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md#kiss
+  - id: application-interface
+    name: Application interface
+    layer: application
+    definition: Toegangspunt waarlangs een application service wordt aangeboden of ontsloten.
+    synonyms: [api, interface]
+    heuristics:
+      - Interface is niet hetzelfde als service; het is het aansluitpunt.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - id: data-object
+    name: Data object
+    layer: application
+    definition: Gegevensobject dat door applicatief gedrag wordt gebruikt, beheerd of ontsloten.
+    synonyms: [informatieobject, gegevensobject]
+    heuristics:
+      - Gebruik bij applicatieve informatiecontext.
+      - Koppel waar mogelijk aan GGM of werkmodel.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md#kennisartikel
+  - id: business-object
+    name: Business object
+    layer: business
+    definition: Bedrijfsmatig betekenisvol object dat los van technische implementatie wordt beschreven.
+    synonyms: [domeinobject]
+    heuristics:
+      - Gebruik als de bedrijfsbetekenis centraler staat dan de technische gegevensstructuur.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - id: work-package
+    name: Work package
+    layer: implementation-migration
+    definition: Afgebakend veranderinitiatief of werkpakket dat implementatie realiseert.
+    synonyms: [werkpakket, featurecluster]
+    heuristics:
+      - Gebruik in roadmap- en transitieviews.
+    repo_examples:
+      - artefacten/patroon-b/ara/ara-zgw-xxllnc-op-platform-dienstverlening.md
+
+relationships:
+  - id: serving
+    name: Serving
+    definition: Een element levert bruikbaarheid of ondersteuning aan een ander element.
+    allowed_from:
+      - application-service
+      - business-service
+      - application-interface
+    allowed_to:
+      - application-component
+      - business-actor
+      - business-role
+      - application-interface
+      - application-service
+    heuristics:
+      - Kies als A iets bruikbaars levert aan B.
+      - Vaak passend van service naar afnemer.
+      - Verwissel niet met realization.
+    anti_patterns:
+      - Gebruik niet als je eigenlijk implementatie bedoelt.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md
+  - id: realization
+    name: Realization
+    definition: Een concreter element verwezenlijkt of implementeert een abstracter element.
+    allowed_from:
+      - application-component
+      - work-package
+      - data-object
+    allowed_to:
+      - application-service
+      - business-object
+      - plateau
+      - deliverable
+    heuristics:
+      - Kies als A B implementeert of concreet maakt.
+      - Vaak van component naar service.
+    anti_patterns:
+      - Gebruik niet als je eigenlijk levering aan een consumer bedoelt.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md
+      - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - id: assignment
+    name: Assignment
+    definition: Gedrag of verantwoordelijkheid wordt toegewezen aan een actor, rol of structureel element.
+    allowed_from:
+      - business-actor
+      - business-role
+      - application-component
+    allowed_to:
+      - business-process
+      - application-function
+      - application-process
+      - application-service
+    heuristics:
+      - Kies bij de vraag wie iets uitvoert of draagt.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md
+  - id: access
+    name: Access
+    definition: Gedrag gebruikt, leest of schrijft een object.
+    allowed_from:
+      - business-process
+      - application-service
+      - application-function
+      - application-process
+    allowed_to:
+      - data-object
+      - business-object
+      - artifact
+    heuristics:
+      - Kies bij werken op een informatieobject.
+      - Verkies boven associatie als gebruik van een object centraal staat.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md
+  - id: specialization
+    name: Specialization
+    definition: Een element is een specifieker subtype van een ander element.
+    allowed_from:
+      - application-service
+      - business-object
+      - data-object
+    allowed_to:
+      - application-service
+      - business-object
+      - data-object
+    heuristics:
+      - Alleen gebruiken als subtype-relatie inhoudelijk standhoudt.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-doel.md
+  - id: association
+    name: Association
+    definition: Algemene relatie zonder specifiekere semantische duiding.
+    allowed_from: [any]
+    allowed_to: [any]
+    heuristics:
+      - Alleen gebruiken als specifieker modelleren niet lukt of niet nodig is.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-doel.md
+  - id: composition
+    name: Composition
+    definition: Sterke deel-geheelrelatie waarbij het onderdeel structureel bij het geheel hoort.
+    allowed_from:
+      - application-component
+      - business-object
+    allowed_to:
+      - application-interface
+      - business-object
+      - application-component
+    heuristics:
+      - Gebruik bij sterke containment.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - id: aggregation
+    name: Aggregation
+    definition: Lossere deel-geheelrelatie waarbij onderdelen zelfstandiger kunnen bestaan.
+    allowed_from:
+      - application-component
+      - business-object
+    allowed_to:
+      - application-component
+      - business-object
+      - constraint
+    heuristics:
+      - Gebruik als er bundeling is zonder strakke containment.
+    repo_examples:
+      - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - id: flow
+    name: Flow
+    definition: Overdracht of stroom van informatie of andere inhoud tussen elementen.
+    allowed_from:
+      - application-component
+      - application-process
+      - data-object
+    allowed_to:
+      - application-component
+      - application-process
+      - data-object
+    heuristics:
+      - Gebruik in dataflow- en synchronisatieviews.
+    repo_examples:
+      - artefacten/patroon-b/ara/ara-zgw-xxllnc-op-platform-dienstverlening.md
+
+llm_rules:
+  - id: rule-01
+    text: Bepaal eerst het viewpoint, daarna pas de elementtypen en relaties.
+  - id: rule-02
+    text: Als een service een component bedient is Serving waarschijnlijker dan Realization.
+  - id: rule-03
+    text: Als een component een service implementeert is Realization waarschijnlijker dan Serving.
+  - id: rule-04
+    text: Als gedrag op een object werkt is Access waarschijnlijker dan Association.
+  - id: rule-05
+    text: Gebruik Association alleen als fallback.
+
+repo_anchor_files:
+  - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-huidig.md
+  - artefacten/pdc-open-product/bizzdesign-views/kennisbank-kiss-doel.md
+  - artefacten/pdc-open-product/bizzdesign-views/open-product-doel.md
+  - artefacten/patroon-b/ara/ara-zgw-xxllnc-op-platform-dienstverlening.md
+  - artefacten/kaderstelling/thema architectuur platform dienstverlening.md

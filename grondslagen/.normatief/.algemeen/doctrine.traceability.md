@@ -1,7 +1,8 @@
 ---
 type: doctrine
 naam: Doctrine — Traceability en Herkomstcode
-versie: 1.7.0
+code: DTRC
+versie: 1.8.0
 digest: tbd0
 status: vers
 ---
@@ -429,6 +430,34 @@ Optioneel mogen aanvullend worden vastgelegd:
 - `sectie_id`
 - andere canonieke segmentverwijzing
 
+### 8.5 — Contextdruk en compressiegebeurtenissen
+
+Wanneer een runner of platform informatie beschikbaar maakt over tokengebruik, contextdruk, truncatie, samenvatting of compressie, legt het execution-trace-bestand deze informatie expliciet vast als contextgebeurtenis.
+
+Per contextgebeurtenis wordt minimaal vastgelegd:
+
+- `event_type`
+- `timestamp`
+- `meetwijze`
+- `bron`
+- `detail`
+
+Toegestane waarden voor `event_type` zijn minimaal:
+
+- `preflight_warning`
+- `context_loss_known`
+- `context_loss_suspected`
+- `compression_event`
+- `token_measurement`
+
+Toegestane waarden voor `meetwijze` zijn minimaal:
+
+- `exact`
+- `schatting`
+- `onbekend`
+
+Een runner registreert alleen `context_loss_known` wanneer het onderliggende platform of de runner zelf een hard signaal levert dat context daadwerkelijk is weggevallen of compact is gemaakt. In alle andere gevallen wordt uitsluitend een vermoeden of risico vastgelegd.
+
 ---
 
 ## 9. Normering voor compacte opname
@@ -464,6 +493,12 @@ Samenvatting is alleen toegestaan wanneer:
 
 Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of compactie die relevant is voor legitimiteit, interpretatie of besluitvorming moet expliciet traceerbaar zijn.
 
+### 9.5 — Verbod op schijnnauwkeurige contextclaims
+
+Tokengebruik of contextvulling mag alleen als exacte waarde worden vastgelegd wanneer die exactheid volgt uit de gebruikte meetbron.
+
+Indien een waarde is afgeleid, geraamd of onvolledig waarneembaar, wordt zij als schatting of onbekend geregistreerd. Een execution-trace-bestand mag geen schijn van exacte volledigheid wekken.
+
 ---
 
 ## 10. Validatie en governance
@@ -478,6 +513,7 @@ Normatieve kerninhoud mag niet stilzwijgend worden weggelaten. Elke weglating of
 | Vastleggen execution-identiteit | Runner |
 | Vullen YAML-traceability-velden in documentheader | Runner |
 | Generatie execution-trace-bestand | Runner |
+| Registratie contextgebeurtenissen en tokenmetingen | Runner |
 | Validatie herkomstcode-formaat | Runner / Agent-curator |
 | Validatie opnamevorm en segment-traceability | Runner / Agent-curator |
 | Controle op aanwezigheid YAML-header | Agent-curator |
@@ -496,6 +532,8 @@ Een herkomstcode is **geldig** als:
 7. Elk execution-trace-bestand exact verwijst naar een bestaand execution-bestand via `execution_id` en `execution_digest`
 8. Elke bronvermelding in een execution-trace-bestand de verplichte trace-velden bevat
 9. Bij `opnamevorm = fragment` minimaal een heading-gebaseerde segment-identificatie aanwezig is
+10. Elke geregistreerde contextgebeurtenis een geldig `event_type`, `meetwijze`, `timestamp` en bronverwijzing bevat
+11. Geen contextmeting als exact wordt geregistreerd wanneer de meetwijze niet `exact` is
 
 ### 10.3 — Foutafhandeling
 
@@ -509,6 +547,8 @@ Een herkomstcode is **geldig** als:
 | Execution-trace-bestand ontbreekt | Executie is onvolledig en niet volledig auditbaar |
 | Ontbrekend execution_digest | Koppeling ongeldig; verwerking weigeren of corrigeren |
 | Samenvatting zonder bronverwijzing | Ongeldige compacte opname; escalatie naar menselijke validatie |
+| Contextverlies als exact gemeld zonder hard signaal | Ongeldige trace-claim; verlaag naar vermoeden of escalatie |
+| Tokenmeting zonder label exact/schatting/onbekend | Trace-invoer onvolledig; runner weigert of corrigeert |
 
 ---
 
@@ -548,6 +588,7 @@ is een artefact zonder verleden.
 
 | Datum | Versie | Wijziging | Uitvoer door |
 |---|---|---|---|
+| 2026-04-21 | 1.8.0 | Toegevoegd: §8.5 contextdruk en compressiegebeurtenissen; §9.5 verbod op schijnnauwkeurige contextclaims; verplichtingen, validatieregels en foutafhandeling uitgebreid voor tokenmetingen en contextverlies | GitHub Copilot |
 | 2026-04-15 | 1.7.0 | Classificatie toegevoegd; subsectiekoppen voorzien van em-dash; Wijzigingslog hernoemd naar Changelog | Hans Blok |
 | 2026-04-13 | 1.6.0  | §7 toegevoegd: YAML-documentheader als verplicht traceerbaarheidsmechanisme; `templates/yaml-header.template.md` gepromoveerd als gezaghebbende bron; validatieregels en verplichtingentabel uitgebreid | Hans Blok |
 | 2026-04-12 | 1.5.0  | Hernoemd: `execution_identificatie` → `execution_code` conform TDM; `initierend` → `initierend` als canonieke veldwaarde conform TDM | Hans Blok |

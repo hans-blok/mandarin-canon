@@ -1,6 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Intent Naming
+code: DINM
 versie: 2.1.0
 value-stream: aeo
 digest: tbd0

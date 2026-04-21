@@ -1,6 +1,7 @@
 ---
 type: doctrine
 naam: Doctrine — Retrieval en Contextselectie
+code: DRTR
 versie: 1.2.0
 value-stream: aeo
 digest: tbd0

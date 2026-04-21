@@ -1,0 +1,158 @@
+schema: mandarin-rulespeak/v1
+domein: templategebruik
+doctrine_bron: grondslagen/.normatief/doctrine.templategebruik.md
+doctrine_versie: "1.1.0"
+versie: "1.0.0"
+datum: "2026-04-21"
+
+regels:
+
+  - id: TPL-001
+    type: verplichting
+    entiteit: [auteur, runner]
+    actie: template-eigenschap-per-output-vastleggen
+    tekst: >
+      Every author and runner MUST record a template property per output in each agent contract
+      with a template path or ~ as its value.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§3.1"
+
+  - id: TPL-002
+    type: verplichting
+    entiteit: [auteur, runner]
+    actie: template-in-prompt-yaml-spiegelen
+    tekst: >
+      Every author and runner MUST include a template property in the prompt YAML
+      that mirrors the contractual template choice.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§4.1"
+
+  - id: TPL-003
+    type: verplichting
+    entiteit: [runner]
+    actie: contract-bij-mismatch-laten-prevaleren
+    tekst: >
+      Every runner MUST let the contract prevail when there is a mismatch between
+      contract and prompt YAML, and must log the deviation explicitly.
+    conditie:
+      veld: template_mismatch
+      operator: eq
+      waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§4.2"
+
+  - id: TPL-004
+    type: verplichting
+    entiteit: [runner]
+    actie: template-pad-valideren
+    tekst: >
+      Every runner MUST validate that the designated template path exists,
+      unless the value is ~.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§5"
+
+  - id: TPL-005
+    type: verplichting
+    entiteit: [runner]
+    actie: template-primair-uit-contract-lezen
+    tekst: >
+      Every runner MUST read the template primarily from the agent contract and
+      validate the prompt YAML against it.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§6.1"
+
+  - id: TPL-006
+    type: verbod
+    entiteit: [auteur, runner]
+    actie: templategebruik-impliciet-laten-blijven
+    tekst: >
+      No author or runner MAY leave template use implicit; when no template
+      applies, template: ~ is recorded explicitly.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§2.3"
+
+  - id: TPL-007
+    type: verbod
+    entiteit: [auteur, runner]
+    actie: afwijkende-template-in-prompt-yaml-definieren
+    tekst: >
+      No author or runner MAY define a different template in the prompt YAML than
+      the one recorded in the agent contract.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§4.2"
+
+  - id: TPL-008
+    type: verbod
+    entiteit: [runner]
+    actie: intent-op-impliciet-of-niet-bestaand-template-uitvoeren
+    tekst: >
+      No runner MAY execute an intent on the basis of an implicit or non-existent template.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§7.2"
+
+  - id: TPL-009
+    type: verbod
+    entiteit: [auteur]
+    actie: templatekeuze-in-vrije-tekst-verbergen
+    tekst: >
+      No author MAY hide template choice in free text outside the contract or frontmatter.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§7.2"
+
+  - id: TPL-010
+    type: verbod
+    entiteit: [runner]
+    actie: alternatieve-template-uit-inhoud-of-bestandsnaam-afleiden
+    tekst: >
+      No runner MAY derive an alternative template from document content or file name.
+    conditie: null
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§6.1"
+
+  - id: TPL-011
+    type: permissie
+    entiteit: [auteur, runner]
+    actie: template-tilde-gebruiken
+    tekst: >
+      An author or runner MAY use template: ~ when the result is machine configuration
+      or the contract specifies the form sufficiently.
+    conditie:
+      of:
+        - veld: resultaat_type
+          operator: eq
+          waarde: machine-configuratie
+        - veld: contract_specificeert_vorm_voldoende
+          operator: eq
+          waarde: true
+    value_stream: [all]
+    fase: [all]
+    status: actief
+    doctrine_ref: "doctrine.templategebruik.md#§7.1"

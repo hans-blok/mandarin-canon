@@ -23,6 +23,13 @@
       "type": "string",
       "format": "date-time"
     },
+    "context_events": {
+      "type": "array",
+      "description": "Traceerbare contextgebeurtenissen zoals tokenmeting, contextdruk en compressie.",
+      "items": {
+        "$ref": "#/$defs/contextgebeurtenis"
+      }
+    },
     "bronnen": {
       "type": "array",
       "items": {
@@ -82,6 +89,68 @@
               "required": ["versie"]
             }
           ]
+        }
+      ]
+    },
+    "contextgebeurtenis": {
+      "type": "object",
+      "properties": {
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "preflight_warning",
+            "context_loss_known",
+            "context_loss_suspected",
+            "compression_event",
+            "token_measurement"
+          ]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "meetwijze": {
+          "type": "string",
+          "enum": ["exact", "schatting", "onbekend"]
+        },
+        "bron": {
+          "type": "string",
+          "description": "Bron van de meting of het signaal, bijvoorbeeld runner, tokenizer of provider-usage."
+        },
+        "detail": {
+          "type": "string"
+        },
+        "input_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output_tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "context_window_tokens": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": ["event_type", "timestamp", "meetwijze", "bron", "detail"],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "event_type": {
+                "const": "context_loss_known"
+              }
+            },
+            "required": ["event_type"]
+          },
+          "then": {
+            "properties": {
+              "meetwijze": {
+                "const": "exact"
+              }
+            }
+          }
         }
       ]
     },
